@@ -1,9 +1,9 @@
 <template>
-  <div class="font-sans antialiased bg-yellow-400 shadow">
+  <div class="font-sans antialiased bg-black-400">
     <nav
-      class="container mx-auto flex items-center justify-between flex-wrap p-4"
+      class="container mx-auto flex items-center justify-between flex-wrap p-3"
     >
-      <div class="flex items-center flex-no-shrink text-black">
+      <div class="flex flex-no-shrink text-black">
         <span class="font-semibold text-xl tracking-tight">Compar'Or</span>
       </div>
       <div class="block sm:hidden">
