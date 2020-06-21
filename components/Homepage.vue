@@ -1,6 +1,6 @@
 <template>
   <section
-    class="container flex flex-col-reverse sm:flex-row justify-center mx-auto mt-4 sm:mt-24 p-3"
+    class="container flex flex-col-reverse sm:flex-row justify-center mx-auto mt-4 sm:mt-24 p-3 h-full"
   >
     <div
       class="text-content mx-auto flex flex-col sm:mt-48 sm:w-310 px-6 sm:p-0 z-10"
@@ -14,11 +14,13 @@
         : de la prime à la livraison, tout est calculé pour vous faire gagner du
         temps... et de l’argent !
       </p>
-      <button
-        class="w-40 mt-2 p-4 rounded-lg text-sm font-medium bg-yellow-400"
-      >
-        Trouvez votre pièce
-      </button>
+      <nuxt-link to="/coin"
+        ><button
+          class="w-40 mt-2 p-4 rounded-lg text-sm font-medium bg-yellow-400"
+        >
+          Trouvez votre pièce
+        </button>
+      </nuxt-link>
     </div>
     <div class="catch-gold mx-auto">
       <img src="~/assets/img/catch-gold.png" class="w-249 z-0" alt="" />
