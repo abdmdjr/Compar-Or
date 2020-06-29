@@ -14,7 +14,7 @@
         : de la prime à la livraison, tout est calculé pour vous faire gagner du
         temps... et de l’argent !
       </p>
-      <nuxt-link to="/coins"
+      <nuxt-link to="/coin"
         ><button
           class="w-40 mt-2 p-4 rounded-lg text-sm font-medium bg-yellow-400"
         >

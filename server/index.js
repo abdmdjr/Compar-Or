@@ -38,7 +38,7 @@ async function start() {
     })
 
   app.use(express.json())
-  app.use(coinRouter)
+  app.use('/api', coinRouter)
   app.use(nuxt.render)
 }
 start()
