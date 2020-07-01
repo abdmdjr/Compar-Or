@@ -21,6 +21,11 @@ export default {
 	mounted() {
 		axios.get('/api/coins').then((result) => {
 			this.coins = result.data
+			this.coins.map((coin) => {
+				for (const value of Object.values(coin.price)) {
+					coin.price = Math.min(value)
+				}
+			})
 		})
 	}
 }
