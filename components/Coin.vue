@@ -29,8 +29,14 @@ export default {
 			required: true
 		},
 		price: {
-			type: String,
+			type: Object,
 			required: true
+		}
+	},
+	mounted() {
+		// eslint-disable-next-line no-unused-vars
+		for (const [key, value] of Object.entries(this.price)) {
+			this.price = Math.min(value)
 		}
 	}
 }

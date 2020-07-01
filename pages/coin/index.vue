@@ -1,6 +1,6 @@
 <template>
 	<section class="container flex flex-wrap justify-center px-5 py-24 mx-auto">
-		<div v-for="coin in coins" :key="coin.title">
+		<div v-for="coin in coins" :key="coin._id">
 			<Coin :img="coin.img" :title="coin.title" :price="coin.price" />
 		</div>
 	</section>
