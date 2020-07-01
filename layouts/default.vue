@@ -1,16 +1,16 @@
 <template>
-  <div>
-    <Navbar />
-    <nuxt />
-  </div>
+	<div>
+		<Navbar />
+		<nuxt />
+	</div>
 </template>
 
 <script>
 import Navbar from '~/components/Navbar.vue'
 export default {
-  components: {
-    Navbar
-  }
+	components: {
+		Navbar
+	}
 }
 </script>
 
@@ -18,7 +18,7 @@ export default {
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
-  margin: 0;
+	box-sizing: border-box;
+	margin: 0;
 }
 </style>

@@ -11,34 +11,34 @@ const app = express()
 config.dev = process.env.NODE_ENV !== 'production'
 
 async function start() {
-  const nuxt = new Nuxt(config)
+	const nuxt = new Nuxt(config)
 
-  const { host, port } = nuxt.options.server
+	const { host, port } = nuxt.options.server
 
-  await nuxt.ready()
-  if (config.dev) {
-    const builder = new Builder(nuxt)
-    await builder.build()
-  }
+	await nuxt.ready()
+	if (config.dev) {
+		const builder = new Builder(nuxt)
+		await builder.build()
+	}
 
-  mongoose
-    .connect(process.env.DB_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    })
-    .then(() =>
-      consola.ready({ message: 'Connected to database', badge: true })
-    )
-    .then(() => {
-      app.listen(port, host)
-      consola.ready({
-        message: `Server listening on http://${host}:${port}`,
-        badge: true
-      })
-    })
+	mongoose
+		.connect(process.env.DB_URL, {
+			useNewUrlParser: true,
+			useUnifiedTopology: true
+		})
+		.then(() =>
+			consola.ready({ message: 'Connected to database', badge: true })
+		)
+		.then(() => {
+			app.listen(port, host)
+			consola.ready({
+				message: `Server listening on http://${host}:${port}`,
+				badge: true
+			})
+		})
 
-  app.use(express.json())
-  app.use('/api', coinRouter)
-  app.use(nuxt.render)
+	app.use(express.json())
+	app.use('/api', coinRouter)
+	app.use(nuxt.render)
 }
 start()
