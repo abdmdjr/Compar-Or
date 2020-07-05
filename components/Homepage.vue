@@ -7,7 +7,7 @@
 				Les plus belles pièces,<br />
 				au meilleur prix.
 			</h1>
-			<p class="text-xs md:text-sm font-light text-justify w-208 my-2">
+			<p class="text-xs md:text-sm font-light text-justify w-268 my-2">
 				Nous comparons les offres pour vous aider dans votre quête d’achat d’or
 				: de la prime à la livraison, tout est calculé pour vous faire gagner du
 				temps... et de l’argent !
@@ -32,6 +32,7 @@ export default {}
 
 <style scoped>
 h1 {
+	font-size: 1.95rem;
 	font-family: 'Dosis', sans-serif;
 	font-weight: 600;
 }
@@ -40,7 +41,24 @@ button {
 	font-family: 'Exo', sans-serif;
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen and (min-device-width: 359px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+	h1 {
+		font-size: 2.2rem;
+	}
+	p {
+		@apply text-sm;
+		@apply my-4;
+		width: 302px;
+	}
+	.catch-gold {
+		width: 300px;
+	}
+	.container {
+		height: 89vh;
+	}
+}
+
+/* @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
 	h1 {
 		font-size: 1.8rem;
 	}
@@ -61,4 +79,23 @@ button {
 		width: 300px;
 	}
 }
+
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+	h1 {
+		font-size: 2.5rem;
+	}
+	p {
+		@apply text-sm;
+		@apply my-4;
+		width: 344px;
+	}
+	.catch-gold {
+		width: 342px;
+	}
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+	.container {
+	}
+} */
 </style>
