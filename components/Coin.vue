@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="flex flex-col w-60 mx-5 overflow-hidden">
+		<div class="flex flex-col w-24 mx-5 my-12 overflow-hidden">
 			<img
 				class="w-40 mx-3 mb-3 self-center object-cover object-center"
 				:src="img"
@@ -10,7 +10,7 @@
 				<h1 class="title-font text-center text-gray-900 mb-3">
 					{{ title }}
 				</h1>
-				<p class="leading-relaxed text-center mb-3">{{ price }} €</p>
+				<p class="leading-relaxed text-center">{{ price }} €</p>
 			</div>
 		</div>
 	</div>

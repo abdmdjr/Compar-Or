@@ -1,8 +1,8 @@
 <template>
 	<section
-		class="container flex flex-col-reverse lg:flex-row justify-center items-center mx-auto mt-4 md:mt-12 lg:mt-24"
+		class="container flex flex-col-reverse lg:flex-row justify-center items-center mt-4 md:mt-12 lg:mt-24 px-6"
 	>
-		<div class="text-content flex flex-col mx-auto lg:w-310 px-6 md:p-0 z-10">
+		<div class="text-content mx-auto flex flex-col lg:w-310 md:p-0 z-10">
 			<h1 class="md:text-5xl lg:text-4xl mt-4 text-gray-800">
 				Les plus belles pièces,<br />
 				au meilleur prix.
@@ -22,7 +22,7 @@
 				</button>
 			</nuxt-link>
 		</div>
-		<div class="catch-gold mx-auto w-249 md:w-479 lg:w-700 z-0">
+		<div class="catch-gold w-249 md:w-479 lg:w-700 z-0">
 			<img src="~/assets/img/catch-gold.png" class="" alt="" />
 		</div>
 	</section>
