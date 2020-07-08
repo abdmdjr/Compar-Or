@@ -1,5 +1,5 @@
 <template>
-	<div class="container flex-row">
+	<div class="flex-row">
 		<div class="text-info px-6 my-10">
 			<p class="mb-5">
 				Le prix affiché pour une pièce est le plus bas du marché des sites de

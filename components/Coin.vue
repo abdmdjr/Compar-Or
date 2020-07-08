@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="flex flex-col w-24 mx-5 my-12 overflow-hidden">
+		<div class="flex flex-col w-24 mx-5 my-12">
 			<img
 				class="w-40 mx-3 mb-3 self-center object-cover object-center"
 				:src="img"

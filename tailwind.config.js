@@ -17,12 +17,17 @@ module.exports = {
 				'529': '529px',
 				'309': '309px',
 				'18': '1.8rem',
-				'60': '15rem'
+				'60': '15rem',
+				'15': '3.5rem'
 			},
 			fontSize: {
 				'1xl': '1.45rem',
 				'3xl': '1.8rem',
 				'5xl': '3.85rem'
+			},
+			screens: {
+				// eslint-disable-next-line prettier/prettier
+				'lg': '1025px'
 			}
 		}
 	},

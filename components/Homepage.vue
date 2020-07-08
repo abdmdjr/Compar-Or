@@ -1,9 +1,9 @@
 <template>
 	<section
-		class="container flex flex-col-reverse lg:flex-row justify-center items-center mt-4 md:mt-12 lg:mt-24 px-6"
+		class="flex mx-auto flex-col-reverse lg:flex-row justify-center lg:justify-around items-center mt-4"
 	>
-		<div class="text-content mx-auto flex flex-col lg:w-310 md:p-0 z-10">
-			<h1 class="md:text-5xl lg:text-4xl mt-4 text-gray-800">
+		<div class="text-content flex flex-col lg:w-310 md:p-0 z-10">
+			<h1 class="text-3xl md:text-5xl lg:text-4xl mt-4 text-gray-800">
 				Les plus belles pièces,<br />
 				au meilleur prix.
 			</h1>
@@ -38,6 +38,10 @@ h1 {
 	font-weight: 600;
 }
 
+section {
+	height: 89vh;
+}
+
 @media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
 	h1 {
 		font-size: 1.95rem;
@@ -60,9 +64,6 @@ button {
 	}
 	.catch-gold {
 		width: 300px;
-	}
-	.container {
-		height: 89vh;
 	}
 }
 </style>
