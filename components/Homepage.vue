@@ -1,6 +1,6 @@
 <template>
 	<section
-		class="flex mx-auto flex-col-reverse lg:flex-row justify-center lg:justify-around items-center mt-4"
+		class="flex mx-auto flex-col-reverse lg:flex-row justify-center lg:justify-between items-center mt-4"
 	>
 		<div class="text-content flex flex-col lg:w-310 md:p-0 z-10">
 			<h1 class="text-3xl md:text-5xl lg:text-4xl mt-4 text-gray-800">
@@ -22,7 +22,7 @@
 				</button>
 			</nuxt-link>
 		</div>
-		<div class="catch-gold w-249 md:w-479 lg:w-700 z-0">
+		<div class="catch-gold w-249 md:w-479 lg:w-820 z-0">
 			<img src="~/assets/img/catch-gold.png" class="" alt="" />
 		</div>
 	</section>

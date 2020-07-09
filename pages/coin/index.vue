@@ -1,6 +1,6 @@
 <template>
 	<div class="flex-row">
-		<div class="text-info px-6 my-10">
+		<div class="text-info my-10 text-justify">
 			<p class="mb-5">
 				Le prix affiché pour une pièce est le plus bas du marché des sites de
 				pièces d'or en ligne français. <br />
@@ -43,4 +43,18 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
+	p {
+		@apply text-sm;
+	}
+}
+@media only screen and (min-device-width: 359px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+	p {
+		@apply text-sm;
+		@apply my-4;
+		width: 302px;
+		@apply mx-auto;
+	}
+}
+</style>

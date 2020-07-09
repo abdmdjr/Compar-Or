@@ -1,6 +1,6 @@
 <template>
 	<nav
-		class="mx-auto md:w-529 lg:w-full flex items-center justify-between flex-wrap pt-4 lg:px-15"
+		class="mx-auto md:w-529 lg:w-full flex items-center justify-between flex-wrap pt-4"
 	>
 		<span class="font-semibold text-xl tracking-tight">Compar'Or</span>
 		<div class="block sm:hidden">
