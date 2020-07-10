@@ -1,17 +1,15 @@
 <template>
-	<div>
-		<div class="flex flex-col w-24 mx-5 my-12">
-			<img
-				class="w-40 mx-3 mb-3 self-center object-cover object-center"
-				:src="img"
-				:alt="title"
-			/>
-			<div class="">
-				<h1 class="title-font text-center text-gray-900 mb-3">
-					{{ title }}
-				</h1>
-				<p class="leading-relaxed text-center">{{ price }} €</p>
-			</div>
+	<div class="w-20 m-3">
+		<img
+			class="self-center object-cover object-center "
+			:src="img"
+			:alt="title"
+		/>
+		<div class="">
+			<h1 class="title-font text-center text-gray-900 my-3">
+				{{ title }}
+			</h1>
+			<p class="leading-relaxed text-center">{{ price }} €</p>
 		</div>
 	</div>
 </template>

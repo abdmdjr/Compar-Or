@@ -1,16 +1,16 @@
 <template>
-	<div class="flex-row">
+	<div>
 		<div class="text-info my-10 text-justify">
 			<p class="mb-5">
 				Le prix affiché pour une pièce est le plus bas du marché des sites de
-				pièces d'or en ligne français. <br />
+				pièces d'or en ligne français.
 			</p>
 			<p>
 				Cliquez sur une pièce pour afficher la comparaison des prix, du taux de
 				prime appliqué et du prix de livraison pour chaque site.
 			</p>
 		</div>
-		<section class="flex flex-wrap justify-center px-6">
+		<section class="flex flex-wrap justify-center">
 			<div v-for="coin in coins" :key="coin._id">
 				<Coin :img="coin.img" :title="coin.title" :price="coin.price" />
 			</div>
