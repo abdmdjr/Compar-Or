@@ -12,16 +12,26 @@ app.get('/coins', async (req, res) => {
 	}
 })
 
-app.post('/coin', async (req, res) => {
-	// eslint-disable-next-line new-cap
-	const coin = new coinModel(req.body)
+/* 
+	const modelId = req.body._id
+	const newTitle = req.body.title
 
-	try {
-		await coin.save()
-		res.send(coin)
-	} catch (err) {
-		res.status(500).send(err)
-	}
-})
+	coinModel
+		.findById(modelId)
+		.then((model) => {
+			return Object.assign(model, { title: newTitle })
+		})
+		.then((model) => {
+			return model.save()
+		})
+		.then((updatedModel) => {
+			res.json({
+				msg: 'model updated',
+				updatedModel
+			})
+		})
+		.catch((err) => {
+			res.send(err)
+		}) */
 
 module.exports = app

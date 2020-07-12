@@ -1,7 +1,7 @@
 <template>
-	<div class="w-20 m-3">
+	<div class="coin flex flex-col">
 		<img
-			class="self-center object-cover object-center "
+			class="self-center object-cover object-center"
 			:src="img"
 			:alt="title"
 		/>
@@ -37,5 +37,9 @@ export default {
 h1 {
 	font-family: 'Dosis', sans-serif;
 	font-weight: 600;
+}
+
+img {
+	max-width: 100px;
 }
 </style>

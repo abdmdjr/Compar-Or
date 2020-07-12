@@ -20,7 +20,8 @@
     "express": "^4.16.4",
     "mongoose": "^5.9.19",
     "nuxt": "^2.0.0",
-    "nuxt-material-design-icons": "^1.0.4"
+    "nuxt-material-design-icons": "^1.0.4",
+    "puppeteer": "^5.0.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",

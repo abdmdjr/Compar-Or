@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 <template>
 	<div>
 		<div class="text-info my-10 text-justify">
@@ -10,8 +11,12 @@
 				prime appliqué et du prix de livraison pour chaque site.
 			</p>
 		</div>
-		<section class="flex flex-wrap justify-center">
-			<div v-for="coin in coins" :key="coin._id">
+		<section class="flex flex-wrap">
+			<div
+				v-for="coin in coins"
+				:key="coin.id"
+				class="flex justify-center w-1/2 md:w-1/3 lg:w-1/4 mb-3"
+			>
 				<Coin :img="coin.img" :title="coin.title" :price="coin.price" />
 			</div>
 		</section>
@@ -33,9 +38,13 @@ export default {
 	mounted() {
 		axios.get('/api/coins').then((result) => {
 			this.coins = result.data
+			// eslint-disable-next-line no-console
+			console.log(result.data)
 			this.coins.map((coin) => {
 				for (const value of Object.values(coin.price)) {
 					coin.price = Math.min(value)
+					// eslint-disable-next-line no-console
+					console.log(value)
 				}
 			})
 		})
