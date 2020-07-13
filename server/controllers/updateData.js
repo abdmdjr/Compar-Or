@@ -12,8 +12,6 @@ async function scrape() {
 		function(err, coin) {
 			if (err) {
 				console.log(err.message)
-			} else {
-				console.log(coin.price)
 			}
 		}
 	)

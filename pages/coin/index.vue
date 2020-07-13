@@ -38,14 +38,11 @@ export default {
 	mounted() {
 		axios.get('/api/coins').then((result) => {
 			this.coins = result.data
-			// eslint-disable-next-line no-console
-			console.log(result.data)
 			this.coins.map((coin) => {
-				for (const value of Object.values(coin.price)) {
-					coin.price = Math.min(value)
-					// eslint-disable-next-line no-console
-					console.log(value)
-				}
+				const allPriceForOnePiece = Object.values(coin.price)
+				console.log(allPriceForOnePiece)
+				coin.price = Math.min(...allPriceForOnePiece)
+				console.log(coin.price)
 			})
 		})
 	}
