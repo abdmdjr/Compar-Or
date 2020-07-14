@@ -40,9 +40,7 @@ export default {
 			this.coins = result.data
 			this.coins.map((coin) => {
 				const allPriceForOnePiece = Object.values(coin.price)
-				console.log(allPriceForOnePiece)
 				coin.price = Math.min(...allPriceForOnePiece)
-				console.log(coin.price)
 			})
 		})
 	}
