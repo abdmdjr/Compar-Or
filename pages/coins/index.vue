@@ -39,8 +39,9 @@ export default {
 		axios.get('/api/coins').then((result) => {
 			this.coins = result.data
 			this.coins.map((coin) => {
-				const allPriceForOnePiece = Object.values(coin.price)
-				coin.price = Math.min(...allPriceForOnePiece)
+				const arrOfPrice = []
+				Object.values(coin.prices).forEach((val) => arrOfPrice.push(val.price))
+				coin.price = Math.min(...arrOfPrice)
 			})
 		})
 	}

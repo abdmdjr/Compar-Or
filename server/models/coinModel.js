@@ -5,11 +5,19 @@ const CoinSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	price: {
-		lingor: Number,
-		cpor: Number,
-		aucoffre: Number,
-		goldavenue: Number
+	prices: {
+		lingor: {
+			price: Number,
+			livraison: Number
+		},
+		aucoffre: {
+			price: Number,
+			livraison: Number
+		},
+		goldavenue: {
+			price: Number,
+			livraison: Number
+		}
 	},
 	img: {
 		type: String,

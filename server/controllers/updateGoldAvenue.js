@@ -11,7 +11,7 @@ async function scrape() {
 	await Coin.findByIdAndUpdate(
 		idVreneli20,
 		{
-			'price.goldavenue': vreneli20.price
+			'prices.goldavenue.price': vreneli20.price
 		},
 		function(err, coin) {
 			if (err) {
@@ -23,7 +23,7 @@ async function scrape() {
 	await Coin.findByIdAndUpdate(
 		idNapoleon20,
 		{
-			'price.goldavenue': napoleon20.price
+			'prices.goldavenue.price': napoleon20.price
 		},
 		function(err, coin) {
 			if (err) {

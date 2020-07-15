@@ -4,7 +4,6 @@ const app = express()
 
 app.get('/coins', async (req, res) => {
 	const coins = await coinModel.find({})
-
 	try {
 		res.send(coins)
 	} catch (err) {
