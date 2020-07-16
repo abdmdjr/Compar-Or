@@ -40,9 +40,20 @@ export default {
 			this.coins = result.data
 			this.coins.map((coin) => {
 				const arrOfPrice = []
+				Object.entries(coin.prices).forEach(([site, val]) =>
+					arrOfPrice.push({ site, price: val.price })
+				)
+				Math.min(
+					...arrOfPrice.map((p) => {
+						return (coin.price = p.price) + (coin.site = p.site)
+					})
+				)
+			})
+			/* this.coins.map((coin) => {
+				const arrOfPrice = []
 				Object.values(coin.prices).forEach((val) => arrOfPrice.push(val.price))
 				coin.price = Math.min(...arrOfPrice)
-			})
+			}) */
 		})
 	}
 }
