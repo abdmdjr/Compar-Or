@@ -9,7 +9,7 @@
 			<h1 class="title-font text-center text-gray-900 my-3">
 				{{ title }}
 			</h1>
-			<h6>Meilleur prix sur {{ site }}</h6>
+			<h6 class="text-center">Sur {{ site }}</h6>
 			<p class="leading-relaxed text-center">{{ price }} €</p>
 		</div>
 	</div>

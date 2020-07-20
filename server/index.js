@@ -5,7 +5,7 @@ require('dotenv').config()
 const consola = require('consola')
 const config = require('../nuxt.config.js')
 const coinRouter = require('./routes/coinRoutes')
-const updateGoldAvenue = require('./controllers/updateGoldAvenue')
+const updateGoldAvenue = require('./controllers/updateGoldAvenueTest')
 const app = express()
 
 config.dev = process.env.NODE_ENV !== 'production'

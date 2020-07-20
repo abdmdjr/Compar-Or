@@ -17,7 +17,12 @@
 				:key="coin.id"
 				class="flex justify-center w-1/2 md:w-1/3 lg:w-1/4 mb-3"
 			>
-				<Coin :img="coin.img" :title="coin.title" :price="coin.price" />
+				<Coin
+					:img="coin.img"
+					:title="coin.title"
+					:price="coin.price"
+					:site="coin.site"
+				/>
 			</div>
 		</section>
 	</div>
@@ -25,6 +30,7 @@
 
 <script>
 import axios from 'axios'
+import min from 'lodash.min'
 import Coin from '~/components/Coin'
 export default {
 	components: {
@@ -39,7 +45,24 @@ export default {
 		axios.get('/api/coins').then((result) => {
 			this.coins = result.data
 			this.coins.map((coin) => {
-				const arrOfPrice = []
+				coin.site = Object.keys(coin.prices).reduce((prev, curr) =>
+					coin.prices[prev] < coin.prices[curr] ? prev : curr
+				)
+				coin.price = min(Object.values(coin.prices), (o) => coin.prices[o])
+			})
+		})
+	}
+}
+/* 		axios.get('/api/coins').then((result) => {
+			this.coins = result.data
+			this.coins.map((coin) => {
+				Object.entries(coin.prices).forEach((key, value) => {
+					console.log(key, value)
+				)}
+			})
+		})
+	} */
+/* const arrOfPrice = []
 				Object.entries(coin.prices).forEach(([site, val]) =>
 					arrOfPrice.push({ site, price: val.price })
 				)
@@ -47,16 +70,12 @@ export default {
 					...arrOfPrice.map((p) => {
 						return (coin.price = p.price) + (coin.site = p.site)
 					})
-				)
-			})
-			/* this.coins.map((coin) => {
+				) */
+/* this.coins.map((coin) => {
 				const arrOfPrice = []
 				Object.values(coin.prices).forEach((val) => arrOfPrice.push(val.price))
 				coin.price = Math.min(...arrOfPrice)
 			}) */
-		})
-	}
-}
 </script>
 
 <style scoped>
