@@ -1,4 +1,4 @@
-/* const puppeteer = require('puppeteer')
+const puppeteer = require('puppeteer')
 
 async function vreneli20() {
 	const browser = await puppeteer.launch({
@@ -13,12 +13,8 @@ async function vreneli20() {
 		const priceString = document.querySelector(
 			'#gtm-product-pricing-details > span'
 		).textContent
-		const primeString = document.querySelector(
-			'#modal-pricing-details > div > div > div > div.pricing-details-block.flex-box > div.right-column > span:nth-child(5)'
-		).textContent
 		const price = parseFloat(priceString.replace(/\s/g, '').replace(',', '.'))
-		const prime = parseFloat(primeString.replace(/\s/g, '').replace(',', '.'))
-		return { price, prime }
+		return { price }
 	})
 	return data
 }
@@ -36,12 +32,8 @@ async function napoleon20() {
 		const priceString = document.querySelector(
 			'#gtm-product-pricing-details > span'
 		).textContent
-		const primeString = document.querySelector(
-			'#modal-pricing-details > div > div > div > div.pricing-details-block.flex-box > div.right-column > span:nth-child(5)'
-		).textContent
 		const price = parseFloat(priceString.replace(/\s/g, '').replace(',', '.'))
-		const prime = parseFloat(primeString.replace(/\s/g, '').replace(',', '.'))
-		return { price, prime }
+		return { price }
 	})
 	return data
 }
@@ -59,12 +51,8 @@ async function maple1oz() {
 		const priceString = document.querySelector(
 			'#gtm-product-pricing-details > span'
 		).textContent
-		const primeString = document.querySelector(
-			'#modal-pricing-details > div > div > div > div.pricing-details-block.flex-box > div.right-column > span:nth-child(5)'
-		).textContent
 		const price = parseFloat(priceString.replace(/\s/g, '').replace(',', '.'))
-		const prime = parseFloat(primeString.replace(/\s/g, '').replace(',', '.'))
-		return { price, prime }
+		return { price }
 	})
 	return data
 }
@@ -73,7 +61,7 @@ module.exports = {
 	vreneli20,
 	napoleon20,
 	maple1oz
-} */
+}
 
 /* const puppeteer = require('puppeteer')
 
@@ -110,8 +98,7 @@ async function monitor() {
 
 monitor()
 
- */
-/* const job = new CronJob('* * * * *', () => {
+const job = new CronJob('* * * * *', () => {
 	monitor()
-}) */
-/* job.start() */
+})
+job.start() */

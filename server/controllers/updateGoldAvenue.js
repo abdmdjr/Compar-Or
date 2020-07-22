@@ -1,4 +1,4 @@
-/* const goldAvenue = require('../scrapers/goldAvenue')
+const goldAvenue = require('../scrapers/goldAvenue')
 const Coin = require('../models/coinModel')
 
 const idVreneli20 = '5f0b5d3d35cf077262197edf'
@@ -19,6 +19,7 @@ async function scrape() {
 			if (err) {
 				console.log(err.message)
 			}
+			console.log(coin)
 		}
 	)
 
@@ -27,7 +28,7 @@ async function scrape() {
 		{
 			'prices.goldavenue': napoleon20.price
 		},
-		function(err, coin) {
+		function(err) {
 			if (err) {
 				console.log(err.message)
 			}
@@ -51,4 +52,3 @@ async function scrape() {
 module.exports = {
 	scrape
 }
- */
