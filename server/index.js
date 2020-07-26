@@ -5,7 +5,7 @@ require('dotenv').config()
 const consola = require('consola')
 const config = require('../nuxt.config.js')
 const coinRouter = require('./routes/coinRoutes')
-const updateGoldAvenue = require('./controllers/updateGoldAvenue')
+const { goldAvenue } = require('./controllers/updateGoldAvenue.js')
 const app = express()
 
 config.dev = process.env.NODE_ENV !== 'production'
@@ -39,7 +39,7 @@ async function start() {
 		})
 
 	app.use(express.json())
-	updateGoldAvenue.scrape()
+	goldAvenue()
 	app.use('/api', coinRouter)
 	app.use(nuxt.render)
 }
