@@ -1,17 +1,31 @@
-/* const puppeteer = require('puppeteer')
+const puppeteer = require('puppeteer')
+
 
 // eslint-disable-next-line prefer-const
-let pieces = [
-	'https://www.goldavenue.com/fr/acheter/or/produit/piece-d-or-pur-900-0-vreneli-20-francs-suisse-helvetia',
-	'https://www.goldavenue.com/fr/acheter/or/produit/piece-d-or-pur-900-0-20-francs-napoleon-coq-de-chaplain'
+let vreneli20 = [
+	{
+		title: 'Vreneli 20FR',
+		url:
+			'https://www.goldavenue.com/fr/acheter/or/produit/piece-d-or-pur-900-0-vreneli-20-francs-suisse-helvetia'
+	}
+]
+// eslint-disable-next-line prefer-const
+let marianne20 = [
+	{
+		title: 'Napoleon 20FR',
+		url:
+			'https://www.goldavenue.com/fr/acheter/or/produit/piece-d-or-pur-900-0-20-francs-napoleon-coq-de-chaplain'
+	}
 ]
 
 async function scrapeGoldAvenue() {
 	try {
+		// eslint-disable-next-line prefer-const
+		let pieces = [...vreneli20, ...marianne20]
 		const browser = await puppeteer.launch({ headless: false })
-		pieces.map(async (piece) => {
+		const list = pieces.map(async (piece) => {
 			const page = await browser.newPage()
-			await page.goto(piece)
+			await page.goto(piece.url)
 			const data = await page.evaluate(() => {
 				const priceString = document.querySelector(
 					'#gtm-product-pricing-details > span'
@@ -21,17 +35,15 @@ async function scrapeGoldAvenue() {
 				)
 				return price
 			})
-			console.log(data)
-			return data
+			piece.price = data
 		})
+		await Promise.all(list)
+		return pieces
 	} catch (error) {
 		console.log(error.message)
 	}
 }
 
-scrapeGoldAvenue()
-
 module.exports = {
 	scrapeGoldAvenue
 }
- */

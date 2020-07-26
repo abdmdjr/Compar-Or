@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer')
+/* const puppeteer = require('puppeteer')
 
 async function vreneli20() {
 	const browser = await puppeteer.launch({
@@ -61,7 +61,7 @@ module.exports = {
 	vreneli20,
 	napoleon20,
 	maple1oz
-}
+} */
 
 /* const puppeteer = require('puppeteer')
 
