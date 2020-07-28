@@ -5,6 +5,10 @@ const CoinSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	gr: {
+		type: String,
+		required: true
+	},
 	prices: {
 		lingor: Number,
 		aucoffre: Number,

@@ -3,7 +3,7 @@ const pieces = require('../data/goldAvenueData')
 
 async function scrapeGoldAvenue() {
 	try {
-		const browser = await puppeteer.launch({ headless: true })
+		const browser = await puppeteer.launch({ headless: false })
 		const retrievePrice = pieces.map(async (piece) => {
 			const page = await browser.newPage()
 			await page.goto(piece.url)

@@ -1,16 +1,26 @@
 <template>
-	<div class="coin flex flex-col">
+	<div
+		class="coin flex flex-col lg:border lg:border-white lg:rounded-lg lg:hover:shadow-md lg:transition lg:duration-200 lg:ease-in-out p-5"
+	>
 		<img
 			class="self-center object-cover object-center"
 			:src="img"
 			:alt="title"
 		/>
-		<div class="">
-			<h1 class="title-font text-center text-gray-900 my-3">
-				{{ title }}
-			</h1>
-			<h6 class="text-center">Sur {{ site }}</h6>
-			<p class="leading-relaxed text-center">{{ price }} €</p>
+		<div class="content my-3">
+			<div class="my-2">
+				<h1 class="text-center text-gray-900 lg:w-172">
+					{{ title }}
+				</h1>
+				<h4 class="text-center text-sm font-light">{{ gr }}</h4>
+			</div>
+			<h6 class="text-center text-sm mb-2 font-light">
+				Meilleur prix sur
+				<span class="text-primary font-normal">{{ site }}</span>
+			</h6>
+			<p class="leading-relaxed text-center font-bold text-primary">
+				{{ price }} €
+			</p>
 		</div>
 	</div>
 </template>
@@ -30,6 +40,10 @@ export default {
 			type: Number,
 			required: true
 		},
+		gr: {
+			type: String,
+			required: true
+		},
 		site: {
 			type: String,
 			required: true
@@ -40,8 +54,12 @@ export default {
 
 <style scoped>
 h1 {
-	font-family: 'Dosis', sans-serif;
-	font-weight: 600;
+	font-family: 'Lato', sans-serif;
+	font-weight: 500;
+}
+
+.content {
+	font-family: 'Roboto', sans-serif;
 }
 
 img {

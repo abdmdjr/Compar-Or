@@ -20,6 +20,7 @@
 				<Coin
 					:img="coin.img"
 					:title="coin.title"
+					:gr="coin.gr"
 					:price="coin.price"
 					:site="coin.site"
 				/>

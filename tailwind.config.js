@@ -16,6 +16,7 @@ module.exports = {
 				'479': '479px',
 				'529': '529px',
 				'309': '309px',
+				'172': '172px',
 				'18': '1.8rem',
 				'60': '15rem',
 				'15': '3.5rem'
@@ -28,6 +29,9 @@ module.exports = {
 			screens: {
 				// eslint-disable-next-line prettier/prettier
 				'lg': '1025px'
+			},
+			textColor: {
+				primary: '#40327A'
 			}
 		}
 	},
