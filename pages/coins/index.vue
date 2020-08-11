@@ -6,6 +6,8 @@
 				Le prix affiché pour une pièce est le plus bas du marché des sites de
 				pièces d'or en ligne français.
 			</p>
+			<!-- 			<a href="#" @click="sort()">lol</a>
+ -->
 			<p>
 				Cliquez sur une pièce pour afficher la comparaison des prix, du taux de
 				prime appliqué et du prix de livraison pour chaque site.
@@ -23,6 +25,7 @@
 					:gr="coin.gr"
 					:price="coin.price"
 					:site="coin.site"
+					:url="coin.url"
 				/>
 			</div>
 		</section>
@@ -49,11 +52,27 @@ export default {
 				coin.site = Object.keys(coin.prices).reduce((prev, curr) =>
 					coin.prices[prev] < coin.prices[curr] ? prev : curr
 				)
+				const arr = coin.site.split('.')
+				coin.site = arr[1]
+				coin.url = Object.keys(coin.prices)
 				coin.price = min(Object.values(coin.prices), (o) => coin.prices[o])
 			})
 		})
 	}
 }
+/* methods: {
+		sort() {
+			axios.get('api/coins/cher').then((result) => {
+				this.coins = result.data
+				this.coins.map((coin) => {
+					coin.site = Object.keys(coin.prices).reduce((prev, curr) =>
+						coin.prices[prev] < coin.prices[curr] ? prev : curr
+					)
+					coin.price = min(Object.values(coin.prices), (o) => coin.prices[o])
+				})
+			})
+		}
+	} */
 /* 		axios.get('/api/coins').then((result) => {
 			this.coins = result.data
 			this.coins.map((coin) => {

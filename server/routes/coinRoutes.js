@@ -3,7 +3,20 @@ const coinModel = require('../models/coinModel')
 const app = express()
 
 app.get('/coins', async (req, res) => {
-	const coins = await coinModel.find({})
+	const coins = await coinModel.find({}).sort({ 'prices.goldavenue': 1 })
+	try {
+		res.send(coins)
+	} catch (err) {
+		res.status(500).send(err)
+	}
+})
+
+app.get('/coins/cher', async (req, res) => {
+	const coins = await coinModel
+		.find({})
+		.where('prices.goldavenue')
+		.gt(0)
+		.lt(500)
 	try {
 		res.send(coins)
 	} catch (err) {

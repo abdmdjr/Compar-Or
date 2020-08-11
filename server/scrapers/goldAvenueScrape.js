@@ -3,13 +3,13 @@ const pieces = require('../data/goldAvenueData')
 
 async function scrapeGoldAvenue() {
 	try {
-		const browser = await puppeteer.launch({ headless: false })
+		const browser = await puppeteer.launch({ headless: true })
 		const retrievePrice = pieces.map(async (piece) => {
 			const page = await browser.newPage()
 			await page.goto(piece.url)
 			const data = await page.evaluate(() => {
 				const priceString = document.querySelector(
-					'#gtm-product-pricing-details > span'
+					'#gtm-product-pricing-details > a'
 				).textContent
 				const price = parseFloat(
 					priceString.replace(/\s/g, '').replace(',', '.')

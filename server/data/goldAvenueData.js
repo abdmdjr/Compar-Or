@@ -98,7 +98,6 @@ const souverain7gr3 = [
 	}
 ]
 
-
 const pieces = [
 	...vreneli20,
 	...marianne20,

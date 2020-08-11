@@ -16,7 +16,11 @@
 			</div>
 			<h6 class="text-center text-sm mb-2 font-light">
 				Meilleur prix sur
-				<span class="text-primary font-normal">{{ site }}</span>
+				<span class="text-primary font-medium"
+					><a :href="url" target="_blank" rel="noopener noreferrer">{{
+						site
+					}}</a></span
+				>
 			</h6>
 			<p class="leading-relaxed text-center font-bold text-primary">
 				{{ price }} €
@@ -45,6 +49,10 @@ export default {
 			required: true
 		},
 		site: {
+			type: String,
+			required: true
+		},
+		url: {
 			type: String,
 			required: true
 		}
