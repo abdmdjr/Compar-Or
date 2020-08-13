@@ -36,6 +36,7 @@
 import axios from 'axios'
 import min from 'lodash.min'
 import Coin from '~/components/Coin'
+
 export default {
 	components: {
 		Coin
@@ -48,11 +49,14 @@ export default {
 	mounted() {
 		axios.get('/api/coins').then((result) => {
 			this.coins = result.data
+			console.log(this.coins)
 			this.coins.map((coin) => {
 				coin.site = Object.keys(coin.prices).reduce((prev, curr) =>
 					coin.prices[prev] < coin.prices[curr] ? prev : curr
 				)
-				coin.price = min(Object.values(coin.prices), (o) => coin.prices[o])
+				const minValue = min(Object.values(coin.prices), (o) => coin.prices[o])
+				coin.price = minValue[0]
+				coin.url = minValue[1]
 			})
 		})
 	}
