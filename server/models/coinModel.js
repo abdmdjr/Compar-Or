@@ -10,9 +10,7 @@ const CoinSchema = new mongoose.Schema({
 		required: true
 	},
 	prices: {
-		lingor: Number,
-		aucoffre: Number,
-		goldavenue: Number
+		goldavenue: { type: Array }
 	},
 	img: {
 		type: String,

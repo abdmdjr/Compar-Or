@@ -8,7 +8,7 @@ async function goldAvenue() {
 		await Coin.findByIdAndUpdate(
 			piece.id,
 			{
-				'prices.goldavenue': piece.price
+				'prices.goldavenue': [piece.price, piece.url]
 			},
 			function(err, coin) {
 				if (err) {

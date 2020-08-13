@@ -52,9 +52,6 @@ export default {
 				coin.site = Object.keys(coin.prices).reduce((prev, curr) =>
 					coin.prices[prev] < coin.prices[curr] ? prev : curr
 				)
-				const arr = coin.site.split('.')
-				coin.site = arr[1]
-				coin.url = Object.keys(coin.prices)
 				coin.price = min(Object.values(coin.prices), (o) => coin.prices[o])
 			})
 		})
