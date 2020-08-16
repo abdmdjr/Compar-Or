@@ -49,7 +49,6 @@ export default {
 	mounted() {
 		axios.get('/api/coins').then((result) => {
 			this.coins = result.data
-			console.log(this.coins)
 			this.coins.map((coin) => {
 				coin.site = Object.keys(coin.prices).reduce((prev, curr) =>
 					coin.prices[prev] < coin.prices[curr] ? prev : curr

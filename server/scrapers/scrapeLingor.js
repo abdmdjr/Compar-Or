@@ -1,17 +1,15 @@
 const puppeteer = require('puppeteer')
-const pieces = require('../data/goldAvenueData')
+const pieces = require('../data/lingorData')
 
-async function scrapeGoldAvenue() {
+async function scrapeLingor() {
 	try {
-		const browser = await puppeteer.launch({ headless: false })
+		const browser = await puppeteer.launch({ headless: true })
 		const retrievePrice = pieces.map(async (piece) => {
 			const page = await browser.newPage()
 			await page.goto(piece.url)
 			try {
 				const data = await page.evaluate(() => {
-					const priceString = document.querySelector(
-						'#gtm-product-pricing-details > a'
-					).textContent
+					const priceString = document.querySelector('#prixTotal').textContent
 					const price = parseFloat(
 						priceString.replace(/\s/g, '').replace(',', '.')
 					)
@@ -30,5 +28,5 @@ async function scrapeGoldAvenue() {
 }
 
 module.exports = {
-	scrapeGoldAvenue
+	scrapeLingor
 }

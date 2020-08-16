@@ -6,6 +6,7 @@ const consola = require('consola')
 const config = require('../nuxt.config.js')
 const coinRouter = require('./routes/coinRoutes')
 const { goldAvenue } = require('./controllers/updateGoldAvenue.js')
+const { lingor } = require('./controllers/updateLingor.js')
 const app = express()
 
 config.dev = process.env.NODE_ENV !== 'production'
@@ -40,6 +41,7 @@ async function start() {
 
 	app.use(express.json())
 	goldAvenue()
+	lingor()
 	app.use('/api', coinRouter)
 	app.use(nuxt.render)
 }
