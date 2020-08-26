@@ -11,6 +11,21 @@ app.get('/coins', async (req, res) => {
 	}
 })
 
+app.get('/coins/:title', async (req, res) => {
+	try {
+		const coin = await coinModel.findOne({ title: req.params.title }).exec()
+		res.send(coin)
+	} catch (err) {
+		res.status(500).send(err)
+	}
+})
+/* 	const coin = await coinModel.findById(id)
+	try {
+		res.send({ coin })
+	} catch (err) {
+		console.log(err.message)
+	} */
+/* 
 app.get('/coins/cher', async (req, res) => {
 	const coins = await coinModel
 		.find({})
@@ -22,7 +37,7 @@ app.get('/coins/cher', async (req, res) => {
 	} catch (err) {
 		res.status(500).send(err)
 	}
-})
+}) */
 
 /* 
 	const modelId = req.body._id

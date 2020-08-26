@@ -19,14 +19,16 @@
 				:key="coin.id"
 				class="flex justify-center w-1/2 md:w-1/3 lg:w-1/4 mb-3"
 			>
-				<Coin
-					:img="coin.img"
-					:title="coin.title"
-					:gr="coin.gr"
-					:price="coin.price"
-					:site="coin.site"
-					:url="coin.url"
-				/>
+				<nuxt-link :to="`/coins/${coin.title}`">
+					<Coin
+						:img="coin.img"
+						:title="coin.title"
+						:gr="coin.gr"
+						:price="coin.price"
+						:site="coin.site"
+						:url="coin.url"
+					/>
+				</nuxt-link>
 			</div>
 		</section>
 	</div>
@@ -50,6 +52,7 @@ export default {
 		axios.get('/api/coins').then((result) => {
 			this.coins = result.data
 			this.coins.map((coin) => {
+				console.log(coin._id)
 				coin.site = Object.keys(coin.prices).reduce((prev, curr) =>
 					coin.prices[prev] < coin.prices[curr] ? prev : curr
 				)
