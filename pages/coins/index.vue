@@ -19,16 +19,15 @@
 				:key="coin.id"
 				class="flex justify-center w-1/2 md:w-1/3 lg:w-1/4 mb-3"
 			>
-				<nuxt-link :to="`/coins/${coin.title}`">
-					<Coin
-						:img="coin.img"
-						:title="coin.title"
-						:gr="coin.gr"
-						:price="coin.price"
-						:site="coin.site"
-						:url="coin.url"
-					/>
-				</nuxt-link>
+				<Coin
+					:slug="coin.slug"
+					:img="coin.img"
+					:title="coin.title"
+					:gr="coin.gr"
+					:price="coin.price"
+					:site="coin.site"
+					:url="coin.url"
+				/>
 			</div>
 		</section>
 	</div>

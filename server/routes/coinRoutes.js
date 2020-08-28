@@ -11,9 +11,9 @@ app.get('/coins', async (req, res) => {
 	}
 })
 
-app.get('/coins/:title', async (req, res) => {
+app.get('/coins/:coin', async (req, res) => {
 	try {
-		const coin = await coinModel.findOne({ title: req.params.title }).exec()
+		const coin = await coinModel.findOne({ slug: req.params.coin }).exec()
 		res.send(coin)
 	} catch (err) {
 		res.status(500).send(err)

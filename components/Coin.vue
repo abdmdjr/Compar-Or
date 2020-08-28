@@ -2,18 +2,22 @@
 	<div
 		class="coin flex flex-col lg:border lg:border-white lg:rounded-lg lg:hover:shadow-md lg:transition lg:duration-200 lg:ease-in-out p-5"
 	>
-		<img
-			class="self-center object-cover object-center"
-			:src="img"
-			:alt="title"
-		/>
+		<nuxt-link :to="`/coins/${slug}`" class="flex justify-center">
+			<img
+				class="self-center object-cover object-center"
+				:src="img"
+				:alt="title"
+			/>
+		</nuxt-link>
 		<div class="content my-3">
-			<div class="my-2">
-				<h1 class="text-center text-gray-900 lg:w-172">
-					{{ title }}
-				</h1>
-				<h4 class="text-center text-sm font-light">{{ gr }}</h4>
-			</div>
+			<nuxt-link :to="`/coins/${slug}`" class="flex justify-center">
+				<div class="my-2">
+					<h1 class="text-center text-gray-900 lg:w-172">
+						{{ title }}
+					</h1>
+					<h4 class="text-center text-sm font-light">{{ gr }}</h4>
+				</div>
+			</nuxt-link>
 			<h6 class="text-center text-sm mb-2 font-light">
 				Meilleur prix sur
 				<span class="text-primary font-medium"
@@ -53,6 +57,10 @@ export default {
 			required: true
 		},
 		url: {
+			type: String,
+			required: true
+		},
+		slug: {
 			type: String,
 			required: true
 		}

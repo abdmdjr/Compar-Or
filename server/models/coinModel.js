@@ -16,6 +16,10 @@ const CoinSchema = new mongoose.Schema({
 	img: {
 		type: String,
 		required: true
+	},
+	slug: {
+		type: String,
+		required: true
 	}
 })
 
