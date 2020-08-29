@@ -1,6 +1,6 @@
 <template>
 	<nav
-		class="mx-auto md:w-529 lg:w-full flex items-center justify-between flex-wrap pt-4"
+		class="mx-auto md:w-529 lg:w-full bg-yellow-400 flex items-center justify-between flex-wrap py-3 px-5 lg:px-72"
 	>
 		<span class="font-semibold text-xl tracking-tight">Compar'Or</span>
 		<div class="block sm:hidden">
@@ -15,7 +15,7 @@
 			:class="open ? 'block' : 'hidden'"
 			class="w-full flex-grow sm:flex sm:items-center sm:w-auto"
 		>
-			<div class="text-sm sm:flex-grow sm:text-right sm:space-x-4 sm:mr-8">
+			<div class="text-sm sm:flex-grow sm:text-right space-x-4 mr-8 lg:mr-0">
 				<a
 					href="#"
 					class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white"
@@ -61,9 +61,9 @@ export default {
 </script>
 
 <style>
-@media only screen and (min-device-width: 359px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+/* @media only screen and (min-device-width: 359px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
 	nav {
 		width: 302px;
 	}
-}
+} */
 </style>

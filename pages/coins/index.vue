@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 <template>
 	<div>
-		<div class="text-info my-10 text-justify">
+		<div class="text-info my-10 text-justify py-3 px-5 lg:px-72">
 			<p class="mb-5">
 				Le prix affiché pour une pièce est le plus bas du marché des sites de
 				pièces d'or en ligne français.
@@ -13,23 +13,53 @@
 				prime appliqué et du prix de livraison pour chaque site.
 			</p>
 		</div>
-		<section class="flex flex-wrap">
-			<div
-				v-for="coin in coins"
-				:key="coin.id"
-				class="flex justify-center w-1/2 md:w-1/3 lg:w-1/4 mb-3"
-			>
-				<Coin
-					:slug="coin.slug"
-					:img="coin.img"
-					:title="coin.title"
-					:gr="coin.gr"
-					:price="coin.price"
-					:site="coin.site"
-					:url="coin.url"
-				/>
+		<div class="content flex lg:px-72">
+			<div class="filters mr-12">
+				<h4 class="text-primary text-xl font-medium mb-6">Filtres</h4>
+				<h5 class="text-primary font-bold mb-4">Type de métaux</h5>
+				<input type="checkbox" class="mb-5" disabled checked /><label
+					for="Or"
+					class="ml-5"
+					>Or</label
+				><br />
+				<input type="checkbox" class="" disabled /><label
+					for="Argent"
+					class="ml-5"
+					>Argent (bientôt)</label
+				>
+				<h5 class="text-primary font-bold mt-4 mb-4">Prix</h5>
+				<input type="checkbox" class="mb-5" /><label for="coin_500" class="ml-5"
+					>- de 500€</label
+				><br />
+				<input type="checkbox" class="mb-5" /><label
+					for="coin_1000"
+					class="ml-5"
+					>500€ à 1000€</label
+				><br />
+				<input type="checkbox" class="mb-5" /><label
+					for="coin_1001"
+					class="ml-5"
+					>1000€ et +</label
+				>
 			</div>
-		</section>
+			<section class="cards flex flex-wrap justify-center">
+				<div
+					v-for="coin in coins"
+					:key="coin.id"
+					class="card flex flex-wrap justify-center mb-3"
+				>
+					<Coin
+						:slug="coin.slug"
+						:img="coin.img"
+						:title="coin.title"
+						:gr="coin.gr"
+						:price="coin.price"
+						:site="coin.site"
+						:url="coin.url"
+					/>
+				</div>
+			</section>
+		</div>
 	</div>
 </template>
 
@@ -51,7 +81,6 @@ export default {
 		axios.get('/api/coins').then((result) => {
 			this.coins = result.data
 			this.coins.map((coin) => {
-				console.log(coin._id)
 				coin.site = Object.keys(coin.prices).reduce((prev, curr) =>
 					coin.prices[prev] < coin.prices[curr] ? prev : curr
 				)
@@ -101,6 +130,14 @@ export default {
 </script>
 
 <style scoped>
+.filters {
+	min-width: 140px;
+}
+
+.card {
+	flex-basis: 21%;
+}
+
 @media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
 	p {
 		@apply text-sm;
