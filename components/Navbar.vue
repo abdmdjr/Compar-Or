@@ -1,48 +1,50 @@
 <template>
-	<nav
-		class="mx-auto md:w-529 lg:w-full bg-yellow-400 flex items-center justify-between flex-wrap py-3 px-5 lg:px-72"
-	>
-		<span class="font-semibold text-xl tracking-tight">Compar'Or</span>
-		<div class="block sm:hidden">
-			<button
-				class="flex items-center text-teal-lighter hover:text-white hover:border-white"
-				@click="toggle"
-			>
-				<i class="material-icons">menu</i>
-			</button>
-		</div>
-		<div
-			:class="open ? 'block' : 'hidden'"
-			class="w-full flex-grow sm:flex sm:items-center sm:w-auto"
+	<div class="bg-yellow-400 py-3">
+		<nav
+			class="container mx-auto px-5 lg-px-0 flex items-center justify-between flex-wrap"
 		>
-			<div class="text-sm sm:flex-grow sm:text-right space-x-4 mr-8 lg:mr-0">
-				<a
-					href="#"
-					class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white"
+			<span class="font-semibold text-xl tracking-tight">Compar'Or</span>
+			<div class="block sm:hidden">
+				<button
+					class="flex items-center text-teal-lighter hover:text-white hover:border-white"
+					@click="toggle"
 				>
-					Trouvez votre pièce
-				</a>
-				<a
-					href="#"
-					class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white"
-				>
-					Cours de l'or
-				</a>
-				<a
-					href="#"
-					class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white"
-				>
-					Blog
-				</a>
-				<a
-					href="#"
-					class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white"
-				>
-					Contact
-				</a>
+					<i class="material-icons">menu</i>
+				</button>
 			</div>
-		</div>
-	</nav>
+			<div
+				:class="open ? 'block' : 'hidden'"
+				class="w-full flex-grow sm:flex sm:items-center sm:w-auto"
+			>
+				<div class="text-sm sm:flex-grow sm:text-right space-x-4 mr-8 lg:mr-0">
+					<a
+						href="#"
+						class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white"
+					>
+						Trouvez votre pièce
+					</a>
+					<a
+						href="#"
+						class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white"
+					>
+						Cours de l'or
+					</a>
+					<a
+						href="#"
+						class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white"
+					>
+						Blog
+					</a>
+					<a
+						href="#"
+						class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white"
+					>
+						Contact
+					</a>
+				</div>
+			</div>
+		</nav>
+	</div>
 </template>
 
 <script>

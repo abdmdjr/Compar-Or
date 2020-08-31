@@ -25,19 +25,20 @@ app.get('/coins/:coin', async (req, res) => {
 	} catch (err) {
 		console.log(err.message)
 	} */
-/* 
-app.get('/coins/cher', async (req, res) => {
+
+app.get('/coins/?cher', async (req, res) => {
 	const coins = await coinModel
 		.find({})
-		.where('prices.goldavenue')
+		.where('prices.goldavenue.price')
 		.gt(0)
 		.lt(500)
 	try {
+		console.log(coins)
 		res.send(coins)
 	} catch (err) {
 		res.status(500).send(err)
 	}
-}) */
+})
 
 /* 
 	const modelId = req.body._id

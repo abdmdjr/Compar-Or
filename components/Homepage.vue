@@ -1,6 +1,6 @@
 <template>
 	<section
-		class="flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center py-3 px-5 lg:p-20"
+		class="container mx-auto flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center mt-16"
 	>
 		<div class="text-content flex flex-col lg:w-310 md:p-0 z-10">
 			<h1 class="text-3xl md:text-5xl lg:text-4xl mt-4 text-gray-800">

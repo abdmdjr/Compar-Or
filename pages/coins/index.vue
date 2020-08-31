@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 <template>
-	<div>
-		<div class="text-info my-10 text-justify py-3 px-5 lg:px-72">
+	<div class="container mx-auto px-5 lg-px-0">
+		<div class="text-info my-10 text-justify py-3">
 			<p class="mb-5">
 				Le prix affiché pour une pièce est le plus bas du marché des sites de
 				pièces d'or en ligne français.
@@ -13,8 +13,8 @@
 				prime appliqué et du prix de livraison pour chaque site.
 			</p>
 		</div>
-		<div class="content flex lg:px-72">
-			<div class="filters mr-12">
+		<div class="content flex">
+			<div id="filters" class="filters hidden md:block mr-10">
 				<h4 class="text-primary text-xl font-medium mb-6">Filtres</h4>
 				<h5 class="text-primary font-bold mb-4">Type de métaux</h5>
 				<input type="checkbox" class="mb-5" disabled checked /><label
@@ -28,7 +28,9 @@
 					>Argent (bientôt)</label
 				>
 				<h5 class="text-primary font-bold mt-4 mb-4">Prix</h5>
-				<input type="checkbox" class="mb-5" /><label for="coin_500" class="ml-5"
+				<input type="checkbox" class="mb-5" @click="sort" /><label
+					for="coin_500"
+					class="ml-5"
 					>- de 500€</label
 				><br />
 				<input type="checkbox" class="mb-5" /><label
@@ -58,6 +60,11 @@
 						:url="coin.url"
 					/>
 				</div>
+				<button
+					class="filters-btn md:hidden px-8 py-2 rounded bg-purple-700 text-white font-medium"
+				>
+					Filtres
+				</button>
 			</section>
 		</div>
 	</div>
@@ -89,12 +96,12 @@ export default {
 				coin.url = minValue[1]
 			})
 		})
-	}
-}
-/* methods: {
+	},
+	methods: {
 		sort() {
-			axios.get('api/coins/cher').then((result) => {
+			axios.get('api/coins/?cher').then((result) => {
 				this.coins = result.data
+				console.log(this.coins)
 				this.coins.map((coin) => {
 					coin.site = Object.keys(coin.prices).reduce((prev, curr) =>
 						coin.prices[prev] < coin.prices[curr] ? prev : curr
@@ -103,7 +110,8 @@ export default {
 				})
 			})
 		}
-	} */
+	}
+}
 /* 		axios.get('/api/coins').then((result) => {
 			this.coins = result.data
 			this.coins.map((coin) => {
@@ -136,6 +144,16 @@ export default {
 
 .card {
 	flex-basis: 21%;
+}
+
+.filters-btn {
+	position: fixed;
+	z-index: 100;
+	left: 50%;
+	bottom: 6%;
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
 }
 
 @media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {

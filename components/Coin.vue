@@ -79,6 +79,6 @@ h1 {
 }
 
 img {
-	max-width: 160px;
+	min-width: 160px;
 }
 </style>
