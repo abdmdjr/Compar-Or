@@ -28,17 +28,17 @@
 					>Argent (bientôt)</label
 				>
 				<h5 class="text-primary font-bold mt-4 mb-4">Prix</h5>
-				<input type="checkbox" class="mb-5" @click="sort" /><label
+				<input v-model="checked500" type="checkbox" class="mb-5" /><label
 					for="coin_500"
 					class="ml-5"
 					>- de 500€</label
 				><br />
-				<input type="checkbox" class="mb-5" /><label
+				<input v-model="checked999" type="checkbox" class="mb-5" /><label
 					for="coin_1000"
 					class="ml-5"
 					>500€ à 1000€</label
 				><br />
-				<input type="checkbox" class="mb-5" /><label
+				<input v-model="checked1001" type="checkbox" class="mb-5" /><label
 					for="coin_1001"
 					class="ml-5"
 					>1000€ et +</label
@@ -46,7 +46,7 @@
 			</div>
 			<section class="cards flex flex-wrap justify-center">
 				<div
-					v-for="coin in coins"
+					v-for="coin in filteredCoins"
 					:key="coin.id"
 					class="card flex flex-wrap justify-center mb-3"
 				>
@@ -81,7 +81,32 @@ export default {
 	},
 	data() {
 		return {
-			coins: []
+			coins: [],
+			checked500: false,
+			checked999: false,
+			checked1001: false
+		}
+	},
+	computed: {
+		filteredCoins() {
+			// eslint-disable-next-line prettier/prettier
+			const filtersLess = (priceCoin) => { return this.coins.filter((coin) => coin.price < priceCoin) }
+			// eslint-disable-next-line prettier/prettier
+			const filtersEven = (priceLess, priceMore) => { return this.coins.filter((coin) => coin.price >= priceLess && coin.price <= priceMore) }
+			// eslint-disable-next-line prettier/prettier
+			const filtersMore = (priceCoin) => { return this.coins.filter((coin) => coin.price > priceCoin) }
+
+			if (this.checked500 && this.checked999) {
+				return filtersLess(1000)
+			} else if (this.checked500) {
+				return filtersLess(500)
+			} else if (this.checked999) {
+				return filtersEven(500, 1000)
+			} else if (this.checked1001) {
+				return filtersMore(1000)
+			} else {
+				return this.coins
+			}
 		}
 	},
 	mounted() {
@@ -96,20 +121,6 @@ export default {
 				coin.url = minValue[1]
 			})
 		})
-	},
-	methods: {
-		sort() {
-			axios.get('api/coins/?cher').then((result) => {
-				this.coins = result.data
-				console.log(this.coins)
-				this.coins.map((coin) => {
-					coin.site = Object.keys(coin.prices).reduce((prev, curr) =>
-						coin.prices[prev] < coin.prices[curr] ? prev : curr
-					)
-					coin.price = min(Object.values(coin.prices), (o) => coin.prices[o])
-				})
-			})
-		}
 	}
 }
 /* 		axios.get('/api/coins').then((result) => {

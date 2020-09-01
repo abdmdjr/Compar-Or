@@ -1,5 +1,8 @@
 <template>
-	<p>{{ this.$route.params.coin }}</p>
+	<div class="container mx-auto px-5 lg-px-0">
+		<p>{{ coin.title }}</p>
+		<img :src="coin.img" alt="shit" />
+	</div>
 </template>
 
 <script>
@@ -11,10 +14,11 @@ export default {
 			coin: ''
 		}
 	},
-	mounted() {
+	created() {
 		axios.get(`/api/coins/${this.$route.params.coin}`).then((result) => {
 			console.log(result.data)
 			this.coin = result.data
+			console.log(this.coins)
 		})
 	}
 }
