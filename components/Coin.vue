@@ -9,25 +9,27 @@
 				:alt="title"
 			/>
 		</nuxt-link>
-		<div class="content my-3">
-			<nuxt-link :to="`/coins/${slug}`" class="flex justify-center">
+		<div class="content my-3 flex flex-col">
+			<nuxt-link :to="`/coins/${slug}`">
 				<div class="my-2">
-					<h1 class="text-center text-gray-900 lg:w-172">
+					<h3 class="text-primary text-center font-normal">
 						{{ title }}
-					</h1>
+					</h3>
 					<h4 class="text-center text-sm font-light">{{ gr }}</h4>
 				</div>
 			</nuxt-link>
-			<h6 class="text-center text-sm mb-2 font-light">
+			<h4 class="text-center text-sm mb-2 font-light">
 				Meilleur prix sur
-				<span class="text-primary font-medium"
-					><a :href="url" target="_blank" rel="noopener noreferrer">{{
-						site
-					}}</a></span
+				<a
+					class="text-primary font-normal lg:hover:font-medium"
+					:href="url"
+					target="_blank"
+					rel="noopener noreferrer"
+					>{{ site }}</a
 				>
-			</h6>
-			<p class="leading-relaxed text-center font-bold text-primary">
-				{{ price }} €
+			</h4>
+			<p class="leading-relaxed text-primary text-center font-medium text-lg">
+				<nuxt-link :to="`/coins/${slug}`"> {{ price }} € </nuxt-link>
 			</p>
 		</div>
 	</div>
@@ -69,15 +71,6 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-	font-family: 'Lato', sans-serif;
-	font-weight: 500;
-}
-
-.content {
-	font-family: 'Roboto', sans-serif;
-}
-
 img {
 	min-width: 160px;
 }

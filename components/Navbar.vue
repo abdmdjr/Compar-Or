@@ -3,7 +3,7 @@
 		<nav
 			class="container mx-auto px-5 lg-px-0 flex items-center justify-between flex-wrap"
 		>
-			<span class="font-semibold text-xl tracking-tight">Compar'Or</span>
+			<span class="font-medium text-xl tracking-tight">Compar'Or</span>
 			<div class="block sm:hidden">
 				<button
 					class="flex items-center text-teal-lighter hover:text-white hover:border-white"

@@ -33,10 +33,6 @@ export default {}
 </script>
 
 <style scoped>
-h1 {
-	font-family: 'Dosis', sans-serif;
-	font-weight: 600;
-}
 /* 
 section {
 	height: 89vh;

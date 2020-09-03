@@ -32,7 +32,7 @@ module.exports = {
 				'lg': '1025px'
 			},
 			textColor: {
-				primary: '#40327A'
+				primary: '#40327a'
 			}
 		}
 	},
