@@ -33,7 +33,8 @@ export default {
 		axios.get(`/api/coins/${this.$route.params.coin}`).then((result) => {
 			this.coin = result.data
 			const coin = this.coin
-			const arraySitePrice = Object.entries(coin.prices)
+			console.log(coin)
+			/* 			const arraySitePrice = Object.entries(coin.prices)
 			arraySitePrice.sort((a, b) => a[1][0] - b[1][0])
 			console.log(arraySitePrice)
 			arraySitePrice.map((data, i) => {
@@ -59,7 +60,7 @@ export default {
 			)
 			const minValue = min(Object.values(coin.prices), (o) => coin.prices[o])
 			console.log(minValue)
-			coin.bestprice = minValue[0]
+			coin.bestprice = minValue[0] 
 			coin.url = minValue[1] */
 		})
 	}
