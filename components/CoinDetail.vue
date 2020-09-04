@@ -1,25 +1,34 @@
 <template>
-	<div class="container flex">
-		<img
-			class="self-center object-cover object-center"
-			:src="img"
-			:alt="title"
-		/>
-		<div class="flex flex-col">
-			<h2 class="text-primary font-medium lg:text-4xl">{{ title }}</h2>
+	<div class="mx-auto mt-10 flex space-x-32">
+		<img class="lg:w-72 h-full" :src="img" :alt="title" />
+		<div class="flex flex-col space-y-3">
+			<h2 class="leading-none text-primary font-medium lg:text-4xl">
+				{{ title }}
+			</h2>
+			<h3 class="text-primary font-medium lg:text-xl">
+				Tableau de comparaison
+			</h3>
 			<table class="table-auto">
 				<tbody>
-					<tr>
-						<td class="border px-4 py-2">Site</td>
+					<tr class="bg-yellow-300">
+						<td class="border px-4 py-2">Solutions</td>
 						<td class="border px-4 py-2">Prix</td>
 						<td class="border px-4 py-2">Livraison</td>
 					</tr>
 					<tr>
-						<td class="border px-4 py-2">{{ bestsite }}</td>
+						<td class="border px-4 py-2">
+							<a
+								class="text-primary font-normal lg:hover:font-medium"
+								:href="url"
+								target="_blank"
+								rel="noopener noreferrer"
+								>{{ bestsite }}</a
+							>
+						</td>
 						<td class="border px-4 py-2">{{ bestprice }}</td>
 						<td class="border px-4 py-2"></td>
 					</tr>
-					<tr class="bg-gray-100">
+					<tr>
 						<td class="border px-4 py-2">{{ secondsite }}</td>
 						<td class="border px-4 py-2">{{ secondprice }}</td>
 						<td class="border px-4 py-2"></td>
@@ -45,54 +54,59 @@ export default {
 	props: {
 		title: {
 			type: String,
-			required: true
+			default: ''
 		},
 		img: {
 			type: String,
-			required: true
+			default: ''
 		},
 		bestsite: {
 			type: String,
-			required: true
+			default: ''
 		},
 		bestprice: {
-			type: Number,
-			required: true
+			type: [String, Number],
+			default: ''
 		},
 		secondsite: {
 			type: String,
-			required: true
+			default: ''
 		},
 		secondprice: {
-			type: Number || String,
-			required: true
+			type: [String, Number],
+			default: ''
 		},
 		thirdsite: {
 			type: String,
-			required: true
+			default: ''
 		},
 		thirdprice: {
-			type: String,
-			required: true
+			type: [String, Number],
+			default: ''
 		},
 		fourthsite: {
 			type: String,
-			required: true
+			default: ''
 		},
 		fourthprice: {
-			type: String,
-			required: true
+			type: [String, Number],
+			default: ''
 		},
 		gr: {
 			type: String,
-			required: true
+			default: ''
 		},
 		url: {
 			type: String,
-			required: true
+			default: ''
 		}
 	}
 }
 </script>
 
-<style></style>
+<style>
+img {
+	-webkit-filter: drop-shadow(3px 3px 3px #222);
+	filter: drop-shadow(3px 3px 3px #222);
+}
+</style>

@@ -5,7 +5,7 @@ const app = express()
 app.get('/coins', async (req, res) => {
 	const coins = await coinModel.find({}).sort({ 'prices.goldavenue': 1 })
 	try {
-		res.send(coins)
+		res.json(coins)
 	} catch (err) {
 		res.status(500).send(err)
 	}
@@ -14,7 +14,7 @@ app.get('/coins', async (req, res) => {
 app.get('/coins/:coin', async (req, res) => {
 	try {
 		const coin = await coinModel.findOne({ slug: req.params.coin }).exec()
-		res.send(coin)
+		res.json(coin)
 	} catch (err) {
 		res.status(500).send(err)
 	}

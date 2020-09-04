@@ -1,22 +1,24 @@
 <template>
-	<CoinDetail
-		:img="coin.img"
-		:title="coin.title"
-		:bestsite="coin.bestsite"
-		:bestprice="coin.bestprice"
-		:secondsite="coin.secondsite"
-		:secondprice="coin.secondprice"
-		:thirdsite="coin.thirdsite"
-		:thirdprice="coin.thirdprice"
-		:fourthsite="coin.fourthsite"
-		:fourthprice="coin.fourthprice"
-	/>
+	<div class="container mx-auto flex">
+		<CoinDetail
+			:key="coin._id"
+			:img="coin.img"
+			:title="coin.title"
+			:bestsite="coin.bestsite"
+			:bestprice="coin.bestprice"
+			:secondsite="coin.secondsite"
+			:secondprice="coin.secondprice"
+			:thirdsite="coin.thirdsite"
+			:thirdprice="coin.thirdprice"
+			:fourthsite="coin.fourthsite"
+			:fourthprice="coin.fourthprice"
+		/>
+	</div>
 </template>
 
 <script>
 import axios from 'axios'
-/* import min from 'lodash.min'
- */ import CoinDetail from '~/components/CoinDetail'
+import CoinDetail from '~/components/CoinDetail'
 
 export default {
 	components: {
@@ -24,7 +26,7 @@ export default {
 	},
 	data() {
 		return {
-			coin: ''
+			coin: []
 		}
 	},
 	mounted() {

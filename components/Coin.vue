@@ -72,6 +72,8 @@ export default {
 
 <style scoped>
 img {
+	-webkit-filter: drop-shadow(2px 2px 2px #222);
+	filter: drop-shadow(2px 2px 2px #222);
 	min-width: 160px;
 }
 </style>
