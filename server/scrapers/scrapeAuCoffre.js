@@ -20,15 +20,21 @@ async function scrapeAuCoffre() {
 					).textContent
 					return [price, prime]
 				})
-				const dataPrime = () => {
-					const primePercent = data[1].slice(445, 450)
-					if (primePercent.includes('%')) {
-						const primeNoPercent = primePercent.slice(0, -1)
-						return primeNoPercent
+				const primeNbr = () => {
+					let primePercent = data[1].slice(445, 450)
+					if (primePercent.length <= 4) {
+						primePercent = primePercent.slice(0, -1)
 					}
-					return primePercent
+					const primeNbr = parseFloat(
+						primePercent.replace(/\s/g, '').replace(',', '.')
+					)
+					if (primeNbr < 50) {
+						return (primeNbr / 100) * data[0]
+					} else {
+						return 'Prime indiquée non cohérente : ' + primeNbr + '%'
+					}
 				}
-				piece.prime = dataPrime()
+				piece.prime = primeNbr()
 				piece.price = data[0]
 				console.log(piece)
 			} catch (e) {
