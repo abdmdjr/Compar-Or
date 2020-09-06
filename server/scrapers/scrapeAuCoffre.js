@@ -36,7 +36,6 @@ async function scrapeAuCoffre() {
 				}
 				piece.prime = primeNbr()
 				piece.price = data[0]
-				console.log(piece)
 			} catch (e) {
 				console.log(e.message)
 			}
@@ -47,8 +46,6 @@ async function scrapeAuCoffre() {
 		console.log(error.message)
 	}
 }
-
-scrapeAuCoffre()
 
 module.exports = {
 	scrapeAuCoffre

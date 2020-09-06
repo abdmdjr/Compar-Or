@@ -24,7 +24,6 @@ async function scrapeGoldAvenue() {
 				})
 				piece.price = data[0]
 				piece.prime = data[1]
-				console.log(piece)
 			} catch (e) {
 				console.log(e.message)
 			}
@@ -35,8 +34,6 @@ async function scrapeGoldAvenue() {
 		console.log(error.message)
 	}
 }
-
-scrapeGoldAvenue()
 
 module.exports = {
 	scrapeGoldAvenue

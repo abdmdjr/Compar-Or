@@ -11,7 +11,8 @@ const CoinSchema = new mongoose.Schema({
 	},
 	prices: {
 		'Gold Avenue': { type: Array },
-		Lingor: { type: Array }
+		Lingor: { type: Array },
+		'Au Coffre': { type: Array }
 	},
 	img: {
 		type: String,

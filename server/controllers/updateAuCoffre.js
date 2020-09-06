@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-expressions */
 const Coin = require('../models/coinModel')
-const { scrapeGoldAvenue } = require('../scrapers/scrapeGoldAvenue')
+const { scrapeAuCoffre } = require('../scrapers/scrapeAuCoffre')
 
-async function goldAvenue() {
-	const pieces = await scrapeGoldAvenue()
+async function auCoffre() {
+	const pieces = await scrapeAuCoffre()
 	pieces.map(async (piece) => {
 		await Coin.findByIdAndUpdate(
 			piece.id,
 			{
-				'prices.Gold Avenue': [piece.price, piece.prime, piece.url]
+				'prices.Au Coffre': [piece.price, piece.prime, piece.url]
 			},
 			function(err, coin) {
 				if (err) {
@@ -21,5 +21,5 @@ async function goldAvenue() {
 }
 
 module.exports = {
-	goldAvenue
+	auCoffre
 }
