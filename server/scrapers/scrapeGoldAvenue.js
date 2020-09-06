@@ -15,9 +15,16 @@ async function scrapeGoldAvenue() {
 					const price = parseFloat(
 						priceString.replace(/\s/g, '').replace(',', '.')
 					)
-					return price
+					const primeString = document.querySelector(
+						'div.pricing-details-block.flex-box > div.right-column > span:nth-child(5)'
+					).textContent
+					const prime = parseFloat(
+						primeString.replace(/\s/g, '').replace(',', '.')
+					)
+					return [price, prime]
 				})
-				piece.price = data
+				piece.price = data[0]
+				piece.prime = data[1]
 			} catch (e) {
 				console.log(e.message)
 			}
@@ -28,6 +35,8 @@ async function scrapeGoldAvenue() {
 		console.log(error.message)
 	}
 }
+
+scrapeGoldAvenue()
 
 module.exports = {
 	scrapeGoldAvenue
