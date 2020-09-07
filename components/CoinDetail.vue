@@ -2,16 +2,17 @@
 	<div class="mx-auto mt-10 flex space-x-32">
 		<img class="lg:w-72 h-full" :src="img" :alt="title" />
 		<div class="flex flex-col space-y-3">
-			<h2 class="leading-none text-primary font-medium lg:text-4xl">
+			<h2 class="leading-none text-primary font-normal lg:text-4xl">
 				{{ title }}
+				<span class="block mt-1 font-light text-xl">{{ gr }}</span>
 			</h2>
-			<h3 class="text-primary font-medium lg:text-xl">
+			<h3 class="text-primary font-normal lg:text-xl">
 				Tableau de comparaison
 			</h3>
 			<table class="table-auto">
 				<tbody>
 					<tr class="bg-yellow-300">
-						<td class="border px-4 py-2">Solutions</td>
+						<td class="border px-4 py-2">Site</td>
 						<td class="border px-4 py-2">Prix</td>
 						<td class="border px-4 py-2">Livraison</td>
 					</tr>
