@@ -15,34 +15,9 @@
 						<td class="border px-4 py-2">Prix</td>
 						<td class="border px-4 py-2">Livraison</td>
 					</tr>
-					<tr>
-						<td class="border px-4 py-2">
-							<a
-								class="text-primary font-normal lg:hover:font-medium"
-								:href="url"
-								target="_blank"
-								rel="noopener noreferrer"
-								>{{ bestsite }}</a
-							>
-						</td>
-						<td class="border px-4 py-2">{{ bestprice }}</td>
-						<td class="border px-4 py-2"></td>
-					</tr>
-					<tr>
-						<td class="border px-4 py-2">{{ secondsite }}</td>
-						<td class="border px-4 py-2">{{ secondprice }}</td>
-						<td class="border px-4 py-2"></td>
-					</tr>
-					<tr>
-						<td class="border px-4 py-2">{{ thirdsite }}</td>
-						<td class="border px-4 py-2">{{ thirdprice }}</td>
-						<td class="border px-4 py-2"></td>
-					</tr>
-					<tr>
-						<td class="border px-4 py-2">{{ fourthsite }}</td>
-						<td class="border px-4 py-2">{{ fourthprice }}</td>
-						<td class="border px-4 py-2"></td>
-					</tr>
+					<div v-for="coinRow in coinRows" :key="coinRow.id">
+						<CoinRow />
+					</div>
 				</tbody>
 			</table>
 		</div>
@@ -50,56 +25,25 @@
 </template>
 
 <script>
+import axios from 'axios'
+import CoinRow from '~/components/CoinRow'
+
 export default {
-	props: {
-		title: {
-			type: String,
-			default: ''
-		},
-		img: {
-			type: String,
-			default: ''
-		},
-		bestsite: {
-			type: String,
-			default: ''
-		},
-		bestprice: {
-			type: [String, Number],
-			default: ''
-		},
-		secondsite: {
-			type: String,
-			default: ''
-		},
-		secondprice: {
-			type: [String, Number],
-			default: ''
-		},
-		thirdsite: {
-			type: String,
-			default: ''
-		},
-		thirdprice: {
-			type: [String, Number],
-			default: ''
-		},
-		fourthsite: {
-			type: String,
-			default: ''
-		},
-		fourthprice: {
-			type: [String, Number],
-			default: ''
-		},
-		gr: {
-			type: String,
-			default: ''
-		},
-		url: {
-			type: String,
-			default: ''
+	components: {
+		CoinRow
+	},
+	data() {
+		return {
+			coinRows: []
 		}
+	},
+	mounted() {
+		axios.get(`/api/coins/${this.$route.params.coin}`).then((result) => {
+			this.coinRows = result.data
+			const arraySitePrice = Object.entries(this.coinRows.prices)
+			arraySitePrice.sort((a, b) => a[1][0] - b[1][0])
+			console.log(arraySitePrice)
+		})
 	}
 }
 </script>
