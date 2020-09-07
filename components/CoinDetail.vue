@@ -13,12 +13,21 @@
 				<tbody>
 					<tr class="bg-yellow-300">
 						<td class="border px-4 py-2">Site</td>
+						<td class="border px-4 py-2">Valeur métal</td>
+						<td class="border px-4 py-2">Prime</td>
 						<td class="border px-4 py-2">Prix</td>
 						<td class="border px-4 py-2">Livraison</td>
+						<td class="border px-4 py-2">Prix avec livraison</td>
 					</tr>
-					<div v-for="coinRow in coinRows" :key="coinRow.id">
-						<CoinRow />
-					</div>
+					<CoinRow
+						v-for="coinRow in coinRows"
+						:key="coinRow.site"
+						:site="coinRow.site"
+						:url="coinRow.url"
+						:pricemetal="coinRow.pricemetal"
+						:prime="coinRow.prime"
+						:price="coinRow.price"
+					/>
 				</tbody>
 			</table>
 		</div>
@@ -33,6 +42,20 @@ export default {
 	components: {
 		CoinRow
 	},
+	props: {
+		title: {
+			type: String,
+			default: ''
+		},
+		img: {
+			type: String,
+			default: ''
+		},
+		gr: {
+			type: String,
+			default: ''
+		}
+	},
 	data() {
 		return {
 			coinRows: []
@@ -40,10 +63,18 @@ export default {
 	},
 	mounted() {
 		axios.get(`/api/coins/${this.$route.params.coin}`).then((result) => {
-			this.coinRows = result.data
-			const arraySitePrice = Object.entries(this.coinRows.prices)
+			this.coinRows = Object.entries(result.data.prices)
+			this.coinRows.map((coinRow) => {
+				console.log(coinRow)
+				coinRow.site = coinRow[0]
+				coinRow.url = coinRow[1][2]
+				coinRow.prime = coinRow[1][1]
+				coinRow.pricemetal = coinRow[1][0] - coinRow[1][1]
+				coinRow.price = coinRow[1][0]
+			})
+			/* 			const arraySitePrice = Object.entries(this.coinRows.prices)
 			arraySitePrice.sort((a, b) => a[1][0] - b[1][0])
-			console.log(arraySitePrice)
+			console.log(arraySitePrice) */
 		})
 	}
 }
