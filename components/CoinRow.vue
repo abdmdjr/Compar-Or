@@ -28,15 +28,15 @@ export default {
 		},
 		pricemetal: {
 			type: [Number || String],
-			default: 0
+			default: ''
 		},
 		prime: {
 			type: Number,
 			default: 0
 		},
 		price: {
-			type: Number,
-			default: 0
+			type: [Number || String],
+			default: ''
 		}
 	}
 }
