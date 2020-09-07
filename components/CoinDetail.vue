@@ -13,8 +13,11 @@
 				<tbody>
 					<tr class="bg-yellow-300">
 						<td class="border px-4 py-2">Site</td>
-						<td class="border px-4 py-2">Prix</td>
+						<td class="border px-4 py-2">Valeur métal</td>
+						<td class="border px-4 py-2">Prime</td>
+						<td class="border px-4 py-2">Prix final</td>
 						<td class="border px-4 py-2">Livraison</td>
+						<td class="border px-4 py-2">Prix avec livraison</td>
 					</tr>
 					<tr>
 						<td class="border px-4 py-2">
@@ -26,8 +29,11 @@
 								>{{ bestsite }}</a
 							>
 						</td>
-						<td class="border px-4 py-2">{{ bestprice }}</td>
-						<td class="border px-4 py-2"></td>
+						<td class="border px-4 py-2">{{ bestpricemetal }}€</td>
+						<td class="border px-4 py-2">{{ bestprime }}€</td>
+						<td class="border px-4 py-2">{{ bestprice }}€</td>
+						<td class="border px-4 py-2">{{ bestlivraison }}€</td>
+						<td class="border px-4 py-2">{{ bestpricetotal }}€</td>
 					</tr>
 					<tr>
 						<td class="border px-4 py-2">
@@ -66,7 +72,6 @@
 							>
 						</td>
 						<td class="border px-4 py-2">{{ fourthprice }}</td>
-						<td class="border px-4 py-2"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -89,7 +94,23 @@ export default {
 			type: String,
 			default: ''
 		},
+		bestpricemetal: {
+			type: [String, Number],
+			default: ''
+		},
+		bestprime: {
+			type: [String, Number],
+			default: ''
+		},
 		bestprice: {
+			type: [String, Number],
+			default: ''
+		},
+		bestlivraison: {
+			type: [String, Number],
+			default: ''
+		},
+		bestpricetotal: {
 			type: [String, Number],
 			default: ''
 		},

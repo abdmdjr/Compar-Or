@@ -8,7 +8,12 @@ async function goldAvenue() {
 		await Coin.findByIdAndUpdate(
 			piece.id,
 			{
-				'prices.Gold Avenue': [piece.price, piece.prime, piece.url]
+				'prices.Gold Avenue': [
+					piece.price,
+					piece.prime,
+					piece.livraison,
+					piece.url
+				]
 			},
 			function(err, coin) {
 				if (err) {

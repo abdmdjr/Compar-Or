@@ -6,7 +6,11 @@
 			:title="coin.title"
 			:gr="coin.gr"
 			:bestsite="coin.bestsite"
+			:bestpricemetal="coin.bestpricemetal"
+			:bestprime="coin.bestprime"
 			:bestprice="coin.bestprice"
+			:bestlivraison="coin.bestlivraison"
+			:bestpricetotal="coin.bestpricetotal"
 			:besturl="coin.besturl"
 			:secondsite="coin.secondsite"
 			:secondprice="coin.secondprice"
@@ -48,9 +52,14 @@ export default {
 				}
 			})
 
+			const bestresult = arraySitePrice[0][1][0] - arraySitePrice[0][1][1]
 			coin.bestsite = arraySitePrice[0][0]
+			coin.bestpricemetal = bestresult.toFixed(2)
+			coin.bestprime = arraySitePrice[0][1][1]
 			coin.bestprice = arraySitePrice[0][1][0]
-			coin.besturl = arraySitePrice[0][1][1]
+			coin.bestlivraison = arraySitePrice[0][1][2]
+			coin.bestpricetotal = arraySitePrice[0][1][0] + arraySitePrice[0][1][2]
+			coin.besturl = arraySitePrice[0][1][3]
 
 			coin.secondsite = arraySitePrice[1][0]
 			coin.secondprice = arraySitePrice[1][1][0]
@@ -60,9 +69,9 @@ export default {
 			coin.thirdprice = arraySitePrice[2][1][0]
 			coin.thirdurl = arraySitePrice[2][1][1]
 
-			coin.fourthsite = arraySitePrice[3][0]
+			/* 			coin.fourthsite = arraySitePrice[3][0]
 			coin.fourthprice = arraySitePrice[3][1][0]
-			coin.fourthurl = arraySitePrice[3][1][1]
+			coin.fourthurl = arraySitePrice[3][1][1] */
 		})
 	}
 }

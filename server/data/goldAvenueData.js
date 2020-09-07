@@ -5,7 +5,8 @@ const vreneli20 = [
 		url:
 			'https://www.goldavenue.com/fr/acheter/or/produit/piece-d-or-pur-900-0-vreneli-20-francs-suisse-helvetia',
 		price: Number,
-		prime: Number
+		prime: Number,
+		livraison: 52
 	}
 ]
 
@@ -16,7 +17,8 @@ const marianne20 = [
 		url:
 			'https://www.goldavenue.com/fr/acheter/or/produit/piece-d-or-pur-900-0-20-francs-napoleon-coq-de-chaplain',
 		price: Number,
-		prime: Number
+		prime: Number,
+		livraison: 52
 	}
 ]
 
@@ -27,7 +29,8 @@ const maple1oz = [
 		url:
 			'https://www.goldavenue.com/fr/acheter/or/produit/1-once-piece-d-or-pur-999-9-maple-leaf-bu-annees-mixtes',
 		price: Number,
-		prime: Number
+		prime: Number,
+		livraison: 52
 	}
 ]
 
@@ -38,7 +41,8 @@ const britannia1oz = [
 		url:
 			'https://www.goldavenue.com/fr/acheter/or/produit/1-once-piece-d-or-pur-999-9-britannia-bu-annees-mixtes',
 		price: Number,
-		prime: Number
+		prime: Number,
+		livraison: 52
 	}
 ]
 
@@ -59,7 +63,8 @@ const mapleleaf01oz = [
 		url:
 			'https://www.goldavenue.com/fr/acheter/or/produit/1-10-once-piece-d-or-pur-999-9-maple-leaf-bu-annees-mixtes',
 		price: Number,
-		prime: Number
+		prime: Number,
+		livraison: 52
 	}
 ]
 
@@ -70,7 +75,8 @@ const napoleon40n2 = [
 		url:
 			'https://www.goldavenue.com/fr/acheter/or/produit/piece-de-monnaie-d-or-pur-900-0-40-francs-napoleon-bonaparte-premier-consul-an-xi',
 		price: Number,
-		prime: Number
+		prime: Number,
+		livraison: 52
 	}
 ]
 
@@ -81,7 +87,8 @@ const napoleon40 = [
 		url:
 			'https://www.goldavenue.com/fr/acheter/or/produit/piece-de-monnaie-d-or-pur-900-0-40-francs-napoleon-tete-lauree-empire-1812-q2',
 		price: Number,
-		prime: Number
+		prime: Number,
+		livraison: 52
 	}
 ]
 
@@ -92,7 +99,8 @@ const philharmonic01oz = [
 		url:
 			'https://www.goldavenue.com/fr/acheter/or/produit/1-10-once-piece-d-or-pur-999-9-philharmonique-annees-mixtes',
 		price: Number,
-		prime: Number
+		prime: Number,
+		livraison: 52
 	}
 ]
 
@@ -103,7 +111,8 @@ const souverain7gr3 = [
 		url:
 			'https://www.goldavenue.com/fr/acheter/or/produit/piece-d-or-pur-916-7-souverain-elizabeth-bu-annees-mixtes',
 		price: Number,
-		prime: Number
+		prime: Number,
+		livraison: 52
 	}
 ]
 
