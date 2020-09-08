@@ -27,6 +27,7 @@
 						:pricemetal="coinRow.pricemetal"
 						:prime="coinRow.prime"
 						:price="coinRow.price"
+						:livraison="coinRow.livraison"
 					/>
 				</tbody>
 			</table>
@@ -72,13 +73,23 @@ export default {
 			this.coinRows.sort((a, b) => a[1][0] - b[1][0])
 			this.coinRows.map((coinRow) => {
 				coinRow.site = coinRow[0]
-				coinRow.url = coinRow[1][2]
+				coinRow.url = coinRow[1][3]
 				coinRow.prime = coinRow[1][1]
-				coinRow.pricemetal = coinRow[1][0] - coinRow[1][1]
+				const resultPriceMetal = coinRow[1][0] - coinRow[1][1]
+				coinRow.pricemetal = resultPriceMetal.toFixed(2)
+				coinRow.pricemetal = parseFloat(
+					coinRow.pricemetal.replace(/\s/g, '').replace(',', '.')
+				)
 				coinRow.price = coinRow[1][0]
+				coinRow.livraison = coinRow[1][2]
+				console.log(coinRow)
+				if (coinRow[1].length === 2) {
+					coinRow.pricemetal = '*'
+					coinRow.prime = '*'
+					coinRow.url = coinRow[1][2]
+					coinRow.livraison = coinRow[1][1]
+				}
 			})
-
-			console.log(this.coinRows)
 			/* 			const arraySitePrice = Object.entries(this.coinRows.prices)
 			arraySitePrice.sort((a, b) => a[1][0] - b[1][0])
 			console.log(arraySitePrice) */

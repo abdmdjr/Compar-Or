@@ -25,13 +25,16 @@ async function scrapeAuCoffre() {
 					if (primePercent.length <= 4) {
 						primePercent = primePercent.slice(0, -1)
 					}
-					const primeNbr = parseFloat(
+					let primeNbre = parseFloat(
 						primePercent.replace(/\s/g, '').replace(',', '.')
 					)
-					if (primeNbr < 50) {
-						return (primeNbr / 100) * data[0]
+					if (primeNbre < 50) {
+						primeNbre = (primeNbre / 100) * data[0]
+						primeNbre = primeNbre.toFixed(2)
+						primeNbre = parseFloat(primeNbre)
+						return primeNbre
 					} else {
-						return 'Prime indiquée non cohérente : ' + primeNbr + '%'
+						return primeNbre + '%*'
 					}
 				}
 				piece.prime = primeNbr()

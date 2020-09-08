@@ -13,11 +13,9 @@ async function scrapeLingor() {
 					const price = parseFloat(
 						priceString.replace(/\s/g, '').replace(',', '.')
 					)
-					const prime = 45
-					return [price, prime]
+					return price
 				})
-				piece.price = data[0]
-				piece.prime = data[1]
+				piece.price = data
 			} catch (e) {
 				console.log(e.message)
 			}
