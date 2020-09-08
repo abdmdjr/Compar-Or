@@ -15,64 +15,19 @@
 						<td class="border px-4 py-2">Site</td>
 						<td class="border px-4 py-2">Valeur métal</td>
 						<td class="border px-4 py-2">Prime</td>
-						<td class="border px-4 py-2">Prix final</td>
+						<td class="border px-4 py-2">Prix</td>
 						<td class="border px-4 py-2">Livraison</td>
 						<td class="border px-4 py-2">Prix avec livraison</td>
 					</tr>
-					<tr>
-						<td class="border px-4 py-2">
-							<a
-								class="text-primary font-normal lg:hover:font-medium"
-								:href="besturl"
-								target="_blank"
-								rel="noopener noreferrer"
-								>{{ bestsite }}</a
-							>
-						</td>
-						<td class="border px-4 py-2">{{ bestpricemetal }}€</td>
-						<td class="border px-4 py-2">{{ bestprime }}€</td>
-						<td class="border px-4 py-2">{{ bestprice }}€</td>
-						<td class="border px-4 py-2">{{ bestlivraison }}€</td>
-						<td class="border px-4 py-2">{{ bestpricetotal }}€</td>
-					</tr>
-					<tr>
-						<td class="border px-4 py-2">
-							<a
-								class="text-primary font-normal lg:hover:font-medium"
-								:href="secondurl"
-								target="_blank"
-								rel="noopener noreferrer"
-								>{{ secondsite }}</a
-							>
-						</td>
-						<td class="border px-4 py-2">{{ secondprice }}</td>
-						<td class="border px-4 py-2"></td>
-					</tr>
-					<tr>
-						<td class="border px-4 py-2">
-							<a
-								class="text-primary font-normal lg:hover:font-medium"
-								:href="thirdurl"
-								target="_blank"
-								rel="noopener noreferrer"
-								>{{ thirdsite }}</a
-							>
-						</td>
-						<td class="border px-4 py-2">{{ thirdprice }}</td>
-						<td class="border px-4 py-2"></td>
-					</tr>
-					<tr>
-						<td class="border px-4 py-2">
-							<a
-								class="text-primary font-normal lg:hover:font-medium"
-								:href="fourthurl"
-								target="_blank"
-								rel="noopener noreferrer"
-								>{{ fourthsite }}</a
-							>
-						</td>
-						<td class="border px-4 py-2">{{ fourthprice }}</td>
-					</tr>
+					<CoinRow
+						v-for="coinRow in filteredCoinRows"
+						:key="coinRow.site"
+						:site="coinRow.site"
+						:url="coinRow.url"
+						:pricemetal="coinRow.pricemetal"
+						:prime="coinRow.prime"
+						:price="coinRow.price"
+					/>
 				</tbody>
 			</table>
 		</div>
@@ -80,7 +35,13 @@
 </template>
 
 <script>
+import axios from 'axios'
+import CoinRow from '~/components/CoinRow'
+
 export default {
+	components: {
+		CoinRow
+	},
 	props: {
 		title: {
 			type: String,
@@ -90,78 +51,38 @@ export default {
 			type: String,
 			default: ''
 		},
-		bestsite: {
-			type: String,
-			default: ''
-		},
-		bestpricemetal: {
-			type: [String, Number],
-			default: ''
-		},
-		bestprime: {
-			type: [String, Number],
-			default: ''
-		},
-		bestprice: {
-			type: [String, Number],
-			default: ''
-		},
-		bestlivraison: {
-			type: [String, Number],
-			default: ''
-		},
-		bestpricetotal: {
-			type: [String, Number],
-			default: ''
-		},
-		besturl: {
-			type: String,
-			default: ''
-		},
-		secondsite: {
-			type: String,
-			default: ''
-		},
-		secondprice: {
-			type: [String, Number],
-			default: ''
-		},
-		secondurl: {
-			type: String,
-			default: ''
-		},
-		thirdsite: {
-			type: String,
-			default: ''
-		},
-		thirdprice: {
-			type: [String, Number],
-			default: ''
-		},
-		thirdurl: {
-			type: String,
-			default: ''
-		},
-		fourthsite: {
-			type: String,
-			default: ''
-		},
-		fourthprice: {
-			type: [String, Number],
-			default: ''
-		},
-		fourthurl: {
-			type: String,
-			default: ''
-		},
 		gr: {
 			type: String,
 			default: ''
-		},
-		url: {
-			type: String,
-			default: ''
 		}
+	},
+	data() {
+		return {
+			coinRows: []
+		}
+	},
+	computed: {
+		filteredCoinRows() {
+			return this.coinRows.filter((e) => e[1].length)
+		}
+	},
+	mounted() {
+		axios.get(`/api/coins/${this.$route.params.coin}`).then((result) => {
+			this.coinRows = Object.entries(result.data.prices)
+			this.coinRows.sort((a, b) => a[1][0] - b[1][0])
+			this.coinRows.map((coinRow) => {
+				coinRow.site = coinRow[0]
+				coinRow.url = coinRow[1][2]
+				coinRow.prime = coinRow[1][1]
+				coinRow.pricemetal = coinRow[1][0] - coinRow[1][1]
+				coinRow.price = coinRow[1][0]
+			})
+
+			console.log(this.coinRows)
+			/* 			const arraySitePrice = Object.entries(this.coinRows.prices)
+			arraySitePrice.sort((a, b) => a[1][0] - b[1][0])
+			console.log(arraySitePrice) */
+		})
 	}
 }
 </script>
