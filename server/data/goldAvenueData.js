@@ -52,7 +52,9 @@ const krugerrand1oz = [
 		id: '5f1ecd790ee4783f5e5ba9be',
 		url:
 			'https://www.goldavenue.com/fr/acheter/or/produit/1-once-piece-d-or-pur-916-7-krugerrand-annees-mixtes',
-		price: Number
+		price: Number,
+		prime: Number,
+		livraison: 52
 	}
 ]
 

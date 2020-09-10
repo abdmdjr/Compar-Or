@@ -5,7 +5,8 @@ const vreneli20 = [
 		url:
 			'https://www.aucoffre.com/pieces/franc-suisse/20-francs-suisse/produits-en-vente-5',
 		price: Number,
-		prime: Number
+		prime: Number,
+		livraison: 15
 	}
 ]
 
@@ -16,7 +17,8 @@ const marianne20 = [
 		url:
 			'https://www.aucoffre.com/pieces/napoleon/napoleon-20f/produits-en-vente-1',
 		price: Number,
-		prime: Number
+		prime: Number,
+		livraison: 15
 	}
 ]
 
@@ -27,7 +29,8 @@ const maple1oz = [
 		url:
 			'https://www.aucoffre.com/pieces/dollars-canadien/maple-leaf-1-once-50-dollars-canada/produits-en-vente-18',
 		price: Number,
-		prime: Number
+		prime: Number,
+		livraison: 15
 	}
 ]
 
@@ -38,7 +41,8 @@ const krugerrand1oz = [
 		url:
 			'https://www.aucoffre.com/pieces/krugerrand/krugerrand-1-once/produits-en-vente-2',
 		price: Number,
-		prime: Number
+		prime: Number,
+		livraison: 15
 	}
 ]
 
@@ -49,7 +53,8 @@ const mapleleaf01oz = [
 		url:
 			'https://www.aucoffre.com/pieces/dollars-canadien/maple-leaf-1-10-once-5-dollars-canada/produits-en-vente-31',
 		price: Number,
-		prime: Number
+		prime: Number,
+		livraison: 15
 	}
 ]
 
@@ -60,7 +65,8 @@ const philharmonic01oz = [
 		url:
 			'https://www.aucoffre.com/pieces/philharmonique-de-vienne/philharmonique-de-vienne-1-10-once-200-schillings-10-euros/produits-en-vente-43',
 		price: Number,
-		prime: Number
+		prime: Number,
+		livraison: 15
 	}
 ]
 
@@ -71,7 +77,8 @@ const souverain7gr3 = [
 		url:
 			'https://www.aucoffre.com/pieces/souverain/souverain-elisabeth-ii/produits-en-vente-6',
 		price: Number,
-		prime: Number
+		prime: Number,
+		livraison: 15
 	}
 ]
 

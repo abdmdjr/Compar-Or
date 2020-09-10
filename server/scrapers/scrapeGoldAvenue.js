@@ -15,10 +15,10 @@ async function scrapeGoldAvenue() {
 					const priceString = document.querySelector(
 						'#gtm-product-pricing-details > a'
 					).textContent
-					const price = parse(priceString)
 					const primeString = document.querySelector(
 						'div.pricing-details-block.flex-box > div.right-column > span:nth-child(5)'
 					).textContent
+					const price = parse(priceString)
 					const prime = parse(primeString)
 					return [price, prime]
 				})
@@ -30,6 +30,7 @@ async function scrapeGoldAvenue() {
 			}
 		})
 		await Promise.all(retrievePrice)
+		await browser.close()
 		return pieces
 	} catch (error) {
 		console.log(error.message)

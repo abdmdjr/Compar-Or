@@ -8,7 +8,7 @@ async function lingor() {
 		await Coin.findByIdAndUpdate(
 			piece.id,
 			{
-				'prices.Lingor': [piece.price, piece.livraison, piece.url]
+				'prices.Lingor': [piece.price, piece.prime, piece.livraison, piece.url]
 			},
 			function(err, coin) {
 				if (err) {

@@ -21,6 +21,7 @@ async function scrapeLingor() {
 			}
 		})
 		await Promise.all(retrievePrice)
+		await browser.close()
 		return pieces
 	} catch (error) {
 		console.log(error.message)
