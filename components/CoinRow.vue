@@ -13,6 +13,7 @@
 		<td class="border px-4 py-2">{{ prime }}</td>
 		<td class="border px-4 py-2">{{ price }}</td>
 		<td class="border px-4 py-2">{{ livraison }}</td>
+		<td class="border px-4 py-2">{{ pricelivraison }}</td>
 	</tr>
 </template>
 
@@ -40,6 +41,10 @@ export default {
 			default: ''
 		},
 		livraison: {
+			type: Number,
+			default: 0
+		},
+		pricelivraison: {
 			type: Number,
 			default: 0
 		}

@@ -115,7 +115,6 @@ export default {
 					coin.prices[prev] < coin.prices[curr] ? prev : curr
 				)
 				const minValue = min(Object.values(coin.prices), (o) => coin.prices[o])
-				console.log(minValue)
 				coin.price = minValue[0]
 				coin.url = minValue[3]
 			})
