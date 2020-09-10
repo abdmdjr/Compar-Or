@@ -1,7 +1,7 @@
 <template>
-	<div class="bg-yellow-300 py-3">
+	<div class="bg-yellow-300 py-2 w-full absolute top-0 z-10">
 		<nav
-			class="container mx-auto px-5 lg-px-0 flex items-center justify-between flex-wrap"
+			class="container mx-auto relative flex items-center justify-between flex-wrap px-5 sm:px-10"
 		>
 			<span class="font-medium text-xl tracking-tight">Compar'Or</span>
 			<div class="block sm:hidden">
@@ -9,14 +9,14 @@
 					class="flex items-center text-teal-lighter hover:text-white hover:border-white"
 					@click="toggle"
 				>
-					<i class="material-icons">menu</i>
+					<i class="material-icons text-black">menu</i>
 				</button>
 			</div>
 			<div
 				:class="open ? 'block' : 'hidden'"
 				class="w-full flex-grow sm:flex sm:items-center sm:w-auto"
 			>
-				<div class="text-sm sm:flex-grow sm:text-right space-x-4 mr-8 lg:mr-0">
+				<div class="text-sm sm:flex-grow sm:text-right space-x-4 lg:mr-0">
 					<a
 						href="#"
 						class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white"

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 <template>
-	<div class="container mx-auto px-5 lg-px-0">
+	<div class="container mx-auto">
 		<div class="text-info my-10 text-justify py-3">
 			<p class="mb-5">
 				Le prix affiché pour une pièce est le plus bas du marché des sites de

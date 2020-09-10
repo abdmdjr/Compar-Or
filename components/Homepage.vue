@@ -1,14 +1,13 @@
 <template>
 	<section
-		class="container mx-auto flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center mt-16"
+		class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center px-5 pt-5 sm:px-10"
 	>
-		<div class="text-content flex flex-col lg:w-310 md:p-0 z-10">
-			<h1 class="text-3xl md:text-5xl lg:text-4xl mt-4 text-gray-800">
-				Les plus belles pièces,<br />
-				au meilleur prix.
+		<div class="text-content flex flex-col">
+			<h1 class="text-2xl md:text-5xl lg:text-4xl mt-4 text-gray-800">
+				Les plus belles pièces, au meilleur prix.
 			</h1>
 			<p
-				class="text-xs md:text-1xl lg:text-base font-light text-justify md:w-529 lg:w-309 my-2 md:my-6"
+				class="iphone6 text-indigo-200 text-xs md:text-1xl lg:text-base font-light text-justify my-2 md:my-6"
 			>
 				Nous comparons les offres pour vous aider dans votre quête d’achat d’or
 				: de la prime à la livraison, tout est calculé pour vous faire gagner du
@@ -22,9 +21,11 @@
 				</button>
 			</nuxt-link>
 		</div>
-		<div class="catch-gold md:w-479 lg:w-820 z-0">
-			<img src="~/assets/img/catch-gold.png" class="" alt="" />
-		</div>
+		<img
+			src="~/assets/img/catch-gold.png"
+			class="catch-gold md:w-479 lg:w-820 z-0"
+			alt=""
+		/>
 	</section>
 </template>
 
@@ -33,33 +34,34 @@ export default {}
 </script>
 
 <style scoped>
-/* 
-section {
-	height: 89vh;
-}
-
-@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
-	h1 {
-		font-size: 1.95rem;
+/* iPhone 6, 6S, 7 and 8 */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+	.iphone6 {
+		color: aqua;
 	}
 }
-
-p,
-button {
-	font-family: 'Exo', sans-serif;
+/* iPhone 6/7/8 + */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+	.iphone6 {
+		color: rgb(0, 255, 21);
+	}
 }
-
-@media only screen and (min-device-width: 359px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-	h1 {
-		font-size: 2.2rem;
+/* iPhone XS */
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+	.iphone6 {
+		color: rgb(180, 13, 116);
 	}
-	p {
-		@apply text-sm;
-		@apply my-4;
-		width: 302px;
+}
+/* iPhone XR */
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+	.iphone6 {
+		color: rgb(6, 49, 59);
 	}
-	.catch-gold {
-		width: 300px;
+}
+/* iPhone XS Max */
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) {
+	.iphone6 {
+		color: rgb(255, 153, 0);
 	}
-} */
+}
 </style>

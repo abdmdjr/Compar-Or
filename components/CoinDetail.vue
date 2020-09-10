@@ -98,7 +98,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 img {
 	-webkit-filter: drop-shadow(3px 3px 3px #222);
 	filter: drop-shadow(3px 3px 3px #222);
