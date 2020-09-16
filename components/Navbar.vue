@@ -1,47 +1,54 @@
 <template>
-	<div class="bg-yellow-300 py-2 w-full absolute top-0 z-10">
+	<div class="py-3 w-full absolute top-0 z-10">
 		<nav
-			class="container mx-auto relative flex items-center justify-between flex-wrap px-5 sm:px-10"
+			class="container mx-auto relative flex items-center justify-between flex-wrap px-8 sm:px-16"
 		>
-			<span class="font-medium text-xl tracking-tight">Compar'Or</span>
+			<h1 class="font-medium text-xl tracking-tight">Compar'Or</h1>
 			<div class="block sm:hidden">
-				<button
-					class="flex items-center text-teal-lighter hover:text-white hover:border-white"
-					@click="toggle"
-				>
+				<button class="flex items-center text-teal-lighter" @click="toggle">
 					<i class="material-icons text-black">menu</i>
 				</button>
 			</div>
 			<div
 				:class="open ? 'block' : 'hidden'"
-				class="w-full flex-grow sm:flex sm:items-center sm:w-auto"
+				class="burger w-full flex-grow sm:flex sm:items-center sm:w-auto py-5 rounded-md bg-white bg-opacity-50"
 			>
-				<div class="text-sm sm:flex-grow sm:text-right space-x-4 lg:mr-0">
-					<a
-						href="#"
-						class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white"
-					>
-						Trouvez votre pièce
-					</a>
-					<a
-						href="#"
-						class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white"
-					>
-						Cours de l'or
-					</a>
-					<a
-						href="#"
-						class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white"
-					>
-						Blog
-					</a>
-					<a
-						href="#"
-						class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white"
-					>
-						Contact
-					</a>
-				</div>
+				<ul
+					class="list flex flex-col sm:flex-row sm:justify-end text-sm sm:flex-grow sm:space-x-8"
+				>
+					<li>
+						<a
+							href="#"
+							class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter"
+						>
+							Trouvez votre pièce
+						</a>
+					</li>
+					<li>
+						<a
+							href="#"
+							class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter"
+						>
+							Cours de l'or
+						</a>
+					</li>
+					<li>
+						<a
+							href="#"
+							class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter"
+						>
+							Blog
+						</a>
+					</li>
+					<li>
+						<a
+							href="#"
+							class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter"
+						>
+							Contact
+						</a>
+					</li>
+				</ul>
 			</div>
 		</nav>
 	</div>
@@ -62,10 +69,10 @@ export default {
 }
 </script>
 
-<style>
-/* @media only screen and (min-device-width: 359px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-	nav {
-		width: 302px;
+<style scoped>
+@media only screen and (min-width: 1024px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
+	.container {
+		@apply px-5;
 	}
-} */
+}
 </style>

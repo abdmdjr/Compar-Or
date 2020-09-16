@@ -14,7 +14,6 @@ async function lingor() {
 				if (err) {
 					console.log(err.message)
 				}
-				console.log(coin)
 			}
 		)
 	})

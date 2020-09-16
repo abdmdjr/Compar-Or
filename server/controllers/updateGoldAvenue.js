@@ -20,7 +20,6 @@ async function goldAvenue() {
 				if (err) {
 					console.log(err.message)
 				}
-				console.log(coin)
 			}
 		)
 	})
