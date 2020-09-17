@@ -3,21 +3,26 @@
 		class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center px-9 pt-5 sm:px-16"
 	>
 		<div class="text-content flex flex-col">
-			<h2 class="title text-2xl md:text-5xl lg:text-4xl mt-4 text-gray-800">
+			<h1 class="title text-2xl md:text-5xl lg:text-4xl mt-5 text-gray-800">
 				Les plus belles pièces, <br />
 				au meilleur prix
-			</h2>
+			</h1>
 			<p
-				class="content text-gray-700 text-sm md:text-1xl lg:text-base font-light text-justify mt-2 md:my-6"
+				class="content text-gray-700 text-sm md:text-1xl lg:text-base font-light text-justify mt-2 md:my-4"
 			>
 				Nous comparons les offres pour vous aider dans
 				<strong>votre quête d’achat d’or.</strong>
 			</p>
-			<button class="btn mt-5 rounded-lg text-sm text-white font-medium">
+			<button
+				class="btn mt-5 lg:mt-2 rounded-lg text-sm text-white font-medium"
+			>
 				<nuxt-link to="/coins"> Trouvez votre pièce </nuxt-link>
 			</button>
 		</div>
-		<img src="~/assets/img/catch-gold.png" class="" alt="" />
+		<img
+			src="~/assets/img/catch-gold.png"
+			alt="homme qui est en train d'attraper une pièce d'or avec un filet à papillons"
+		/>
 	</section>
 </template>
 
@@ -144,6 +149,29 @@ export default {}
 	}
 	img {
 		width: 730px;
+	}
+}
+
+@media only screen and (min-width: 1224px) {
+	.text-content {
+		width: 400px;
+	}
+	.title {
+		font-size: 2.454rem;
+		line-height: 1.3;
+		@apply mt-0;
+	}
+	.content {
+		font-size: 1.15rem;
+	}
+	.btn {
+		width: 200px;
+		padding: 1rem 1rem;
+		font-size: 1rem;
+	}
+	img {
+		position: relative;
+		width: 680px;
 	}
 }
 </style>
