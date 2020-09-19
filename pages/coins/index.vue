@@ -1,15 +1,22 @@
-/* eslint-disable no-console */
 <template>
-	<div class="container mx-auto">
-		<div class="text-info my-10 text-justify py-3">
-			<p class="mb-5">
-				Le prix affiché pour une pièce est le plus bas du marché des sites de
-				pièces d'or en ligne français.
-			</p>
-			<p>
-				Cliquez sur une pièce pour afficher la comparaison des prix, du taux de
-				prime appliqué et du prix de livraison pour chaque site.
-			</p>
+	<div class="container mx-auto mt-16 px-8 sm:px-16">
+		<span class="text-xs text-black opacity-75"
+			><nuxt-link to="/">Accueil > </nuxt-link>Pièces</span
+		>
+		<div class="mt-2 text-justify">
+			<h1 class="title text-lg">Découvrez Compar'Or</h1>
+			<div class="introduction">
+				<p class="mb-2 mt-2">
+					Le prix affiché pour une pièce est<span class="text-important">
+						le plus bas du marché</span
+					>
+					pièces d'or en ligne français.
+				</p>
+				<p>
+					<span class="text-important">Cliquez sur une pièce</span> pour
+					analyser les prix en détails.
+				</p>
+			</div>
 		</div>
 		<div class="content flex">
 			<div id="filters" class="filters hidden md:block mr-10">
@@ -124,6 +131,16 @@ export default {
 </script>
 
 <style scoped>
+.title {
+	color: #3b3166;
+}
+.introduction {
+	color: rgba(59, 49, 102, 0.89);
+}
+.text-important {
+	font-weight: 500;
+	color: rgba(59, 49, 102, 1);
+}
 .filters {
 	min-width: 140px;
 }
@@ -140,19 +157,5 @@ export default {
 	-webkit-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);
 	transform: translateX(-50%);
-}
-
-@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
-	p {
-		@apply text-sm;
-	}
-}
-@media only screen and (min-device-width: 359px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-	p {
-		@apply text-sm;
-		@apply my-4;
-		width: 302px;
-		@apply mx-auto;
-	}
 }
 </style>
