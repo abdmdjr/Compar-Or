@@ -1,37 +1,29 @@
 <template>
 	<div
-		class="coin flex flex-col lg:border lg:border-white lg:rounded-lg lg:hover:shadow-md lg:transition lg:duration-200 lg:ease-in-out p-5"
+		class="coin flex flex-col py-8 mt-10 border border-white rounded-lg shadow-md hover:shadow-lg lg:transition lg:duration-200 lg:ease-in-out"
 	>
-		<nuxt-link :to="`/coins/${slug}`" class="flex justify-center">
-			<img
-				class="self-center object-cover object-center"
-				:src="img"
-				:alt="title"
-			/>
-		</nuxt-link>
-		<div class="content my-3 flex flex-col">
-			<nuxt-link :to="`/coins/${slug}`">
-				<div class="my-2">
-					<h3 class="text-primary text-center font-normal">
-						{{ title }}
-					</h3>
-					<h4 class="text-center text-sm font-light">{{ gr }}</h4>
-				</div>
-			</nuxt-link>
-			<h4 class="text-center text-sm mb-2 font-light">
+		<ul class="flex flex-col justify-center items-center">
+			<li class="">
+				<img class="object-cover object-center" :src="img" :alt="title" />
+			</li>
+			<li class="mt-8 text-lg font-normal">
+				<span class="text-important">{{ title }}</span>
+			</li>
+			<li class="text-primary mb-3 text-sm font-light">{{ gr }}</li>
+			<li class="text-primary mb-2 font-light">
 				Meilleur prix sur
 				<a
-					class="text-primary font-normal lg:hover:font-medium"
+					class="font-normal lg:hover:font-medium"
 					:href="url"
 					target="_blank"
 					rel="noopener noreferrer"
 					>{{ site }}</a
 				>
-			</h4>
-			<p class="leading-relaxed text-primary text-center font-medium text-lg">
-				<nuxt-link :to="`/coins/${slug}`"> {{ price }} € </nuxt-link>
-			</p>
-		</div>
+			</li>
+			<li class="leading-none text-important font-medium text-lg">
+				{{ price }} €
+			</li>
+		</ul>
 	</div>
 </template>
 
@@ -71,9 +63,12 @@ export default {
 </script>
 
 <style scoped>
+.coin {
+	width: 256px;
+}
 img {
-	-webkit-filter: drop-shadow(2px 2px 2px #222);
-	filter: drop-shadow(2px 2px 2px #222);
-	min-width: 160px;
+	-webkit-filter: drop-shadow(1px 1px 1px rgb(138, 138, 138));
+	filter: drop-shadow(1px 1px 1px rgb(138, 138, 138));
+	max-width: 140px;
 }
 </style>
