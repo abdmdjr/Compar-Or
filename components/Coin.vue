@@ -1,28 +1,37 @@
 <template>
 	<div
-		class="coin flex flex-col py-8 mt-10 border border-white rounded-lg shadow-md hover:shadow-lg lg:transition lg:duration-200 lg:ease-in-out"
+		class="mt-10 rounded-lg shadow-lg hover:shadow-xl lg:transition lg:duration-200 lg:ease-in-out"
 	>
-		<ul class="flex flex-col justify-center items-center">
-			<li class="">
-				<img class="object-cover object-center" :src="img" :alt="title" />
-			</li>
-			<li class="mt-8 text-lg font-normal">
-				<span class="text-important">{{ title }}</span>
-			</li>
-			<li class="text-primary mb-3 text-sm font-light">{{ gr }}</li>
-			<li class="text-primary mb-2 font-light">
-				Meilleur prix sur
+		<ul class="flex flex-col px-3 py-10 items-center">
+			<nuxt-link
+				:to="`/coins/${slug}`"
+				class="flex flex-col justify-center items-center"
+			>
+				<li class="">
+					<img class="object-cover object-center" :src="img" :alt="title" />
+				</li>
+				<li class="mt-8 text-center">
+					<span class="text-important text-base">{{ title }}</span>
+				</li>
+				<li class="text-primary mb-3 text-xs font-light">
+					{{ gr }}
+				</li>
+			</nuxt-link>
+			<li class="text-primary text-center mb-4 text-sm font-light">
+				Meilleur prix :
 				<a
-					class="font-normal lg:hover:font-medium"
+					class="font-normal text-base lg:hover:font-medium"
 					:href="url"
 					target="_blank"
 					rel="noopener noreferrer"
 					>{{ site }}</a
 				>
 			</li>
-			<li class="leading-none text-important font-medium text-lg">
-				{{ price }} €
-			</li>
+			<nuxt-link :to="`/coins/${slug}`" class="">
+				<li class="text-important text-lg font-medium leading-none">
+					{{ price }} €
+				</li>
+			</nuxt-link>
 		</ul>
 	</div>
 </template>
@@ -63,9 +72,6 @@ export default {
 </script>
 
 <style scoped>
-.coin {
-	width: 256px;
-}
 img {
 	-webkit-filter: drop-shadow(1px 1px 1px rgb(138, 138, 138));
 	filter: drop-shadow(1px 1px 1px rgb(138, 138, 138));

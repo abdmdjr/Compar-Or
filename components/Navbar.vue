@@ -71,9 +71,9 @@ export default {
 
 <style scoped>
 /* Ipad Pro */
-@media only screen and (min-width: 1024px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
+/* @media only screen and (min-width: 1024px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
 	.container {
 		@apply px-5;
 	}
-}
+} */
 </style>

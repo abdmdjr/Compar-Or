@@ -1,12 +1,12 @@
 <template>
-	<div class="container mx-auto mt-16 px-8 lg:px-5">
-		<span class="text-xs text-black opacity-75"
+	<div class="container mx-auto mt-16 sm:mt-24 px-8 sm:px-16 lg:px-8">
+		<span class="block md:my-8 text-xs text-black opacity-75"
 			><nuxt-link to="/">Accueil > </nuxt-link>Pièces</span
 		>
-		<div class="flex flex-col sm:flex-row mt-2 text-justify">
-			<h1 class="text-lg">Découvrez</h1>
+		<div class="flex flex-col lg:flex-row mt-2 text-justify">
+			<h1 class="intro mb-2 md:mb-3 text-lg md:leading-tight">Découvrez</h1>
 			<div class="flex flex-col">
-				<p class="mb-2 mt-2">
+				<p class="mb-2">
 					Le prix affiché pour une pièce est<span class="text-important">
 						le plus bas du marché</span
 					>
@@ -18,39 +18,42 @@
 				</p>
 			</div>
 		</div>
-		<div id="filters" class="filters hidden md:block mr-10">
-			<h2 class="text-primary text-xl font-medium mb-6">Filtres</h2>
-			<h3 class="text-primary font-bold mb-4">Type de métaux</h3>
-			<input type="checkbox" class="mb-5" disabled checked /><label
-				for="Or"
-				class="ml-5"
-				>Or</label
-			><br />
-			<input type="checkbox" class="" disabled /><label
-				for="Argent"
-				class="ml-5"
-				>Argent (bientôt)</label
-			>
-			<h4 class="text-primary font-bold mt-4 mb-4">Prix</h4>
-			<input v-model="checked500" type="checkbox" class="mb-5" /><label
-				for="coin_500"
-				class="ml-5"
-				>- de 500€</label
-			><br />
-			<input v-model="checked999" type="checkbox" class="mb-5" /><label
-				for="coin_1000"
-				class="ml-5"
-				>500€ à 1000€</label
-			><br />
-			<input v-model="checked1001" type="checkbox" class="mb-5" /><label
-				for="coin_1001"
-				class="ml-5"
-				>1000€ et +</label
-			>
-		</div>
-		<section class="cards flex flex-wrap justify-center">
-			<div v-for="coin in filteredCoins" :key="coin.id" class="card mb-3">
+		<main class="flex flex-col md:flex-row">
+			<div id="filters" class="filters hidden lg:block">
+				<h2 class="text-primary text-xl font-medium mb-6">Filtres</h2>
+				<h3 class="text-primary font-bold mb-4">Type de métaux</h3>
+				<input type="checkbox" class="mb-5" disabled checked /><label
+					for="Or"
+					class="ml-5"
+					>Or</label
+				><br />
+				<input type="checkbox" class="" disabled /><label
+					for="Argent"
+					class="ml-5"
+					>Argent (soon)</label
+				>
+				<h4 class="text-primary font-bold mt-4 mb-4">Prix</h4>
+				<input v-model="checked500" type="checkbox" class="mb-5" /><label
+					for="coin_500"
+					class="ml-5"
+					>- de 500€</label
+				><br />
+				<input v-model="checked999" type="checkbox" class="mb-5" /><label
+					for="coin_1000"
+					class="ml-5"
+					>500€ à 1000€</label
+				><br />
+				<input v-model="checked1001" type="checkbox" class="mb-5" /><label
+					for="coin_1001"
+					class="ml-5"
+					>1000€ et +</label
+				>
+			</div>
+			<section class="cards flex flex-wrap justify-between">
 				<Coin
+					v-for="coin in filteredCoins"
+					:key="coin.id"
+					class="card"
 					:slug="coin.slug"
 					:img="coin.img"
 					:title="coin.title"
@@ -59,13 +62,13 @@
 					:site="coin.site"
 					:url="coin.url"
 				/>
-			</div>
-			<button
-				class="filters-btn md:hidden px-8 py-2 rounded text-white font-medium"
-			>
-				Filtres
-			</button>
-		</section>
+				<button
+					class="filters-btn lg:hidden px-8 py-2 rounded text-white font-medium"
+				>
+					Filtres
+				</button>
+			</section>
+		</main>
 	</div>
 </template>
 
@@ -125,12 +128,8 @@ export default {
 </script>
 
 <style scoped>
-.filters {
-	min-width: 140px;
-}
-
 .card {
-	flex-basis: 21%;
+	flex-basis: 100%;
 }
 
 .filters-btn {
@@ -142,5 +141,31 @@ export default {
 	-webkit-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);
 	transform: translateX(-50%);
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+	.intro {
+		min-width: 190px;
+	}
+	#filters {
+		min-width: 190px;
+		margin-top: 47px;
+	}
+	.card {
+		flex-basis: 47%;
+	}
+}
+
+@media only screen and (min-width: 1025px) {
+	.intro {
+		min-width: 230px;
+	}
+	#filters {
+		min-width: 230px;
+		margin-top: 47px;
+	}
+	.card {
+		flex-basis: 24%;
+	}
 }
 </style>
