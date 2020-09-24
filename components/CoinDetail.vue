@@ -12,44 +12,46 @@
 			<table class="table-auto">
 				<thead>
 					<tr>
-						<th class="px-4 py-2"></th>
-						<Sites
-							v-for="CoinData in CoinDatas"
-							:key="CoinData[0]"
-							:site="CoinData[0]"
-						/>
+						<th></th>
+						<th
+							v-for="column in filteredColumns"
+							:key="column"
+							class="px-4 py-2"
+						>
+							{{ column }}
+						</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td class="border px-4 py-2">Prix métal</td>
-						<MetalPrices
-							v-for="CoinData in CoinDatas"
-							:key="CoinData[1][0]"
-							:pricemetal="CoinData[1][0]"
-						/>
+					<tr class="border px-4 py-2">
+						Prix métal
+						<td
+							v-for="coin in filteredCoins"
+							:key="coin"
+							class="border px-4 py-2"
+						>
+							{{ coin[1][0] }}
+						</td>
 					</tr>
-					<tr>
-						<td class="border px-4 py-2">Prime</td>
-						<Prime
-							v-for="CoinData in CoinDatas"
-							:key="CoinData[1][1]"
-							:prime="CoinData[1][1]"
-						/>
+					<tr class="border px-4 py-2">
+						Prime
+						<td
+							v-for="coin in filteredCoins"
+							:key="coin"
+							class="border px-4 py-2"
+						>
+							{{ coin[1][1] }}
+						</td>
 					</tr>
-					<tr>
-						<td class="border px-4 py-2">Prix total</td>
-						<TotalPrice
-							v-for="CoinData in CoinDatas"
-							:key="CoinData[1][1]"
-							:totalprice="CoinData[1][1]"
-						/>
-					</tr>
-					<tr>
-						<td class="border px-4 py-2">Livraison</td>
-					</tr>
-					<tr>
-						<td class="border px-4 py-2">Prix avec livraison</td>
+					<tr class="border px-4 py-2">
+						Prix total
+						<td
+							v-for="coin in calculatedPrime"
+							:key="coin"
+							class="border px-4 py-2"
+						>
+							{{ coin[1][1] }}
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -59,18 +61,9 @@
 
 <script>
 import axios from 'axios'
-import MetalPrices from '~/components/table/MetalPrices'
-import Prime from '~/components/table/Prime'
-import Sites from '~/components/table/Sites'
-import TotalPrice from '~/components/table/TotalPrice'
 
 export default {
-	components: {
-		MetalPrices,
-		Prime,
-		Sites,
-		TotalPrice
-	},
+	components: {},
 	props: {
 		title: {
 			type: String,
@@ -87,13 +80,32 @@ export default {
 	},
 	data() {
 		return {
-			CoinDatas: []
+			coinDatas: [],
+			namesRows: [
+				'Prix métal',
+				'Prime',
+				'Prix total',
+				'Livraison',
+				'Prix avec livraison'
+			]
+		}
+	},
+	computed: {
+		filteredColumns() {
+			return this.coinDatas.map((column) => {
+				return column[0]
+			})
+		},
+		filteredCoins() {
+			return this.coinDatas.map((coin) => {
+				return coin
+			})
 		}
 	},
 	mounted() {
 		axios.get(`/api/coins/${this.$route.params.coin}`).then((result) => {
-			this.CoinDatas = Object.entries(result.data.prices)
-			console.log(this.CoinDatas)
+			this.coinDatas = Object.entries(result.data.prices)
+			console.log(this.coinDatas)
 			/* 			this.coinRows.sort((a, b) => a[1][0] - b[1][0])
 			this.coinRows.map((coinRow) => {
 				if (typeof coinRow[1][1] === 'string') {
