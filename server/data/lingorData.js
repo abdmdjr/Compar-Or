@@ -4,7 +4,7 @@ const vreneli20 = [
 		id: '5f0b5d3d35cf077262197edf',
 		url: 'https://www.lingor.fr/piece-or-20-francs-suisse.html',
 		price: Number,
-		prime: '*',
+		prime: 'N/C',
 		livraison: 19.9
 	}
 ]
@@ -15,7 +15,7 @@ const marianne20 = [
 		id: '5ef892761a4d3f6355a8b617',
 		url: 'https://www.lingor.fr/piece-or-20-francs-marianne-coq.html',
 		price: Number,
-		prime: '*',
+		prime: 'N/C',
 		livraison: 19.9
 	}
 ]
@@ -26,7 +26,7 @@ const maple1oz = [
 		id: '5f119db61e4a5e3e9f79ea3f',
 		url: 'https://www.lingor.fr/piece-or-maple-leaf-canada-1-once-oz.html',
 		price: Number,
-		prime: '*',
+		prime: 'N/C',
 		livraison: 19.9
 	}
 ]
@@ -37,7 +37,7 @@ const britannia1oz = [
 		id: '5f1ecc46c8176b63254aae62',
 		url: 'https://www.lingor.fr/piece-or-britannia-1-once-oz.html',
 		price: Number,
-		prime: '*',
+		prime: 'N/C',
 		livraison: 19.9
 	}
 ]
@@ -48,7 +48,7 @@ const krugerrand1oz = [
 		id: '5f1ecd790ee4783f5e5ba9be',
 		url: 'https://www.lingor.fr/piece-or-krugerrand.html',
 		price: Number,
-		prime: '*',
+		prime: 'N/C',
 		livraison: 19.9
 	}
 ]
@@ -59,7 +59,7 @@ const souverain7gr3 = [
 		id: '5f200f25924ecdd8e420352c',
 		url: 'https://www.lingor.fr/piece-or-souverain.html',
 		price: Number,
-		prime: '*',
+		prime: 'N/C',
 		livraison: 19.9
 	}
 ]
