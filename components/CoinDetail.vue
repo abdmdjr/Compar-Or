@@ -10,7 +10,7 @@
 					gr
 				}}</span>
 			</h1>
-			<h2 class="text-center text-primary font-normal text-lg lg:text-xl">
+			<h2 class="text-center font-normal text-md lg:text-xl">
 				Tableau de comparaison
 			</h2>
 			<table class="table-auto">
@@ -18,61 +18,67 @@
 					<tr>
 						<th></th>
 						<th
-							v-for="column in filteredColumns"
+							v-for="(column, index) in filteredColumns"
 							:key="column"
-							class="px-2 py-2"
+							class="text-xs px-2 py-2 text-primary"
+							:class="{ colorBestPrice: index === minPrice }"
 						>
 							<a :href="column[1][3]" target="blank">{{ column[0] }}</a>
 						</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="border px-2 py-2">
-						<h1 class="px-2 py-2">Prix métal</h1>
+					<tr class="border text-xs">
+						<div class="px-2 py-2 bg-gray-100">Prix métal</div>
 						<td
-							v-for="pricemetal in calculatedPriceMetal"
+							v-for="(pricemetal, index) in calculatedPriceMetal"
 							:key="pricemetal"
 							class="border px-2 py-2"
+							:class="{ colorBestPrice: index === minPrice }"
 						>
 							{{ pricemetal }}
 						</td>
 					</tr>
-					<tr class="border px-2 py-2">
-						Prime
+					<tr class="border text-xs">
+						<div class="px-2 py-2 bg-gray-100">Prime</div>
 						<td
-							v-for="prime in filteredPrime"
+							v-for="(prime, index) in filteredPrime"
 							:key="prime"
 							class="border px-2 py-2"
+							:class="{ colorBestPrice: index === minPrice }"
 						>
 							{{ prime }}
 						</td>
 					</tr>
-					<tr class="border px-2 py-2">
-						Prix total
+					<tr class="border text-xs">
+						<div class="px-2 py-2 bg-gray-100">Prix total</div>
 						<td
-							v-for="resultPrice in filteredCoins"
+							v-for="(resultPrice, index) in filteredCoins"
 							:key="resultPrice"
 							class="border px-2 py-2"
+							:class="{ colorBestPrice: index === minPrice }"
 						>
 							{{ resultPrice[1][0] }}€
 						</td>
 					</tr>
-					<tr class="border px-2 py-2">
-						Livraison
+					<tr class="border text-xs">
+						<div class="px-2 py-2 bg-gray-100">Livraison</div>
 						<td
-							v-for="livraison in filteredCoins"
+							v-for="(livraison, index) in filteredCoins"
 							:key="livraison"
 							class="border px-2 py-2"
+							:class="{ colorBestPrice: index === minPrice }"
 						>
 							{{ livraison[1][2] }}€
 						</td>
 					</tr>
-					<tr class="border px-2 py-2">
-						Prix avec livraison
+					<tr class="border text-xs">
+						<div class="px-2 py-2 bg-gray-100">Prix avec livraison</div>
 						<td
-							v-for="resultPriceTotal in calculatedPriceTotal"
+							v-for="(resultPriceTotal, index) in calculatedPriceTotal"
 							:key="resultPriceTotal"
 							class="border px-2 py-2"
+							:class="{ colorBestPrice: index === minPrice }"
 						>
 							{{ resultPriceTotal }}€
 						</td>
@@ -117,7 +123,6 @@ export default {
 	computed: {
 		filteredColumns() {
 			return this.coinDatas.map((column) => {
-				console.log(column[1][3])
 				return column
 			})
 		},
@@ -155,46 +160,24 @@ export default {
 				priceTotal = parseFloat(priceTotal).toFixed(2)
 				return priceTotal
 			})
+		},
+		minPrice() {
+			const minPrice = Math.min(...this.calculatedPriceTotal).toString()
+			const result = this.calculatedPriceTotal.indexOf(minPrice)
+			return result
 		}
 	},
 	mounted() {
 		axios.get(`/api/coins/${this.$route.params.coin}`).then((result) => {
 			this.coinDatas = Object.entries(result.data.prices)
-			/* 			this.coinRows.sort((a, b) => a[1][0] - b[1][0])
-			this.coinRows.map((coinRow) => {
-				if (typeof coinRow[1][1] === 'string') {
-					coinRow.pricemetal = '*'
-				} else {
-					const resultPriceMetal = coinRow[1][0] - coinRow[1][1]
-					coinRow.pricemetal = resultPriceMetal.toFixed(2)
-					coinRow.pricemetal = parseFloat(
-						coinRow.pricemetal.replace(/\s/g, '').replace(',', '.')
-					)
-				}
-				coinRow.price = coinRow[1][0]
-				coinRow.prime = coinRow[1][1]
-				coinRow.livraison = coinRow[1][2]
-				coinRow.url = coinRow[1][3]
-				coinRow.pricelivraison = coinRow.price + coinRow.livraison
-				console.log(coinRow)
-			})
-			this.GoldAvenue = this.coinRows[0][0]
-			this.Lingor = this.coinRows[1][0]
-			this.AuCoffre = this.coinRows[2][0] */
-			/* 			const arraySitePrice = Object.entries(this.coinRows.prices)
-			arraySitePrice.sort((a, b) => a[1][0] - b[1][0])
-			console.log(arraySitePrice) */
 		})
 	}
 }
 </script>
 
 <style scoped>
-tr {
-	font-size: 0.8rem;
-}
-td {
-	font-size: 0.75rem;
+.colorBestPrice {
+	@apply bg-orange-200;
 }
 img {
 	-webkit-filter: drop-shadow(3px 3px 3px #222);
