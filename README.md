@@ -20,8 +20,8 @@ $ yarn generate
 ```
 
 ## Documentation
-```bash
 Structure d'un document en base de données :
+```bash
     _id: 5f0b5d3d35cf077*********
     title: "Vreneli 20 Francs Suisse"
     slug: "vreneli-20-francs-suisse"
@@ -45,3 +45,12 @@ Structure d'un document en base de données :
             3: 368.9
             4: "https://www.aucoffre.com/pieces/franc-suisse/20-francs-suisse/produits..."
     img: "/img/vreneli20.png"
+```
+```bash
+Signification index array dans l'objet "prices" :
+    0: Prix de vente
+    1: Prime
+    2: Livraison
+    3: Prix de vente + livraison
+    4: "url de la pièce"
+```
