@@ -37,7 +37,8 @@ Structure d'un document en base de données :
             0: 314.8
             1: "N/C"
             2: 19.9
-            3: "https://www.lingor.fr/piece-or-20-francs-suisse.html"
+            3: 334.7
+            4: "https://www.lingor.fr/piece-or-20-francs-suisse.html"
         Au Coffre: Array
             0: 349
             1: 61.25
@@ -46,11 +47,13 @@ Structure d'un document en base de données :
             4: "https://www.aucoffre.com/pieces/franc-suisse/20-francs-suisse/produits..."
     img: "/img/vreneli20.png"
 ```
+Objet Prices :
 ```bash
-Signification index array dans l'objet "prices" :
+    Nom du site = [
     0: Prix de vente
     1: Prime
     2: Livraison
     3: Prix de vente + livraison
     4: "url de la pièce"
+    ]
 ```

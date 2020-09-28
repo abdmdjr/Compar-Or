@@ -16,6 +16,9 @@ async function scrapeLingor() {
 					return price
 				})
 				piece.price = data
+				piece.prime = 'N/C'
+				piece.livraison = 19.9
+				piece.totalPrice = piece.price + piece.livraison
 			} catch (e) {
 				console.log(e.message)
 			}
