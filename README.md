@@ -19,9 +19,9 @@ $ yarn start
 $ yarn generate
 ```
 
-## Documentation 
-
-## Structure d'un document en base de données :
+## Documentation
+```bash
+Structure d'un document en base de données :
     _id: 5f0b5d3d35cf077*********
     title: "Vreneli 20 Francs Suisse"
     slug: "vreneli-20-francs-suisse"
