@@ -25,6 +25,7 @@ async function scrapeGoldAvenue() {
 				piece.price = data[0]
 				piece.prime = data[1]
 				piece.livraison = 52
+				piece.totalPrice = piece.price + piece.livraison
 			} catch (e) {
 				console.log(e.message)
 			}

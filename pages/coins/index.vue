@@ -98,8 +98,12 @@ export default {
 			// eslint-disable-next-line prettier/prettier
 			const filtersMore = (priceCoin) => { return this.coins.filter((coin) => coin.price > priceCoin) }
 
-			if (this.checked500 && this.checked999) {
+			if (this.checked500 && this.checked999 && this.checked1001) {
+				return this.coins
+			} else if (this.checked500 && this.checked999) {
 				return filtersLess(1000)
+			} else if (this.checked999 && this.checked1001) {
+				return filtersMore(500)
 			} else if (this.checked500) {
 				return filtersLess(500)
 			} else if (this.checked999) {

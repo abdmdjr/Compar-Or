@@ -34,11 +34,13 @@ async function scrapeAuCoffre() {
 						primeNbre = parseFloat(primeNbre)
 						return primeNbre
 					} else {
-						return primeNbre + '%*'
+						return 'N/C'
 					}
 				}
 				piece.prime = primeNbr()
 				piece.price = data[0]
+				piece.livraison = 19.9
+				piece.totalPrice = piece.price + piece.livraison
 			} catch (e) {
 				console.log(e.message)
 			}

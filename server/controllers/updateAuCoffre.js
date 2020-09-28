@@ -13,6 +13,7 @@ async function auCoffre() {
 					piece.price,
 					piece.prime,
 					piece.livraison,
+					piece.totalPrice,
 					piece.url
 				]
 			},
