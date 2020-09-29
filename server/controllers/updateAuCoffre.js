@@ -8,12 +8,11 @@ async function auCoffre() {
 		await Coin.findByIdAndUpdate(
 			piece.id,
 			{
-				// eslint-disable-next-line prettier/prettier
-				"prices.Au Coffre": [
+				'prices.Au Coffre': [
+					piece.totalPrice,
 					piece.price,
 					piece.prime,
 					piece.livraison,
-					piece.totalPrice,
 					piece.url
 				]
 			},

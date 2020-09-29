@@ -9,6 +9,10 @@
 				<span class="block self-center mt-1 font-light text-sm lg:text-xl">{{
 					gr
 				}}</span>
+				<span class="block self-center mt-3 font-light text-sm lg:text-xl"
+					>Le meilleur prix actuel comprenant la prime et la livraison est de
+					{{ bestPrice }} sur le site {{ bestSite }}
+				</span>
 			</h1>
 			<h2 class="text-center font-normal text-md lg:text-xl">
 				Tableau de comparaison
@@ -16,14 +20,14 @@
 			<table class="table-auto">
 				<thead>
 					<tr>
-						<th></th>
+						<th class="border bg-gray-100"></th>
 						<th
 							v-for="(column, index) in filteredColumns"
-							:key="column"
-							class="text-xs px-2 py-2 text-primary"
-							:class="{ colorBestPrice: index === minPrice }"
+							:key="index"
+							class="border bg-gray-100 text-xs px-2 py-2 text-primary"
+							:class="{ colorBestSite: index === minPrice }"
 						>
-							<a :href="column[1][3]" target="blank">{{ column[0] }}</a>
+							<a :href="column[1][4]" target="blank">{{ column[0] }}</a>
 						</th>
 					</tr>
 				</thead>
@@ -32,9 +36,9 @@
 						<div class="px-2 py-2 bg-gray-100">Prix métal</div>
 						<td
 							v-for="(pricemetal, index) in calculatedPriceMetal"
-							:key="pricemetal"
+							:key="index"
 							class="border px-2 py-2"
-							:class="{ colorBestPrice: index === minPrice }"
+							:class="{ colorBestSite: index === minPrice }"
 						>
 							{{ pricemetal }}
 						</td>
@@ -43,9 +47,9 @@
 						<div class="px-2 py-2 bg-gray-100">Prime</div>
 						<td
 							v-for="(prime, index) in filteredPrime"
-							:key="prime"
+							:key="index"
 							class="border px-2 py-2"
-							:class="{ colorBestPrice: index === minPrice }"
+							:class="{ colorBestSite: index === minPrice }"
 						>
 							{{ prime }}
 						</td>
@@ -54,29 +58,29 @@
 						<div class="px-2 py-2 bg-gray-100">Prix total</div>
 						<td
 							v-for="(resultPrice, index) in filteredCoins"
-							:key="resultPrice"
+							:key="index"
 							class="border px-2 py-2"
-							:class="{ colorBestPrice: index === minPrice }"
+							:class="{ colorBestSite: index === minPrice }"
 						>
-							{{ resultPrice[1][0] }}€
+							{{ resultPrice[1][1] }}€
 						</td>
 					</tr>
 					<tr class="border text-xs">
 						<div class="px-2 py-2 bg-gray-100">Livraison</div>
 						<td
 							v-for="(livraison, index) in filteredCoins"
-							:key="livraison"
+							:key="index"
 							class="border px-2 py-2"
-							:class="{ colorBestPrice: index === minPrice }"
+							:class="{ colorBestSite: index === minPrice }"
 						>
-							{{ livraison[1][2] }}€
+							{{ livraison[1][3] }}€
 						</td>
 					</tr>
 					<tr class="border text-xs">
 						<div class="px-2 py-2 bg-gray-100">Prix avec livraison</div>
 						<td
 							v-for="(resultPriceTotal, index) in calculatedPriceTotal"
-							:key="resultPriceTotal"
+							:key="index"
 							class="border px-2 py-2"
 							:class="{ colorBestPrice: index === minPrice }"
 						>
@@ -111,6 +115,8 @@ export default {
 	data() {
 		return {
 			coinDatas: [],
+			bestPrice: '',
+			bestSite: '',
 			namesRows: [
 				'Prix métal',
 				'Prime',
@@ -134,10 +140,10 @@ export default {
 		calculatedPriceMetal() {
 			return this.coinDatas.map((coin) => {
 				let resultPriceMetal = ''
-				if (typeof coin[1][1] === 'string') {
+				if (typeof coin[1][2] === 'string') {
 					resultPriceMetal = 'N/C'
 				} else {
-					resultPriceMetal = coin[1][0] - coin[1][1]
+					resultPriceMetal = coin[1][1] - coin[1][2]
 					resultPriceMetal = parseFloat(resultPriceMetal).toFixed(2) + '€'
 				}
 				return resultPriceMetal
@@ -146,38 +152,50 @@ export default {
 		filteredPrime() {
 			return this.coinDatas.map((coin) => {
 				let resultPrime
-				if (typeof coin[1][1] === 'number') {
-					resultPrime = coin[1][1] + '€'
+				if (typeof coin[1][2] === 'number') {
+					resultPrime = coin[1][2] + '€'
 				} else {
-					resultPrime = coin[1][1]
+					resultPrime = coin[1][2]
 				}
 				return resultPrime
 			})
 		},
 		calculatedPriceTotal() {
 			return this.coinDatas.map((coin) => {
-				let priceTotal = coin[1][0] + coin[1][2]
+				let priceTotal = coin[1][0]
 				priceTotal = parseFloat(priceTotal).toFixed(2)
 				return priceTotal
 			})
 		},
 		minPrice() {
-			const minPrice = Math.min(...this.calculatedPriceTotal).toString()
-			const result = this.calculatedPriceTotal.indexOf(minPrice)
+			const result = this.calculatedPriceTotal.indexOf(this.bestPrice)
+			return result
+		},
+		minSite() {
+			const result = this.filteredColumns.indexOf(this.bestPrice)
 			return result
 		}
 	},
 	mounted() {
 		axios.get(`/api/coins/${this.$route.params.coin}`).then((result) => {
 			this.coinDatas = Object.entries(result.data.prices)
+			this.bestPrice = Math.min(...this.calculatedPriceTotal).toString()
 		})
+	},
+	head() {
+		return {
+			title: "Compar'Or - " + this.title
+		}
 	}
 }
 </script>
 
 <style scoped>
-.colorBestPrice {
+.colorBestSite {
 	@apply bg-orange-200;
+}
+.colorBestPrice {
+	@apply bg-orange-300;
 }
 img {
 	-webkit-filter: drop-shadow(3px 3px 3px #222);

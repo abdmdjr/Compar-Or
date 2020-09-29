@@ -8,12 +8,11 @@ async function goldAvenue() {
 		await Coin.findByIdAndUpdate(
 			piece.id,
 			{
-				// eslint-disable-next-line prettier/prettier
-				"prices.Gold Avenue": [
+				'prices.Gold Avenue': [
+					piece.totalPrice,
 					piece.price,
 					piece.prime,
 					piece.livraison,
-					piece.totalPrice,
 					piece.url
 				]
 			},

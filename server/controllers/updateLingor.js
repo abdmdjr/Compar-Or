@@ -9,10 +9,10 @@ async function lingor() {
 			piece.id,
 			{
 				'prices.Lingor': [
+					piece.totalPrice,
 					piece.price,
 					piece.prime,
 					piece.livraison,
-					piece.totalPrice,
 					piece.url
 				]
 			},

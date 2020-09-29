@@ -124,9 +124,14 @@ export default {
 				)
 				const minValue = min(Object.values(coin.prices), (o) => coin.prices[o])
 				coin.price = minValue[0]
-				coin.url = minValue[3]
+				coin.url = minValue[4]
 			})
 		})
+	},
+	head() {
+		return {
+			title: "Compar'Or - Comparons les prix"
+		}
 	}
 }
 </script>

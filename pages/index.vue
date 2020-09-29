@@ -27,7 +27,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+	head() {
+		return {
+			title: "Compar'Or - Trouver votre pièce"
+		}
+	}
+}
 </script>
 
 <style scoped>
