@@ -14,6 +14,10 @@ const CoinSchema = new mongoose.Schema({
 		Lingor: { type: [], default: undefined },
 		'Au Coffre': { type: [], default: undefined }
 	},
+	description: {
+		type: Array,
+		required: true
+	},
 	img: {
 		type: String,
 		required: true

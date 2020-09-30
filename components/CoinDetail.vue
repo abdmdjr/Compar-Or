@@ -9,22 +9,38 @@
 				<span class="block self-center mt-1 font-light text-sm lg:text-xl">{{
 					gr
 				}}</span>
-				<span class="block self-center mt-3 font-light text-sm lg:text-xl"
-					>Le meilleur prix actuel comprenant la prime et la livraison est de
-					{{ bestPrice }} sur le site {{ bestSite }}
-				</span>
 			</h1>
-			<h2 class="text-center font-normal text-md lg:text-xl">
-				Tableau de comparaison
-			</h2>
+			<p
+				class="block self-center text-center mt-3 font-light text-sm lg:text-xl"
+			>
+				Meilleur prix : <strong>{{ bestPrice }}€</strong> sur
+				<u
+					><a :href="bestUrl">{{ bestSite }}.fr</a></u
+				><br />
+				<span class="text-xs"
+					>(ce prix inclut toutes les taxes + la livraison sécurisée jusqu'à
+					votre domicile)</span
+				>
+			</p>
+			<h2 class="text-center">Description de la pièce</h2>
+			<section
+				class="text-justify block self-center mt-3 font-light text-sm lg:text-xl"
+			>
+				<p v-for="descr in coinDesc" :key="descr" class="mt-3">
+					{{ descr }}
+				</p>
+				<h2 class="text-center mt-5 font-normal text-md lg:text-xl">
+					Tableau de comparaison
+				</h2>
+			</section>
 			<table class="table-auto">
 				<thead>
 					<tr>
-						<th class="border bg-gray-100"></th>
+						<th></th>
 						<th
-							v-for="(column, index) in filteredColumns"
+							v-for="(column, index) in filteredCoins"
 							:key="index"
-							class="border bg-gray-100 text-xs px-2 py-2 text-primary"
+							class="text-xs px-2 py-2 text-primary"
 							:class="{ colorBestSite: index === minPrice }"
 						>
 							<a :href="column[1][4]" target="blank">{{ column[0] }}</a>
@@ -32,56 +48,58 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="border text-xs">
-						<div class="px-2 py-2 bg-gray-100">Prix métal</div>
+					<tr class="border-b text-xs">
+						<div class="px-2 py-2">Prix métal</div>
 						<td
 							v-for="(pricemetal, index) in calculatedPriceMetal"
 							:key="index"
-							class="border px-2 py-2"
+							class="px-2 py-2 text-right"
 							:class="{ colorBestSite: index === minPrice }"
 						>
 							{{ pricemetal }}
 						</td>
 					</tr>
-					<tr class="border text-xs">
-						<div class="px-2 py-2 bg-gray-100">Prime</div>
+					<tr class="border-b text-xs">
+						<div class="px-2 py-2">Prime</div>
 						<td
 							v-for="(prime, index) in filteredPrime"
 							:key="index"
-							class="border px-2 py-2"
+							class="px-2 py-2 text-right"
 							:class="{ colorBestSite: index === minPrice }"
 						>
 							{{ prime }}
 						</td>
 					</tr>
-					<tr class="border text-xs">
-						<div class="px-2 py-2 bg-gray-100">Prix total</div>
+					<tr class="border-b text-xs">
+						<div class="px-2 py-2">Prix total</div>
 						<td
 							v-for="(resultPrice, index) in filteredCoins"
 							:key="index"
-							class="border px-2 py-2"
+							class="px-2 py-2 text-right"
 							:class="{ colorBestSite: index === minPrice }"
 						>
 							{{ resultPrice[1][1] }}€
 						</td>
 					</tr>
-					<tr class="border text-xs">
-						<div class="px-2 py-2 bg-gray-100">Livraison</div>
+					<tr class="border-b text-xs">
+						<div class="px-2 py-2">Livraison</div>
 						<td
 							v-for="(livraison, index) in filteredCoins"
 							:key="index"
-							class="border px-2 py-2"
+							class="px-2 py-2 text-right"
 							:class="{ colorBestSite: index === minPrice }"
 						>
 							{{ livraison[1][3] }}€
 						</td>
 					</tr>
-					<tr class="border text-xs">
-						<div class="px-2 py-2 bg-gray-100">Prix avec livraison</div>
+					<tr class="border-b text-xs">
+						<div class="px-2 py-2">
+							Prix avec livraison
+						</div>
 						<td
 							v-for="(resultPriceTotal, index) in calculatedPriceTotal"
 							:key="index"
-							class="border px-2 py-2"
+							class="px-2 py-2 text-right"
 							:class="{ colorBestPrice: index === minPrice }"
 						>
 							{{ resultPriceTotal }}€
@@ -110,13 +128,19 @@ export default {
 		gr: {
 			type: String,
 			default: ''
+		},
+		description: {
+			type: String,
+			default: ''
 		}
 	},
 	data() {
 		return {
 			coinDatas: [],
+			coinDesc: [],
 			bestPrice: '',
 			bestSite: '',
+			bestUrl: '',
 			namesRows: [
 				'Prix métal',
 				'Prime',
@@ -127,11 +151,6 @@ export default {
 		}
 	},
 	computed: {
-		filteredColumns() {
-			return this.coinDatas.map((column) => {
-				return column
-			})
-		},
 		filteredCoins() {
 			return this.coinDatas.map((coin) => {
 				return coin
@@ -170,16 +189,15 @@ export default {
 		minPrice() {
 			const result = this.calculatedPriceTotal.indexOf(this.bestPrice)
 			return result
-		},
-		minSite() {
-			const result = this.filteredColumns.indexOf(this.bestPrice)
-			return result
 		}
 	},
 	mounted() {
 		axios.get(`/api/coins/${this.$route.params.coin}`).then((result) => {
 			this.coinDatas = Object.entries(result.data.prices)
+			this.coinDesc = Object.entries(result.data)[1][1]
 			this.bestPrice = Math.min(...this.calculatedPriceTotal).toString()
+			this.bestSite = this.filteredCoins[this.minPrice][0]
+			this.bestUrl = this.filteredCoins[this.minPrice][1][4]
 		})
 	},
 	head() {
@@ -192,10 +210,10 @@ export default {
 
 <style scoped>
 .colorBestSite {
-	@apply bg-orange-200;
+	@apply bg-gray-100;
 }
 .colorBestPrice {
-	@apply bg-orange-300;
+	@apply bg-gray-200;
 }
 img {
 	-webkit-filter: drop-shadow(3px 3px 3px #222);

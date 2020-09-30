@@ -123,7 +123,7 @@ export default {
 					coin.prices[prev] < coin.prices[curr] ? prev : curr
 				)
 				const minValue = min(Object.values(coin.prices), (o) => coin.prices[o])
-				coin.price = minValue[0]
+				coin.price = parseFloat(minValue[0]).toFixed(2)
 				coin.url = minValue[4]
 			})
 		})
