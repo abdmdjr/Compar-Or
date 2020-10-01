@@ -10,7 +10,7 @@
 					Le prix affiché pour une pièce est<span class="text-important">
 						le plus bas du marché</span
 					>
-					pièces d'or en ligne français.
+					des sites de pièces d'or français.
 				</p>
 				<p>
 					<span class="text-important">Cliquez sur une pièce</span> pour
