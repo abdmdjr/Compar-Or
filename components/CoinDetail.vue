@@ -194,19 +194,26 @@ export default {
 				priceTotal = parseFloat(priceTotal).toFixed(2)
 				return priceTotal
 			})
-		},
-		minPrice() {
-			const result = this.calculatedPriceTotal.indexOf(this.bestPrice)
-			return result
 		}
+		/* 		minPrice() {
+			const result =
+				this.calculatedPriceTotal === Array
+					? this.calculatedPriceTotal.indexOf(this.bestPrice)
+					: 0
+			console.log('calculatedPriceTotal: ' + this.calculatedPriceTotal)
+			console.log('bestPrice: ' + this.bestPrice)
+			console.log('result : ' + result)
+			return result
+		} */
 	},
 	mounted() {
 		axios.get(`/api/coins/${this.$route.params.coin}`).then((result) => {
 			this.coinDatas = Object.entries(result.data.prices)
 			this.coinDesc = Object.entries(result.data)[1][1]
-			this.bestPrice = Math.min(...this.calculatedPriceTotal).toString()
+			this.bestPrice = Math.min(...this.calculatedPriceTotal)
 			this.bestSite = this.filteredCoins[this.minPrice][0]
 			this.bestUrl = this.filteredCoins[this.minPrice][1][4]
+			console.log(this.calculatedPriceTotal)
 		})
 	},
 	head() {
