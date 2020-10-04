@@ -5,14 +5,32 @@
 		<div
 			class="flex flex-col md:flex-row md:space-x-20 md:mb-6 md:justify-center md:items-center lg:flex-col lg:space-x-0"
 		>
-			<img
-				class="w-48 self-center md:w-60 mb-6 md:mb-0 lg:w-479 lg:mb-8"
-				:src="img"
-				:alt="title"
-			/>
+			<carousel
+				:per-page="1"
+				:mouse-drag="true"
+				pagination-active-color="#504877"
+				pagination-color="#7264af"
+				pagination-position="bottom-overlay"
+			>
+				<slide class="flex justify-center">
+					<img
+						class="w-48 self-center md:w-60 lg:w-479 mb-10 lg:mb-16"
+						:src="img"
+						:alt="title"
+					/>
+				</slide>
+				<slide class="flex justify-center">
+					<img
+						class="w-48 self-center md:w-60 lg:w-479 mb-10 lg:mb-16"
+						:src="img"
+						:alt="title"
+					/>
+				</slide>
+			</carousel>
+
 			<div class="info">
 				<h1
-					class="text-lg text-center text-primary font-normal leading-none md:text-2xl"
+					class="mt-6 text-lg text-center text-primary font-normal leading-none md:text-2xl"
 				>
 					{{ title }}
 					<span class="text-sm block self-center mt-2 font-light md:text-lg">{{
@@ -113,7 +131,7 @@
 					</tr>
 					<tr>
 						<div class="px-2 py-2 text-left">
-							Prix avec livraison
+							Prix + livraison
 						</div>
 						<td
 							v-for="(resultPriceTotal, index) in calculatedPriceTotal"
@@ -145,9 +163,14 @@
 
 <script>
 import axios from 'axios'
+import { Carousel, Slide } from '@jambonn/vue-concise-carousel'
+import '@jambonn/vue-concise-carousel/dist/vue-concise-carousel.css'
 
 export default {
-	components: {},
+	components: {
+		Carousel,
+		Slide
+	},
 	props: {
 		title: {
 			type: String,
