@@ -24,6 +24,7 @@
 					:href="url"
 					target="_blank"
 					rel="noopener noreferrer"
+					:aria-label="`link to ${site} - ${title}`"
 					>{{ site }}</a
 				>
 			</li>
