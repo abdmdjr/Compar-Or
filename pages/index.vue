@@ -20,7 +20,7 @@
 			</button>
 		</div>
 		<img
-			src="~/assets/img/catch-gold1.png"
+			src="~/assets/img/catch-gold1min.png"
 			alt="homme qui est en train d'attraper une pièce d'or avec un filet à papillons"
 		/>
 	</section>
