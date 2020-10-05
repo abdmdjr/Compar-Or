@@ -51,7 +51,7 @@
 						></u
 					><br />
 					<span class="block mx-auto text-xs font-light w-48 md:w-56"
-						>(ce prix inclut toutes les taxes + la livraison jusqu'à votre
+						>(ce prix inclut toutes les taxes + la livraison à votre
 						domicile)</span
 					>
 				</p>

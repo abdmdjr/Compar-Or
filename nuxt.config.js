@@ -1,6 +1,9 @@
 module.exports = {
+	server: {
+		port: process.env.PORT || 3000,
+		host: 'localhost'
+	},
 	telemetry: false,
-	mode: 'universal',
 	/*
 	 ** Headers of the page
 	 */

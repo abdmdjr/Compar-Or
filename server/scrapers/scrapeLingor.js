@@ -3,7 +3,10 @@ const pieces = require('../data/lingorData')
 
 async function scrapeLingor() {
 	try {
-		const browser = await puppeteer.launch({ headless: true })
+		const browser = await puppeteer.launch({
+			args: ['--no-sandbox', '--disable-setuid-sandbox'],
+			headless: true
+		})
 		const retrievePrice = pieces.map(async (piece) => {
 			const page = await browser.newPage()
 			await page.goto(piece.url)
