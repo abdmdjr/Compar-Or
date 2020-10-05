@@ -1,14 +1,4 @@
 module.exports = {
-	env: {
-		production: {
-			port: process.env.PORT || 3000,
-			host: '0.0.0.0'
-		},
-		development: {
-			port: 3000,
-			host: 'localhost'
-		}
-	},
 	telemetry: false,
 	/*
 	 ** Headers of the page
