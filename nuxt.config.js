@@ -1,7 +1,6 @@
 module.exports = {
 	server: {
-		port: process.env.PORT || 3000,
-		host: 'localhost'
+		port: process.env.PORT || 3000
 	},
 	telemetry: false,
 	/*
