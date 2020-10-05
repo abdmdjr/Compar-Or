@@ -4,10 +4,9 @@ const { scrapeGoldAvenue } = require('../scrapers/scrapeGoldAvenue')
 
 async function goldAvenue() {
 	const pieces = await scrapeGoldAvenue()
-	pieces.map(async (piece) => {
-		await Coin.findByIdAndUpdate(
-			piece.id,
-			{
+	try {
+		pieces.map(async (piece) => {
+			await Coin.findByIdAndUpdate(piece.id, {
 				'prices.Gold Avenue': [
 					piece.totalPrice,
 					piece.price,
@@ -15,14 +14,11 @@ async function goldAvenue() {
 					piece.livraison,
 					piece.url
 				]
-			},
-			function(err, coin) {
-				if (err) {
-					console.log(err.message)
-				}
-			}
-		)
-	})
+			})
+		})
+	} catch (error) {
+		console.log(error.message)
+	}
 }
 
 module.exports = {

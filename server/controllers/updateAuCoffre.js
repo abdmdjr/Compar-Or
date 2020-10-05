@@ -4,10 +4,9 @@ const { scrapeAuCoffre } = require('../scrapers/scrapeAuCoffre')
 
 async function auCoffre() {
 	const pieces = await scrapeAuCoffre()
-	pieces.map(async (piece) => {
-		await Coin.findByIdAndUpdate(
-			piece.id,
-			{
+	try {
+		pieces.map(async (piece) => {
+			await Coin.findByIdAndUpdate(piece.id, {
 				'prices.Au Coffre': [
 					piece.totalPrice,
 					piece.price,
@@ -15,15 +14,11 @@ async function auCoffre() {
 					piece.livraison,
 					piece.url
 				]
-			},
-			function(err, coin) {
-				if (err) {
-					console.log(err.message)
-				}
-				console.log(coin)
-			}
-		)
-	})
+			})
+		})
+	} catch (error) {
+		console.log(error.message)
+	}
 }
 
 module.exports = {

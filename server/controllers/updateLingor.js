@@ -4,10 +4,9 @@ const { scrapeLingor } = require('../scrapers/scrapeLingor')
 
 async function lingor() {
 	const pieces = await scrapeLingor()
-	pieces.map(async (piece) => {
-		await Coin.findByIdAndUpdate(
-			piece.id,
-			{
+	try {
+		pieces.map(async (piece) => {
+			await Coin.findByIdAndUpdate(piece.id, {
 				'prices.Lingor': [
 					piece.totalPrice,
 					piece.price,
@@ -15,14 +14,11 @@ async function lingor() {
 					piece.livraison,
 					piece.url
 				]
-			},
-			function(err, coin) {
-				if (err) {
-					console.log(err.message)
-				}
-			}
-		)
-	})
+			})
+		})
+	} catch (error) {
+		console.log(error.message)
+	}
 }
 
 module.exports = {
