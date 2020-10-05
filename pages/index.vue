@@ -16,7 +16,7 @@
 			<button
 				class="btn mt-5 lg:mt-2 rounded-lg text-sm text-white font-medium"
 			>
-				<nuxt-link to="/coins"> Trouvez votre pièce </nuxt-link>
+				<nuxt-link to="/coins">Trouvez votre pièce</nuxt-link>
 			</button>
 		</div>
 		<img
