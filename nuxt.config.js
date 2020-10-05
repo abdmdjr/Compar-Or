@@ -42,8 +42,7 @@ module.exports = {
 	 */
 	modules: [
 		// Doc: https://axios.nuxtjs.org/usage
-		'@nuxtjs/axios',
-		'nuxt-material-design-icons'
+		'@nuxtjs/axios'
 	],
 	/*
 	 ** Axios module configuration

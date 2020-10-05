@@ -22,7 +22,6 @@
     "lodash.min": "^4.0.1",
     "mongoose": "^5.9.19",
     "nuxt": "^2.0.0",
-    "nuxt-material-design-icons": "^1.0.4",
     "puppeteer": "^5.0.0"
   },
   "devDependencies": {
