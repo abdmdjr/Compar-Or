@@ -42,7 +42,7 @@ async function scrapeAuCoffre() {
 				}
 				piece.prime = primeNbr()
 				piece.price = data[0]
-				piece.livraison = 19.9
+				piece.livraison = 15
 				piece.totalPrice = piece.price + piece.livraison
 			} catch (error) {
 				console.log(error)
