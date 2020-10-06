@@ -9,7 +9,7 @@ async function scrapeGoldAvenue() {
 		})
 		const retrievePrice = pieces.map(async (piece) => {
 			const page = await browser.newPage()
-			await page.goto(piece.url)
+			await page.goto(piece.url, { waitUntil: 'networkidle2', timeout: 0 })
 			try {
 				const data = await page.evaluate(() => {
 					const parse = (value) => {
