@@ -22,15 +22,17 @@ async function scrapeLingor() {
 				piece.prime = 'N/C'
 				piece.livraison = 19.9
 				piece.totalPrice = piece.price + piece.livraison
-			} catch (e) {
-				console.log(e.message)
+			} catch (error) {
+				console.log(error)
+				throw error
 			}
 		})
 		await Promise.all(retrievePrice)
 		await browser.close()
 		return pieces
 	} catch (error) {
-		console.log(error.message)
+		console.log(error)
+		throw error
 	}
 }
 

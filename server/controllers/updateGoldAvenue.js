@@ -17,7 +17,8 @@ async function goldAvenue() {
 			})
 		})
 	} catch (error) {
-		console.log(error.message)
+		console.log(error)
+		throw error
 	}
 }
 

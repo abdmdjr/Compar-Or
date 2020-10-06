@@ -5,6 +5,7 @@ const { scrapeAuCoffre } = require('../scrapers/scrapeAuCoffre')
 async function auCoffre() {
 	const pieces = await scrapeAuCoffre()
 	try {
+		console.log('LE LOG EST LA ' + pieces)
 		pieces.map(async (piece) => {
 			await Coin.findByIdAndUpdate(piece.id, {
 				'prices.Au Coffre': [
@@ -17,7 +18,8 @@ async function auCoffre() {
 			})
 		})
 	} catch (error) {
-		console.log(error.message)
+		console.log(error)
+		throw error
 	}
 }
 

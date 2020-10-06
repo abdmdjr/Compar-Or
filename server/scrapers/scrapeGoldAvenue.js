@@ -29,15 +29,17 @@ async function scrapeGoldAvenue() {
 				piece.prime = data[1]
 				piece.livraison = 52
 				piece.totalPrice = piece.price + piece.livraison
-			} catch (e) {
-				console.log(e.message)
+			} catch (error) {
+				console.log(error)
+				throw error
 			}
 		})
 		await Promise.all(retrievePrice)
 		await browser.close()
 		return pieces
 	} catch (error) {
-		console.log(error.message)
+		console.log(error)
+		throw error
 	}
 }
 
