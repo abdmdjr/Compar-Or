@@ -46,7 +46,7 @@ async function start() {
 	app.use(nuxt.render)
 }
 
-const job = new CronJob('*/1 * * * *', function() {
+const job = new CronJob('*/6 * * * *', function() {
 	console.log('done DONE')
 	goldAvenue()
 	lingor()
