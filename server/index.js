@@ -3,11 +3,12 @@ const { Nuxt, Builder } = require('nuxt')
 const express = require('express')
 const mongoose = require('mongoose')
 require('dotenv').config()
+const CronJob = require('cron').CronJob
 const consola = require('consola')
 const config = require('../nuxt.config.js')
-// const { goldAvenue } = require('./controllers/updateGoldAvenue.js')
-// const { lingor } = require('./controllers/updateLingor.js')
-// const { auCoffre } = require('./controllers/updateAuCoffre.js')
+const { goldAvenue } = require('./controllers/updateGoldAvenue.js')
+const { lingor } = require('./controllers/updateLingor.js')
+const { auCoffre } = require('./controllers/updateAuCoffre.js')
 const coinRouter = require('./routes/coinRoutes')
 const app = express()
 
@@ -48,24 +49,12 @@ async function start() {
 
 start()
 
-// const job = new CronJob('*/6 * * * *', function() {
-/* 	console.log('done DONE')
-	goldAvenue()
-	lingor()
-	auCoffre()
+setTimeout(() => {
+	job.start()
+}, 20000)
+
+const job = new CronJob('*/1 * * * *', () => {
+	goldAvenue().then(console.log('Gold Avenue OK'))
+	lingor().then(console.log('Lingor OK'))
+	auCoffre().then(console.log('Au Coffre OK'))
 })
-
-async function go() {
-	try {
-		await start().then(
-			setTimeout(function() {
-				job.start()
-			}, 0)
-		)
-	} catch (error) {
-		console.log(error)
-	}
-}
-
-go()
- */
