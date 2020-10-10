@@ -53,7 +53,7 @@ setTimeout(() => {
 	job.start()
 }, 20000)
 
-const job = new CronJob('*/1 * * * *', () => {
+const job = new CronJob('*/6 * * * *', () => {
 	goldAvenue().then(console.log('Gold Avenue OK'))
 	lingor().then(console.log('Lingor OK'))
 	auCoffre().then(console.log('Au Coffre OK'))
