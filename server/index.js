@@ -1,13 +1,13 @@
-const CronJob = require('cron').CronJob
+// const CronJob = require('cron').CronJob
 const { Nuxt, Builder } = require('nuxt')
 const express = require('express')
 const mongoose = require('mongoose')
 require('dotenv').config()
 const consola = require('consola')
 const config = require('../nuxt.config.js')
-const { goldAvenue } = require('./controllers/updateGoldAvenue.js')
-const { lingor } = require('./controllers/updateLingor.js')
-const { auCoffre } = require('./controllers/updateAuCoffre.js')
+// const { goldAvenue } = require('./controllers/updateGoldAvenue.js')
+// const { lingor } = require('./controllers/updateLingor.js')
+// const { auCoffre } = require('./controllers/updateAuCoffre.js')
 const coinRouter = require('./routes/coinRoutes')
 const app = express()
 
@@ -46,8 +46,10 @@ async function start() {
 	app.use(nuxt.render)
 }
 
-const job = new CronJob('*/6 * * * *', function() {
-	console.log('done DONE')
+start()
+
+// const job = new CronJob('*/6 * * * *', function() {
+/* 	console.log('done DONE')
 	goldAvenue()
 	lingor()
 	auCoffre()
@@ -66,3 +68,4 @@ async function go() {
 }
 
 go()
+ */
