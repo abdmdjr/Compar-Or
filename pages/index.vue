@@ -1,10 +1,10 @@
 <template>
 	<section
-		class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center px-9 pt-5 sm:px-16"
+		class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center px-8 pt-5 sm:px-16 lg:px-8"
 	>
 		<div class="text-content flex flex-col">
 			<h1 class="title text-2xl md:text-5xl lg:text-4xl mt-5 text-gray-800">
-				Les plus belles pièces, <br />
+				Les plus belles <span class="important-word">pièces</span>, <br />
 				au meilleur prix
 			</h1>
 			<p
@@ -37,10 +37,15 @@ export default {
 </script>
 
 <style scoped>
+.important-word {
+	background: linear-gradient(90deg, #9f6cad 0%, #7b5392 100%);
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
 .btn {
-	width: 180px;
+	width: auto;
 	padding: 0.7rem 1.3rem;
-	background: linear-gradient(180deg, #f7c298 0%, #f2a68b 100%);
+	background: linear-gradient(90deg, #875894 0%, #a06dbd 100%);
 	box-shadow: 0px 0px 4px #dfdfdf;
 	border-radius: 7px;
 }
@@ -53,7 +58,6 @@ export default {
 		font-size: 0.6rem;
 	}
 	.btn {
-		width: 120px;
 		font-size: 0.5rem;
 	}
 	img {
@@ -69,12 +73,11 @@ export default {
 		font-size: 1rem;
 	}
 	.btn {
-		width: 190px;
 		font-size: 1rem;
 	}
 }
 /* iPhone 6/7/8 + */
-@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) {
 	.title {
 		font-size: 2.098rem;
 	}
@@ -82,7 +85,6 @@ export default {
 		font-size: 1.15rem;
 	}
 	.btn {
-		width: 232px;
 		padding: 0.9rem 1.5rem;
 		font-size: 1.15rem;
 	}
@@ -97,7 +99,6 @@ export default {
 		font-size: 1.15rem;
 	}
 	.btn {
-		width: 230px;
 		padding: 1rem 1.6rem;
 		font-size: 1.15rem;
 	}
@@ -106,42 +107,46 @@ export default {
 @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
 	.title {
 		font-size: 2.098rem;
+		@apply mt-10;
 	}
 	.content {
 		font-size: 1.15rem;
 	}
 	.btn {
-		width: 232px;
 		padding: 0.9rem 1.5rem;
 		font-size: 1.15rem;
+	}
+}
+
+/* XS MAX */
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) {
+	.title {
+		@apply mt-10;
 	}
 }
 /* Ipad */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
 	.title {
-		font-size: 3.9rem;
+		font-size: 3.1rem;
 		line-height: 1.3;
 		@apply mt-8;
 	}
 	.content {
-		font-size: 1.5rem;
+		font-size: 1.6rem;
 	}
 	.btn {
-		width: 232px;
-		padding: 0.9rem 1.5rem;
-		font-size: 1.15rem;
+		padding: 1.2rem;
+		font-size: 1.6rem;
 	}
-	img {
+	img,
+	.text-content {
 		width: 510px;
 	}
 }
 /* Ipad Pro */
 @media only screen and (min-width: 1024px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
-	.container {
-		@apply px-5;
-	}
 	.title {
-		font-size: 4.4rem;
+		font-size: 4.2rem;
 		line-height: 1.3;
 		@apply mt-8;
 	}
@@ -149,12 +154,12 @@ export default {
 		font-size: 2rem;
 	}
 	.btn {
-		width: 402px;
-		padding: 1.4rem 3.7rem;
-		font-size: 2rem;
+		padding: 1.75rem;
+		font-size: 2.15rem;
 	}
-	img {
-		width: 730px;
+	img,
+	.text-content {
+		width: 710px;
 	}
 }
 
@@ -171,7 +176,7 @@ export default {
 		font-size: 1.15rem;
 	}
 	.btn {
-		width: 200px;
+		width: 222px;
 		padding: 1rem 1rem;
 		font-size: 1rem;
 	}

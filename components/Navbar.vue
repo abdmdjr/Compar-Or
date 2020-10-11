@@ -1,7 +1,7 @@
 <template>
 	<div class="py-3 w-full absolute top-0 z-10">
 		<nav
-			class="container mx-auto relative flex items-center justify-between flex-wrap px-8 sm:px-16 lg:px-8"
+			class="container mx-auto relative flex items-center justify-between flex-wrap px-8 md:px-16 lg:px-8"
 		>
 			<h1 class="font-medium text-xl tracking-tight">Compar'Or</h1>
 			<div class="block sm:hidden">
@@ -71,9 +71,9 @@ export default {
 
 <style scoped>
 /* Ipad Pro */
-/* @media only screen and (min-width: 1024px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
-	.container {
-		@apply px-5;
+@media only screen and (min-width: 1024px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
+	nav {
+		@apply px-8;
 	}
-} */
+}
 </style>

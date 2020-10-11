@@ -142,7 +142,7 @@ export default {
 }
 
 .filters-btn {
-	background: linear-gradient(180deg, #f7c298 0%, #f2a68b 100%);
+	background: linear-gradient(90deg, #875894 0%, #9760b8 100%);
 	position: fixed;
 	z-index: 100;
 	left: 50%;
@@ -175,6 +175,12 @@ export default {
 	}
 	.card {
 		flex-basis: 24%;
+	}
+}
+/* Ipad Pro */
+@media only screen and (min-width: 1024px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
+	.container {
+		@apply px-8;
 	}
 }
 </style>
