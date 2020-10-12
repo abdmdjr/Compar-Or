@@ -27,7 +27,6 @@
 					/>
 				</slide>
 			</carousel>
-
 			<div class="info">
 				<h1
 					class="mt-6 text-lg text-center text-primary font-normal leading-none md:text-2xl"
@@ -74,41 +73,13 @@
 							class="px-2 py-2 font-medium"
 							:class="{ colorBestSiteFirst: index === minPrice }"
 						>
-							<a
-								:href="column[1][4]"
-								target="_blank"
-								rel="noopener noreferrer"
-								:aria-label="`link to ${column[0]} - ${title}`"
-								>{{ column[0] }}</a
-							>
+							{{ column[0] }}
 						</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr class="border-b">
-						<div class="px-2 py-2 text-left">Prix métal</div>
-						<td
-							v-for="(pricemetal, index) in calculatedPriceMetal"
-							:key="index"
-							class="px-2 py-2"
-							:class="{ colorBestSite: index === minPrice }"
-						>
-							{{ pricemetal }}
-						</td>
-					</tr>
-					<tr class="border-b">
-						<div class="px-2 py-2 text-left">Prime</div>
-						<td
-							v-for="(prime, index) in filteredPrime"
-							:key="index"
-							class="px-2 py-2"
-							:class="{ colorBestSite: index === minPrice }"
-						>
-							{{ prime }}
-						</td>
-					</tr>
-					<tr class="border-b">
-						<div class="px-2 py-2 text-left">Prix total</div>
+						<div class="px-2 py-2 text-left">Prix</div>
 						<td
 							v-for="(resultPrice, index) in filteredCoins"
 							:key="index"
@@ -126,12 +97,12 @@
 							class="px-2 py-2"
 							:class="{ colorBestSite: index === minPrice }"
 						>
-							{{ livraison[1][3] }}€
+							+ {{ livraison[1][3] }}€
 						</td>
 					</tr>
 					<tr>
 						<div class="px-2 py-2 text-left">
-							Prix + livraison
+							Prix total
 						</div>
 						<td
 							v-for="(resultPriceTotal, index) in calculatedPriceTotal"
@@ -140,6 +111,26 @@
 							:class="{ colorBestPrice: index === minPrice }"
 						>
 							{{ resultPriceTotal }}€
+						</td>
+					</tr>
+					<tr>
+						<div class="px-2 py-2 text-left"></div>
+						<td
+							v-for="(column, index) in filteredCoins"
+							:key="index"
+							class="px-2 py-2 font-medium"
+						>
+							<a
+								:href="column[1][4]"
+								target="_blank"
+								rel="noopener noreferrer"
+								:aria-label="`${column[0]} - ${title}`"
+								><button
+									class="btn text-lg bg-transparent hover:bg-indigo-800 text-indigo-900 font-semibold hover:text-white py-2 px-4 border border-indigo-900 hover:border-transparent rounded"
+								>
+									{{ column[0] }}
+								</button></a
+							>
 						</td>
 					</tr>
 				</tbody>
@@ -211,6 +202,7 @@ export default {
 				return coin
 			})
 		},
+		/*
 		calculatedPriceMetal() {
 			return this.coinDatas.map((coin) => {
 				let resultPriceMetal = ''
@@ -222,7 +214,7 @@ export default {
 				}
 				return resultPriceMetal
 			})
-		},
+		} 
 		filteredPrime() {
 			return this.coinDatas.map((coin) => {
 				let resultPrime
@@ -234,6 +226,7 @@ export default {
 				return resultPrime
 			})
 		},
+		*/
 		calculatedPriceTotal() {
 			return this.coinDatas.map((coin) => {
 				let priceTotal = coin[1][0]
@@ -271,10 +264,18 @@ export default {
 	@apply bg-gray-100 bg-opacity-50;
 }
 .colorBestPrice {
-	@apply font-bold bg-gray-200 bg-opacity-50 rounded-b-lg;
+	@apply font-bold bg-gray-400 bg-opacity-50 rounded-b-lg;
 }
 .pMarge {
 	@apply my-2;
+}
+.btn {
+	background-color: linear-gradient(
+		90deg,
+		rgba(255, 0, 0, 50),
+		rgba(255, 0, 0, 50)
+	);
+	box-shadow: 0px 0px 4px #dfdfdf;
 }
 img {
 	-webkit-filter: drop-shadow(3px 3px 3px #222);
