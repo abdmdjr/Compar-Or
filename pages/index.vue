@@ -14,7 +14,7 @@
 				<strong>votre quête d’achat d’or.</strong>
 			</p>
 			<button
-				class="btn mt-5 lg:mt-2 rounded-lg text-sm text-white font-medium"
+				class="btn mt-5 lg:mt-2 shadow-sm hover:shadow-lg rounded-lg text-sm text-gray-800 font-medium"
 			>
 				<nuxt-link to="/coins">Trouvez votre pièce</nuxt-link>
 			</button>
@@ -45,9 +45,10 @@ export default {
 .btn {
 	width: auto;
 	padding: 0.7rem 1.3rem;
-	background: linear-gradient(90deg, #875894 0%, #a06dbd 100%);
-	box-shadow: 0px 0px 4px #dfdfdf;
+	background: #ab81b6;
 	border-radius: 7px;
+	font-family: 'Ubuntu';
+	color: white;
 }
 /* mini mobile */
 @media only screen and (min-device-width: 240px) and (max-device-width: 260px) {

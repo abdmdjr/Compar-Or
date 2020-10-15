@@ -49,7 +49,7 @@
 					>1000€ et +</label
 				>
 			</div>
-			<section class="cards flex flex-wrap justify-between">
+			<section class="cards flex flex-wrap justify-around w-full mb-24">
 				<Coin
 					v-for="coin in filteredCoins"
 					:key="coin.id"
@@ -137,10 +137,6 @@ export default {
 </script>
 
 <style scoped>
-.card {
-	flex-basis: 100%;
-}
-
 .filters-btn {
 	background: linear-gradient(90deg, #875894 0%, #9760b8 100%);
 	position: fixed;
@@ -152,7 +148,11 @@ export default {
 	transform: translateX(-50%);
 }
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+.card {
+	flex-basis: 100%;
+}
+
+@screen md {
 	.intro {
 		min-width: 190px;
 	}
@@ -165,7 +165,7 @@ export default {
 	}
 }
 
-@media only screen and (min-width: 1025px) {
+@screen lg {
 	.intro {
 		min-width: 230px;
 	}

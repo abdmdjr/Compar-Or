@@ -64,73 +64,71 @@
 			</h2>
 
 			<table class="table-auto w-full text-right text-primary">
-				<thead>
-					<tr class="text-sm md:text-lg">
-						<th></th>
-						<th
-							v-for="(column, index) in filteredCoins"
-							:key="index"
-							class="px-2 py-2 font-medium"
-							:class="{ colorBestSiteFirst: index === minPrice }"
-						>
-							{{ column[0] }}
-						</th>
-					</tr>
-				</thead>
+				<thead></thead>
 				<tbody>
 					<tr class="border-b">
-						<div class="px-2 py-2 text-left">Prix</div>
+						<div
+							class="px-2 py-2 bg-gray-100 border-r border-l border-t rounded-t-md text-left"
+						>
+							Prix
+						</div>
 						<td
 							v-for="(resultPrice, index) in filteredCoins"
 							:key="index"
-							class="px-2 py-2"
+							class="px-2 py-2 bg-gray-100 rounded-t-md"
 							:class="{ colorBestSite: index === minPrice }"
 						>
 							{{ resultPrice[1][1] }}€
 						</td>
 					</tr>
 					<tr class="border-b">
-						<div class="px-2 py-2 text-left">Livraison</div>
+						<div class="px-2 py-2 bg-gray-100 border-r border-l text-left">
+							Livraison
+						</div>
 						<td
 							v-for="(livraison, index) in filteredCoins"
 							:key="index"
-							class="px-2 py-2"
+							class="px-2 py-2 bg-gray-100"
 							:class="{ colorBestSite: index === minPrice }"
 						>
 							+ {{ livraison[1][3] }}€
 						</td>
 					</tr>
-					<tr>
-						<div class="px-2 py-2 text-left">
+					<tr class="border-b">
+						<div class="px-2 py-2 bg-gray-100 border-r border-l text-left">
 							Prix total
 						</div>
 						<td
 							v-for="(resultPriceTotal, index) in calculatedPriceTotal"
 							:key="index"
-							class="px-2 py-2"
+							class="px-2 py-2 bg-gray-100"
 							:class="{ colorBestPrice: index === minPrice }"
 						>
 							{{ resultPriceTotal }}€
 						</td>
 					</tr>
 					<tr>
-						<div class="px-2 py-2 text-left"></div>
+						<div
+							class="px-2 py-2 bg-gray-100 rounded-b-md border-gray-300 border-r border-l border-b text-left"
+						>
+							Site
+						</div>
 						<td
 							v-for="(column, index) in filteredCoins"
 							:key="index"
-							class="px-2 py-2 font-medium"
+							class="font-medium text-center px-0 py-0 bg-gray-100 rounded-b-md text-primary"
+							:class="{ colorBestSiteFirst: index === minPrice }"
 						>
 							<a
 								:href="column[1][4]"
 								target="_blank"
 								rel="noopener noreferrer"
 								:aria-label="`${column[0]} - ${title}`"
-								><button
-									class="btn text-lg bg-transparent hover:bg-indigo-800 text-indigo-900 font-semibold hover:text-white py-2 px-4 border border-indigo-900 hover:border-transparent rounded"
-								>
-									{{ column[0] }}
-								</button></a
+								class="paddingPrice"
+								:class="{ paddingBestSiteFirst: index === minPrice }"
 							>
+								{{ column[0] }}
+							</a>
 						</td>
 					</tr>
 				</tbody>
@@ -235,8 +233,7 @@ export default {
 			})
 		},
 		minPrice() {
-			const result = this.calculatedPriceTotal.indexOf(this.bestPrice)
-			return result
+			return this.calculatedPriceTotal.indexOf(this.bestPrice)
 		}
 	},
 	mounted() {
@@ -257,25 +254,31 @@ export default {
 </script>
 
 <style scoped>
-.colorBestSiteFirst {
-	@apply bg-gray-100 rounded-t-lg;
-}
 .colorBestSite {
-	@apply bg-gray-100 bg-opacity-50;
+	@apply bg-gray-200 shadow-2xl;
 }
 .colorBestPrice {
-	@apply font-bold bg-gray-400 bg-opacity-50 rounded-b-lg;
+	@apply font-bold bg-gray-200 text-purple-900 shadow-2xl;
+}
+.colorBestSiteFirst {
+	@apply bg-indigo-900 rounded-b-md text-white;
+}
+.colorBestSiteFirst:hover {
+	@apply bg-purple-900 ease-in shadow-lg transition-all duration-200;
+}
+.paddingBestSiteFirst {
+	@apply px-3 py-3;
+}
+.paddingPrice {
+	@apply px-1 py-3;
+}
+@screen md {
+	.paddingBestSiteFirst {
+		@apply px-0 py-2 block;
+	}
 }
 .pMarge {
 	@apply my-2;
-}
-.btn {
-	background-color: linear-gradient(
-		90deg,
-		rgba(255, 0, 0, 50),
-		rgba(255, 0, 0, 50)
-	);
-	box-shadow: 0px 0px 4px #dfdfdf;
 }
 img {
 	-webkit-filter: drop-shadow(3px 3px 3px #222);
