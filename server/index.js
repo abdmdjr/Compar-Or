@@ -49,12 +49,12 @@ async function start() {
 
 start()
 
-// setTimeout(() => {
-// 	job.start()
-// }, 20000)
+setTimeout(() => {
+	job.start()
+}, 20000)
 
-// const job = new CronJob('*/6 * * * *', () => {
-// 	goldAvenue().then(console.log('Gold Avenue OK'))
-// 	lingor().then(console.log('Lingor OK'))
-// 	auCoffre().then(console.log('Au Coffre OK'))
-// })
+const job = new CronJob('*/6 * * * *', () => {
+	goldAvenue().then(console.log('Gold Avenue OK'))
+	lingor().then(console.log('Lingor OK'))
+	auCoffre().then(console.log('Au Coffre OK'))
+})
