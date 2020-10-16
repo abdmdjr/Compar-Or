@@ -49,7 +49,7 @@
 					>1000€ et +</label
 				>
 			</div>
-			<section class="cards flex flex-wrap justify-around w-full mb-24">
+			<section class="cards flex flex-wrap justify-between w-full mb-24">
 				<Coin
 					v-for="coin in filteredCoins"
 					:key="coin.id"

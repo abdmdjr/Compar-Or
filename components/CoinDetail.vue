@@ -5,28 +5,8 @@
 		<div
 			class="flex flex-col md:flex-row md:space-x-20 md:mb-6 md:justify-center md:items-center lg:flex-col lg:space-x-0"
 		>
-			<carousel
-				:per-page="1"
-				:mouse-drag="true"
-				pagination-active-color="#504877"
-				pagination-color="#7264af"
-				pagination-position="bottom-overlay"
-			>
-				<slide class="flex justify-center">
-					<img
-						class="w-48 self-center md:w-60 lg:w-479 mb-10 lg:mb-16"
-						:src="img"
-						:alt="title"
-					/>
-				</slide>
-				<slide class="flex justify-center">
-					<img
-						class="w-48 self-center md:w-60 lg:w-479 mb-10 lg:mb-16"
-						:src="img"
-						:alt="title"
-					/>
-				</slide>
-			</carousel>
+			<img :src="img3x" :alt="title" />
+			<img :src="imgar3x" :alt="title" />
 			<div class="info">
 				<h1
 					class="mt-6 text-lg text-center text-primary font-normal leading-none md:text-2xl"
@@ -152,28 +132,23 @@
 
 <script>
 import axios from 'axios'
-import { Carousel, Slide } from '@jambonn/vue-concise-carousel'
-import '@jambonn/vue-concise-carousel/dist/vue-concise-carousel.css'
 
 export default {
-	components: {
-		Carousel,
-		Slide
-	},
+	components: {},
 	props: {
 		title: {
 			type: String,
 			default: ''
 		},
-		img: {
+		img3x: {
+			type: String,
+			default: ''
+		},
+		imgar3x: {
 			type: String,
 			default: ''
 		},
 		gr: {
-			type: String,
-			default: ''
-		},
-		description: {
 			type: String,
 			default: ''
 		}

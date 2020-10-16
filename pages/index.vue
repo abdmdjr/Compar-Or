@@ -13,11 +13,13 @@
 				Nous comparons les offres pour vous aider dans
 				<strong>votre quête d’achat d’or.</strong>
 			</p>
-			<button
-				class="btn mt-5 lg:mt-2 shadow-sm hover:shadow-lg rounded-lg text-sm text-gray-800 font-medium"
-			>
-				<nuxt-link to="/coins">Trouvez votre pièce</nuxt-link>
-			</button>
+			<nuxt-link to="/coins">
+				<button
+					class="btn mt-5 lg:mt-2 shadow-sm hover:shadow-lg rounded-lg text-sm text-gray-800 font-medium"
+				>
+					Trouvez votre pièce
+				</button>
+			</nuxt-link>
 		</div>
 		<img
 			src="~/assets/img/catch-gold1min.png"

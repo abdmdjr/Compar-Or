@@ -6,7 +6,8 @@
 		>
 		<CoinDetail
 			:title="coinDetail.title"
-			:img="coinDetail.img"
+			:img3x="coinDetail.img3x"
+			:imgar3x="coinDetail.imgar3x"
 			:gr="coinDetail.gr"
 		/>
 	</main>
@@ -28,6 +29,7 @@ export default {
 	mounted() {
 		axios.get(`/api/coins/${this.$route.params.coin}`).then((result) => {
 			this.coinDetail = result.data
+			console.log(this.coinDetail)
 		})
 	}
 }
