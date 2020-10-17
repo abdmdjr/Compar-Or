@@ -5,8 +5,9 @@
 		<div
 			class="flex flex-col md:flex-row md:space-x-20 md:mb-6 md:justify-center md:items-center lg:flex-col lg:space-x-0"
 		>
-			<img :src="img3x" :alt="title" />
-			<img :src="imgar3x" :alt="title" />
+			<img :src="img3x" width="400" :alt="title" />
+			<!-- 			<img :src="imgar3x" width="400" :alt="title" />
+ -->
 			<div class="info">
 				<h1
 					class="mt-6 text-lg text-center text-primary font-normal leading-none md:text-2xl"
