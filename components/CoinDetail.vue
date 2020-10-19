@@ -3,22 +3,23 @@
 		class="flex flex-col mx-auto mt-6 mb-12 text-sm md:text-lg lg:flex-row lg:space-x-20 lg:text-xl"
 	>
 		<div
-			class="flex flex-col md:flex-row md:space-x-20 md:mb-6 md:justify-center md:items-center lg:flex-col lg:space-x-0"
+			class="flex flex-col h-full md:space-x-12 items-center md:flex-row md:mb-6 md:justify-center lg:flex-col lg:space-x-0"
 		>
-			<img :src="img3x" width="400" :alt="title" />
+			<img :src="img3x" width="274" :alt="title" />
 			<!-- 			<img :src="imgar3x" width="400" :alt="title" />
  -->
-			<div class="info">
+			<div class="info w-auto">
 				<h1
-					class="mt-6 text-lg text-center text-primary font-normal leading-none md:text-2xl"
+					class="mt-6 text-xl text-center text-primary font-normal leading-none md:text-xl lg:text-2xl lg:mt-8"
 				>
 					{{ title }}
-					<span class="text-sm block self-center mt-2 font-light md:text-lg">{{
-						gr
-					}}</span>
+					<span
+						class="text-sm block self-center mt-2 font-light md:text-lg lg:text-xl"
+						>{{ gr }}</span
+					>
 				</h1>
 				<p
-					class="text-lg block self-center text-center mt-3 md:text-2xl lg:mt-5"
+					class="text-xl block self-center text-center mt-3 md:text-2xl lg:mt-5 lg:text-2xl"
 				>
 					<strong>{{ bestPrice }}€</strong> sur
 					<u
@@ -30,7 +31,7 @@
 							>{{ bestSite }}.fr</a
 						></u
 					><br />
-					<span class="block mx-auto text-xs font-light w-48 md:w-56"
+					<span class="block mx-auto text-xs font-light w-48 md:w-56 lg:w-64"
 						>(ce prix inclut toutes les taxes + la livraison à votre
 						domicile)</span
 					>
@@ -90,7 +91,7 @@
 					</tr>
 					<tr>
 						<div
-							class="px-2 py-2 bg-gray-100 rounded-b-md border-gray-300 border-r border-l border-b text-left"
+							class="flex items-center px-2 h-12 bg-gray-100 rounded-b-md border-gray-300 border-r border-l border-b text-left"
 						>
 							Site
 						</div>
@@ -253,11 +254,16 @@ export default {
 		@apply px-0 py-2 block;
 	}
 }
+@screen lg {
+	img {
+		width: 600px;
+	}
+}
 .pMarge {
 	@apply my-2;
 }
 img {
-	-webkit-filter: drop-shadow(3px 3px 3px #222);
-	filter: drop-shadow(3px 3px 3px #222);
+	-webkit-filter: drop-shadow(3px 3px 3px rgb(129, 129, 129));
+	filter: drop-shadow(1px 2px 3px rgb(129, 129, 129));
 }
 </style>
