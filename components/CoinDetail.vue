@@ -5,7 +5,18 @@
 		<div
 			class="flex flex-col h-full md:space-x-12 items-center md:flex-row md:mb-6 md:justify-center lg:flex-col lg:space-x-0"
 		>
-			<img :src="img3x" width="274" :alt="title" />
+			<client-only placeholder="Chargement des prix...">
+				<Carousel
+					class="w-320 md:w-370 lg:w-400 px-10"
+					:mouse-drag="true"
+					:per-page="1"
+					:center-mode="true"
+					:pagination-enabled="true"
+				>
+					<Slide><img :src="img3x" :alt="title"/></Slide>
+					<Slide><img :src="imgar3x" :alt="title"/></Slide>
+				</Carousel>
+			</client-only>
 			<!-- 			<img :src="imgar3x" width="400" :alt="title" />
  -->
 			<div class="info w-auto">
@@ -134,9 +145,14 @@
 
 <script>
 import axios from 'axios'
+import Carousel from 'vue-carousel/src/Carousel.vue'
+import Slide from 'vue-carousel/src/Slide.vue'
 
 export default {
-	components: {},
+	components: {
+		Carousel,
+		Slide
+	},
 	props: {
 		title: {
 			type: String,
@@ -231,6 +247,14 @@ export default {
 </script>
 
 <style scoped>
+.VueCarousel-dot {
+	color: aqua;
+	border-radius: 100%;
+}
+.VueCarousel-pagination {
+	width: 100%;
+	text-align: center;
+}
 .colorBestSite {
 	@apply bg-gray-200 shadow-2xl;
 }
@@ -254,16 +278,11 @@ export default {
 		@apply px-0 py-2 block;
 	}
 }
-@screen lg {
-	img {
-		width: 600px;
-	}
-}
-.pMarge {
-	@apply my-2;
-}
 img {
 	-webkit-filter: drop-shadow(3px 3px 3px rgb(129, 129, 129));
 	filter: drop-shadow(1px 2px 3px rgb(129, 129, 129));
+}
+.pMarge {
+	@apply my-2;
 }
 </style>
