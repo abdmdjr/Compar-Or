@@ -12,6 +12,8 @@
 					:per-page="1"
 					:center-mode="true"
 					:pagination-enabled="true"
+					pagination-active-color="#3b3166"
+					pagination-color="#c5bee9"
 				>
 					<Slide><img :src="img3x" :alt="title"/></Slide>
 					<Slide><img :src="imgar3x" :alt="title"/></Slide>
@@ -60,60 +62,58 @@
 				<thead></thead>
 				<tbody>
 					<tr class="border-b">
-						<div
-							class="px-2 py-2 bg-gray-100 border-r border-l border-t rounded-t-md text-left"
-						>
+						<div class="px-2 py-2 rounded-t-md text-left">
 							Prix
 						</div>
 						<td
 							v-for="(resultPrice, index) in filteredCoins"
 							:key="index"
-							class="px-2 py-2 bg-gray-100 rounded-t-md"
-							:class="{ colorBestSite: index === minPrice }"
+							class="px-2 py-2 rounded-t-md"
+							:class="{ colorBestPrice: index === minPrice }"
 						>
 							{{ resultPrice[1][1] }}€
 						</td>
 					</tr>
 					<tr class="border-b">
-						<div class="px-2 py-2 bg-gray-100 border-r border-l text-left">
+						<div class="px-2 py-2 text-left">
 							Livraison
 						</div>
 						<td
 							v-for="(livraison, index) in filteredCoins"
 							:key="index"
-							class="px-2 py-2 bg-gray-100"
-							:class="{ colorBestSite: index === minPrice }"
+							class="px-2 py-2"
+							:class="{ colorBestLivraison: index === minPrice }"
 						>
-							+ {{ livraison[1][3] }}€
+							+ {{ livraison[1][2] }}€
 						</td>
 					</tr>
 					<tr class="border-b">
-						<div class="px-2 py-2 bg-gray-100 border-r border-l text-left">
+						<div class="px-2 py-2 text-left">
 							Prix total
 						</div>
 						<td
 							v-for="(resultPriceTotal, index) in calculatedPriceTotal"
 							:key="index"
-							class="px-2 py-2 bg-gray-100"
-							:class="{ colorBestPrice: index === minPrice }"
+							class="px-2 py-2"
+							:class="{ colorBestPriceTotal: index === minPrice }"
 						>
 							{{ resultPriceTotal }}€
 						</td>
 					</tr>
 					<tr>
 						<div
-							class="flex items-center px-2 h-12 bg-gray-100 rounded-b-md border-gray-300 border-r border-l border-b text-left"
+							class="flex items-center px-2 h-12 rounded-b-md border-gray-300 text-left"
 						>
 							Site
 						</div>
 						<td
 							v-for="(column, index) in filteredCoins"
 							:key="index"
-							class="font-medium text-center px-0 py-0 bg-gray-100 rounded-b-md text-primary"
-							:class="{ colorBestSiteFirst: index === minPrice }"
+							class="font-medium text-center px-0 py-0 rounded-b-md text-primary"
+							:class="{ colorBestSite: index === minPrice }"
 						>
 							<a
-								:href="column[1][4]"
+								:href="column[1][3]"
 								target="_blank"
 								rel="noopener noreferrer"
 								:aria-label="`${column[0]} - ${title}`"
@@ -178,13 +178,7 @@ export default {
 			bestPrice: '',
 			bestSite: '',
 			bestUrl: '',
-			namesRows: [
-				'Prix métal',
-				'Prime',
-				'Prix total',
-				'Livraison',
-				'Prix avec livraison'
-			]
+			namesRows: ['Prix total', 'Livraison', 'Prix avec livraison']
 		}
 	},
 	computed: {
@@ -193,31 +187,6 @@ export default {
 				return coin
 			})
 		},
-		/*
-		calculatedPriceMetal() {
-			return this.coinDatas.map((coin) => {
-				let resultPriceMetal = ''
-				if (typeof coin[1][2] === 'string') {
-					resultPriceMetal = 'N/C'
-				} else {
-					resultPriceMetal = coin[1][1] - coin[1][2]
-					resultPriceMetal = parseFloat(resultPriceMetal).toFixed(2) + '€'
-				}
-				return resultPriceMetal
-			})
-		} 
-		filteredPrime() {
-			return this.coinDatas.map((coin) => {
-				let resultPrime
-				if (typeof coin[1][2] === 'number') {
-					resultPrime = coin[1][2] + '€'
-				} else {
-					resultPrime = coin[1][2]
-				}
-				return resultPrime
-			})
-		},
-		*/
 		calculatedPriceTotal() {
 			return this.coinDatas.map((coin) => {
 				let priceTotal = coin[1][0]
@@ -235,7 +204,8 @@ export default {
 			this.coinDesc = Object.entries(result.data)[1][1]
 			this.bestPrice = Math.min(...this.calculatedPriceTotal).toString()
 			this.bestSite = this.filteredCoins[this.minPrice][0]
-			this.bestUrl = this.filteredCoins[this.minPrice][1][4]
+			this.bestUrl = this.filteredCoins[this.minPrice][1][3]
+			console.log(this.filteredCoins)
 		})
 	},
 	head() {
@@ -247,35 +217,50 @@ export default {
 </script>
 
 <style scoped>
-.VueCarousel-dot {
-	color: aqua;
-	border-radius: 100%;
-}
 .VueCarousel-pagination {
 	width: 100%;
 	text-align: center;
 }
-.colorBestSite {
-	@apply bg-gray-200 shadow-2xl;
-}
 .colorBestPrice {
-	@apply font-bold bg-gray-200 text-purple-900 shadow-2xl;
+	@apply bg-gray-100;
+	position: relative;
+	z-index: 3;
+	box-shadow: 0px -10px 15px 1px rgba(0, 0, 0, 0.05),
+		0 1px 1px -8px rgba(0, 0, 0, 0.05);
 }
-.colorBestSiteFirst {
-	@apply bg-indigo-900 rounded-b-md text-white;
+.colorBestLivraison {
+	@apply bg-gray-200;
+	position: relative;
+	z-index: 2;
+	box-shadow: 0 0px 20px -2px rgba(0, 0, 0, 0.1),
+		0 4px 6px 0px rgba(0, 0, 0, 0.05);
 }
-.colorBestSiteFirst:hover {
-	@apply bg-purple-900 ease-in shadow-lg transition-all duration-200;
+.colorBestPriceTotal {
+	@apply bg-gray-300;
+	position: relative;
+	z-index: 999;
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+		0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.colorBestSite {
+	@apply bg-gray-400 rounded-b-md text-white;
+}
+.colorBestSite:hover {
+	@apply bg-yellow-400 ease-in shadow-lg transition-all duration-200;
 }
 .paddingBestSiteFirst {
 	@apply px-3 py-3;
 }
 .paddingPrice {
+	font-size: 0.82rem;
 	@apply px-1 py-3;
 }
 @screen md {
 	.paddingBestSiteFirst {
 		@apply px-0 py-2 block;
+	}
+	.paddingPrice {
+		font-size: 1.15rem;
 	}
 }
 img {

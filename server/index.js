@@ -49,12 +49,24 @@ async function start() {
 
 start()
 
-setTimeout(() => {
-	job.start()
-}, 20000)
+// const job = new CronJob('*/3 * * * *', () => {
+// 	try {
+// 		goldAvenue().then(console.log('Gold Avenue OK'))
+// 	} catch (error) {
+// 		console.log(error.message)
+// 	}
+// 	try {
+// 		lingor().then(console.log('Lingor OK'))
+// 	} catch (error) {
+// 		console.log(error.message)
+// 	}
+// 	try {
+// 		auCoffre().then(console.log('Au Coffre OK'))
+// 	} catch (error) {
+// 		console.log(error.message)
+// 	}
+// })
 
-const job = new CronJob('*/6 * * * *', () => {
-	goldAvenue().then(console.log('Gold Avenue OK'))
-	lingor().then(console.log('Lingor OK'))
-	auCoffre().then(console.log('Au Coffre OK'))
-})
+// setTimeout(() => {
+// 	job.start()
+// }, 35000)

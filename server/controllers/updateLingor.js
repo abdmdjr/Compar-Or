@@ -10,7 +10,6 @@ async function lingor() {
 				'prices.Lingor': [
 					piece.totalPrice,
 					piece.price,
-					piece.prime,
 					piece.livraison,
 					piece.url
 				]

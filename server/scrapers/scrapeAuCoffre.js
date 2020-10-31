@@ -8,16 +8,14 @@ async function scrapeAuCoffre() {
 				'--disable-gpu',
 				'--disable-dev-shm-usage',
 				'--disable-setuid-sandbox',
-				'--no-first-run',
 				'--no-sandbox',
-				'--no-zygote',
-				'--single-process'
+				'--no-zygote'
 			],
 			headless: true
 		})
 		const retrievePrice = pieces.map(async (piece) => {
 			const page = await browser.newPage()
-			await page.goto(piece.url, { waitUntil: 'networkidle0', timeout: 0 })
+			await page.goto(piece.url, { waitUntil: 'networkidle2', timeout: 0 })
 			try {
 				const data = await page.evaluate(() => {
 					const priceString = document.querySelector(
@@ -26,30 +24,9 @@ async function scrapeAuCoffre() {
 					const price = parseFloat(
 						priceString.replace(/\s/g, '').replace(',', '.')
 					)
-					const prime = document.querySelector(
-						'#supertype_main > div.content_wrapper > div > div > div:nth-child(1) > div.media-body > div:nth-child(2) > p'
-					).textContent
-					return [price, prime]
+					return price
 				})
-				const primeNbr = () => {
-					let primePercent = data[1].slice(445, 450)
-					if (primePercent.length <= 4) {
-						primePercent = primePercent.slice(0, -1)
-					}
-					let primeNbre = parseFloat(
-						primePercent.replace(/\s/g, '').replace(',', '.')
-					)
-					if (primeNbre < 50) {
-						primeNbre = (primeNbre / 100) * data[0]
-						primeNbre = primeNbre.toFixed(2)
-						primeNbre = parseFloat(primeNbre)
-						return primeNbre
-					} else {
-						return 'N/C'
-					}
-				}
-				piece.prime = primeNbr()
-				piece.price = data[0]
+				piece.price = data
 				piece.livraison = 15
 				piece.totalPrice = piece.price + piece.livraison
 			} catch (error) {
@@ -58,7 +35,6 @@ async function scrapeAuCoffre() {
 			}
 		})
 		await Promise.all(retrievePrice)
-		await browser.close()
 		return pieces
 	} catch (error) {
 		console.log(error)

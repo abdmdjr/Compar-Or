@@ -10,7 +10,6 @@ async function goldAvenue() {
 				'prices.Gold Avenue': [
 					piece.totalPrice,
 					piece.price,
-					piece.prime,
 					piece.livraison,
 					piece.url
 				]

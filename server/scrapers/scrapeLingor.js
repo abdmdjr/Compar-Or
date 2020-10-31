@@ -8,10 +8,8 @@ async function scrapeLingor() {
 				'--disable-gpu',
 				'--disable-dev-shm-usage',
 				'--disable-setuid-sandbox',
-				'--no-first-run',
 				'--no-sandbox',
-				'--no-zygote',
-				'--single-process'
+				'--no-zygote'
 			],
 			headless: true
 		})
@@ -27,7 +25,6 @@ async function scrapeLingor() {
 					return price
 				})
 				piece.price = data
-				piece.prime = 'N/C'
 				piece.livraison = 19.9
 				piece.totalPrice = piece.price + piece.livraison
 			} catch (error) {
@@ -36,7 +33,6 @@ async function scrapeLingor() {
 			}
 		})
 		await Promise.all(retrievePrice)
-		await browser.close()
 		return pieces
 	} catch (error) {
 		console.log(error)

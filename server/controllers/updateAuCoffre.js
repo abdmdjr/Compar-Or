@@ -10,7 +10,6 @@ async function auCoffre() {
 				'prices.Au Coffre': [
 					piece.totalPrice,
 					piece.price,
-					piece.prime,
 					piece.livraison,
 					piece.url
 				]
