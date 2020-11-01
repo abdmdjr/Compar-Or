@@ -61,7 +61,7 @@
 			<table class="table-auto w-full text-right text-primary">
 				<thead></thead>
 				<tbody>
-					<tr class="border-b">
+					<tr class="border-b bg-gray-100 bg-opacity-25">
 						<div class="px-2 py-2 rounded-t-md text-left">
 							Prix
 						</div>
@@ -74,7 +74,7 @@
 							{{ resultPrice[1][1] }}€
 						</td>
 					</tr>
-					<tr class="border-b">
+					<tr class="border-b bg-gray-200 bg-opacity-25">
 						<div class="px-2 py-2 text-left">
 							Livraison
 						</div>
@@ -87,7 +87,7 @@
 							+ {{ livraison[1][2] }}€
 						</td>
 					</tr>
-					<tr class="border-b">
+					<tr class="border-b bg-gray-300 bg-opacity-25">
 						<div class="px-2 py-2 text-left">
 							Prix total
 						</div>
@@ -103,13 +103,11 @@
 					<tr>
 						<div
 							class="flex items-center px-2 h-12 rounded-b-md border-gray-300 text-left"
-						>
-							Site
-						</div>
+						></div>
 						<td
 							v-for="(column, index) in filteredCoins"
 							:key="index"
-							class="font-medium text-center px-0 py-0 rounded-b-md text-primary"
+							class="colorLinkBase font-medium text-center px-0 py-0 rounded-b-md text-primary"
 							:class="{ colorBestSite: index === minPrice }"
 						>
 							<a
@@ -238,15 +236,12 @@ export default {
 .colorBestPriceTotal {
 	@apply bg-gray-300;
 	position: relative;
-	z-index: 999;
+	z-index: 4;
 	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
 		0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
-.colorBestSite {
-	@apply bg-gray-400 rounded-b-md text-white;
-}
 .colorBestSite:hover {
-	@apply bg-yellow-400 ease-in shadow-lg transition-all duration-200;
+	@apply ease-in shadow-lg transition-all duration-200;
 }
 .paddingBestSiteFirst {
 	@apply px-3 py-3;
@@ -254,6 +249,19 @@ export default {
 .paddingPrice {
 	font-size: 0.82rem;
 	@apply px-1 py-3;
+}
+.colorLinkBase {
+	@apply bg-gray-300 bg-opacity-25;
+}
+.colorBestSite {
+	position: relative;
+	z-index: 5;
+	background-color: #fbab7e;
+	background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+		0 4px 6px -2px rgba(0, 0, 0, 0.05);
+	@apply rounded-b-md text-white;
 }
 @screen md {
 	.paddingBestSiteFirst {
