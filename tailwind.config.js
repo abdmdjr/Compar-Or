@@ -49,9 +49,6 @@ module.exports = {
 			screens: {
 				// eslint-disable-next-line prettier/prettier
 				'lg': '1025px'
-			},
-			textColor: {
-				primary: 'rgba(59, 49, 102, 0.89)'
 			}
 		}
 	},

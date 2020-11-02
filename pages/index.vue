@@ -22,7 +22,7 @@
 			</nuxt-link>
 		</div>
 		<img
-			src="~/assets/img/catch-gold1min.png"
+			src="~/assets/img/catch-gold11.png"
 			alt="homme qui est en train d'attraper une pièce d'or avec un filet à papillons"
 		/>
 	</section>
@@ -40,14 +40,14 @@ export default {
 
 <style scoped>
 .important-word {
-	background: linear-gradient(90deg, #9f6cad 0%, #7b5392 100%);
+	background: linear-gradient(180deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 .btn {
 	width: auto;
 	padding: 0.7rem 1.3rem;
-	background: #ab81b6;
+	background: linear-gradient(180deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
 	border-radius: 7px;
 	font-family: 'Ubuntu';
 	color: white;

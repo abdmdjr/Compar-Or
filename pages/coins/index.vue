@@ -4,7 +4,9 @@
 			><nuxt-link to="/">Accueil > </nuxt-link>Pièces</span
 		>
 		<div class="flex flex-col lg:flex-row mt-2 text-justify">
-			<h1 class="intro mb-2 md:mb-3 text-lg md:leading-tight">Découvrez</h1>
+			<h1 class="intro font-medium mb-2 md:mb-3 text-lg md:leading-tight">
+				Découvrez
+			</h1>
 			<div class="flex flex-col">
 				<p class="mb-2">
 					Le prix affiché pour une pièce est<span class="text-important">
@@ -20,8 +22,8 @@
 		</div>
 		<main class="flex flex-col md:flex-row">
 			<div id="filters" class="filters hidden lg:block">
-				<h2 class="text-primary text-xl font-medium mb-6">Filtres</h2>
-				<h3 class="text-primary font-bold mb-4">Type de métaux</h3>
+				<h2 class="font-medium text-lg mb-6">Filtres</h2>
+				<h3 class="mb-4">Type de métaux</h3>
 				<input type="checkbox" class="mb-5" disabled checked /><label
 					for="Or"
 					class="ml-5"
@@ -32,7 +34,7 @@
 					class="ml-5"
 					>Argent (soon)</label
 				>
-				<h4 class="text-primary font-bold mt-4 mb-4">Prix</h4>
+				<h4 class="mt-4 mb-4">Prix</h4>
 				<input v-model="checked500" type="checkbox" class="mb-5" /><label
 					for="coin_500"
 					class="ml-5"
