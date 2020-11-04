@@ -55,7 +55,7 @@
 				</p>
 			</div>
 		</div>
-		<section class="text-justify block self-center">
+		<section class="text-justify w-full self-center">
 			<h2
 				class="text-lg text-center mb-4 mt-6 font-normal md:mt-12 md:mb-8 md:text-2xl lg:mb-8 lg:mt-0 lg:text-left"
 			>
@@ -71,39 +71,39 @@
 				<thead></thead>
 				<tbody>
 					<tr class="border-b bg-white bg-opacity-25">
-						<div class="px-2 py-2 rounded-t-md text-left">
+						<div class="px-2 py-5 rounded-t-md text-left">
 							Prix
 						</div>
 						<td
 							v-for="(resultPrice, index) in filteredCoins"
 							:key="index"
-							class="px-2 py-2 rounded-t-md"
+							class="px-2 py-5 rounded-t-md"
 							:class="{ colorBestPrice: index === minPrice }"
 						>
 							{{ resultPrice[1][1] }}€
 						</td>
 					</tr>
-					<tr class="border-b bg-gray-200 bg-opacity-25">
-						<div class="px-2 py-2 text-left">
+					<tr class="border-b bg-gray-100">
+						<div class="px-2 py-5 text-left">
 							Livraison
 						</div>
 						<td
 							v-for="(livraison, index) in filteredCoins"
 							:key="index"
-							class="px-2 py-2"
+							class="px-2 py-5"
 							:class="{ colorBestLivraison: index === minPrice }"
 						>
 							+ {{ livraison[1][2] }}€
 						</td>
 					</tr>
 					<tr class="border-b bg-white bg-opacity-25">
-						<div class="px-2 py-2 text-left">
+						<div class="px-2 py-5 text-left">
 							Prix total
 						</div>
 						<td
 							v-for="(resultPriceTotal, index) in calculatedPriceTotal"
 							:key="index"
-							class="px-2 py-2"
+							class="px-2 py-5"
 							:class="{ colorBestPriceTotal: index === minPrice }"
 						>
 							{{ resultPriceTotal }}€
@@ -111,12 +111,12 @@
 					</tr>
 					<tr>
 						<div
-							class="flex items-center px-2 h-12 rounded-b-md border-gray-300 text-left"
+							class="flex items-center px-2 h-12 rounded-b-md text-left"
 						></div>
 						<td
 							v-for="(column, index) in filteredCoins"
 							:key="index"
-							class="colorLinkBase font-medium text-center px-0 py-0 rounded-b-md text-gray-800"
+							class="colorLinkBase font-medium text-center text-gray-700 px-0 py-0 rounded-b-md"
 							:class="{ colorBestSite: index === minPrice }"
 						>
 							<a
@@ -209,10 +209,13 @@ export default {
 		axios.get(`/api/coins/${this.$route.params.coin}`).then((result) => {
 			this.coinDatas = Object.entries(result.data.prices)
 			this.coinDesc = Object.entries(result.data)[1][1]
-			this.bestPrice = Math.min(...this.calculatedPriceTotal).toString()
+			this.bestPrice = Math.min(...this.calculatedPriceTotal).toFixed(2)
+			// console.log('calculatedPriceTotal = ', this.calculatedPriceTotal)
+			// console.log('bestprice = ' + this.bestPrice)
+			// console.log('coinmap = ', this.filteredCoins)
+			// console.log('index = ', this.calculatedPriceTotal.indexOf(this.minPrice))
 			this.bestSite = this.filteredCoins[this.minPrice][0]
 			this.bestUrl = this.filteredCoins[this.minPrice][1][3]
-			console.log(this.filteredCoins)
 		})
 	},
 	head() {
@@ -236,7 +239,7 @@ export default {
 		0 1px 1px -8px rgba(0, 0, 0, 0.05);
 }
 .colorBestLivraison {
-	@apply bg-gray-100;
+	@apply bg-gray-200;
 	position: relative;
 	z-index: 2;
 	box-shadow: 0 0px 20px -2px rgba(0, 0, 0, 0.1),
@@ -260,7 +263,7 @@ export default {
 	@apply px-1 py-3;
 }
 .colorLinkBase {
-	@apply bg-gray-100;
+	background-image: linear-gradient(10deg, #fdfbfb79 0%, #ebedee75 100%);
 }
 .colorBestSite {
 	position: relative;

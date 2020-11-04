@@ -70,6 +70,14 @@ const philharmonic01oz = [
 	}
 ]
 
+const philharmonic1oz = [
+	{
+		id: '5fa1393b070454d7f8e81fe5',
+		url:
+			'https://www.goldavenue.com/fr/acheter/or/produit/1-once-piece-d-or-pur-999-9-philharmonique-annees-mixtes'
+	}
+]
+
 const souverain7gr3 = [
 	{
 		id: '5f200f25924ecdd8e420352c',
@@ -88,6 +96,7 @@ const pieces = [
 	...napoleon40n2,
 	...napoleon40,
 	...philharmonic01oz,
+	...philharmonic1oz,
 	...souverain7gr3
 ]
 

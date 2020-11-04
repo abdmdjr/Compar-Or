@@ -3,12 +3,13 @@ const { Nuxt, Builder } = require('nuxt')
 const express = require('express')
 const mongoose = require('mongoose')
 require('dotenv').config()
-const CronJob = require('cron').CronJob
+// const CronJob = require('cron').CronJob
 const consola = require('consola')
 const config = require('../nuxt.config.js')
 const { goldAvenue } = require('./controllers/updateGoldAvenue.js')
 const { lingor } = require('./controllers/updateLingor.js')
 const { auCoffre } = require('./controllers/updateAuCoffre.js')
+const { bullionByPost } = require('./controllers/updateBullionByPost.js')
 const coinRouter = require('./routes/coinRoutes')
 const app = express()
 
@@ -42,6 +43,10 @@ async function start() {
 			})
 		})
 
+	goldAvenue()
+	lingor()
+	auCoffre()
+	bullionByPost()
 	app.use(express.json())
 	app.use('/api', coinRouter)
 	app.use(nuxt.render)

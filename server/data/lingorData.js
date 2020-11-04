@@ -40,13 +40,21 @@ const souverain7gr3 = [
 	}
 ]
 
+const philharmonic1oz = [
+	{
+		id: '5fa1393b070454d7f8e81fe5',
+		url: 'https://www.lingor.fr/piece-or-philharmonique-1-once-oz.html'
+	}
+]
+
 const pieces = [
 	...vreneli20,
 	...marianne20,
 	...maple1oz,
 	...britannia1oz,
 	...krugerrand1oz,
-	...souverain7gr3
+	...souverain7gr3,
+	...philharmonic1oz
 ]
 
 module.exports = pieces
