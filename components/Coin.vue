@@ -1,38 +1,40 @@
 <template>
 	<div class="mt-10 rounded-lg shadow-lg">
-		<ul class="flex flex-col px-3 py-8 items-center">
-			<nuxt-link
-				:to="`/coins/${slug}`"
-				class="flex flex-col justify-center items-center"
-			>
-				<li class="">
-					<img class="object-cover object-center" :src="img" :alt="title" />
-				</li>
-				<li class="mt-5 text-center">
-					<span class="text-important text-base">{{ title }}</span>
-				</li>
-				<li class="text-primary mb-3 text-xs font-light">
-					{{ gr }}
-				</li>
+		<div class="flex flex-col px-3 py-8 items-center">
+			<nuxt-link :to="`/coins/${slug}`">
+				<ul class="flex flex-col items-center">
+					<li class="">
+						<img class="" :src="img" :alt="title" />
+					</li>
+					<li class="mt-5 text-center">
+						<span class="text-important text-base">{{ title }}</span>
+					</li>
+					<li class="mb-3 text-xs font-light">
+						{{ gr }}
+					</li>
+				</ul>
 			</nuxt-link>
 			<nuxt-link :to="`/coins/${slug}`" class="">
-				<div class="text-important text-lg font-medium leading-none">
+				<div class="text-center text-important text-1xl leading-none">
 					{{ price }} €
 				</div>
+				<div class="text-center text-xs font-light">
+					livraison incluse
+				</div>
 			</nuxt-link>
-			<div class="text-primary text-center mt-3 text-sm font-light">
+			<div class="mt-3">
 				<a
-					class="font-normal text-base shadow-sm hover:shadow-xl lg:transition lg:duration-200 lg:ease-in-out"
+					class="shadow-sm hover:shadow-xl lg:transition lg:duration-200 lg:ease-in-out"
 					:href="url"
 					target="_blank"
 					rel="noopener noreferrer"
 					:aria-label="`link to ${site} - ${title}`"
-					><button class="btn-price text-white text-xs py-2 px-4 rounded-md">
+					><button class="btn-price text-white text-sm py-2 px-4 rounded-md">
 						{{ site }}
 					</button></a
 				>
 			</div>
-		</ul>
+		</div>
 	</div>
 </template>
 
