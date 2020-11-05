@@ -3,7 +3,7 @@ const { Nuxt, Builder } = require('nuxt')
 const express = require('express')
 const mongoose = require('mongoose')
 require('dotenv').config()
-// const CronJob = require('cron').CronJob
+const CronJob = require('cron').CronJob
 const consola = require('consola')
 const config = require('../nuxt.config.js')
 const { goldAvenue } = require('./controllers/updateGoldAvenue.js')
@@ -43,10 +43,6 @@ async function start() {
 			})
 		})
 
-	goldAvenue()
-	lingor()
-	auCoffre()
-	bullionByPost()
 	app.use(express.json())
 	app.use('/api', coinRouter)
 	app.use(nuxt.render)
@@ -54,24 +50,29 @@ async function start() {
 
 start()
 
-// const job = new CronJob('*/3 * * * *', () => {
-// 	try {
-// 		goldAvenue().then(console.log('Gold Avenue OK'))
-// 	} catch (error) {
-// 		console.log(error.message)
-// 	}
-// 	try {
-// 		lingor().then(console.log('Lingor OK'))
-// 	} catch (error) {
-// 		console.log(error.message)
-// 	}
-// 	try {
-// 		auCoffre().then(console.log('Au Coffre OK'))
-// 	} catch (error) {
-// 		console.log(error.message)
-// 	}
-// })
+const job = new CronJob('*/3 * * * *', () => {
+	try {
+		goldAvenue().then(console.log('Gold Avenue OK'))
+	} catch (error) {
+		console.log(error.message)
+	}
+	try {
+		lingor().then(console.log('Lingor OK'))
+	} catch (error) {
+		console.log(error.message)
+	}
+	try {
+		auCoffre().then(console.log('Au Coffre OK'))
+	} catch (error) {
+		console.log(error.message)
+	}
+	try {
+		bullionByPost().then(console.log('Au Coffre OK'))
+	} catch (error) {
+		console.log(error.message)
+	}
+})
 
-// setTimeout(() => {
-// 	job.start()
-// }, 35000)
+setTimeout(() => {
+	job.start()
+}, 35000)
