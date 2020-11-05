@@ -126,7 +126,7 @@ export default {
 				)
 				const minValue = min(Object.values(coin.prices), (o) => coin.prices[o])
 				coin.price = parseFloat(minValue[0]).toFixed(2)
-				coin.url = minValue[4]
+				coin.url = minValue[3]
 			})
 		})
 	},

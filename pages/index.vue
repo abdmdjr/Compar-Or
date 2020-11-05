@@ -13,10 +13,11 @@
 				Nous comparons les offres pour vous aider dans
 				<strong>votre quête d’achat d’or.</strong>
 			</p>
-			<nuxt-link to="/coins">
-				<button
-					class="btn mt-5 lg:mt-2 shadow-sm hover:shadow-lg rounded-lg text-sm text-gray-800 font-medium"
-				>
+			<nuxt-link
+				class="self-start shadow-lg hover:shadow-xl lg:transition lg:duration-300 lg:ease-in-out"
+				to="/coins"
+			>
+				<button class="btn mt-5 lg:mt-2 rounded-lg text-sm font-medium">
 					Trouvez votre pièce
 				</button>
 			</nuxt-link>
@@ -138,7 +139,7 @@ export default {
 		font-size: 1.6rem;
 	}
 	.btn {
-		padding: 1.2rem;
+		padding: 1.3rem 2rem;
 		font-size: 1.6rem;
 	}
 	img,
@@ -157,7 +158,7 @@ export default {
 		font-size: 2rem;
 	}
 	.btn {
-		padding: 1.75rem;
+		padding: 1.3rem 2rem;
 		font-size: 2.15rem;
 	}
 	img,

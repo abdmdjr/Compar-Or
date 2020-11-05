@@ -210,12 +210,12 @@ export default {
 			this.coinDatas = Object.entries(result.data.prices)
 			this.coinDesc = Object.entries(result.data)[1][1]
 			this.bestPrice = Math.min(...this.calculatedPriceTotal).toFixed(2)
+			this.bestSite = this.filteredCoins[this.minPrice][0]
+			this.bestUrl = this.filteredCoins[this.minPrice][1][3]
 			// console.log('calculatedPriceTotal = ', this.calculatedPriceTotal)
 			// console.log('bestprice = ' + this.bestPrice)
 			// console.log('coinmap = ', this.filteredCoins)
 			// console.log('index = ', this.calculatedPriceTotal.indexOf(this.minPrice))
-			this.bestSite = this.filteredCoins[this.minPrice][0]
-			this.bestUrl = this.filteredCoins[this.minPrice][1][3]
 		})
 	},
 	head() {

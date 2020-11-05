@@ -1,8 +1,6 @@
 <template>
-	<div
-		class="mt-10 rounded-lg shadow-lg hover:shadow-xl lg:transition lg:duration-200 lg:ease-in-out"
-	>
-		<ul class="flex flex-col px-3 py-10 items-center">
+	<div class="mt-10 rounded-lg shadow-lg">
+		<ul class="flex flex-col px-3 py-8 items-center">
 			<nuxt-link
 				:to="`/coins/${slug}`"
 				class="flex flex-col justify-center items-center"
@@ -10,29 +8,30 @@
 				<li class="">
 					<img class="object-cover object-center" :src="img" :alt="title" />
 				</li>
-				<li class="mt-8 text-center">
+				<li class="mt-5 text-center">
 					<span class="text-important text-base">{{ title }}</span>
 				</li>
 				<li class="text-primary mb-3 text-xs font-light">
 					{{ gr }}
 				</li>
 			</nuxt-link>
-			<li class="text-primary text-center mb-4 text-sm font-light">
-				Meilleur prix :
+			<nuxt-link :to="`/coins/${slug}`" class="">
+				<div class="text-important text-lg font-medium leading-none">
+					{{ price }} €
+				</div>
+			</nuxt-link>
+			<div class="text-primary text-center mt-3 text-sm font-light">
 				<a
-					class="font-normal text-base lg:hover:font-medium"
+					class="font-normal text-base shadow-sm hover:shadow-xl lg:transition lg:duration-200 lg:ease-in-out"
 					:href="url"
 					target="_blank"
 					rel="noopener noreferrer"
 					:aria-label="`link to ${site} - ${title}`"
-					>{{ site }}</a
+					><button class="btn-price text-white text-xs py-2 px-4 rounded-md">
+						{{ site }}
+					</button></a
 				>
-			</li>
-			<nuxt-link :to="`/coins/${slug}`" class="">
-				<li class="text-important text-lg font-medium leading-none">
-					{{ price }} €
-				</li>
-			</nuxt-link>
+			</div>
 		</ul>
 	</div>
 </template>
@@ -77,5 +76,10 @@ img {
 	-webkit-filter: drop-shadow(1px 1px 1px rgb(138, 138, 138));
 	filter: drop-shadow(1px 1px 1px rgb(138, 138, 138));
 	max-width: 140px;
+}
+.btn-price {
+	background: linear-gradient(180deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+		0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 </style>
