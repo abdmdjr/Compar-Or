@@ -12,8 +12,8 @@
 					:per-page="1"
 					:center-mode="true"
 					:pagination-enabled="true"
-					pagination-active-color="#fbab7e"
-					pagination-color="#fbac7e75"
+					pagination-active-color="#cbd5e0"
+					pagination-color="#e2e8f0"
 					:pagination-padding="5"
 				>
 					<Slide><img :src="img3x" :alt="title"/></Slide>
@@ -41,32 +41,27 @@
 						target="_blank"
 						rel="noopener noreferrer"
 						:aria-label="`link to ${bestSite} - ${title}`"
+						class="shadow-sm hover:shadow-xl lg:transition lg:duration-200 lg:ease-in-out"
 					>
 						<button class="btn-price text-white text-lg py-2 px-4 rounded-md">
 							{{ bestSite }}
 						</button>
 					</a>
 					<br />
-					<span
-						class="block mx-auto mt-2 text-xs font-light w-48 md:w-56 lg:w-64"
-						>(ce prix inclut toutes les taxes + la livraison à votre
-						domicile)</span
-					>
 				</p>
 			</div>
 		</div>
 		<section class="text-justify w-full self-center">
 			<h2
-				class="text-lg text-center mb-4 mt-6 font-normal md:mt-12 md:mb-8 md:text-2xl lg:mb-8 lg:mt-0 lg:text-left"
+				class="text-lg text-center mb-4 mt-6 font-normal md:mt-12 md:mb-8 md:text-2xl lg:mb-5 lg:mt-0 lg:text-left"
 			>
-				Tableau de comparaison
+				Comparaison des prix
 			</h2>
 			<p class="text-sm md:text-lg font-light">
-				Ce tableau indique les prix affichés sur les sites de vente, le prix de
-				livraison, et le prix total. Vous pouvez également visiter chaque site
-				en cliquant sur leur noms.
+				Ce tableau indique les prix affichés sur les sites de vente, les frais
+				de port, et le prix total pour la pièce "<strong>{{ title }}</strong
+				>" en temps réel.
 			</p>
-
 			<table class="table-auto mt-6 w-full text-right text-gray-800">
 				<thead></thead>
 				<tbody>
@@ -134,9 +129,9 @@
 				</tbody>
 			</table>
 			<h2
-				class="text-lg text-center mb-3 mt-6 font-normal md:mt-12 md:mb-8 md:text-2xl lg:mt-20 lg:mb-8 lg:text-left"
+				class="text-lg text-center mb-3 mt-6 font-normal md:mt-12 md:mb-8 md:text-2xl lg:mt-10 lg:mb-5 lg:text-left"
 			>
-				Description de la pièce
+				Description
 			</h2>
 			<p
 				v-for="(descr, index) in coinDesc"
@@ -231,6 +226,9 @@ export default {
 	width: 100%;
 	text-align: center;
 }
+.VueCarousel-dot {
+	border-radius: 100%;
+}
 .colorBestPrice {
 	@apply bg-white;
 	position: relative;
@@ -253,7 +251,7 @@ export default {
 		0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 .colorBestSite:hover {
-	@apply ease-in shadow-lg transition-all duration-200;
+	@apply shadow-xl transition duration-200 ease-in-out;
 }
 .paddingBestSiteFirst {
 	@apply px-3 py-3;
@@ -276,8 +274,6 @@ export default {
 }
 .btn-price {
 	background: linear-gradient(180deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
-	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-		0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 @screen md {
 	.paddingBestSiteFirst {

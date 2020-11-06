@@ -22,6 +22,14 @@ export default {
 	margin: 0;
 }
 
+html {
+	-ms-overflow-style: none; /* Internet Explorer 10+ */
+	scrollbar-width: none; /* Firefox */
+}
+html::-webkit-scrollbar {
+	display: none; /* Safari and Chrome */
+}
+
 body {
 	font-family: 'Roboto', sans-serif;
 }

@@ -50,7 +50,7 @@ async function start() {
 
 start()
 
-const job = new CronJob('*/3 * * * *', () => {
+const job = new CronJob('*/1 * * * *', () => {
 	try {
 		goldAvenue().then(console.log('Gold Avenue OK'))
 	} catch (error) {
@@ -67,7 +67,7 @@ const job = new CronJob('*/3 * * * *', () => {
 		console.log(error.message)
 	}
 	try {
-		bullionByPost().then(console.log('Au Coffre OK'))
+		bullionByPost().then(console.log('BullionByPost OK'))
 	} catch (error) {
 		console.log(error.message)
 	}
