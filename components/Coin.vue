@@ -18,9 +18,6 @@
 				<div class="text-center text-important text-1xl leading-none">
 					{{ price }} €
 				</div>
-				<div class="text-center text-xs font-light">
-					livraison incluse
-				</div>
 			</nuxt-link>
 			<div class="mt-3">
 				<a
