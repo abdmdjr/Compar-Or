@@ -7,17 +7,17 @@
 						<img class="" :src="img" :alt="title" />
 					</li>
 					<li class="mt-5 text-center">
-						<span class="text-important text-base">{{ title }}</span>
+						<h1 class="text-important">{{ title }}</h1>
 					</li>
 					<li class="mb-3 text-xs font-light">
-						{{ gr }}
+						<h2>{{ gr }}</h2>
 					</li>
 				</ul>
 			</nuxt-link>
 			<nuxt-link :to="`/coins/${slug}`" class="">
-				<div class="text-center text-important text-1xl leading-none">
+				<h3 class="text-center text-important text-xl leading-none">
 					{{ price }} €
-				</div>
+				</h3>
 			</nuxt-link>
 			<div class="mt-3">
 				<a

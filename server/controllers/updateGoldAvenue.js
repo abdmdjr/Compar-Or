@@ -7,7 +7,7 @@ async function goldAvenue() {
 	try {
 		pieces.map(async (piece) => {
 			await Coin.findByIdAndUpdate(piece.id, {
-				'prices.Gold Avenue': [
+				'prices.goldavenue com': [
 					piece.totalPrice,
 					piece.price,
 					piece.livraison,

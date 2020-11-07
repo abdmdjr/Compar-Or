@@ -7,7 +7,7 @@ async function lingor() {
 	try {
 		pieces.map(async (piece) => {
 			await Coin.findByIdAndUpdate(piece.id, {
-				'prices.Lingor': [
+				'prices.lingor fr': [
 					piece.totalPrice,
 					piece.price,
 					piece.livraison,

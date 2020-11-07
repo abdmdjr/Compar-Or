@@ -7,7 +7,7 @@ async function auCoffre() {
 	try {
 		pieces.map(async (piece) => {
 			await Coin.findByIdAndUpdate(piece.id, {
-				'prices.Au Coffre': [
+				'prices.aucoffre com': [
 					piece.totalPrice,
 					piece.price,
 					piece.livraison,

@@ -1,6 +1,6 @@
 <template>
 	<section
-		class="flex flex-col mx-auto mt-6 mb-12 text-sm md:text-lg lg:flex-row lg:space-x-20 lg:text-xl"
+		class="flex flex-col mx-auto mt-12 mb-12 text-sm md:text-lg lg:flex-row lg:space-x-20 lg:text-xl"
 	>
 		<div
 			class="flex flex-col h-full md:space-x-12 items-center md:flex-row md:mb-6 md:justify-center lg:flex-col lg:space-x-0"
@@ -122,7 +122,7 @@
 								class="paddingPrice"
 								:class="{ paddingBestSiteFirst: index === minPrice }"
 							>
-								{{ column[0] }}
+								{{ column[0].split(' ').join('.') }}
 							</a>
 						</td>
 					</tr>
@@ -183,7 +183,7 @@ export default {
 			namesRows: ['Prix total', 'Livraison', 'Prix avec livraison']
 		}
 	},
-	computed: {
+	_computed: {
 		filteredCoins() {
 			return this.coinDatas.map((coin) => {
 				return coin
@@ -200,12 +200,18 @@ export default {
 			return this.calculatedPriceTotal.indexOf(this.bestPrice)
 		}
 	},
+	get computed() {
+		return this._computed
+	},
+	set computed(value) {
+		this._computed = value
+	},
 	mounted() {
 		axios.get(`/api/coins/${this.$route.params.coin}`).then((result) => {
 			this.coinDatas = Object.entries(result.data.prices)
 			this.coinDesc = Object.entries(result.data)[1][1]
 			this.bestPrice = Math.min(...this.calculatedPriceTotal).toFixed(2)
-			this.bestSite = this.filteredCoins[this.minPrice][0]
+			this.bestSite = this.filteredCoins[this.minPrice][0].split(' ').join('.')
 			this.bestUrl = this.filteredCoins[this.minPrice][1][3]
 			// console.log('calculatedPriceTotal = ', this.calculatedPriceTotal)
 			// console.log('bestprice = ' + this.bestPrice)

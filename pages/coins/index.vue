@@ -4,19 +4,26 @@
 			><nuxt-link to="/">Accueil > </nuxt-link>Pièces</span
 		>
 		<div class="flex flex-col lg:flex-row mt-2 text-justify">
-			<h1 class="intro font-medium mb-2 md:mb-3 text-lg md:leading-tight">
-				Découvrez
-			</h1>
+			<div
+				class="intro font-medium mb-2 md:mb-3 text-lg md:leading-tight"
+			></div>
 			<div class="flex flex-col">
-				<p class="mb-2">
+				<h1 class="font-medium mb-2 md:mb-3 text-1xl md:leading-tight">
+					Achetez vos pièces d'or au meilleur prix !
+				</h1>
+				<p class="mt-2 text-sm lg:text-base">
 					Le prix affiché pour une pièce est<span class="text-important">
-						le plus bas du marché</span
+						le plus bas</span
 					>
-					des sites de pièces d'or français.
+					des sites de pièces d'or que nous comparons, et pour plus de
+					transparence, le prix affiché sous chaque pièce comprend le prix de la
+					livraison.
 				</p>
-				<p>
-					<span class="text-important">Cliquez sur une pièce</span> pour
-					analyser les prix en détails.
+				<p class="mt-2 text-sm lg:text-base">
+					Cliquez sur une pièce d'or pour
+					<span class="text-important">comparer les prix en détail.</span>
+					Vous pouvez aussi accédez au site de vente directement en cliquant sur
+					le lien.
 				</p>
 			</div>
 		</div>
@@ -121,9 +128,12 @@ export default {
 		axios.get('/api/coins').then((result) => {
 			this.coins = result.data
 			this.coins.map((coin) => {
-				coin.site = Object.keys(coin.prices).reduce((prev, curr) =>
-					coin.prices[prev] < coin.prices[curr] ? prev : curr
-				)
+				coin.site = Object.keys(coin.prices)
+					.reduce((prev, curr) =>
+						coin.prices[prev] < coin.prices[curr] ? prev : curr
+					)
+					.split(' ')
+					.join('.')
 				const minValue = min(Object.values(coin.prices), (o) => coin.prices[o])
 				coin.price = parseFloat(minValue[0]).toFixed(2)
 				coin.url = minValue[3]

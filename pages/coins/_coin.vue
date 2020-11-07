@@ -29,7 +29,6 @@ export default {
 	mounted() {
 		axios.get(`/api/coins/${this.$route.params.coin}`).then((result) => {
 			this.coinDetail = result.data
-			console.log(this.coinDetail)
 		})
 	}
 }
