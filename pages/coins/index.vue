@@ -72,7 +72,7 @@
 					:url="coin.url"
 				/>
 				<button
-					class="filters-btn lg:hidden px-8 py-2 rounded text-white font-medium"
+					class="filters-btn hidden px-8 py-2 rounded text-white font-medium"
 				>
 					Filtres
 				</button>
@@ -158,6 +158,7 @@ export default {
 	-webkit-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);
 	transform: translateX(-50%);
+	display: hidden;
 }
 
 .card {

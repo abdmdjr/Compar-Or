@@ -31,21 +31,21 @@ async function scrapeBullionByPost() {
 				piece.price = data
 				piece.livraison = 0
 				piece.totalPrice = data
-				Promise.all(retrievePrice)
-					.then(() => {
-						browser.close()
-					})
-					.catch((err) => {
-						console.log(err.message)
-					})
 			} catch (error) {
-				console.log(error)
+				console.log(error.message)
 			}
 		})
-		return pieces
+		await Promise.all(retrievePrice)
+			.then(() => {
+				browser.close()
+			})
+			.catch((err) => {
+				console.log(err.message)
+			})
 	} catch (error) {
-		console.log(error)
+		console.log(error.message)
 	}
+	return pieces
 }
 
 module.exports = {

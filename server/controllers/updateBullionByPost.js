@@ -16,8 +16,7 @@ async function bullionByPost() {
 			})
 		})
 	} catch (error) {
-		console.log(error)
-		throw error
+		console.log(error.message)
 	}
 }
 

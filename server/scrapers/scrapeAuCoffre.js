@@ -31,21 +31,21 @@ async function scrapeAuCoffre() {
 				piece.price = data
 				piece.livraison = 15
 				piece.totalPrice = piece.price + piece.livraison
-				Promise.all(retrievePrice)
-					.then(() => {
-						browser.close()
-					})
-					.catch((err) => {
-						console.log(err.message)
-					})
 			} catch (error) {
-				console.log(error)
+				console.log(error.message)
 			}
 		})
-		return pieces
+		await Promise.all(retrievePrice)
+			.then(() => {
+				browser.close()
+			})
+			.catch((err) => {
+				console.log(err.message)
+			})
 	} catch (error) {
-		console.log(error)
+		console.log(error.message)
 	}
+	return pieces
 }
 
 module.exports = {

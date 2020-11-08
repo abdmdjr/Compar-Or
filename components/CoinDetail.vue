@@ -1,13 +1,13 @@
 <template>
 	<section
-		class="flex flex-col mx-auto mt-12 mb-12 text-sm md:text-lg lg:flex-row lg:space-x-20 lg:text-xl"
+		class="flex flex-col mx-auto mt-12 mb-12 text-sm md:text-lg lg:flex-row lg:space-x-10 lg:text-xl"
 	>
 		<div
 			class="flex flex-col h-full md:space-x-12 items-center md:flex-row md:mb-6 md:justify-center lg:flex-col lg:space-x-0"
 		>
 			<client-only placeholder="Chargement des prix...">
 				<Carousel
-					class="w-320 md:w-370 lg:w-400 px-10"
+					class="w-320 md:w-370 lg:w-400 px-5"
 					:mouse-drag="true"
 					:per-page="1"
 					:center-mode="true"
