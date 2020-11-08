@@ -5,6 +5,7 @@ async function scrapeBullionByPost() {
 	try {
 		const browser = await puppeteer.launch({
 			args: [
+				'--single-process',
 				'--disable-gpu',
 				'--disable-dev-shm-usage',
 				'--disable-setuid-sandbox',
@@ -26,24 +27,26 @@ async function scrapeBullionByPost() {
 					const price = parse(priceString)
 					return price
 				})
+				console.log('BBP : ' + `${data}`)
 				piece.price = data
 				piece.livraison = 0
 				piece.totalPrice = data
+				Promise.all(retrievePrice)
+					.then(() => {
+						browser.close()
+					})
+					.catch((err) => {
+						console.log(err.message)
+					})
 			} catch (error) {
 				console.log(error)
-				throw error
 			}
 		})
-		await Promise.all(retrievePrice)
-		await browser.close()
 		return pieces
 	} catch (error) {
 		console.log(error)
-		throw error
 	}
 }
-
-scrapeBullionByPost()
 
 module.exports = {
 	scrapeBullionByPost

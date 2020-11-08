@@ -5,6 +5,7 @@ async function scrapeAuCoffre() {
 	try {
 		const browser = await puppeteer.launch({
 			args: [
+				'--single-process',
 				'--disable-gpu',
 				'--disable-dev-shm-usage',
 				'--disable-setuid-sandbox',
@@ -26,20 +27,24 @@ async function scrapeAuCoffre() {
 					)
 					return price
 				})
+				console.log('AUCOFFRE : ' + `${data}`)
 				piece.price = data
 				piece.livraison = 15
 				piece.totalPrice = piece.price + piece.livraison
+				Promise.all(retrievePrice)
+					.then(() => {
+						browser.close()
+					})
+					.catch((err) => {
+						console.log(err.message)
+					})
 			} catch (error) {
 				console.log(error)
-				throw error
 			}
 		})
-		await Promise.all(retrievePrice)
-		await browser.close()
 		return pieces
 	} catch (error) {
 		console.log(error)
-		throw error
 	}
 }
 

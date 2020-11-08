@@ -15,7 +15,7 @@ async function scrapeGoldAvenue() {
 		})
 		const retrievePrice = pieces.map(async (piece) => {
 			const page = await browser.newPage()
-			await page.goto(piece.url, { waitUntil: 'networkidle2', timeout: 0 })
+			await page.goto(piece.url, { waitUntil: 'networkidle2' })
 			try {
 				const data = await page.evaluate(() => {
 					const parse = (value) => {
@@ -27,23 +27,26 @@ async function scrapeGoldAvenue() {
 					const price = parse(priceString)
 					return price
 				})
+				console.log('GA : ' + `${data}`)
 				piece.price = data
 				piece.livraison = 52
 				piece.totalPrice = piece.price + piece.livraison
+				Promise.all(retrievePrice)
+					.then(() => {
+						browser.close()
+					})
+					.catch((err) => {
+						console.log(err.message)
+					})
 			} catch (error) {
 				console.log(error)
-				throw error
 			}
 		})
-		await Promise.all(retrievePrice)
-		await browser.close()
 		return pieces
 	} catch (error) {
 		console.log(error)
-		throw error
 	}
 }
-
 module.exports = {
 	scrapeGoldAvenue
 }
