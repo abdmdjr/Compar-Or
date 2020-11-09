@@ -50,12 +50,12 @@ async function start() {
 
 start()
 
-const job = new CronJob('*/3 * * * *', () => {
+const job = new CronJob('*/1 * * * *', async () => {
 	try {
-		goldAvenue().then(console.log('Gold Avenue OK'))
-		lingor().then(console.log('Lingor OK'))
-		auCoffre().then(console.log('Au Coffre OK'))
-		bullionByPost().then(console.log('BullionByPost OK'))
+		await goldAvenue().then(console.log('Gold Avenue scraping data'))
+		await lingor().then(console.log('Lingor scraping data'))
+		await auCoffre().then(console.log('Au Coffre scraping data'))
+		await bullionByPost().then(console.log('BullionByPost scraping data'))
 	} catch (error) {
 		console.log(error.message)
 	}
