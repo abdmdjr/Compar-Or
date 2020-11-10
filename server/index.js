@@ -50,7 +50,7 @@ async function start() {
 
 start()
 
-const job = new CronJob('*/3 * * * *', async () => {
+const job = new CronJob('*/2 * * * *', async () => {
 	try {
 		await goldAvenue().then(console.log('Gold Avenue scraping data'))
 		await lingor().then(console.log('Lingor scraping data'))
