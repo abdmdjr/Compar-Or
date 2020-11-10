@@ -2,51 +2,46 @@ const puppeteer = require('puppeteer')
 const pieces = require('../data/goldAvenueData')
 
 async function scrapeGoldAvenue() {
-	try {
-		const browser = await puppeteer.launch({
-			args: [
-				'--disable-gpu',
-				'--disable-dev-shm-usage',
-				'--disable-setuid-sandbox',
-				'--no-sandbox',
-				'--no-zygote'
-			],
-			headless: true
-		})
-		const retrievePrice = pieces.map(async (piece) => {
-			const page = await browser.newPage()
-			await page.goto(piece.url, { waitUntil: 'networkidle2', timeout: 0 })
-			try {
-				const data = await page.evaluate(() => {
-					const parse = (value) => {
-						return parseFloat(value.replace(/\s/g, '').replace(',', '.'))
-					}
-					const priceString = document.querySelector(
-						'#gtm-product-pricing-details > a'
-					).textContent
-					const price = parse(priceString)
-					return price
-				})
-				console.log('GA : ' + `${data}`)
-				piece.price = data
-				piece.livraison = 52
-				piece.totalPrice = piece.price + piece.livraison
-			} catch (error) {
-				console.log(error.message)
-			}
-		})
-		await Promise.all(retrievePrice)
-			.then(() => {
-				browser.close()
+	// Ouvrir Chromium
+	const browser = await puppeteer.launch({
+		args: [
+			'--disable-gpu',
+			'--disable-dev-shm-usage',
+			'--disable-setuid-sandbox',
+			'--no-sandbox',
+			'--no-zygote'
+		],
+		headless: true
+	})
+	// Ouvrir Onglet avec index 1 de Array.pieces
+	for (const piece of pieces) {
+		const page = await browser.newPage()
+		await page.goto(piece.url, { waitUntil: 'networkidle2', timeout: 0 })
+		try {
+			const data = await page.evaluate(() => {
+				const parse = (value) => {
+					return parseFloat(value.replace(/\s/g, '').replace(',', '.'))
+				}
+				const priceString = document.querySelector(
+					'#gtm-product-pricing-details > a'
+				).textContent
+				const price = parse(priceString)
+				return price
 			})
-			.catch((err) => {
-				console.log(err.message)
-			})
-	} catch (error) {
-		console.log(error.message)
+			piece.price = data
+			piece.livraison = 52
+			piece.totalPrice = piece.price + piece.livraison
+			console.log('GA : ' + `${data}`)
+		} catch (err) {
+			console.log(err.message)
+		} finally {
+			page.close()
+		}
 	}
+	browser.close()
 	return pieces
 }
+
 module.exports = {
 	scrapeGoldAvenue
 }
