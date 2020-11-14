@@ -183,7 +183,7 @@ export default {
 			namesRows: ['Prix total', 'Livraison', 'Prix avec livraison']
 		}
 	},
-	_computed: {
+	computed: {
 		filteredCoins() {
 			return this.coinDatas.map((coin) => {
 				return coin
@@ -199,12 +199,6 @@ export default {
 		minPrice() {
 			return this.calculatedPriceTotal.indexOf(this.bestPrice)
 		}
-	},
-	get computed() {
-		return this._computed
-	},
-	set computed(value) {
-		this._computed = value
 	},
 	mounted() {
 		axios.get(`/api/coins/${this.$route.params.coin}`).then((result) => {
