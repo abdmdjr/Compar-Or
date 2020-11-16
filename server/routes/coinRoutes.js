@@ -12,12 +12,13 @@ app.get('/coins', async (req, res) => {
 })
 
 app.get('/coins/:coin', async (req, res) => {
-	const coin = await coinModel.findOne({ slug: req.params.coin })
-	if (!coin) {
-		res.status(404).send()
-	} else {
-		res.json(coin)
-	}
+	await coinModel.findOne({ slug: req.params.coin }, (err, coin) => {
+		if (!coin) {
+			res.status(404).send(err)
+		} else {
+			return res.json(coin)
+		}
+	})
 })
 
 module.exports = app
