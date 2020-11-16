@@ -1,10 +1,11 @@
 <template>
 	<main class="container mx-auto mt-16 sm:mt-24 px-8 sm:px-16 lg:px-8">
-		<span class="block md:my-8 text-xs text-black opacity-75"
+		<span v-if="coinDetail" class="block md:my-8 text-xs text-black opacity-75"
 			><nuxt-link to="/">Accueil > </nuxt-link>
 			<nuxt-link to="/coins">Pièces > </nuxt-link>{{ coinDetail.title }}</span
 		>
 		<CoinDetail
+			v-if="coinDetail"
 			:title="coinDetail.title"
 			:img3x="coinDetail.img3x"
 			:imgar3x="coinDetail.imgar3x"
@@ -25,7 +26,7 @@ export default {
 			const result = await $axios.get(`/api/coins/${params.coin}`)
 			return { coinDetail: result.data }
 		} catch (e) {
-			error({ statusCode: 404, message: 'Post not found' })
+			error({ statusCode: 404 })
 		}
 	},
 	data() {
