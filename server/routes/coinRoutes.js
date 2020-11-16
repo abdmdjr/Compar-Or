@@ -14,7 +14,6 @@ app.get('/coins', async (req, res) => {
 app.get('/coins/:coin', async (req, res) => {
 	const coin = await coinModel.findOne({ slug: req.params.coin })
 	if (coin) {
-		res.setHeader('Access-Control-Allow-Origin', '*')
 		res.json(coin)
 	} else {
 		res.status(404).send()
