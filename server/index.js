@@ -5,7 +5,6 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 const CronJob = require('cron').CronJob
 const consola = require('consola')
-const cors = require('cors')
 const config = require('../nuxt.config.js')
 const { goldAvenue } = require('./controllers/updateGoldAvenue.js')
 const { lingor } = require('./controllers/updateLingor.js')
@@ -45,7 +44,6 @@ async function start() {
 		})
 
 	app.use(express.json())
-	app.use(cors())
 	app.use('/api', coinRouter)
 	app.use(nuxt.render)
 }
