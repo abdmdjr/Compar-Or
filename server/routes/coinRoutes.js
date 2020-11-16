@@ -16,10 +16,10 @@ app.get('/coins/:coin', async (req, res) => {
 		if (err) {
 			console.log(err)
 		}
-		if (coin) {
-			res.json(coin)
-		} else {
+		if (coin === null) {
 			res.status(404).send(err)
+		} else {
+			return res.json(coin)
 		}
 	})
 })
