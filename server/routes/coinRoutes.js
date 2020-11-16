@@ -1,9 +1,8 @@
 const express = require('express')
-const cors = require('cors')
 const coinModel = require('../models/coinModel')
 const app = express()
 
-app.get('/coins', cors(), async (req, res) => {
+app.get('/coins', async (req, res) => {
 	const coins = await coinModel.find({})
 	try {
 		res.json(coins)
@@ -12,9 +11,10 @@ app.get('/coins', cors(), async (req, res) => {
 	}
 })
 
-app.get('/coins/:coin', cors(), async (req, res) => {
-	const coin = await coinModel.findOne({ slug: req.params.coin }).exec()
+app.get('/coins/:coin', async (req, res) => {
+	const coin = await coinModel.findOne({ slug: req.params.coin })
 	if (coin) {
+		res.setHeader('Access-Control-Allow-Origin', '*')
 		res.json(coin)
 	} else {
 		res.status(404).send()
