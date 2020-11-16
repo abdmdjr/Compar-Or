@@ -23,7 +23,9 @@ export default {
 	},
 	async asyncData({ $axios, params, error }) {
 		try {
-			const result = await $axios.get(`/api/coins/${params.coin}`)
+			const result = await $axios.get(
+				`http://localhost:3000/api/coins/${params.coin}`
+			)
 			return { coinDetail: result.data }
 		} catch (e) {
 			error({ statusCode: 404, message: 'Post not found' })
