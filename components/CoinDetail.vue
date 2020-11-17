@@ -62,68 +62,49 @@
 				de port, et le prix total pour la pièce "<strong>{{ title }}</strong
 				>" en temps réel.
 			</p>
-			<table class="table-auto mt-6 w-full text-right text-gray-800">
-				<thead></thead>
+			<table class="table-auto mt-6 text-right text-gray-800">
+				<thead>
+					<th class="px-2 py-2"></th>
+					<th class="px-2 py-2">Prix</th>
+					<th class="px-2 py-2">Livraison</th>
+					<th class="px-2 py-2">Prix total</th>
+				</thead>
 				<tbody>
-					<tr class="border-b bg-white bg-opacity-25">
-						<div class="px-2 py-5 rounded-t-md text-left">
-							Prix
-						</div>
-						<td
-							v-for="(resultPrice, index) in filteredCoins"
-							:key="index"
-							class="px-2 py-5 rounded-t-md"
-							:class="{ colorBestPrice: index === minPrice }"
-						>
-							{{ resultPrice[1][1] }}€
-						</td>
-					</tr>
-					<tr class="border-b bg-gray-100">
-						<div class="px-2 py-5 text-left">
-							Livraison
-						</div>
-						<td
-							v-for="(livraison, index) in filteredCoins"
-							:key="index"
-							class="px-2 py-5"
-							:class="{ colorBestLivraison: index === minPrice }"
-						>
-							+ {{ livraison[1][2] }}€
-						</td>
-					</tr>
-					<tr class="border-b bg-white bg-opacity-25">
-						<div class="px-2 py-5 text-left">
-							Prix total
-						</div>
-						<td
-							v-for="(resultPriceTotal, index) in calculatedPriceTotal"
-							:key="index"
-							class="px-2 py-5"
-							:class="{ colorBestPriceTotal: index === minPrice }"
-						>
-							{{ resultPriceTotal }}€
-						</td>
-					</tr>
-					<tr>
-						<div
-							class="flex items-center px-2 h-12 rounded-b-md text-left"
-						></div>
-						<td
-							v-for="(column, index) in filteredCoins"
-							:key="index"
-							class="colorLinkBase font-medium text-center text-gray-700 px-0 py-0 rounded-b-md"
-							:class="{ colorBestSite: index === minPrice }"
-						>
+					<tr
+						v-for="(column, index) in filteredCoins"
+						:key="index"
+						class="font-medium text-left text-gray-700 rounded-b-md"
+						:class="{ colorBestSite: index === minPrice }"
+					>
+						<td class="px-2 py-2">
 							<a
 								:href="column[1][3]"
 								target="_blank"
 								rel="noopener noreferrer"
 								:aria-label="`${column[0]} - ${title}`"
-								class="paddingPrice"
-								:class="{ paddingBestSiteFirst: index === minPrice }"
+								class=""
 							>
 								{{ column[0].split(' ').join('.') }}
 							</a>
+						</td>
+
+						<td
+							class="px-2 py-2 text-right"
+							:class="{ colorBestPrice: index === minPrice }"
+						>
+							{{ column[1][1] }}
+						</td>
+						<td
+							class="px-2 py-2 text-right"
+							:class="{ colorBestLivraison: index === minPrice }"
+						>
+							{{ column[1][2] }}
+						</td>
+						<td
+							class="px-2 py-2 text-right"
+							:class="{ colorBestPriceTotal: index === minPrice }"
+						>
+							{{ column[1][0] }}
 						</td>
 					</tr>
 				</tbody>
@@ -186,6 +167,7 @@ export default {
 	computed: {
 		filteredCoins() {
 			return this.coinDatas.map((coin) => {
+				console.log(coin)
 				return coin
 			})
 		},
@@ -207,10 +189,6 @@ export default {
 			this.bestPrice = Math.min(...this.calculatedPriceTotal).toFixed(2)
 			this.bestSite = this.filteredCoins[this.minPrice][0].split(' ').join('.')
 			this.bestUrl = this.filteredCoins[this.minPrice][1][3]
-			// console.log('calculatedPriceTotal = ', this.calculatedPriceTotal)
-			// console.log('bestprice = ' + this.bestPrice)
-			// console.log('coinmap = ', this.filteredCoins)
-			// console.log('index = ', this.calculatedPriceTotal.indexOf(this.minPrice))
 		})
 	},
 	head() {
@@ -229,59 +207,21 @@ export default {
 .VueCarousel-dot {
 	border-radius: 100%;
 }
-.colorBestPrice {
-	@apply bg-white;
-	position: relative;
-	z-index: 3;
-	box-shadow: 0px -10px 15px 1px rgba(0, 0, 0, 0.05),
-		0 1px 1px -8px rgba(0, 0, 0, 0.05);
-}
-.colorBestLivraison {
-	@apply bg-gray-200;
-	position: relative;
-	z-index: 2;
-	box-shadow: 0 0px 20px -2px rgba(0, 0, 0, 0.1),
-		0 4px 6px 0px rgba(0, 0, 0, 0.05);
-}
+.colorBestSite,
+.colorBestPrice,
+.colorBestLivraison,
 .colorBestPriceTotal {
-	@apply bg-white;
-	position: relative;
-	z-index: 4;
-	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-		0 4px 6px -2px rgba(0, 0, 0, 0.05);
+	background-attachment: fixed;
+	background-image: linear-gradient(-180deg, #f7c298 0%, #f2a68b 100%);
 }
 .colorBestSite:hover {
-	@apply shadow-xl transition duration-200 ease-in-out;
-}
-.paddingBestSiteFirst {
-	@apply px-3 py-3;
-}
-.paddingPrice {
-	font-size: 0.82rem;
-	@apply px-1 py-3;
-}
-.colorLinkBase {
-	background-image: linear-gradient(10deg, #fdfbfb79 0%, #ebedee75 100%);
+	@apply shadow-md transition duration-100 ease-in-out;
 }
 .colorBestSite {
-	position: relative;
-	z-index: 5;
-	background: linear-gradient(180deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
-
-	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-		0 4px 6px -2px rgba(0, 0, 0, 0.05);
 	@apply rounded-b-md text-white;
 }
 .btn-price {
 	background: linear-gradient(180deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
-}
-@screen md {
-	.paddingBestSiteFirst {
-		@apply px-0 py-2 block;
-	}
-	.paddingPrice {
-		font-size: 1.15rem;
-	}
 }
 img {
 	-webkit-filter: drop-shadow(3px 3px 3px rgb(129, 129, 129));

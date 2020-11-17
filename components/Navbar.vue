@@ -6,7 +6,7 @@
 			<h1 class="font-medium text-xl tracking-tight text-white">Compar'Or</h1>
 			<div class="block sm:hidden">
 				<button class="flex items-center text-teal-lighter" @click="toggle">
-					<i class="material-icons text-black">menu</i>
+					<i class="material-icons text-white">double_arrow</i>
 				</button>
 			</div>
 			<div

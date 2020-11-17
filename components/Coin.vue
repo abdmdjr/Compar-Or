@@ -26,8 +26,14 @@
 					target="_blank"
 					rel="noopener noreferrer"
 					:aria-label="`link to ${site} - ${title}`"
-					><button class="btn-price text-white text-sm py-2 px-4 rounded-md">
-						{{ site }}
+					><button
+						class="btn-price flex items-center align-center text-white text-sm py-2 px-4 rounded-md"
+					>
+						Voir les prix<i
+							class="material-icons text-white"
+							style="font-size:18px;"
+							>navigate_next</i
+						>
 					</button></a
 				>
 			</div>
@@ -76,9 +82,15 @@ img {
 	filter: drop-shadow(1px 1px 1px rgb(138, 138, 138));
 	max-width: 140px;
 }
+.btn-price:hover {
+	background: linear-gradient(110deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
+	opacity: 1;
+	@apply shadow-xl;
+}
 .btn-price {
 	background: linear-gradient(180deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
-	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-		0 4px 6px -2px rgba(0, 0, 0, 0.05);
+	opacity: 0.9;
+	transition: all 0.2s ease-in-out;
+	@apply shadow-lg;
 }
 </style>
