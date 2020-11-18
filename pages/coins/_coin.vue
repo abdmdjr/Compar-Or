@@ -1,5 +1,5 @@
 <template>
-	<main class="container mx-auto mt-16 sm:mt-24 px-8 sm:px-16 lg:px-8">
+	<main class="container mx-auto mt-16 sm:mt-24 px-5 sm:px-16 lg:px-8">
 		<span v-if="coinDetail" class="block md:my-8 text-xs text-black opacity-75"
 			><nuxt-link to="/">Accueil > </nuxt-link>
 			<nuxt-link to="/coins">Pièces > </nuxt-link>{{ coinDetail.title }}</span

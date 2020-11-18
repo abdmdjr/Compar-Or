@@ -1,6 +1,6 @@
 <template>
 	<section
-		class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center px-8 pt-5 sm:px-16 lg:px-8"
+		class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center px-5 pt-5 sm:px-16 lg:px-8"
 	>
 		<div class="text-content flex flex-col">
 			<h1 class="title text-2xl md:text-5xl lg:text-4xl mt-5 text-gray-800">

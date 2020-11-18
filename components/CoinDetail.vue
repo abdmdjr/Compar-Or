@@ -20,9 +20,7 @@
 					<Slide><img :src="imgar3x" :alt="title"/></Slide>
 				</Carousel>
 			</client-only>
-			<!-- 			<img :src="imgar3x" width="400" :alt="title" />
- -->
-			<div class="info w-auto">
+			<div class="w-auto">
 				<h1
 					class="mt-6 text-xl text-center text-gray-800 font-normal leading-none md:text-xl lg:text-2xl lg:mt-6"
 				>
@@ -33,7 +31,7 @@
 					>
 				</h1>
 				<p
-					class="text-xl block self-center text-center mt-3 md:text-2xl lg:mt-5 lg:text-2xl"
+					class="leading-none text-lg block self-center text-center mt-3 md:text-2xl lg:mt-5"
 				>
 					<strong>{{ bestPrice }}€</strong> sur
 					<a
@@ -43,11 +41,12 @@
 						:aria-label="`link to ${bestSite} - ${title}`"
 						class="shadow-sm hover:shadow-xl lg:transition lg:duration-200 lg:ease-in-out"
 					>
-						<button class="btn-price text-white text-lg py-2 px-4 rounded-md">
+						<button
+							class="btn-price leading-none text-white py-3 px-3 rounded-md"
+						>
 							{{ bestSite }}
 						</button>
 					</a>
-					<br />
 				</p>
 			</div>
 		</div>
@@ -62,21 +61,23 @@
 				de port, et le prix total pour la pièce "<strong>{{ title }}</strong
 				>" en temps réel.
 			</p>
-			<table class="table-auto mt-6 text-right text-gray-800">
-				<thead>
-					<th class="px-2 py-2"></th>
-					<th class="px-2 py-2">Prix</th>
-					<th class="px-2 py-2">Livraison</th>
-					<th class="px-2 py-2">Prix total</th>
+			<table
+				class="table-auto text-md md:text-lg mt-6 w-full text-right text-gray-800"
+			>
+				<thead class="text-right">
+					<th></th>
+					<th class="py-2 font-medium">Prix</th>
+					<th class="py-2 font-medium">Livraison</th>
+					<th class="py-2 font-medium">Total</th>
 				</thead>
 				<tbody>
 					<tr
 						v-for="(column, index) in filteredCoins"
 						:key="index"
-						class="font-medium text-left text-gray-700 rounded-b-md"
+						class="font-base border-b text-left text-gray-700 rounded-b-md"
 						:class="{ colorBestSite: index === minPrice }"
 					>
-						<td class="px-2 py-2">
+						<td class="">
 							<a
 								:href="column[1][3]"
 								target="_blank"
@@ -84,27 +85,27 @@
 								:aria-label="`${column[0]} - ${title}`"
 								class=""
 							>
-								{{ column[0].split(' ').join('.') }}
+								{{ column[0].split(' ').shift(1) }}
 							</a>
 						</td>
 
 						<td
-							class="px-2 py-2 text-right"
+							class="border-b px-1 py-2 text-right"
 							:class="{ colorBestPrice: index === minPrice }"
 						>
-							{{ column[1][1] }}
+							{{ column[1][1] }}€
 						</td>
 						<td
-							class="px-2 py-2 text-right"
+							class="border-b px-1 py-4 text-right"
 							:class="{ colorBestLivraison: index === minPrice }"
 						>
-							{{ column[1][2] }}
+							{{ column[1][2] }}€
 						</td>
 						<td
-							class="px-2 py-2 text-right"
+							class="border-b px-1 py-4 text-right"
 							:class="{ colorBestPriceTotal: index === minPrice }"
 						>
-							{{ column[1][0] }}
+							{{ column[1][0].toFixed(2) }}€
 						</td>
 					</tr>
 				</tbody>
@@ -160,21 +161,18 @@ export default {
 			coinDesc: [],
 			bestPrice: '',
 			bestSite: '',
-			bestUrl: '',
-			namesRows: ['Prix total', 'Livraison', 'Prix avec livraison']
+			bestUrl: ''
 		}
 	},
 	computed: {
 		filteredCoins() {
 			return this.coinDatas.map((coin) => {
-				console.log(coin)
 				return coin
 			})
 		},
 		calculatedPriceTotal() {
 			return this.coinDatas.map((coin) => {
-				let priceTotal = coin[1][0]
-				priceTotal = parseFloat(priceTotal).toFixed(2)
+				const priceTotal = coin[1][0]
 				return priceTotal
 			})
 		},
@@ -185,8 +183,12 @@ export default {
 	mounted() {
 		axios.get(`/api/coins/${this.$route.params.coin}`).then((result) => {
 			this.coinDatas = Object.entries(result.data.prices)
+			this.coinDatas.sort((a, b) => {
+				return a[1][0] - b[1][0]
+			})
+			console.log(this.coinDatas)
 			this.coinDesc = Object.entries(result.data)[1][1]
-			this.bestPrice = Math.min(...this.calculatedPriceTotal).toFixed(2)
+			this.bestPrice = Math.min(...this.calculatedPriceTotal)
 			this.bestSite = this.filteredCoins[this.minPrice][0].split(' ').join('.')
 			this.bestUrl = this.filteredCoins[this.minPrice][1][3]
 		})
@@ -207,16 +209,24 @@ export default {
 .VueCarousel-dot {
 	border-radius: 100%;
 }
-.colorBestSite,
+.colorBestSite {
+	background-image: linear-gradient(-180deg, #f7c298 0%, #f2a68b 100%);
+}
+@screen lg {
+	a.full-link {
+		display: block;
+		padding: 0.8em;
+	}
+}
+
 .colorBestPrice,
 .colorBestLivraison,
 .colorBestPriceTotal {
-	background-attachment: fixed;
-	background-image: linear-gradient(-180deg, #f7c298 0%, #f2a68b 100%);
+	@apply bg-gray-100 text-gray-800;
 }
-.colorBestSite:hover {
+/* .colorBestSite:hover {
 	@apply shadow-md transition duration-100 ease-in-out;
-}
+} */
 .colorBestSite {
 	@apply rounded-b-md text-white;
 }
