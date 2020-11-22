@@ -27,11 +27,13 @@
 					rel="noopener noreferrer"
 					:aria-label="`link to ${site} - ${title}`"
 					><button
-						class="btn-price flex items-center align-center text-white text-sm py-2 px-4 rounded-md"
+						class="btn-price flex items-center align-center text-white text-sm py-2 px-3 rounded"
 					>
-						Voir les prix<i
-							class="material-icons text-white"
-							style="font-size:18px;"
+						Voir les prix
+						<i class="material-icons md-18 text-white">navigate_next</i
+						><i
+							class="material-icons md-18 second-icon text-white"
+							style="width:12px;"
 							>navigate_next</i
 						>
 					</button></a

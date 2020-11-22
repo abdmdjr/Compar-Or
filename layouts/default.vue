@@ -54,4 +54,20 @@ h6 {
 	font-weight: 500;
 	@apply text-gray-900;
 }
+
+.material-icons.md-18 {
+	font-size: 18px;
+}
+.material-icons.md-24 {
+	font-size: 24px;
+}
+.material-icons.md-36 {
+	font-size: 36px;
+}
+.material-icons.md-48 {
+	font-size: 48px;
+}
+.second-icon {
+	margin-left: -0.85rem;
+}
 </style>

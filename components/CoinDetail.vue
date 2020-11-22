@@ -7,7 +7,7 @@
 		>
 			<client-only placeholder="Chargement des prix...">
 				<Carousel
-					class="w-320 md:w-370 lg:w-400 px-5"
+					class="w-310 md:w-310 lg:w-400 px-5"
 					:mouse-drag="true"
 					:per-page="1"
 					:center-mode="true"
@@ -20,89 +20,121 @@
 					<Slide><img :src="imgar3x" :alt="title"/></Slide>
 				</Carousel>
 			</client-only>
-			<div class="w-auto">
+			<div class="flex flex-col items-center">
 				<h1
-					class="mt-6 text-xl text-center text-gray-800 font-normal leading-none md:text-xl lg:text-2xl lg:mt-6"
+					class="mt-4 lg:mt-6 text-xl lg:text-2xl text-gray-800 text-center font-normal leading-none"
 				>
 					{{ title }}
 					<span
-						class="text-sm block self-center mt-2 font-light md:text-lg lg:text-xl"
+						class="block self-center mt-2 lg:text-xl text-base font-light"
 						>{{ gr }}</span
 					>
 				</h1>
-				<p
-					class="leading-none text-lg block self-center text-center mt-3 md:text-2xl lg:mt-5"
+				<h2
+					class="my-3 lg:my-5 text-base md:text-xl lg:text-2xl text-gray-800 font-light text-center"
 				>
-					<strong>{{ bestPrice }}€</strong> sur
-					<a
-						:href="bestUrl"
-						target="_blank"
-						rel="noopener noreferrer"
-						:aria-label="`link to ${bestSite} - ${title}`"
-						class="shadow-sm hover:shadow-xl lg:transition lg:duration-200 lg:ease-in-out"
+					Meilleur prix : <strong>{{ bestPrice }}€</strong>
+				</h2>
+				<a
+					:href="bestUrl"
+					target="_blank"
+					rel="noopener noreferrer"
+					:aria-label="`link to ${bestSite} - ${title}`"
+					class=""
+				>
+					<button
+						class="btnprice py-3 pl-4 pr-5 flex items-center align-center text-white text-sm md:text-lg rounded"
 					>
-						<button
-							class="btn-price leading-none text-white py-3 px-3 rounded-md"
+						{{ bestSite
+						}}<i class="material-icons md-18 text-white">navigate_next</i
+						><i
+							class="material-icons md-18 second-icon text-white"
+							style="width:8px;"
+							>navigate_next</i
 						>
-							{{ bestSite }}
-						</button>
-					</a>
-				</p>
+					</button>
+				</a>
 			</div>
 		</div>
 		<section class="text-justify w-full self-center">
 			<h2
-				class="text-lg text-center mb-4 mt-6 font-normal md:mt-12 md:mb-8 md:text-2xl lg:mb-5 lg:mt-0 lg:text-left"
+				class="text-base mb-2 mt-8 font-normal md:mt-12 md:mb-8 md:text-2xl lg:mb-5 lg:mt-0 lg:text-left"
 			>
 				Comparaison des prix
 			</h2>
-			<p class="text-sm md:text-lg font-light">
+			<p class="text-sm mb-2 md:text-lg font-light">
 				Ce tableau indique les prix affichés sur les sites de vente, les frais
 				de port, et le prix total pour la pièce "<strong>{{ title }}</strong
 				>" en temps réel.
 			</p>
 			<table
-				class="table-auto text-md md:text-lg mt-6 w-full text-right text-gray-800"
+				class="table-auto lg:table-fixed border-collapse text-xs md:text-lg w-full text-right text-gray-800"
 			>
-				<thead class="text-right">
-					<th></th>
-					<th class="py-2 font-medium">Prix</th>
-					<th class="py-2 font-medium">Livraison</th>
-					<th class="py-2 font-medium">Total</th>
+				<thead class="">
+					<th class="lg:w-1/4"></th>
+					<th class="py-2 px-1 text-gray-700 font-light text-xs md:text-lg">
+						Prix
+					</th>
+					<th class="py-2 px-1 text-gray-700 font-light text-xs md:text-lg">
+						Livraison
+					</th>
+					<th class="py-2 px-1 text-gray-700 font-light text-xs md:text-lg">
+						Total
+					</th>
 				</thead>
 				<tbody>
 					<tr
 						v-for="(column, index) in filteredCoins"
 						:key="index"
-						class="font-base border-b text-left text-gray-700 rounded-b-md"
+						class="font-base text-gray-700 bg-gray-100"
 						:class="{ colorBestSite: index === minPrice }"
 					>
-						<td class="">
+						<td
+							class="text-left relative rounded-tl-md"
+							:class="{ btnpricetable: index === minPrice }"
+						>
 							<a
 								:href="column[1][3]"
 								target="_blank"
 								rel="noopener noreferrer"
 								:aria-label="`${column[0]} - ${title}`"
-								class=""
+								class="block py-3 px-1 md:px-5"
 							>
-								{{ column[0].split(' ').shift(1) }}
+								<span v-if="index === 0" class="ping absolute">
+									<span
+										class="animate-ping absolute rounded-full w-2 h-2 bg-opacity-50 bg-orange-900"
+									></span>
+									<span
+										class="w-2 h-2 absolute rounded-full bg-black bg-opacity-25"
+									></span>
+								</span>
+								<span class="text-base">{{ index + 1 }}.</span>
+								{{ column[0].split(' ').join('.') }}
 							</a>
 						</td>
 
 						<td
-							class="border-b px-1 py-2 text-right"
+							class="px-2 md:px-3 border-b"
 							:class="{ colorBestPrice: index === minPrice }"
 						>
 							{{ column[1][1] }}€
 						</td>
 						<td
-							class="border-b px-1 py-4 text-right"
+							v-if="column[1][2] === 0"
+							class="px-2 md:px-3 border-b"
+							:class="{ colorBestLivraison: index === minPrice }"
+						>
+							Offert
+						</td>
+						<td
+							v-else
+							class="px-2 md:px-3 border-b"
 							:class="{ colorBestLivraison: index === minPrice }"
 						>
 							{{ column[1][2] }}€
 						</td>
 						<td
-							class="border-b px-1 py-4 text-right"
+							class="pr-1 md:px-3 border-b rounded-tr-md"
 							:class="{ colorBestPriceTotal: index === minPrice }"
 						>
 							{{ column[1][0].toFixed(2) }}€
@@ -111,7 +143,7 @@
 				</tbody>
 			</table>
 			<h2
-				class="text-lg text-center mb-3 mt-6 font-normal md:mt-12 md:mb-8 md:text-2xl lg:mt-10 lg:mb-5 lg:text-left"
+				class="text-base mb-2 mt-8 font-normal md:mt-12 md:mb-8 md:text-2xl lg:mt-10 lg:mb-5 lg:text-left"
 			>
 				Description
 			</h2>
@@ -209,29 +241,40 @@ export default {
 .VueCarousel-dot {
 	border-radius: 100%;
 }
-.colorBestSite {
-	background-image: linear-gradient(-180deg, #f7c298 0%, #f2a68b 100%);
+.ping {
+	top: 22%;
+	left: 86%;
 }
-@screen lg {
-	a.full-link {
-		display: block;
-		padding: 0.8em;
-	}
+.animate-ping {
+	animation: ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
-
 .colorBestPrice,
 .colorBestLivraison,
 .colorBestPriceTotal {
-	@apply bg-gray-100 text-gray-800;
+	background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+	background-attachment: fixed;
+	@apply text-white border-b-0;
+}
+.btnpricetable {
+	background: linear-gradient(110deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
 }
 /* .colorBestSite:hover {
 	@apply shadow-md transition duration-100 ease-in-out;
 } */
 .colorBestSite {
-	@apply rounded-b-md text-white;
+	@apply text-white;
 }
-.btn-price {
+.btnprice:hover {
+	background: linear-gradient(110deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
+	@apply shadow-sm;
+}
+.btnprice {
 	background: linear-gradient(180deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
+}
+
+.btnpricetable:hover {
+	background: linear-gradient(110deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
+	@apply shadow-md;
 }
 img {
 	-webkit-filter: drop-shadow(3px 3px 3px rgb(129, 129, 129));
