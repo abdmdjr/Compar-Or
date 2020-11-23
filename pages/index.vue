@@ -17,7 +17,7 @@
 				class="self-start shadow-lg hover:shadow-xl lg:transition lg:duration-300 lg:ease-in-out"
 				to="/coins"
 			>
-				<button class="btn mt-5 lg:mt-2 rounded-lg text-sm font-medium">
+				<button class="btn mt-5 lg:mt-2 rounded text-sm font-medium">
 					Trouvez votre pièce
 				</button>
 			</nuxt-link>

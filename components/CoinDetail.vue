@@ -3,11 +3,11 @@
 		class="flex flex-col mx-auto mt-12 mb-12 text-sm md:text-lg lg:flex-row lg:space-x-10 lg:text-xl"
 	>
 		<div
-			class="flex flex-col h-full md:space-x-12 items-center md:flex-row md:mb-6 md:justify-center lg:flex-col lg:space-x-0"
+			class="flex flex-col h-full md:space-x-12 items-center md:flex-row md:justify-center lg:flex-col lg:space-x-0"
 		>
 			<client-only placeholder="Chargement des prix...">
 				<Carousel
-					class="w-310 md:w-310 lg:w-400 px-5"
+					class="w-310 px-5"
 					:mouse-drag="true"
 					:per-page="1"
 					:center-mode="true"
@@ -22,13 +22,12 @@
 			</client-only>
 			<div class="flex flex-col items-center">
 				<h1
-					class="mt-4 lg:mt-6 text-xl lg:text-2xl text-gray-800 text-center font-normal leading-none"
+					class="mt-4 lg:mt-6 text-xl md:text-2xl text-gray-800 text-center font-normal leading-none"
 				>
 					{{ title }}
-					<span
-						class="block self-center mt-2 lg:text-xl text-base font-light"
-						>{{ gr }}</span
-					>
+					<span class="mt-2 block text-base lg:text-xl font-light">{{
+						gr
+					}}</span>
 				</h1>
 				<h2
 					class="my-3 lg:my-5 text-base md:text-xl lg:text-2xl text-gray-800 font-light text-center"
@@ -56,29 +55,29 @@
 				</a>
 			</div>
 		</div>
-		<section class="text-justify w-full self-center">
+		<section class="w-full self-center text-justify">
 			<h2
-				class="text-base mb-2 mt-8 font-normal md:mt-12 md:mb-8 md:text-2xl lg:mb-5 lg:mt-0 lg:text-left"
+				class="mt-8 mb-3 md:mt-10 lg:mb-3 lg:mt-0 text-base md:text-xl font-normal"
 			>
 				Comparaison des prix
 			</h2>
-			<p class="text-sm mb-2 md:text-lg font-light">
+			<p class="mb-4 text-sm md:text-lg font-light">
 				Ce tableau indique les prix affichés sur les sites de vente, les frais
 				de port, et le prix total pour la pièce "<strong>{{ title }}</strong
 				>" en temps réel.
 			</p>
 			<table
-				class="table-auto lg:table-fixed border-collapse text-xs md:text-lg w-full text-right text-gray-800"
+				class="table-auto md:table-fixed w-full border-collapse text-right text-xs md:text-lg text-gray-800"
 			>
 				<thead class="">
-					<th class="lg:w-1/4"></th>
-					<th class="py-2 px-1 text-gray-700 font-light text-xs md:text-lg">
+					<th class="md:w-2/6 lg:w-1/3"></th>
+					<th class="py-2 px-1 text-xs md:text-lg text-gray-700 font-light">
 						Prix
 					</th>
-					<th class="py-2 px-1 text-gray-700 font-light text-xs md:text-lg">
+					<th class="py-2 px-1 text-xs md:text-lg text-gray-700 font-light">
 						Livraison
 					</th>
-					<th class="py-2 px-1 text-gray-700 font-light text-xs md:text-lg">
+					<th class="py-2 px-1 text-xs md:text-lg text-gray-700 font-light">
 						Total
 					</th>
 				</thead>
@@ -86,12 +85,13 @@
 					<tr
 						v-for="(column, index) in filteredCoins"
 						:key="index"
-						class="font-base text-gray-700 bg-gray-100"
 						:class="{ colorBestSite: index === minPrice }"
 					>
 						<td
-							class="text-left relative rounded-tl-md"
-							:class="{ btnpricetable: index === minPrice }"
+							class="text-left border-b rounded-tl"
+							:class="{
+								btnpricetable: index === minPrice
+							}"
 						>
 							<a
 								:href="column[1][3]"
@@ -100,51 +100,49 @@
 								:aria-label="`${column[0]} - ${title}`"
 								class="block py-3 px-1 md:px-5"
 							>
-								<span v-if="index === 0" class="ping absolute">
-									<span
-										class="animate-ping absolute rounded-full w-2 h-2 bg-opacity-50 bg-orange-900"
-									></span>
-									<span
-										class="w-2 h-2 absolute rounded-full bg-black bg-opacity-25"
-									></span>
-								</span>
-								<span class="text-base">{{ index + 1 }}.</span>
+								<span class="text-xs md:text-base">{{ index + 1 }}.</span>
 								{{ column[0].split(' ').join('.') }}
 							</a>
 						</td>
 
 						<td
 							class="px-2 md:px-3 border-b"
-							:class="{ colorBestPrice: index === minPrice }"
+							:class="{
+								colorBestPrice: index === minPrice
+							}"
 						>
 							{{ column[1][1] }}€
 						</td>
 						<td
 							v-if="column[1][2] === 0"
 							class="px-2 md:px-3 border-b"
-							:class="{ colorBestLivraison: index === minPrice }"
+							:class="{
+								colorBestLivraison: index === minPrice
+							}"
 						>
 							Offert
 						</td>
 						<td
 							v-else
 							class="px-2 md:px-3 border-b"
-							:class="{ colorBestLivraison: index === minPrice }"
+							:class="{
+								colorBestLivraison: index === minPrice
+							}"
 						>
 							{{ column[1][2] }}€
 						</td>
 						<td
-							class="pr-1 md:px-3 border-b rounded-tr-md"
-							:class="{ colorBestPriceTotal: index === minPrice }"
+							class="pr-1 md:px-3 border-b rounded-tr"
+							:class="{
+								colorBestPriceTotal: index === minPrice
+							}"
 						>
 							{{ column[1][0].toFixed(2) }}€
 						</td>
 					</tr>
 				</tbody>
 			</table>
-			<h2
-				class="text-base mb-2 mt-8 font-normal md:mt-12 md:mb-8 md:text-2xl lg:mt-10 lg:mb-5 lg:text-left"
-			>
+			<h2 class="mt-8 mb-3 md:mt-10 lg:mb-3 text-base md:text-xl font-normal">
 				Description
 			</h2>
 			<p
@@ -241,21 +239,18 @@ export default {
 .VueCarousel-dot {
 	border-radius: 100%;
 }
-.ping {
-	top: 22%;
-	left: 86%;
-}
-.animate-ping {
-	animation: ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
 .colorBestPrice,
 .colorBestLivraison,
 .colorBestPriceTotal {
 	background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 	background-attachment: fixed;
-	@apply text-white border-b-0;
+	@apply border-b-0 text-white;
 }
 .btnpricetable {
+	background: linear-gradient(110deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
+	@apply border-b-0 shadow-sm;
+}
+.btnpricetable:hover {
 	background: linear-gradient(110deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
 }
 /* .colorBestSite:hover {
@@ -272,10 +267,6 @@ export default {
 	background: linear-gradient(180deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
 }
 
-.btnpricetable:hover {
-	background: linear-gradient(110deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
-	@apply shadow-md;
-}
 img {
 	-webkit-filter: drop-shadow(3px 3px 3px rgb(129, 129, 129));
 	filter: drop-shadow(1px 2px 3px rgb(129, 129, 129));

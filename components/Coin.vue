@@ -1,33 +1,28 @@
 <template>
-	<div class="mt-10 rounded-lg shadow-lg">
+	<div
+		class="mt-10 rounded shadow-md hover:shadow-lg duration-150 transition-shadow"
+	>
 		<div class="flex flex-col px-3 py-8 items-center">
-			<nuxt-link :to="`/coins/${slug}`">
-				<ul class="flex flex-col items-center">
-					<li class="">
+			<ul class="flex flex-col items-center">
+				<li class="">
+					<nuxt-link :to="`/coins/${slug}`">
 						<img class="" :src="img" :alt="title" />
-					</li>
-					<li class="mt-5 text-center">
-						<h1 class="text-important">{{ title }}</h1>
-					</li>
-					<li class="mb-3 text-xs font-light">
-						<h2>{{ gr }}</h2>
-					</li>
-				</ul>
-			</nuxt-link>
-			<nuxt-link :to="`/coins/${slug}`" class="">
-				<h3 class="text-center text-important text-xl leading-none">
-					{{ price }} €
-				</h3>
-			</nuxt-link>
+					</nuxt-link>
+				</li>
+				<li class="mt-5 text-center">
+					<h1 class="text-important">{{ title }}</h1>
+				</li>
+				<li class="mb-3 text-xs font-light">
+					<h2>{{ gr }}</h2>
+				</li>
+			</ul>
+			<h3 class="text-center text-important text-xl leading-none">
+				{{ price }} €
+			</h3>
 			<div class="mt-3">
-				<a
-					class="shadow-sm hover:shadow-xl lg:transition lg:duration-200 lg:ease-in-out"
-					:href="url"
-					target="_blank"
-					rel="noopener noreferrer"
-					:aria-label="`link to ${site} - ${title}`"
+				<nuxt-link :to="`/coins/${slug}`"
 					><button
-						class="btn-price flex items-center align-center text-white text-sm py-2 px-3 rounded"
+						class="btn-price flex items-center align-center py-2 px-3 text-sm text-white rounded"
 					>
 						Voir les prix
 						<i class="material-icons md-18 text-white">navigate_next</i
@@ -36,7 +31,7 @@
 							style="width:12px;"
 							>navigate_next</i
 						>
-					</button></a
+					</button></nuxt-link
 				>
 			</div>
 		</div>
@@ -66,10 +61,6 @@ export default {
 			type: String,
 			required: true
 		},
-		url: {
-			type: String,
-			required: true
-		},
 		slug: {
 			type: String,
 			required: true
@@ -86,13 +77,9 @@ img {
 }
 .btn-price:hover {
 	background: linear-gradient(110deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
-	opacity: 1;
-	@apply shadow-xl;
 }
 .btn-price {
 	background: linear-gradient(180deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
-	opacity: 0.9;
-	transition: all 0.2s ease-in-out;
-	@apply shadow-lg;
+	@apply shadow-sm;
 }
 </style>

@@ -11,13 +11,13 @@
 			</div>
 			<div
 				:class="open ? 'block' : 'hidden'"
-				class="burger w-full flex-grow sm:flex sm:items-center sm:w-auto py-5 rounded-md"
+				class="burger w-full flex-grow sm:flex sm:items-center sm:w-auto py-5 rounded"
 			>
 				<ul
 					class="list flex flex-col sm:flex-row sm:justify-end text-sm sm:flex-grow sm:items-center sm:space-x-8"
 				>
 					<li>
-						<button class="btn-price py-2 px-4 text-white rounded-md">
+						<button class="btn-price py-2 px-4 text-white rounded">
 							<a
 								href="#"
 								class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter"

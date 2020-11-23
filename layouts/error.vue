@@ -15,7 +15,7 @@
 				La page "{{ this.$route.path }}" n'existe pas.
 			</p>
 			<nuxt-link to="/coins" class="mt-4"
-				><button class="btn mt-5 lg:mt-2 rounded-lg text-sm font-medium">
+				><button class="btn mt-5 lg:mt-2 rounded text-sm font-medium">
 					Retour aux pièces
 				</button>
 			</nuxt-link>

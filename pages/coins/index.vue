@@ -22,8 +22,6 @@
 				<p class="mt-2 text-sm lg:text-base">
 					Cliquez sur une pièce d'or pour
 					<span class="text-important">comparer les prix en détail.</span>
-					Vous pouvez aussi accédez au site de vente directement en cliquant sur
-					le lien.
 				</p>
 			</div>
 		</div>
@@ -69,7 +67,6 @@
 					:gr="coin.gr"
 					:price="coin.price"
 					:site="coin.site"
-					:url="coin.url"
 				/>
 				<button
 					class="filters-btn hidden px-8 py-2 rounded text-white font-medium"
