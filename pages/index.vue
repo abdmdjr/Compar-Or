@@ -23,7 +23,8 @@
 			</nuxt-link>
 		</div>
 		<img
-			src="~/assets/img/catch-gold11.png"
+			class="w-screen"
+			src="~/assets/img/catch-goldfinal.png"
 			alt="homme qui est en train d'attraper une pièce d'or avec un filet à papillons"
 		/>
 	</section>

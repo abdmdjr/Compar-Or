@@ -39,12 +39,7 @@ p {
 	@apply text-gray-800;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.title {
 	font-family: 'Ubuntu', sans-serif;
 	font-weight: 400;
 	@apply text-gray-700;
