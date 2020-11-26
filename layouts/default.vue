@@ -31,23 +31,50 @@ html::-webkit-scrollbar {
 }
 
 body {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 
 p {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	@apply text-gray-800;
+}
+
+.navbar {
+	color: white;
+	background: linear-gradient(222deg, #083460c9 0%, #083460e7 115%);
+}
+
+.title-first {
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 400;
+}
+.title-second {
+	font-family: 'Overlock SC', cursive;
+	background: -webkit-linear-gradient(#ffe985 0%, #fa742b 100%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.title-third {
+	background: -webkit-linear-gradient(#ffe985 0%, #fa742b 100%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .title {
 	font-family: 'Ubuntu', sans-serif;
 	font-weight: 400;
-	@apply text-gray-700;
+	color: rgba(71, 87, 103, 1);
 }
 
-.text-important {
-	font-weight: 500;
-	@apply text-gray-900;
+.btn {
+	width: auto;
+	font-weight: 600;
+	background: linear-gradient(225.68deg, #94d5ff -96.12%, #083460 204.64%);
+	color: white;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+	border-radius: 6px;
 }
 
 .material-icons.md-18 {

@@ -22,7 +22,7 @@
 			<div class="mt-3">
 				<nuxt-link :to="`/coins/${slug}`"
 					><button
-						class="btn-price flex items-center align-center py-2 px-3 text-sm text-white rounded"
+						class="btn flex items-center align-center py-2 px-3 text-sm text-white rounded"
 					>
 						Voir les prix
 						<i class="material-icons md-18 text-white">navigate_next</i

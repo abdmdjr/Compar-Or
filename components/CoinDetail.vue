@@ -1,6 +1,6 @@
 <template>
 	<section
-		class="flex flex-col mx-auto mt-12 mb-12 text-sm md:text-lg lg:flex-row lg:space-x-10 lg:text-xl"
+		class="flex flex-col mx-auto mt-6 lg:mt-12 mb-12 text-sm md:text-lg lg:flex-row lg:space-x-10 lg:text-xl"
 	>
 		<div
 			class="flex flex-col h-full md:space-x-12 items-center md:flex-row md:justify-center lg:flex-col lg:space-x-0"

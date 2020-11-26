@@ -1,10 +1,10 @@
 <template>
 	<section
-		class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center px-5 pt-5 sm:px-16 lg:px-8"
+		class="container mx-auto h-screen lg:h-auto flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center px-5 pt-12 sm:px-16 lg:px-8 lg:mt-20"
 	>
-		<div class="text-content flex flex-col">
-			<h1 class="title text-2xl md:text-5xl lg:text-4xl mt-5 text-gray-800">
-				Les plus belles <span class="important-word">pièces</span>, <br />
+		<div class="text-content flex flex-col self-start lg:self-auto">
+			<h1 class="title title-first text-2xl md:text-5xl lg:text-4xl mt-5">
+				Les plus belles <span class="title-third">pièces</span>, <br />
 				au meilleur prix
 			</h1>
 			<p
@@ -17,13 +17,13 @@
 				class="self-start shadow-lg hover:shadow-xl lg:transition lg:duration-300 lg:ease-in-out"
 				to="/coins"
 			>
-				<button class="btn mt-5 lg:mt-2 rounded text-sm font-medium">
+				<button class="btn mt-5 lg:mt-2 px-4 py-3 text-sm rounded">
 					Trouvez votre pièce
 				</button>
 			</nuxt-link>
 		</div>
 		<img
-			class="w-screen"
+			class=""
 			src="~/assets/img/catch-goldfinal.png"
 			alt="homme qui est en train d'attraper une pièce d'or avec un filet à papillons"
 		/>
@@ -46,27 +46,28 @@ export default {
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
-.btn {
-	width: auto;
-	padding: 0.7rem 1.3rem;
-	background: linear-gradient(180deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
-	border-radius: 7px;
-	font-family: 'Ubuntu';
-	color: white;
-}
 /* mini mobile */
-@media only screen and (min-device-width: 240px) and (max-device-width: 260px) {
+@media only screen and (min-device-width: 100px) and (max-device-width: 260px) {
 	.title {
 		font-size: 0.8rem;
 	}
 	.content {
 		font-size: 0.6rem;
 	}
-	.btn {
-		font-size: 0.5rem;
-	}
 	img {
 		width: 100px;
+	}
+}
+/* iPhone 5 */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+	.title {
+		font-size: 1.75rem;
+	}
+	.content {
+		font-size: 1rem;
+	}
+	img {
+		width: 80%;
 	}
 }
 /* iPhone 6, 6S, 7 and 8 */
@@ -77,8 +78,8 @@ export default {
 	.content {
 		font-size: 1rem;
 	}
-	.btn {
-		font-size: 1rem;
+	img {
+		width: 100%;
 	}
 }
 /* iPhone 6/7/8 + */
@@ -87,10 +88,6 @@ export default {
 		font-size: 2.098rem;
 	}
 	.content {
-		font-size: 1.15rem;
-	}
-	.btn {
-		padding: 0.9rem 1.5rem;
 		font-size: 1.15rem;
 	}
 }
@@ -103,10 +100,6 @@ export default {
 	.content {
 		font-size: 1.15rem;
 	}
-	.btn {
-		padding: 1rem 1.6rem;
-		font-size: 1.15rem;
-	}
 }
 /* iPhone XR */
 @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
@@ -115,10 +108,6 @@ export default {
 		@apply mt-10;
 	}
 	.content {
-		font-size: 1.15rem;
-	}
-	.btn {
-		padding: 0.9rem 1.5rem;
 		font-size: 1.15rem;
 	}
 }
@@ -131,6 +120,9 @@ export default {
 }
 /* Ipad */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+	.container {
+		@apply pt-18;
+	}
 	.title {
 		font-size: 3.1rem;
 		line-height: 1.3;
@@ -140,8 +132,8 @@ export default {
 		font-size: 1.6rem;
 	}
 	.btn {
-		padding: 1.3rem 2rem;
-		font-size: 1.6rem;
+		font-size: 1.3rem;
+		@apply px-6 py-4;
 	}
 	img,
 	.text-content {
@@ -150,6 +142,9 @@ export default {
 }
 /* Ipad Pro */
 @media only screen and (min-width: 1024px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
+	.container {
+		@apply px-8;
+	}
 	.title {
 		font-size: 4.2rem;
 		line-height: 1.3;
@@ -159,8 +154,8 @@ export default {
 		font-size: 2rem;
 	}
 	.btn {
-		padding: 1.3rem 2rem;
-		font-size: 2.15rem;
+		font-size: 1.55rem;
+		@apply px-10 py-6;
 	}
 	img,
 	.text-content {
@@ -168,7 +163,7 @@ export default {
 	}
 }
 
-@media only screen and (min-width: 1224px) {
+@media only screen and (min-width: 1025px) {
 	.text-content {
 		width: 400px;
 	}
@@ -178,16 +173,16 @@ export default {
 		@apply mt-0;
 	}
 	.content {
+		width: 390px;
 		font-size: 1.15rem;
 	}
 	.btn {
-		width: 222px;
-		padding: 1rem 1rem;
 		font-size: 1rem;
+		@apply px-6 py-4;
 	}
 	img {
 		position: relative;
-		width: 680px;
+		width: 60%;
 	}
 }
 </style>

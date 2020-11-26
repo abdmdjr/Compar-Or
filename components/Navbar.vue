@@ -1,10 +1,10 @@
 <template>
-	<div class="w-full absolute top-0 z-10">
+	<div class="navbar w-full absolute lg:static top-0 z-10 text-white">
 		<nav
-			class="container mx-auto relative flex items-center justify-between flex-wrap px-5 py-5 md:px-16 lg:px-8"
+			class="container mx-auto relative flex items-center justify-between flex-wrap px-5 py-3 md:px-16 lg:px-8"
 		>
-			<h1 class="logo-title-first text-1xl sm:text-4xl font-normal">
-				Compar'<span class="logo-title-second">Or</span>
+			<h1 class="title-first text-1xl sm:text-4xl font-normal">
+				Compar'<span class="title-second">Or</span>
 			</h1>
 			<div class="block sm:hidden">
 				<button class="flex items-center" @click="toggle">
@@ -55,21 +55,5 @@ export default {
 	nav {
 		@apply px-8;
 	}
-}
-nav {
-	color: rgba(71, 87, 103, 1);
-}
-.logo-title-first {
-	font-family: 'Ubuntu', sans-serif;
-}
-.logo-title-second {
-	font-family: 'Overlock SC', cursive;
-	background: -webkit-linear-gradient(#ffe985 0%, #fa742b 100%);
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-.btn-price {
-	background: linear-gradient(180deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
 }
 </style>
