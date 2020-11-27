@@ -28,6 +28,7 @@ html {
 }
 html::-webkit-scrollbar {
 	display: none; /* Safari and Chrome */
+	@apply antialiased;
 }
 
 body {
@@ -40,8 +41,7 @@ p {
 }
 
 .navbar {
-	color: white;
-	background: linear-gradient(222deg, #083460c9 0%, #083460e7 115%);
+	background: linear-gradient(220.01deg, #1e5f91 0%, #1c4c7b 87%);
 }
 
 .title-first {
@@ -50,13 +50,7 @@ p {
 }
 .title-second {
 	font-family: 'Overlock SC', cursive;
-	background: -webkit-linear-gradient(#ffe985 0%, #fa742b 100%);
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-.title-third {
-	background: -webkit-linear-gradient(#ffe985 0%, #fa742b 100%);
+	background: -webkit-linear-gradient(240.01deg, #ffe985 0%, #fa742b 100%);
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -67,14 +61,20 @@ p {
 	font-weight: 400;
 	color: rgba(71, 87, 103, 1);
 }
+@screen lg {
+	.btn:hover {
+		background: #1e5f91;
+		color: white;
+		transition: all 0.2s ease-in-out 0s;
+	}
+}
 
 .btn {
-	width: auto;
+	background: white;
 	font-weight: 600;
-	background: linear-gradient(225.68deg, #94d5ff -96.12%, #083460 204.64%);
-	color: white;
-	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
-	border-radius: 6px;
+	color: #1c4c7b;
+	border: 1.5px solid;
+	border-color: #1c4c7b;
 }
 
 .material-icons.md-18 {
@@ -90,6 +90,6 @@ p {
 	font-size: 48px;
 }
 .second-icon {
-	margin-left: -0.85rem;
+	margin-left: -0.75rem;
 }
 </style>

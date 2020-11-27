@@ -25,12 +25,6 @@
 						class="btn flex items-center align-center py-2 px-3 text-sm text-white rounded"
 					>
 						Voir les prix
-						<i class="material-icons md-18 text-white">navigate_next</i
-						><i
-							class="material-icons md-18 second-icon text-white"
-							style="width:12px;"
-							>navigate_next</i
-						>
 					</button></nuxt-link
 				>
 			</div>
@@ -74,12 +68,5 @@ img {
 	-webkit-filter: drop-shadow(1px 1px 1px rgb(138, 138, 138));
 	filter: drop-shadow(1px 1px 1px rgb(138, 138, 138));
 	max-width: 140px;
-}
-.btn-price:hover {
-	background: linear-gradient(110deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
-}
-.btn-price {
-	background: linear-gradient(180deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
-	@apply shadow-sm;
 }
 </style>

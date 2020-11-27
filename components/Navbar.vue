@@ -56,4 +56,9 @@ export default {
 		@apply px-8;
 	}
 }
+.navbar::after {
+	content: '';
+	background: -webkit-linear-gradient(#ffe985 0%, #fa742b 100%);
+	@apply block w-screen h-1;
+}
 </style>

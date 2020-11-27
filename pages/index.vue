@@ -1,6 +1,6 @@
 <template>
 	<section
-		class="container mx-auto h-screen lg:h-auto flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center px-5 pt-12 sm:px-16 lg:px-8 lg:mt-20"
+		class="container mx-auto h-screen lg:h-auto flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center px-5 pt-12 sm:px-16 lg:pt-0 lg:px-8 lg:mt-20"
 	>
 		<div class="text-content flex flex-col self-start lg:self-auto">
 			<h1 class="title title-first text-2xl md:text-5xl lg:text-4xl mt-5">
@@ -13,11 +13,10 @@
 				Nous comparons les offres pour vous aider dans
 				<strong>votre quête d’achat d’or.</strong>
 			</p>
-			<nuxt-link
-				class="self-start shadow-lg hover:shadow-xl lg:transition lg:duration-300 lg:ease-in-out"
-				to="/coins"
-			>
-				<button class="btn mt-5 lg:mt-2 px-4 py-3 text-sm rounded">
+			<nuxt-link class="mt-5 lg:mt-3 self-start" to="/coins">
+				<button
+					class="btn flex items-center align-center px-4 py-3 text-sm rounded"
+				>
 					Trouvez votre pièce
 				</button>
 			</nuxt-link>
@@ -41,11 +40,6 @@ export default {
 </script>
 
 <style scoped>
-.important-word {
-	background: linear-gradient(180deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
-	background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
 /* mini mobile */
 @media only screen and (min-device-width: 100px) and (max-device-width: 260px) {
 	.title {
@@ -178,7 +172,7 @@ export default {
 	}
 	.btn {
 		font-size: 1rem;
-		@apply px-6 py-4;
+		@apply px-5 py-3;
 	}
 	img {
 		position: relative;
