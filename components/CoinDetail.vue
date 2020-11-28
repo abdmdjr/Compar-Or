@@ -22,7 +22,7 @@
 			</client-only>
 			<div class="flex flex-col items-center">
 				<h1
-					class="mt-4 lg:mt-6 text-xl md:text-2xl text-gray-800 text-center font-normal leading-none"
+					class="font-medium mt-4 lg:mt-6 text-xl md:text-2xl text-center leading-none"
 				>
 					{{ title }}
 					<span class="mt-2 block text-base lg:text-xl font-light">{{
@@ -30,9 +30,11 @@
 					}}</span>
 				</h1>
 				<h2
-					class="my-3 lg:my-5 text-base md:text-xl lg:text-2xl text-gray-800 font-light text-center"
+					class="font-light my-3 lg:my-5 text-base md:text-xl lg:text-2xl text-center"
 				>
-					Meilleur prix : <strong>{{ bestPrice }}€</strong>
+					Meilleur prix :<span class="title font-medium">
+						{{ bestPrice }}€</span
+					>
 				</h2>
 				<a
 					:href="bestUrl"
@@ -42,22 +44,16 @@
 					class=""
 				>
 					<button
-						class="btnprice py-3 pl-4 pr-5 flex items-center align-center text-white text-sm md:text-lg rounded"
+						class="btn py-3 pl-4 pr-5 flex items-center align-center text-sm md:text-lg rounded"
 					>
-						{{ bestSite
-						}}<i class="material-icons md-18 text-white">navigate_next</i
-						><i
-							class="material-icons md-18 second-icon text-white"
-							style="width:8px;"
-							>navigate_next</i
-						>
+						{{ bestSite }}
 					</button>
 				</a>
 			</div>
 		</div>
 		<section class="w-full self-center text-justify">
 			<h2
-				class="mt-8 mb-3 md:mt-10 lg:mb-3 lg:mt-0 text-base md:text-xl font-normal"
+				class="mt-8 mb-3 md:mt-10 lg:mb-3 lg:mt-0 text-base md:text-1xl md:leading-tight font-normal"
 			>
 				Comparaison des prix
 			</h2>
@@ -67,17 +63,17 @@
 				>" en temps réel.
 			</p>
 			<table
-				class="table-auto md:table-fixed w-full border-collapse text-right text-xs md:text-lg text-gray-800"
+				class="table-auto md:table-fixed w-full border-collapse text-right text-xs md:text-lg"
 			>
 				<thead class="">
 					<th class="md:w-2/6 lg:w-1/3"></th>
-					<th class="py-2 px-1 text-xs md:text-lg text-gray-700 font-light">
+					<th class="py-2 px-1 text-xs md:text-lg font-normal">
 						Prix
 					</th>
-					<th class="py-2 px-1 text-xs md:text-lg text-gray-700 font-light">
+					<th class="py-2 px-1 text-xs md:text-lg font-normal">
 						Livraison
 					</th>
-					<th class="py-2 px-1 text-xs md:text-lg text-gray-700 font-light">
+					<th class="py-2 px-1 text-xs md:text-lg font-normal">
 						Total
 					</th>
 				</thead>
@@ -85,12 +81,15 @@
 					<tr
 						v-for="(column, index) in filteredCoins"
 						:key="index"
-						:class="{ colorBestSite: index === minPrice }"
+						:class="{ colorBestSite: index === 0 }"
 					>
 						<td
-							class="text-left border-b rounded-tl"
+							class="text-left border-b"
 							:class="{
-								btnpricetable: index === minPrice
+								btntable: index === 0,
+								btnScdSite: index === 1,
+								btnTrdSite: index === 2,
+								btnFrSite: index === 3
 							}"
 						>
 							<a
@@ -108,7 +107,10 @@
 						<td
 							class="px-2 md:px-3 border-b"
 							:class="{
-								colorBestPrice: index === minPrice
+								colorBestPrice: index === 0,
+								colorScdSite: index === 1,
+								colorTrdSite: index === 2,
+								colorFrSite: index === 3
 							}"
 						>
 							{{ column[1][1] }}€
@@ -117,7 +119,10 @@
 							v-if="column[1][2] === 0"
 							class="px-2 md:px-3 border-b"
 							:class="{
-								colorBestLivraison: index === minPrice
+								colorBestLivraison: index === 0,
+								colorScdSite: index === 1,
+								colorTrdSite: index === 2,
+								colorFrSite: index === 3
 							}"
 						>
 							Offert
@@ -126,7 +131,10 @@
 							v-else
 							class="px-2 md:px-3 border-b"
 							:class="{
-								colorBestLivraison: index === minPrice
+								colorBestLivraison: index === 0,
+								colorScdSite: index === 1,
+								colorTrdSite: index === 2,
+								colorFrSite: index === 3
 							}"
 						>
 							{{ column[1][2] }}€
@@ -134,7 +142,10 @@
 						<td
 							class="pr-1 md:px-3 border-b rounded-tr"
 							:class="{
-								colorBestPriceTotal: index === minPrice
+								colorBestPriceTotal: index === 0,
+								colorScdSite: index === 1,
+								colorTrdSite: index === 2,
+								colorFrSite: index === 3
 							}"
 						>
 							{{ column[1][0].toFixed(2) }}€
@@ -142,7 +153,9 @@
 					</tr>
 				</tbody>
 			</table>
-			<h2 class="mt-8 mb-3 md:mt-10 lg:mb-3 text-base md:text-xl font-normal">
+			<h2
+				class="mt-8 mb-3 md:mt-10 lg:mb-3 text-base md:text-1xl md:leading-tight font-normal"
+			>
 				Description
 			</h2>
 			<p
@@ -205,22 +218,19 @@ export default {
 				const priceTotal = coin[1][0]
 				return priceTotal
 			})
-		},
-		minPrice() {
-			return this.calculatedPriceTotal.indexOf(this.bestPrice)
 		}
 	},
 	mounted() {
 		axios.get(`/api/coins/${this.$route.params.coin}`).then((result) => {
 			this.coinDatas = Object.entries(result.data.prices)
-			this.coinDatas.sort((a, b) => {
+			const dataByPrice = this.coinDatas.sort((a, b) => {
 				return a[1][0] - b[1][0]
 			})
-			console.log(this.coinDatas)
+
 			this.coinDesc = Object.entries(result.data)[1][1]
-			this.bestPrice = Math.min(...this.calculatedPriceTotal)
-			this.bestSite = this.filteredCoins[this.minPrice][0].split(' ').join('.')
-			this.bestUrl = this.filteredCoins[this.minPrice][1][3]
+			this.bestPrice = dataByPrice[0][1][0]
+			this.bestSite = this.filteredCoins[0][0].split(' ').join('.')
+			this.bestUrl = this.filteredCoins[0][1][3]
 		})
 	},
 	head() {
@@ -239,34 +249,60 @@ export default {
 .VueCarousel-dot {
 	border-radius: 100%;
 }
+@screen lg {
+	.btntable:hover {
+		background: #1f649ce3;
+		color: white;
+		border: none;
+	}
+	.btnScdSite:hover {
+		background: #daebfa8f;
+	}
+	.btnTrdSite:hover {
+		background: #daebfa5e;
+	}
+	.btnFrSite:hover {
+		background: #daebfa23;
+	}
+}
+.btntable {
+	background: white;
+	transition: all 0.2s ease-in-out 0s;
+	font-weight: 600;
+	color: #1c4c7b;
+	@apply rounded-tl;
+}
+.btnScdSite {
+	background: white;
+	transition: all 0.2s ease-in-out 0s;
+}
+.btnTrdSite {
+	background: white;
+	transition: all 0.2s ease-in-out 0s;
+}
+.btnFrSite {
+	background: white;
+	transition: all 0.2s ease-in-out 0s;
+}
+.colorScdSite {
+	background: #daebfa8f;
+}
+.colorTrdSite {
+	background: #daebfa5e;
+}
+.colorFrSite {
+	background: #daebfa23;
+}
 .colorBestPrice,
 .colorBestLivraison,
 .colorBestPriceTotal {
-	background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+	background: #1f649ce3;
 	background-attachment: fixed;
 	@apply border-b-0 text-white;
-}
-.btnpricetable {
-	background: linear-gradient(110deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
-	@apply border-b-0 shadow-sm;
-}
-.btnpricetable:hover {
-	background: linear-gradient(110deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
 }
 /* .colorBestSite:hover {
 	@apply shadow-md transition duration-100 ease-in-out;
 } */
-.colorBestSite {
-	@apply text-white;
-}
-.btnprice:hover {
-	background: linear-gradient(110deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
-	@apply shadow-sm;
-}
-.btnprice {
-	background: linear-gradient(180deg, #f7c298 0%, #f5b592 46.88%, #f2a68b 100%);
-}
-
 img {
 	-webkit-filter: drop-shadow(3px 3px 3px rgb(129, 129, 129));
 	filter: drop-shadow(1px 2px 3px rgb(129, 129, 129));

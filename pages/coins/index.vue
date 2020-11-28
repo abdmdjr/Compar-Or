@@ -6,31 +6,27 @@
 			><nuxt-link to="/">Accueil > </nuxt-link>Pièces</span
 		>
 		<div class="flex flex-col lg:flex-row mt-2 text-justify">
-			<div
-				class="intro font-medium mb-2 md:mb-3 text-lg md:leading-tight"
-			></div>
-			<div class="flex flex-col">
-				<h1 class="font-medium mb-2 md:mb-3 text-1xl md:leading-tight">
+			<div class="intro mb-2 md:mb-3"></div>
+			<div class="flex flex-col text-sm md:text-lg font-light">
+				<h1 class="title font-normal mb-2 md:mb-3 text-1xl md:leading-tight">
 					Achetez vos pièces d'or au meilleur prix !
 				</h1>
-				<p class="mt-2 text-sm lg:text-base">
-					Le prix affiché pour une pièce est<span class="text-important">
+				<p class="mt-2">
+					Le prix affiché pour une pièce est<span class="font-medium">
 						le plus bas</span
 					>
 					des sites de pièces d'or que nous comparons, et pour plus de
-					transparence, le prix affiché sous chaque pièce comprend le prix de la
-					livraison.
+					transparence, la livraison est incluse dans ce prix.
 				</p>
-				<p class="mt-2 text-sm lg:text-base">
-					Cliquez sur une pièce d'or pour
-					<span class="text-important">comparer les prix en détail.</span>
+				<p class="font-medium mt-2">
+					Cliquez sur une pièce d'or pour comparer les prix en détail.
 				</p>
 			</div>
 		</div>
 		<main class="flex flex-col md:flex-row">
 			<div id="filters" class="filters hidden lg:block">
-				<h2 class="font-medium text-lg mb-6">Filtres</h2>
-				<h3 class="mb-4">Type de métaux</h3>
+				<h2 class="title font-medium text-lg mb-6">Filtres</h2>
+				<h3 class=" font-bold mb-4">Type de métaux</h3>
 				<input type="checkbox" class="mb-5" disabled checked /><label
 					for="Or"
 					class="ml-5"
@@ -39,9 +35,9 @@
 				<input type="checkbox" class="" disabled /><label
 					for="Argent"
 					class="ml-5"
-					>Argent (soon)</label
+					>Argent (en cours)</label
 				>
-				<h4 class="mt-4 mb-4">Prix</h4>
+				<h4 class=" font-bold mt-4 mb-4">Prix</h4>
 				<input v-model="checked500" type="checkbox" class="mb-5" /><label
 					for="coin_500"
 					class="ml-5"

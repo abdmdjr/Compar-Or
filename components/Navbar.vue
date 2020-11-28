@@ -3,7 +3,7 @@
 		<nav
 			class="container mx-auto relative flex items-center justify-between flex-wrap px-5 py-3 md:px-16 lg:px-8"
 		>
-			<h1 class="title-first text-1xl sm:text-4xl font-normal">
+			<h1 class="title-first text-1xl sm:text-3xl font-normal">
 				Compar'<span class="title-second">Or</span>
 			</h1>
 			<div class="block sm:hidden">
@@ -16,7 +16,7 @@
 				class="w-full relative flex-grow sm:flex sm:items-center sm:w-auto"
 			>
 				<ul
-					class="absolute w-full pb-4 flex flex-col text-lg bg-white bg-opacity-75 rounded-lg sm:pb-0 sm:static sm:flex-row sm:justify-end sm:flex-grow sm:items-center sm:space-x-8 sm:bg-transparent sm:rounded-none sm:text-xl"
+					class="absolute w-full pb-4 flex flex-col text-lg bg-white bg-opacity-75 rounded-lg sm:pb-0 sm:static sm:flex-row sm:justify-end sm:flex-grow sm:items-center sm:space-x-8 sm:bg-transparent sm:rounded-none sm:text-lg"
 				>
 					<li>
 						<a href="#" class="no-underline block pt-4 sm:pt-0 sm:inline-block">

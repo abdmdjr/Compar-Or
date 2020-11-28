@@ -1,7 +1,5 @@
 <template>
-	<div
-		class="mt-10 rounded shadow-md hover:shadow-lg duration-150 transition-shadow"
-	>
+	<div class="mt-10 rounded shadow-md">
 		<div class="flex flex-col px-3 py-8 items-center">
 			<ul class="flex flex-col items-center">
 				<li class="">
@@ -10,19 +8,19 @@
 					</nuxt-link>
 				</li>
 				<li class="mt-5 text-center">
-					<h1 class="text-important">{{ title }}</h1>
+					<h1 class="font-semibold">{{ title }}</h1>
 				</li>
-				<li class="mb-3 text-xs font-light">
+				<li class="gramme mb-4 text-xs font-light">
 					<h2>{{ gr }}</h2>
 				</li>
 			</ul>
-			<h3 class="text-center text-important text-xl leading-none">
+			<h3 class="title font-medium text-center text-xl leading-none">
 				{{ price }} €
 			</h3>
-			<div class="mt-3">
+			<div class="mt-4">
 				<nuxt-link :to="`/coins/${slug}`"
 					><button
-						class="btn flex items-center align-center py-2 px-3 text-sm text-white rounded"
+						class="btn flex items-center align-center py-2 px-3 text-sm rounded"
 					>
 						Voir les prix
 					</button></nuxt-link
@@ -64,6 +62,10 @@ export default {
 </script>
 
 <style scoped>
+.gramme {
+	font-family: 'Open Sans', sans-serif;
+	color: #1d3c5a;
+}
 img {
 	-webkit-filter: drop-shadow(1px 1px 1px rgb(138, 138, 138));
 	filter: drop-shadow(1px 1px 1px rgb(138, 138, 138));

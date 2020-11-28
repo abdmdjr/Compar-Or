@@ -33,11 +33,12 @@ html::-webkit-scrollbar {
 
 body {
 	font-family: 'Open Sans', sans-serif;
+	color: #193a5c;
 }
 
 p {
 	font-family: 'Open Sans', sans-serif;
-	@apply text-gray-800;
+	color: #1d3c5a;
 }
 
 .navbar {
@@ -58,8 +59,7 @@ p {
 
 .title {
 	font-family: 'Ubuntu', sans-serif;
-	font-weight: 400;
-	color: rgba(71, 87, 103, 1);
+	color: #193a5c;
 }
 @screen lg {
 	.btn:hover {
@@ -73,7 +73,7 @@ p {
 	background: white;
 	font-weight: 600;
 	color: #1c4c7b;
-	border: 1.5px solid;
+	border: 0.6px solid;
 	border-color: #1c4c7b;
 }
 

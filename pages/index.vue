@@ -8,7 +8,7 @@
 				au meilleur prix
 			</h1>
 			<p
-				class="content text-gray-700 text-sm md:text-1xl lg:text-base font-light text-justify mt-2 md:my-4"
+				class="content text-sm md:text-lg font-light text-justify mt-2 md:my-4"
 			>
 				Nous comparons les offres pour vous aider dans
 				<strong>votre quête d’achat d’or.</strong>
@@ -168,7 +168,7 @@ export default {
 	}
 	.content {
 		width: 390px;
-		font-size: 1.15rem;
+		font-size: 1.125rem;
 	}
 	.btn {
 		font-size: 1rem;
