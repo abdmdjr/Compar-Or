@@ -53,7 +53,7 @@ export default {
 	}
 }
 /* iPhone 5 */
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen and (max-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
 	.title {
 		font-size: 1.75rem;
 	}
@@ -61,7 +61,7 @@ export default {
 		font-size: 1rem;
 	}
 	img {
-		width: 80%;
+		width: 75%;
 	}
 }
 /* iPhone 6, 6S, 7 and 8 */
@@ -71,9 +71,6 @@ export default {
 	}
 	.content {
 		font-size: 1rem;
-	}
-	img {
-		width: 100%;
 	}
 }
 /* iPhone 6/7/8 + */

@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer')
-const pieces = require('../data/goldAvenueData')
+const pieces = require('../data/bdOrData')
 
-async function scrapeGoldAvenue() {
+async function scrapeBdOr() {
 	const browser = await puppeteer.launch({
 		args: [
 			'--disable-gpu',
@@ -20,16 +20,14 @@ async function scrapeGoldAvenue() {
 				const parse = (value) => {
 					return parseFloat(value.replace(/\s/g, '').replace(',', '.'))
 				}
-				const priceString = document.querySelector(
-					'#gtm-product-pricing-details > a'
-				).textContent
+				const priceString = document.querySelector('#prix_total').textContent
 				const price = parse(priceString)
 				return price
 			})
 			piece.price = data
-			piece.livraison = 52
-			piece.totalPrice = piece.price + piece.livraison
-			console.log('GA : ' + `${data}`)
+			piece.livraison = 0
+			piece.totalPrice = data
+			console.log('BDOR : ' + `${data}`)
 		} catch (err) {
 			console.log(err.message)
 		} finally {
@@ -41,5 +39,5 @@ async function scrapeGoldAvenue() {
 }
 
 module.exports = {
-	scrapeGoldAvenue
+	scrapeBdOr
 }

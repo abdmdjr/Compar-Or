@@ -13,7 +13,8 @@ const CoinSchema = new mongoose.Schema({
 		'goldavenue com': { type: [], default: undefined },
 		'lingor fr': { type: [], default: undefined },
 		'aucoffre com': { type: [], default: undefined },
-		'bullionbypost fr': { type: [], default: undefined }
+		'bullionbypost fr': { type: [], default: undefined },
+		'bdor fr': { type: [], default: undefined }
 	},
 	description: {
 		type: Array,

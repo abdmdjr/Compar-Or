@@ -81,15 +81,16 @@
 					<tr
 						v-for="(column, index) in filteredCoins"
 						:key="index"
+						class="border"
 						:class="{ colorBestSite: index === 0 }"
 					>
 						<td
-							class="text-left border-b"
+							class="text-left border-b border-r"
 							:class="{
 								btntable: index === 0,
-								btnScdSite: index === 1,
-								btnTrdSite: index === 2,
-								btnFrSite: index === 3
+								btnsecondsite: index === 1,
+								btnthirdsite: index === 2,
+								btnfourthsite: index === 3
 							}"
 						>
 							<a
@@ -105,47 +106,35 @@
 						</td>
 
 						<td
-							class="px-2 md:px-3 border-b"
+							class="px-2 md:px-3 border-b border-r"
 							:class="{
-								colorBestPrice: index === 0,
-								colorScdSite: index === 1,
-								colorTrdSite: index === 2,
-								colorFrSite: index === 3
+								colorBestPrice: index === 0
 							}"
 						>
 							{{ column[1][1] }}€
 						</td>
 						<td
 							v-if="column[1][2] === 0"
-							class="px-2 md:px-3 border-b"
+							class="px-2 md:px-3 border-b border-r"
 							:class="{
-								colorBestLivraison: index === 0,
-								colorScdSite: index === 1,
-								colorTrdSite: index === 2,
-								colorFrSite: index === 3
+								colorBestLivraison: index === 0
 							}"
 						>
 							Offert
 						</td>
 						<td
 							v-else
-							class="px-2 md:px-3 border-b"
+							class="px-2 md:px-3 border-b border-r"
 							:class="{
-								colorBestLivraison: index === 0,
-								colorScdSite: index === 1,
-								colorTrdSite: index === 2,
-								colorFrSite: index === 3
+								colorBestLivraison: index === 0
 							}"
 						>
 							{{ column[1][2] }}€
 						</td>
 						<td
-							class="pr-1 md:px-3 border-b rounded-tr"
+							class="paddmobile pr-3 md:px-3 border-b"
 							:class="{
-								colorBestPriceTotal: index === 0,
-								colorScdSite: index === 1,
-								colorTrdSite: index === 2,
-								colorFrSite: index === 3
+								colorBestPriceTotal: index === 0
 							}"
 						>
 							{{ column[1][0].toFixed(2) }}€
@@ -183,19 +172,19 @@ export default {
 	props: {
 		title: {
 			type: String,
-			default: ''
+			required: true
 		},
 		img3x: {
 			type: String,
-			default: ''
+			required: true
 		},
 		imgar3x: {
 			type: String,
-			default: ''
+			required: true
 		},
 		gr: {
 			type: String,
-			default: ''
+			required: true
 		}
 	},
 	data() {
@@ -249,60 +238,48 @@ export default {
 .VueCarousel-dot {
 	border-radius: 100%;
 }
-@screen lg {
-	.btntable:hover {
-		background: #1f649ce3;
-		color: white;
-		border: none;
-	}
-	.btnScdSite:hover {
-		background: #daebfa8f;
-	}
-	.btnTrdSite:hover {
-		background: #daebfa5e;
-	}
-	.btnFrSite:hover {
-		background: #daebfa23;
+@media only screen and (max-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+	.paddmobile {
+		@apply pr-0;
 	}
 }
 .btntable {
-	background: white;
+	background: #2f5f8f;
 	transition: all 0.2s ease-in-out 0s;
+	color: white;
 	font-weight: 600;
-	color: #1c4c7b;
-	@apply rounded-tl;
+	@apply rounded-tl border-b-0;
 }
-.btnScdSite {
-	background: white;
+.btnsecondsite {
+	background: rgba(47, 95, 143, 0.04);
 	transition: all 0.2s ease-in-out 0s;
 }
-.btnTrdSite {
-	background: white;
+.btnthirdsite {
+	background: rgba(47, 95, 143, 0.02);
 	transition: all 0.2s ease-in-out 0s;
 }
-.btnFrSite {
-	background: white;
+.btnfourthsite {
+	background: rgba(47, 95, 143, 0.01);
 	transition: all 0.2s ease-in-out 0s;
+	@apply rounded-bl;
 }
-.colorScdSite {
-	background: #daebfa8f;
+@screen lg {
+	td {
+		transition: all 0.2s ease-in-out 0s;
+	}
+	.btntable:hover ~ td {
+		background: rgba(47, 95, 143, 0.05);
+	}
+	.btnsecondsite:hover ~ td {
+		background: rgba(47, 95, 143, 0.04);
+	}
+	.btnthirdsite:hover ~ td {
+		background: rgba(47, 95, 143, 0.02);
+	}
+	.btnfourthsite:hover ~ td {
+		background: rgba(47, 95, 143, 0.01);
+	}
 }
-.colorTrdSite {
-	background: #daebfa5e;
-}
-.colorFrSite {
-	background: #daebfa23;
-}
-.colorBestPrice,
-.colorBestLivraison,
-.colorBestPriceTotal {
-	background: #1f649ce3;
-	background-attachment: fixed;
-	@apply border-b-0 text-white;
-}
-/* .colorBestSite:hover {
-	@apply shadow-md transition duration-100 ease-in-out;
-} */
 img {
 	-webkit-filter: drop-shadow(3px 3px 3px rgb(129, 129, 129));
 	filter: drop-shadow(1px 2px 3px rgb(129, 129, 129));

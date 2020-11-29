@@ -1,7 +1,7 @@
 <template>
 	<div class="navbar w-full absolute lg:static top-0 z-10 text-white">
 		<nav
-			class="container mx-auto relative flex items-center justify-between flex-wrap px-5 py-3 md:px-16 lg:px-8"
+			class="container mx-auto relative flex items-center justify-between flex-wrap px-5 py-3 sm:py-4 md:px-16 lg:px-8"
 		>
 			<h1 class="title-first text-1xl sm:text-3xl font-normal">
 				Compar'<span class="title-second">Or</span>
@@ -58,7 +58,7 @@ export default {
 }
 .navbar::after {
 	content: '';
-	background: -webkit-linear-gradient(#ffe985 0%, #fa742b 100%);
+	background: -webkit-linear-gradient(220.01deg, #ffcc2f 0%, #ef9834 100%);
 	@apply block w-screen h-1;
 }
 </style>

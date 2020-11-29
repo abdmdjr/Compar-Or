@@ -86,6 +86,14 @@ const souverain7gr3 = [
 	}
 ]
 
+const napoleonnonlaure20 = [
+	{
+		id: '5fc3de2fcbfaa021e06700e9',
+		url:
+			'https://www.bullionbypost.fr/francs-francais-piece-or/20-francs-francais/20-francs-napoleon-tete-nue/'
+	}
+]
+
 const pieces = [
 	...vreneli20,
 	...marianne20,
@@ -97,7 +105,8 @@ const pieces = [
 	...napoleon40,
 	...philharmonic01oz,
 	...philharmonic1oz,
-	...souverain7gr3
+	...souverain7gr3,
+	...napoleonnonlaure20
 ]
 
 module.exports = pieces

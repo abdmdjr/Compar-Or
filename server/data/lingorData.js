@@ -47,6 +47,13 @@ const philharmonic1oz = [
 	}
 ]
 
+const napoleonnonlaure20 = [
+	{
+		id: '5fc3de2fcbfaa021e06700e9',
+		url: 'https://www.lingor.fr/piece-or-20-francs-napoleon.html'
+	}
+]
+
 const pieces = [
 	...vreneli20,
 	...marianne20,
@@ -54,7 +61,8 @@ const pieces = [
 	...britannia1oz,
 	...krugerrand1oz,
 	...souverain7gr3,
-	...philharmonic1oz
+	...philharmonic1oz,
+	...napoleonnonlaure20
 ]
 
 module.exports = pieces

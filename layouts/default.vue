@@ -42,7 +42,7 @@ p {
 }
 
 .navbar {
-	background: linear-gradient(220.01deg, #1e5f91 0%, #1c4c7b 87%);
+	background: linear-gradient(220.01deg, #94d5ff -300%, #083460ec 70%);
 }
 
 .title-first {
@@ -51,7 +51,7 @@ p {
 }
 .title-second {
 	font-family: 'Overlock SC', cursive;
-	background: -webkit-linear-gradient(240.01deg, #ffe985 0%, #fa742b 100%);
+	background: -webkit-linear-gradient(220.01deg, #ffcc2f 0%, #ef9834 100%);
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -63,18 +63,18 @@ p {
 }
 @screen lg {
 	.btn:hover {
-		background: #1e5f91;
+		background: #215385;
 		color: white;
-		transition: all 0.2s ease-in-out 0s;
 	}
 }
 
 .btn {
 	background: white;
 	font-weight: 600;
-	color: #1c4c7b;
+	color: #2f5f8f;
 	border: 0.6px solid;
-	border-color: #1c4c7b;
+	border-color: #2f5f8f;
+	transition: all 0.1s ease-in-out 0s;
 }
 
 .material-icons.md-18 {
