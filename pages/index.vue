@@ -23,7 +23,7 @@
 		</div>
 		<img
 			class=""
-			src="~/assets/img/catch-goldfinal.png"
+			src="~/assets/img/catch-gold.png"
 			alt="homme qui est en train d'attraper une pièce d'or avec un filet à papillons"
 		/>
 	</section>
