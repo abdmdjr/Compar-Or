@@ -1,32 +1,77 @@
 <template>
-	<section
-		class="container mx-auto h-screen lg:h-auto flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center px-5 pt-12 sm:px-16 lg:pt-0 lg:px-8 lg:mt-20"
-	>
-		<div class="text-content flex flex-col self-start lg:self-auto">
-			<h1 class="title title-first text-2xl md:text-5xl lg:text-4xl mt-5">
-				Les plus belles <span class="title-third">pièces</span>, <br />
-				au meilleur prix
-			</h1>
-			<p
-				class="content text-sm md:text-lg font-light text-justify mt-2 md:my-4"
-			>
-				Nous comparons les offres pour vous aider dans
-				<strong>votre quête d’achat d’or.</strong>
-			</p>
-			<nuxt-link class="mt-5 lg:mt-3 self-start" to="/coins">
-				<button
-					class="btn flex items-center align-center px-4 py-3 text-sm rounded"
+	<main class="">
+		<section
+			class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center pt-12 px-5 sm:px-16 lg:pt-0 lg:px-8"
+		>
+			<div class="text-content flex flex-col self-start lg:self-auto">
+				<h1 class="title title-first text-2xl md:text-5xl lg:text-4xl mt-5">
+					Les plus belles <span class="title-third">pièces</span>, <br />
+					au meilleur prix
+				</h1>
+				<p
+					class="content text-sm md:text-lg font-light text-justify mt-2 md:my-4"
 				>
+					Nous comparons les offres pour vous aider dans
+					<strong>votre quête d’achat d’or.</strong>
+				</p>
+				<nuxt-link class="mt-5 lg:mt-3 self-start" to="/coins">
+					<button
+						class="btn flex items-center align-center px-4 py-3 text-sm rounded"
+					>
+						Trouvez votre pièce
+					</button>
+				</nuxt-link>
+			</div>
+			<img
+				class=""
+				src="~/assets/img/catch-gold.png"
+				alt="homme qui est en train d'attraper une pièce d'or avec un filet à papillons"
+			/>
+		</section>
+		<section class="container mx-auto  px-5 sm:px-16 lg:pt-0 lg:px-8">
+			<div class="flex flex-col">
+				<h2 class="title-first text-xl md:text-5xl lg:text-4xl">
+					Pourquoi Compar'Or ?
+				</h2>
+				<div class="flex flex-row mt-18 mb-10 items-center">
+					<img
+						class="h-32 sm:h-auto sm:flex-1"
+						src="~/assets/img/first-guy-list.png"
+						alt="homme qui est en train d'attraper une pièce d'or avec un filet à papillons"
+					/>
+					<p class="text-sm md:text-lg font-light text-justify md:my-4 pl-5">
+						L’achat d’or en ligne est <strong>une solution sûre</strong> de nos
+						jours : du paiement à la livraison,
+						<strong>tout est sécurisé</strong> pour nous garantir
+						<strong>les meilleurs services et des produits de qualité</strong>.
+					</p>
+				</div>
+			</div>
+			<div class="flex flex-col">
+				<h2 class="title-first text-xl md:text-5xl lg:text-4xl">
+					Quelle boutique de pièce d’or en ligne fait les meilleurs prix ?
+				</h2>
+				<div class="flex flex-row-reverse mt-18 items-center">
+					<img
+						class="h-32 sm:h-auto sm:flex-1"
+						src="~/assets/img/second-guy-list.png"
+						alt="homme qui est en train d'attraper une pièce d'or avec un filet à papillons"
+					/>
+					<p class="text-sm md:text-lg font-light text-justify md:my-4 pr-5">
+						<strong>Grâce à Compar’Or</strong>, faites votre choix en toute
+						sérénité ! Le tableau comparatif vous aidera à
+						<strong>trouver le meilleur prix</strong> pour votre futur pièce !
+					</p>
+				</div>
+			</div>
+			<nuxt-link class="flex mt-5 lg:mt-3" to="/coins">
+				<button class="btn mx-auto px-4 py-3 text-sm rounded">
 					Trouvez votre pièce
 				</button>
 			</nuxt-link>
-		</div>
-		<img
-			class=""
-			src="~/assets/img/catch-gold.png"
-			alt="homme qui est en train d'attraper une pièce d'or avec un filet à papillons"
-		/>
-	</section>
+		</section>
+		<footer class="h-24 w-full mt-32 bg-blue-900"></footer>
+	</main>
 </template>
 
 <script>
