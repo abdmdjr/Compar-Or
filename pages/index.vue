@@ -30,14 +30,16 @@
 		</section>
 		<section class="relative">
 			<img
-				class="absolute w-screen h-104 lg:h-96 z-0"
+				class="absolute w-screen h-104 z-0"
 				src="~/assets/img/union.png"
 				alt=""
 			/>
 			<div
 				class="container mx-auto px-5 sm:px-16 lg:pt-0 lg:px-32 relative flex flex-wrap"
 			>
-				<div class="flex flex-col justify-center lg:flex-row mt-15 mb-32">
+				<div
+					class="flex flex-col justify-center lg:flex-row mt-20 lg:mt-32 mb-32"
+				>
 					<img
 						class="mb-10 lg:mb-0 w-auto lg:w-1/3"
 						src="~/assets/img/first-guy-list.png"
@@ -77,7 +79,7 @@
 				</div>
 			</div>
 		</section>
-		<nuxt-link class="flex mt-5 lg:mt-3" to="/coins">
+		<nuxt-link class="flex mt-5 lg:mt-20" to="/coins">
 			<button class="btn mx-auto px-4 py-3 text-sm rounded">
 				Trouvez votre pièce
 			</button>

@@ -65,15 +65,15 @@
 			<table
 				class="table-auto md:table-fixed w-full border-collapse text-right text-xs md:text-lg rounded-lg"
 			>
-				<thead class="text-white">
+				<thead class="text-gray-800">
 					<th class="md:w-2/6 lg:w-1/3 bg-white"></th>
-					<th class="py-2 px-1 text-xs md:text-lg font-normal bg-blue-800">
+					<th class="py-2 px-1 md:px-3 text-xs md:text-lg font-normal">
 						Prix
 					</th>
-					<th class="py-2 px-1 text-xs md:text-lg font-normal bg-blue-800">
+					<th class="py-2 px-1 md:px-3 text-xs md:text-lg font-normal">
 						Livraison
 					</th>
-					<th class="py-2 px-1 text-xs md:text-lg font-normal bg-blue-800">
+					<th class="py-2 px-1 md:px-3 text-xs md:text-lg font-bold">
 						Total
 					</th>
 				</thead>
@@ -81,7 +81,7 @@
 					<tr
 						v-for="(column, index) in filteredCoins"
 						:key="index"
-						class="border"
+						class=""
 						:class="{ colorBestSite: index === 0 }"
 					>
 						<td
@@ -133,9 +133,13 @@
 							{{ column[1][2] }}€
 						</td>
 						<td
-							class="paddmobile pr-3 md:px-3 border-b"
+							class="paddmobile pr-3 md:px-3 border-b font-bold"
 							:class="{
-								colorBestPriceTotal: index === 0
+								colorBestPriceTotal: index === 0,
+								colorSecondPriceTotal: index === 1,
+								colorThirdPriceTotal: index === 2,
+								colorFourPriceTotal: index === 3,
+								colorFivePriceTotal: index === 4
 							}"
 						>
 							{{ column[1][0].toFixed(2) }}€
@@ -244,52 +248,76 @@ export default {
 		@apply pr-0;
 	}
 }
-.btntable {
-	/* background: #0466c8; */
+.btntable,
+.btntable ~ td {
+	@apply bg-gray-100;
+}
+
+.btnthirdsite,
+.btnthirdsite ~ td {
+	@apply bg-gray-100;
+}
+
+.btnfivesite,
+.btnfivesite ~ td {
+	@apply bg-gray-100;
+}
+/* .btntable {
 	transition: all 0.2s ease-in-out 0s;
+	background: linear-gradient(90deg, rgba(10, 58, 106, 0.85) 0%, #1d3557 100%);
 	font-weight: 600;
+	color: white;
 	@apply rounded-tl border-b-0;
 }
 .btnsecondsite {
-	/* background: #0353a4; */
 	transition: all 0.2s ease-in-out 0s;
-	@apply rounded-tl border-b-0;
+	background: linear-gradient(90deg, rgba(29, 53, 87, 0.8) 0%, #457b9d 100%);
+	color: white;
+	@apply border-b-0;
 }
 .btnthirdsite {
-	/* background: #023e7d; */
 	transition: all 0.2s ease-in-out 0s;
-	@apply rounded-tl border-b-0;
+	background: #3a7497b9;
+	color: white;
+	@apply border-b-0;
 }
 .btnfourthsite {
-	/* background: #002855; */
 	transition: all 0.2s ease-in-out 0s;
-	@apply rounded-bl border-b-0;
+	background: #3a73977a;
+	color: white;
+	@apply border-b-0;
 }
 .btnfivesite {
-	/* background: #001845; */
 	transition: all 0.2s ease-in-out 0s;
-	@apply rounded-bl border-b-0;
-}
-@screen lg {
+	background: #3a739749;
+	color: white;
+	@apply border-b-0;
+} */
+/* @screen lg {
 	td {
 		transition: all 0.2s ease-in-out 0s;
 	}
-	.btntable:hover ~ td {
-		background: rgba(47, 95, 143, 0.05);
+	.btntable:hover ~ .colorBestPriceTotal {
+		background: rgba(10, 58, 106, 0.85);
+		color: white;
 	}
-	.btnsecondsite:hover ~ td {
-		background: rgba(47, 95, 143, 0.04);
+	.btnsecondsite:hover ~ .colorSecondPriceTotal {
+		background: rgba(29, 53, 87, 0.8);
+		color: white;
 	}
-	.btnthirdsite:hover ~ td {
-		background: rgba(47, 95, 143, 0.02);
+	.btnthirdsite:hover ~ .colorThirdPriceTotal {
+		background: #3a7497b9;
+		color: white;
 	}
-	.btnfourthsite:hover ~ td {
-		background: rgba(47, 95, 143, 0.01);
+	.btnfourthsite:hover ~ .colorFourPriceTotal {
+		background: #3a73977a;
+		color: white;
 	}
-	.btnfivesite:hover ~ td {
-		background: rgba(47, 95, 143, 0.01);
+	.btnfivesite:hover ~ .colorFivePriceTotal {
+		background: #3a739749;
+		color: white;
 	}
-}
+} */
 img {
 	-webkit-filter: drop-shadow(3px 3px 3px rgb(129, 129, 129));
 	filter: drop-shadow(1px 2px 3px rgb(129, 129, 129));
