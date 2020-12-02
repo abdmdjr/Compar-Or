@@ -1,6 +1,6 @@
 <template>
 	<main
-		class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-start px-8 pt-5 sm:px-16 lg:px-8"
+		class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center px-8 pt-5 sm:px-16 lg:px-8"
 	>
 		<div class="flex flex-col mt-8">
 			<h1
@@ -12,8 +12,8 @@
 			<p class="text-sm md:text-1xl lg:text-base font-light text-justify">
 				La page "{{ this.$route.path }}" n'existe pas.
 			</p>
-			<nuxt-link to="/coins" class="flex self-start"
-				><button class="btn mt-5 lg:mt-2 px-4 py-3 text-sm rounded">
+			<nuxt-link to="/coins" class="flex self-start mt-5 lg:mt-5"
+				><button class="btn px-4 py-3 text-sm rounded">
 					Retour aux pièces
 				</button>
 			</nuxt-link>

@@ -1,6 +1,6 @@
 <template>
 	<section
-		class="flex flex-col mx-auto mt-6 lg:mt-12 mb-12 text-sm md:text-lg lg:flex-row lg:space-x-10 lg:text-xl"
+		class="flex flex-col mx-auto mt-6 text-sm md:text-lg lg:flex-row lg:space-x-10 lg:text-xl"
 	>
 		<div
 			class="flex flex-col h-full md:space-x-12 items-center md:flex-row md:justify-center lg:flex-col lg:space-x-0"
@@ -63,17 +63,17 @@
 				>" en temps réel.
 			</p>
 			<table
-				class="table-auto md:table-fixed w-full border-collapse text-right text-xs md:text-lg"
+				class="table-auto md:table-fixed w-full border-collapse text-right text-xs md:text-lg rounded-lg"
 			>
-				<thead class="">
-					<th class="md:w-2/6 lg:w-1/3"></th>
-					<th class="py-2 px-1 text-xs md:text-lg font-normal">
+				<thead class="text-white">
+					<th class="md:w-2/6 lg:w-1/3 bg-white"></th>
+					<th class="py-2 px-1 text-xs md:text-lg font-normal bg-blue-800">
 						Prix
 					</th>
-					<th class="py-2 px-1 text-xs md:text-lg font-normal">
+					<th class="py-2 px-1 text-xs md:text-lg font-normal bg-blue-800">
 						Livraison
 					</th>
-					<th class="py-2 px-1 text-xs md:text-lg font-normal">
+					<th class="py-2 px-1 text-xs md:text-lg font-normal bg-blue-800">
 						Total
 					</th>
 				</thead>
@@ -90,7 +90,8 @@
 								btntable: index === 0,
 								btnsecondsite: index === 1,
 								btnthirdsite: index === 2,
-								btnfourthsite: index === 3
+								btnfourthsite: index === 3,
+								btnfivesite: index === 4
 							}"
 						>
 							<a
@@ -244,24 +245,30 @@ export default {
 	}
 }
 .btntable {
-	background: #2f5f8f;
+	/* background: #0466c8; */
 	transition: all 0.2s ease-in-out 0s;
-	color: white;
 	font-weight: 600;
 	@apply rounded-tl border-b-0;
 }
 .btnsecondsite {
-	background: rgba(47, 95, 143, 0.04);
+	/* background: #0353a4; */
 	transition: all 0.2s ease-in-out 0s;
+	@apply rounded-tl border-b-0;
 }
 .btnthirdsite {
-	background: rgba(47, 95, 143, 0.02);
+	/* background: #023e7d; */
 	transition: all 0.2s ease-in-out 0s;
+	@apply rounded-tl border-b-0;
 }
 .btnfourthsite {
-	background: rgba(47, 95, 143, 0.01);
+	/* background: #002855; */
 	transition: all 0.2s ease-in-out 0s;
-	@apply rounded-bl;
+	@apply rounded-bl border-b-0;
+}
+.btnfivesite {
+	/* background: #001845; */
+	transition: all 0.2s ease-in-out 0s;
+	@apply rounded-bl border-b-0;
 }
 @screen lg {
 	td {
@@ -277,6 +284,9 @@ export default {
 		background: rgba(47, 95, 143, 0.02);
 	}
 	.btnfourthsite:hover ~ td {
+		background: rgba(47, 95, 143, 0.01);
+	}
+	.btnfivesite:hover ~ td {
 		background: rgba(47, 95, 143, 0.01);
 	}
 }

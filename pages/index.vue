@@ -1,5 +1,5 @@
 <template>
-	<main class="">
+	<main>
 		<section
 			class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center pt-12 px-5 sm:px-16 lg:pt-0 lg:px-8"
 		>
@@ -23,54 +23,65 @@
 				</nuxt-link>
 			</div>
 			<img
-				class=""
+				class="catch-gold"
 				src="~/assets/img/catch-gold.png"
 				alt="homme qui est en train d'attraper une pièce d'or avec un filet à papillons"
 			/>
 		</section>
-		<section class="container mx-auto  px-5 sm:px-16 lg:pt-0 lg:px-8">
-			<div class="flex flex-col">
-				<h2 class="title-first text-xl md:text-5xl lg:text-4xl">
-					Pourquoi Compar'Or ?
-				</h2>
-				<div class="flex flex-row mt-18 mb-10 items-center">
+		<section class="relative">
+			<img
+				class="absolute w-screen h-104 lg:h-96 z-0"
+				src="~/assets/img/union.png"
+				alt=""
+			/>
+			<div
+				class="container mx-auto px-5 sm:px-16 lg:pt-0 lg:px-32 relative flex flex-wrap"
+			>
+				<div class="flex flex-col justify-center lg:flex-row mt-15 mb-32">
 					<img
-						class="h-32 sm:h-auto sm:flex-1"
+						class="mb-10 lg:mb-0 w-auto lg:w-1/3"
 						src="~/assets/img/first-guy-list.png"
 						alt="homme qui est en train d'attraper une pièce d'or avec un filet à papillons"
 					/>
-					<p class="text-sm md:text-lg font-light text-justify md:my-4 pl-5">
-						L’achat d’or en ligne est <strong>une solution sûre</strong> de nos
-						jours : du paiement à la livraison,
-						<strong>tout est sécurisé</strong> pour nous garantir
-						<strong>les meilleurs services et des produits de qualité</strong>.
-					</p>
+					<div class="flex flex-col lg:w-96 lg:ml-20">
+						<h2
+							class="title-first text-xl md:text-5xl lg:text-4xl mb-4 lg:mb-0"
+						>
+							Acheter de l'or en ligne ?
+						</h2>
+						<p class="text-sm md:text-lg font-light md:my-4 text-justify">
+							L’achat d’or en ligne est <strong>une solution sûre</strong> de
+							nos jours : du paiement à la livraison,
+							<strong>tout est sécurisé</strong> pour nous garantir
+							<strong>les meilleurs services et des produits de qualité</strong
+							>.
+						</p>
+					</div>
 				</div>
-			</div>
-			<div class="flex flex-col">
-				<h2 class="title-first text-xl md:text-5xl lg:text-4xl">
-					Quelle boutique de pièce d’or en ligne fait les meilleurs prix ?
-				</h2>
-				<div class="flex flex-row-reverse mt-18 items-center">
+				<div class="flex flex-col lg:flex-row-reverse justify-center lg:mt-20">
 					<img
-						class="h-32 sm:h-auto sm:flex-1"
+						class="mb-10 lg:mb-0 w-auto lg:w-1/3"
 						src="~/assets/img/second-guy-list.png"
 						alt="homme qui est en train d'attraper une pièce d'or avec un filet à papillons"
 					/>
-					<p class="text-sm md:text-lg font-light text-justify md:my-4 pr-5">
-						<strong>Grâce à Compar’Or</strong>, faites votre choix en toute
-						sérénité ! Le tableau comparatif vous aidera à
-						<strong>trouver le meilleur prix</strong> pour votre futur pièce !
-					</p>
+					<div class="flex flex-col lg:w-96 lg:mr-20">
+						<h2 class="title-first text-xl md:text-5xl lg:text-4xl">
+							Pourquoi Compar'Or ?
+						</h2>
+						<p class="text-sm md:text-lg font-light my-4 text-justify">
+							<strong>Grâce à Compar’Or</strong>, faites votre choix en toute
+							sérénité ! Le tableau comparatif vous aidera à
+							<strong>trouver le meilleur prix</strong> pour votre futur pièce !
+						</p>
+					</div>
 				</div>
 			</div>
-			<nuxt-link class="flex mt-5 lg:mt-3" to="/coins">
-				<button class="btn mx-auto px-4 py-3 text-sm rounded">
-					Trouvez votre pièce
-				</button>
-			</nuxt-link>
 		</section>
-		<footer class="h-24 w-full mt-32 bg-blue-900"></footer>
+		<nuxt-link class="flex mt-5 lg:mt-3" to="/coins">
+			<button class="btn mx-auto px-4 py-3 text-sm rounded">
+				Trouvez votre pièce
+			</button>
+		</nuxt-link>
 	</main>
 </template>
 
@@ -93,7 +104,7 @@ export default {
 	.content {
 		font-size: 0.6rem;
 	}
-	img {
+	.catch-gold {
 		width: 100px;
 	}
 }
@@ -105,7 +116,7 @@ export default {
 	.content {
 		font-size: 1rem;
 	}
-	img {
+	.catch-gold {
 		width: 75%;
 	}
 }
@@ -171,7 +182,7 @@ export default {
 		font-size: 1.3rem;
 		@apply px-6 py-4;
 	}
-	img,
+	.catch-gold,
 	.text-content {
 		width: 510px;
 	}
@@ -193,7 +204,7 @@ export default {
 		font-size: 1.55rem;
 		@apply px-10 py-6;
 	}
-	img,
+	.catch-gold,
 	.text-content {
 		width: 710px;
 	}
@@ -216,7 +227,7 @@ export default {
 		font-size: 1rem;
 		@apply px-5 py-3;
 	}
-	img {
+	.catch-gold {
 		position: relative;
 		width: 60%;
 	}
