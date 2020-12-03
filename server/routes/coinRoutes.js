@@ -55,9 +55,7 @@ app.post('/contact', async (req) => {
 		})
 	}
 
-	main()
-		.then('msg envoyé')
-		.catch(console.error)
+	main().catch(console.error)
 })
 
 module.exports = app
