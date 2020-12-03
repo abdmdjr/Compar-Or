@@ -33,7 +33,9 @@
 					<span>{{ errors[0] }}</span>
 				</ValidationProvider>
 
-				<button type="submit">Submit</button>
+				<button type="submit" @submit.prevent="handleSubmit(onSubmit)">
+					Submit
+				</button>
 			</form>
 		</ValidationObserver>
 	</section>
@@ -67,8 +69,17 @@ export default {
 		localize('fr')
 	},
 	methods: {
-		onSubmit() {
-			axios.post('/api/contact/', this.form).then(function(response) {})
+		async onSubmit(event) {
+			try {
+				const response = await axios
+					.post('/api/contact/', this.form)
+					.then(alert('Bien vu!'))
+					.then(location.reload())
+				console.log(response)
+			} catch (err) {
+				console.log(err)
+				alert("Quelques chose s'est mal passé!")
+			}
 		}
 	}
 }

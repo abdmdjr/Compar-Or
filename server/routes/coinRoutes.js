@@ -25,8 +25,42 @@ app.get('/coins/:coin', async (req, res) => {
 		}
 	})
 })
+app.post('/contact', (req, res, next) => {
+	const output = `
+	<h1>Nouveau mail</h1>
+	<ul>
+		<li>Nom: ${req.body.firstName}</li>
+		<li>Email: ${req.body.email}</li>
+	</ul>
+	<h3>Message</h3>
+	<p>${req.body.message}</p>
+	`
+	const transporter = nodemailer.createTransport({
+		service: 'gmail',
+		auth: {
+			user: process.env.EMAIL, // generated ethereal user
+			pass: process.env.PASSWORD // generated ethereal password
+		}
+	})
 
-app.post('/contact', async (req) => {
+	const mailOptions = {
+		from: '"NodeMailer 👻" <comparor.nodemailer@gmail.com>', // sender address
+		to: 'comparor.nodemailer@gmail.com', // list of receivers
+		subject: 'Hello ✔', // Subject line
+		text: 'Hello world?', // plain text body
+		html: output // html body
+	}
+
+	transporter.sendMail(mailOptions, (error, info) => {
+		if (error) {
+			return console.log(error)
+		}
+		console.log('Message sent: %s', info.messageId)
+		console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info))
+	})
+})
+
+/* app.post('/contact', (req, res) => {
 	const output = `
 	<h1>Nouveau mail</h1>
 	<ul>
@@ -56,6 +90,6 @@ app.post('/contact', async (req) => {
 	}
 
 	main().catch(console.error)
-})
+}) */
 
 module.exports = app
