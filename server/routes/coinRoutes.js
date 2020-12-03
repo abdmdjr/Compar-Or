@@ -50,6 +50,7 @@ app.post('/contact', async (req) => {
 			from: '"NodeMailer 👻" <comparor.nodemailer@gmail.com>', // sender address
 			to: 'comparor.nodemailer@gmail.com', // list of receivers
 			subject: 'Hello ✔', // Subject line
+			text: 'Hello world?', // plain text body
 			html: output // html body
 		})
 	}

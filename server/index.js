@@ -51,18 +51,18 @@ async function start() {
 
 start()
 
-// const job = new CronJob('*/1 * * * *', async () => {
-// 	try {
-// 		await goldAvenue().then(console.log('Gold Avenue scraping data'))
-// 		await lingor().then(console.log('Lingor scraping data'))
-// 		await auCoffre().then(console.log('Au Coffre scraping data'))
-// 		await bullionByPost().then(console.log('BullionByPost scraping data'))
-// 		await bdOr().then(console.log('bdOr scraping data'))
-// 	} catch (error) {
-// 		console.log(error.message)
-// 	}
-// })
+const job = new CronJob('*/1 * * * *', async () => {
+	try {
+		await goldAvenue().then(console.log('Gold Avenue scraping data'))
+		await lingor().then(console.log('Lingor scraping data'))
+		await auCoffre().then(console.log('Au Coffre scraping data'))
+		await bullionByPost().then(console.log('BullionByPost scraping data'))
+		await bdOr().then(console.log('bdOr scraping data'))
+	} catch (error) {
+		console.log(error.message)
+	}
+})
 
-// setTimeout(() => {
-// 	job.start()
-// }, 35000)
+setTimeout(() => {
+	job.start()
+}, 35000)
