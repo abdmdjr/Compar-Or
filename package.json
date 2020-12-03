@@ -24,11 +24,12 @@
     "express": "^4.16.4",
     "lodash.min": "^4.0.1",
     "mongoose": "^5.9.19",
+    "nodemailer": "^6.4.16",
     "nuxt": "^2.0.0",
     "nuxt-material-design-icons": "^1.0.4",
     "puppeteer": "^5.3.1",
-    "vue-carousel": "^0.18.0",
-    "vue-kinesis": "^1.1.7"
+    "vee-validate": "^3.4.5",
+    "vue-carousel": "^0.18.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",
