@@ -79,7 +79,7 @@
 				</div>
 			</div>
 		</section>
-		<nuxt-link class="flex mt-5 lg:mt-20" to="/coins">
+		<nuxt-link class="flex mt-5 mb-12 lg:my-20" to="/coins">
 			<button class="btn mx-auto px-4 py-3 text-sm rounded">
 				Trouvez votre pièce
 			</button>

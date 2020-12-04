@@ -1,43 +1,82 @@
 <template>
-	<section class="container mx-auto px-5 sm:px-16 lg:pt-0 lg:px-32">
-		<ValidationObserver v-slot="{ handleSubmit }" name="form">
-			<form @submit.prevent="handleSubmit(onSubmit)">
-				<ValidationProvider
-					v-slot="{ errors }"
-					name="E-mail"
-					rules="required|email"
+	<section
+		class="container mx-auto flex flex-col lg:flex-row justify-center lg:justify-evenly lg:items-center px-5 sm:px-16 lg:px-8 py-24 sm:py-32 lg:py-0 "
+	>
+		<img
+			class="hidden lg:block self-center w-172 lg:w-400 mb-6"
+			src="~/assets/img/contact.png"
+			alt="image contact form"
+		/>
+		<div class="flex flex-col lg:py-12 lg:px-15 lg:rounded lg:shadow-md">
+			<h1 class="title font-semibold text-lg md:text-3xl mb-1">
+				Contactez-nous
+			</h1>
+			<p class="font-light mb-8">Des questions ? Ecrivez-nous un message !</p>
+			<ValidationObserver v-slot="{ handleSubmit }" name="form">
+				<form
+					class="flex flex-col w-full space-y-6"
+					@submit.prevent="handleSubmit(onSubmit)"
 				>
-					<input
-						v-model="form.email"
-						type="email"
-						placeholder="type some email"
-					/>
-					<span>{{ errors[0] }}</span>
-				</ValidationProvider>
+					<ValidationProvider
+						v-slot="{ errors }"
+						name="email"
+						rules="required|email"
+						mode="passive"
+					>
+						<label class="title block mb-1">Adresse mail</label>
+						<input
+							v-model="form.email"
+							class="border-b border-gray-400 border-opacity-100 focus:border-blue-700 py-1 w-full"
+							type="text"
+							placeholder="Entrez votre e-mail"
+						/>
+						<span class="error">{{ errors[0] }}</span>
+					</ValidationProvider>
 
-				<ValidationProvider
-					v-slot="{ errors }"
-					name="First Name"
-					rules="required|alpha"
-				>
-					<input v-model="form.firstName" type="text" placeholder="text" />
-					<span>{{ errors[0] }}</span>
-				</ValidationProvider>
+					<ValidationProvider
+						v-slot="{ errors }"
+						name="name"
+						rules="required|alpha"
+						mode="passive"
+					>
+						<label class="title block mb-1">Prénom</label>
+						<input
+							v-model="form.firstName"
+							class="border-b border-gray-400 border-opacity-100 focus:border-blue-700 py-1 w-full"
+							type="text"
+							placeholder="Entrez votre prénom"
+						/>
+						<span class="error">{{ errors[0] }}</span>
+					</ValidationProvider>
 
-				<ValidationProvider
-					v-slot="{ errors }"
-					name="Last Name"
-					rules="required|alpha"
-				>
-					<input v-model="form.message" type="text" placeholder="text" />
-					<span>{{ errors[0] }}</span>
-				</ValidationProvider>
+					<ValidationProvider
+						v-slot="{ errors }"
+						name="message"
+						rules="required|min:8"
+						mode="passive"
+					>
+						<label class="title block mb-1">Message</label>
+						<textarea
+							v-model="form.message"
+							wrap="off"
+							class="border-b border-gray-400 border-opacity-100 focus:border-blue-700 py-1 w-full h-32"
+							type="text"
+							placeholder="Tapez votre message"
+						/>
+						<span class="error">{{ errors[0] }}</span>
+					</ValidationProvider>
 
-				<button type="submit" @submit.prevent="handleSubmit(onSubmit)">
-					Submit
-				</button>
-			</form>
-		</ValidationObserver>
+					<button
+						class="btn self-start py-2 px-4 rounded"
+						type="submit"
+						@submit.prevent="handleSubmit(onSubmit)"
+					>
+						Envoyer
+					</button>
+					<notifications class="notif" position="top right" group="mail" />
+				</form>
+			</ValidationObserver>
+		</div>
 	</section>
 </template>
 
@@ -46,6 +85,11 @@ import axios from 'axios'
 import {
 	ValidationProvider,
 	ValidationObserver,
+	extend,
+	required,
+	alpha,
+	email,
+	min,
 	localize
 } from 'vee-validate/dist/vee-validate.full'
 import fr from 'vee-validate/dist/locale/fr.json'
@@ -67,20 +111,67 @@ export default {
 	created() {
 		localize({ fr })
 		localize('fr')
+		extend('email', {
+			...email,
+			message: 'Réessayez avec une adresse mail valide 👆'
+		})
+		extend('required', {
+			...required,
+			message: 'Ce champ est obligatoire 👆'
+		})
+
+		extend('alpha', {
+			...alpha,
+			message: 'Ce champ doit contenir seulement des lettres 👆'
+		})
+
+		extend('min', {
+			...min,
+			message: 'Ce champ doit contenir 8 caractères minimum 👆'
+		})
 	},
 	methods: {
-		async onSubmit(event) {
+		async onSubmit() {
 			try {
-				const response = await axios
+				await axios
 					.post('/api/contact/', this.form)
-					.then(alert('Bien vu!'))
-					.then(location.reload())
-				console.log(response)
+					.then(
+						((this.form.firstName = ''),
+						(this.form.message = ''),
+						(this.form.email = ''))
+					)
+				await this.$notify({
+					group: 'mail',
+					title: 'Merci pour votre message !',
+					text: 'Vous recevrez une réponse au plus vite :)'
+				})
 			} catch (err) {
-				console.log(err)
-				alert("Quelques chose s'est mal passé!")
+				if (err) {
+					console.log(err)
+					alert("Quelques chose s'est mal passé!")
+				}
 			}
 		}
 	}
 }
 </script>
+<style scoped>
+input,
+textarea {
+	outline: none;
+}
+span .error {
+	display: block;
+}
+.error {
+	font-size: 0.8rem;
+	opacity: 1;
+	@apply mt-1 text-red-400 transition-all duration-150 ease-in-out;
+}
+textarea {
+	resize: none;
+}
+.notif {
+	margin-top: 50px;
+}
+</style>

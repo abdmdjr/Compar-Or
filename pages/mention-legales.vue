@@ -1,11 +1,11 @@
 <template>
 	<div
-		class="container mx-auto mt-16 sm:mt-24 lg:mt-0 px-5 sm:px-16 lg:px-8 pt-8"
+		class="container h-screen mx-auto mt-16 sm:mt-24 lg:mt-0 px-5 sm:px-16 lg:px-8 pt-8 mb-12"
 	>
 		<span class="block md:mb-4 text-xs text-black opacity-75"
 			><nuxt-link to="/"> > Retour à l'accueil</nuxt-link></span
 		>
-		<h1 class="title-first text-xl md:text-5xl lg:text-4xl my-5">
+		<h1 class="title-first text-xl md:text-3xl lg:text-4xl mt-5 mb-2">
 			Mentions légales
 		</h1>
 		<p class="font-light">
@@ -14,7 +14,7 @@
 			Site l'identité des différents intervenants dans le cadre de sa
 			réalisation et de son suivi.
 		</p>
-		<h2 class="title-first text-lg md:text-5xl lg:text-4xl my-5">
+		<h2 class="title-first text-lg md:text-3xl lg:text-4xl mt-5 mb-2">
 			Hébergeur
 		</h2>
 		<p class="font-light">

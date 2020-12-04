@@ -51,7 +51,7 @@
 				</a>
 			</div>
 		</div>
-		<section class="w-full self-center text-justify">
+		<section class="w-full self-center text-justify mb-20">
 			<h2
 				class="mt-8 mb-3 md:mt-10 lg:mb-3 lg:mt-0 text-base md:text-1xl md:leading-tight font-normal"
 			>

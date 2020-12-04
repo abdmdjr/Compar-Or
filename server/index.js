@@ -51,23 +51,23 @@ async function start() {
 
 start()
 
-const job = new CronJob('*/2,40 * * * *', async () => {
-	try {
-		await Promise.all([
-			await goldAvenue(),
-			await lingor(),
-			await auCoffre(),
-			await bullionByPost(),
-			await bdOr()
-		])
-	} catch (error) {
-		console.log(error.message)
-	}
-})
+// const job = new CronJob('*/2,40 * * * *', async () => {
+// 	try {
+// 		await Promise.all([
+// 			await goldAvenue(),
+// 			await lingor(),
+// 			await auCoffre(),
+// 			await bullionByPost(),
+// 			await bdOr()
+// 		])
+// 	} catch (error) {
+// 		console.log(error.message)
+// 	}
+// })
 
-setTimeout(() => {
-	job.start()
-}, 35000)
+// setTimeout(() => {
+// 	job.start()
+// }, 35000)
 
 // await goldAvenue().then(console.log('Gold Avenue scraping data'))
 // await lingor().then(console.log('Lingor scraping data'))

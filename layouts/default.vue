@@ -1,7 +1,7 @@
 <template>
 	<div class="flex flex-col h-screen justify-between">
 		<Navbar />
-		<nuxt class="mb-20" />
+		<nuxt />
 		<Footer />
 	</div>
 </template>
