@@ -68,9 +68,3 @@ const job = new CronJob('*/2,40 * * * *', async () => {
 setTimeout(() => {
 	job.start()
 }, 35000)
-
-// await goldAvenue().then(console.log('Gold Avenue scraping data'))
-// await lingor().then(console.log('Lingor scraping data'))
-// await auCoffre().then(console.log('Au Coffre scraping data'))
-// await bullionByPost().then(console.log('BullionByPost scraping data'))
-// await bdOr().then(console.log('bdOr scraping data'))
