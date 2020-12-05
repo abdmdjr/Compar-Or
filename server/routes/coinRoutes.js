@@ -26,6 +26,9 @@ app.get('/coins/:coin', async (req, res) => {
 	})
 })
 app.post('/contact', (req, res) => {
+	if (!req.body.email) {
+		return res.status(400).json({ message: "L'email est obligatoire" })
+	}
 	const output = `
 	<h1>Nouveau mail</h1>
 	<ul>

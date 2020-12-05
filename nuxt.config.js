@@ -17,6 +17,14 @@ module.exports = {
 				content: process.env.npm_package_description || ''
 			}
 		],
+		script: [
+			{
+				async: 'true',
+				defer: 'true',
+				'data-domain': 'comparor.herokuapp.com',
+				src: 'https://plausible.io/js/plausible.js'
+			}
+		],
 		link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
 	},
 	/*
@@ -25,6 +33,7 @@ module.exports = {
 	loading: { color: '#fff' },
 	/*
 	 ** Global CSS
+	 <script async defer data-domain="comparor.herokuapp.com" src="https://plausible.io/js/plausible.js"></script>
 	 */
 	css: [],
 	/*
