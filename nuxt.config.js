@@ -30,7 +30,10 @@ module.exports = {
 	/*
 	 ** Customize the progress-bar color
 	 */
-	loading: { color: '#fff' },
+	/* 	loading: {
+		color: 'orange',
+		height: '2px'
+	}, */
 	/*
 	 ** Global CSS
 	 <script async defer data-domain="comparor.herokuapp.com" src="https://plausible.io/js/plausible.js"></script>

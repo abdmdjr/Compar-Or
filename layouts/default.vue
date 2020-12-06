@@ -2,7 +2,7 @@
 	<div class="flex flex-col h-screen justify-between">
 		<Navbar />
 		<nuxt />
-		<Footer />
+		<Footer :class="hide" />
 	</div>
 </template>
 
@@ -13,6 +13,16 @@ export default {
 	components: {
 		Navbar,
 		Footer
+	},
+	data() {
+		return {
+			hide: 'hidden'
+		}
+	},
+	created() {
+		setTimeout(() => {
+			this.hide = 'block'
+		}, 500)
 	}
 }
 </script>
@@ -45,7 +55,7 @@ p {
 }
 
 .navbar {
-	background: linear-gradient(220.01deg, #94d5ff -300%, #083460ec 70%);
+	background: linear-gradient(220.01deg, #94d5ff -300%, #1a4269 70%);
 }
 
 .title-first {
@@ -94,5 +104,14 @@ p {
 }
 .second-icon {
 	margin-left: -0.75rem;
+}
+
+.page-enter-active,
+.page-leave-active {
+	transition: opacity 0.2s;
+}
+.page-enter,
+.page-leave-to {
+	opacity: 0;
 }
 </style>

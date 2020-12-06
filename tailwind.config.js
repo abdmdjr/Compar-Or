@@ -23,6 +23,7 @@ module.exports = {
 	theme: {
 		extend: {
 			spacing: {
+				'900': '900px',
 				'400': '400px',
 				'370': '370px',
 				'320': '320px',

@@ -137,7 +137,7 @@ export default {
 	},
 	head() {
 		return {
-			title: "Compar'Or - Comparons les prix"
+			title: "Compar'Or - Achetez vos pièces au meilleur prix"
 		}
 	}
 }

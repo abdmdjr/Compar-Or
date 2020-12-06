@@ -1,19 +1,19 @@
 <template>
 	<main>
 		<section
-			class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center pt-12 px-5 sm:px-16 lg:pt-0 lg:px-8"
+			class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center pt-12 px-5 sm:px-16 lg:pt-0 lg:px-8 lg:pb-20"
 		>
 			<div class="text-content flex flex-col self-start lg:self-auto">
 				<h1 class="title title-first text-2xl md:text-5xl lg:text-4xl mt-5">
 					Les plus belles <span class="title-third">pièces</span>, <br />
 					au meilleur prix
 				</h1>
-				<p
+				<div
 					class="content text-sm md:text-lg font-light text-justify mt-2 md:my-4"
 				>
-					Nous comparons les offres pour vous aider dans
-					<strong>votre quête d’achat d’or.</strong>
-				</p>
+					Nous comparons les offres pour vous aider dans votre quête
+					<h2 class="inline">d’achat d’or.</h2>
+				</div>
 				<nuxt-link class="mt-5 lg:mt-3 self-start" to="/coins">
 					<button
 						class="btn flex items-center align-center px-4 py-3 text-sm rounded"
@@ -30,7 +30,7 @@
 		</section>
 		<section class="relative">
 			<img
-				class="absolute w-screen h-104 z-0"
+				class="absolute w-screen h-104 md:h-900 lg:h-96 z-0"
 				src="~/assets/img/union.png"
 				alt=""
 			/>
@@ -38,20 +38,20 @@
 				class="container mx-auto px-5 sm:px-16 lg:pt-0 lg:px-32 relative flex flex-wrap"
 			>
 				<div
-					class="flex flex-col justify-center lg:flex-row mt-20 lg:mt-32 mb-32"
+					class="flex flex-col justify-center lg:flex-row mt-20 mb-32 md:mt-15 lg:mt-16 lg:mb-32"
 				>
 					<img
-						class="mb-10 lg:mb-0 w-auto lg:w-1/3"
+						class="mb-5 lg:mb-0 w-auto lg:w-1/3 lg:h-full"
 						src="~/assets/img/first-guy-list.png"
 						alt="homme qui est en train d'attraper une pièce d'or avec un filet à papillons"
 					/>
 					<div class="flex flex-col lg:w-96 lg:ml-20">
 						<h2
-							class="title-first text-xl md:text-5xl lg:text-4xl mb-4 lg:mb-0"
+							class="title-first text-xl md:text-3xl lg:text-4xl mb-4 md:mb-3"
 						>
 							Acheter de l'or en ligne ?
 						</h2>
-						<p class="text-sm md:text-lg font-light md:my-4 text-justify">
+						<p class="text-sm md:text-lg font-light text-justify">
 							L’achat d’or en ligne est <strong>une solution sûre</strong> de
 							nos jours : du paiement à la livraison,
 							<strong>tout est sécurisé</strong> pour nous garantir
@@ -60,17 +60,19 @@
 						</p>
 					</div>
 				</div>
-				<div class="flex flex-col lg:flex-row-reverse justify-center lg:mt-20">
+				<div class="flex flex-col lg:flex-row-reverse justify-center">
 					<img
-						class="mb-10 lg:mb-0 w-auto lg:w-1/3"
+						class="mb-5 lg:mb-0 w-auto lg:w-1/3 lg:h-full"
 						src="~/assets/img/second-guy-list.png"
 						alt="homme qui est en train d'attraper une pièce d'or avec un filet à papillons"
 					/>
 					<div class="flex flex-col lg:w-96 lg:mr-20">
-						<h2 class="title-first text-xl md:text-5xl lg:text-4xl">
+						<h2
+							class="title-first text-xl md:text-3xl lg:text-4xl mb-4 md:mb-3"
+						>
 							Pourquoi Compar'Or ?
 						</h2>
-						<p class="text-sm md:text-lg font-light my-4 text-justify">
+						<p class="text-sm md:text-lg font-light text-justify">
 							<strong>Grâce à Compar’Or</strong>, faites votre choix en toute
 							sérénité ! Le tableau comparatif vous aidera à
 							<strong>trouver le meilleur prix</strong> pour votre futur pièce !
@@ -79,7 +81,7 @@
 				</div>
 			</div>
 		</section>
-		<nuxt-link class="flex mt-5 mb-12 lg:my-20" to="/coins">
+		<nuxt-link class="flex mt-10 mb-12 md:mt-15 md:mb-20" to="/coins">
 			<button class="btn mx-auto px-4 py-3 text-sm rounded">
 				Trouvez votre pièce
 			</button>
@@ -98,6 +100,10 @@ export default {
 </script>
 
 <style scoped>
+.content {
+	font-family: 'Open Sans', sans-serif;
+	color: #1d3c5a;
+}
 /* mini mobile */
 @media only screen and (min-device-width: 100px) and (max-device-width: 260px) {
 	.title {
