@@ -1,5 +1,5 @@
 <template>
-	<footer class="navbar text-white">
+	<footer class="navbar text-white w-screen">
 		<div class="flex flex-col items-center justify-center h-32">
 			<nuxt-link to="/">
 				<h2 class="title-first text-lg sm:text-1xl font-normal">

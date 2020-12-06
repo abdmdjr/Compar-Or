@@ -1,6 +1,6 @@
 <template>
 	<main
-		class="container mx-auto mt-16 sm:mt-24 lg:mt-0 px-5 sm:px-16 lg:px-8 pt-8"
+		class="container mx-auto mt-16 sm:mt-24 lg:mt-0 px-5 sm:px-16 lg:px-8 pt-8 mb-20"
 	>
 		<span v-if="coinDetail" class="block md:mb-4 text-xs text-black opacity-75"
 			><nuxt-link to="/">Accueil > </nuxt-link>

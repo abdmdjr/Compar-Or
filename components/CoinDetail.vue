@@ -51,7 +51,7 @@
 				</a>
 			</div>
 		</div>
-		<section class="w-full self-center text-justify mb-20">
+		<section class="w-full self-start items-start text-justify">
 			<h2
 				class="mt-8 mb-3 md:mt-10 lg:mb-3 lg:mt-0 text-base md:text-1xl md:leading-tight font-normal"
 			>
@@ -101,7 +101,9 @@
 								:aria-label="`${column[0]} - ${title}`"
 								class="block py-3 px-1 md:px-5"
 							>
-								<span class="text-xs md:text-base">{{ index + 1 }}.</span>
+								<!-- <span v-if="index === 0" class="iconApp">🥇</span>
+								<span v-if="index === 1" class="iconApp">🥈</span>
+								<span v-if="index === 2" class="iconApp">🥉</span> -->
 								{{ column[0].split(' ').join('.') }}
 							</a>
 						</td>

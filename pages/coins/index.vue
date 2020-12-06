@@ -23,7 +23,7 @@
 				</p>
 			</div>
 		</div>
-		<main class="flex flex-col md:flex-row">
+		<main class="flex flex-col min-h-screen md:flex-row">
 			<div id="filters" class="filters hidden lg:block">
 				<h2 class="title font-medium text-lg mb-6">Filtres</h2>
 				<h3 class=" font-bold mb-4">Type de métaux</h3>

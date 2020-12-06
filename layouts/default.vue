@@ -1,8 +1,8 @@
 <template>
-	<div class="flex flex-col h-screen justify-between">
+	<div class="flex flex-col h-screen relative justify-between">
 		<Navbar />
 		<nuxt />
-		<Footer :class="hide" />
+		<Footer />
 	</div>
 </template>
 
@@ -13,16 +13,6 @@ export default {
 	components: {
 		Navbar,
 		Footer
-	},
-	data() {
-		return {
-			hide: 'hidden'
-		}
-	},
-	created() {
-		setTimeout(() => {
-			this.hide = 'block'
-		}, 500)
 	}
 }
 </script>
