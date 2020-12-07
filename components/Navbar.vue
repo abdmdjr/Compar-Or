@@ -65,9 +65,9 @@ export default {
 		@apply px-8;
 	}
 }
-.bg-navbar {
+/* .bg-navbar {
 	background: linear-gradient(220.01deg, #94d5ff -300%, #1a4269 70%);
-}
+} */
 .navbar::after {
 	content: '';
 	background: -webkit-linear-gradient(220.01deg, #ffcc2f 0%, #ef9834 100%);

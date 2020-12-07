@@ -1,10 +1,10 @@
 <template>
 	<section
-		class="flex flex-col h-full md:space-x-12 items-center md:flex-row md:justify-center lg:flex-col lg:space-x-0"
+		class="flex flex-col w-full items-center md:flex-row md:justify-around lg:justify-start lg:items-start lg:flex-col lg:space-x-0"
 	>
 		<client-only placeholder="Chargement des prix...">
 			<Carousel
-				class="w-310 px-5"
+				class="w-268 pt-5"
 				:mouse-drag="true"
 				:per-page="1"
 				:center-mode="true"
@@ -106,76 +106,6 @@ export default {
 		@apply pr-0;
 	}
 }
-.btntable,
-.btntable ~ td {
-	@apply bg-gray-100;
-}
-
-.btnthirdsite,
-.btnthirdsite ~ td {
-	@apply bg-gray-100;
-}
-
-.btnfivesite,
-.btnfivesite ~ td {
-	@apply bg-gray-100;
-}
-/* .btntable {
-	transition: all 0.2s ease-in-out 0s;
-	background: linear-gradient(90deg, rgba(10, 58, 106, 0.85) 0%, #1d3557 100%);
-	font-weight: 600;
-	color: white;
-	@apply rounded-tl border-b-0;
-}
-.btnsecondsite {
-	transition: all 0.2s ease-in-out 0s;
-	background: linear-gradient(90deg, rgba(29, 53, 87, 0.8) 0%, #457b9d 100%);
-	color: white;
-	@apply border-b-0;
-}
-.btnthirdsite {
-	transition: all 0.2s ease-in-out 0s;
-	background: #3a7497b9;
-	color: white;
-	@apply border-b-0;
-}
-.btnfourthsite {
-	transition: all 0.2s ease-in-out 0s;
-	background: #3a73977a;
-	color: white;
-	@apply border-b-0;
-}
-.btnfivesite {
-	transition: all 0.2s ease-in-out 0s;
-	background: #3a739749;
-	color: white;
-	@apply border-b-0;
-} */
-/* @screen lg {
-	td {
-		transition: all 0.2s ease-in-out 0s;
-	}
-	.btntable:hover ~ .colorBestPriceTotal {
-		background: rgba(10, 58, 106, 0.85);
-		color: white;
-	}
-	.btnsecondsite:hover ~ .colorSecondPriceTotal {
-		background: rgba(29, 53, 87, 0.8);
-		color: white;
-	}
-	.btnthirdsite:hover ~ .colorThirdPriceTotal {
-		background: #3a7497b9;
-		color: white;
-	}
-	.btnfourthsite:hover ~ .colorFourPriceTotal {
-		background: #3a73977a;
-		color: white;
-	}
-	.btnfivesite:hover ~ .colorFivePriceTotal {
-		background: #3a739749;
-		color: white;
-	}
-} */
 img {
 	-webkit-filter: drop-shadow(3px 3px 3px rgb(129, 129, 129));
 	filter: drop-shadow(1px 2px 3px rgb(129, 129, 129));
