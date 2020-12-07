@@ -10,7 +10,11 @@ const CoinSchema = new mongoose.Schema({
 		required: true
 	},
 	prices: {
-		'goldavenue com': { type: [], default: undefined },
+		'goldavenue com': {
+			type: [],
+			default: undefined,
+			dataPrice: { type: [], default: undefined }
+		},
 		'lingor fr': { type: [], default: undefined },
 		'aucoffre com': { type: [], default: undefined },
 		'bullionbypost fr': { type: [], default: undefined },

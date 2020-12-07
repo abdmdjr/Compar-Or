@@ -51,10 +51,10 @@ async function start() {
 
 start()
 
-// const job = new CronJob('*/2,40 * * * *', async () => {
+// const job = new CronJob('* * * * *', async () => {
 // 	try {
 // 		await Promise.all([
-// 			await goldAvenue(),
+// 			await goldAvenue()
 // 			await lingor(),
 // 			await auCoffre(),
 // 			await bullionByPost(),
@@ -67,4 +67,4 @@ start()
 
 // setTimeout(() => {
 // 	job.start()
-// }, 35000)
+// }, 1000)
