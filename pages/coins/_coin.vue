@@ -50,6 +50,13 @@
 							<CoinTable
 								v-for="(coin, index) in coinPrice"
 								:key="index"
+								:class="{
+									colorBestPrice: index === 0,
+									colorSecondPrice: index === 1,
+									colorThirdPrice: index === 2,
+									colorFourthPrice: index === 3,
+									colorFivePrice: index === 4
+								}"
 								:title="coinDetail.title"
 								:url="coin[1][3]"
 								:site="coin[0].split(' ').join('.')"
@@ -121,7 +128,6 @@ export default {
 </script>
 
 <style lang="scss">
-$base-color: #193a5c;
 /* Ipad Pro */
 @media only screen and (min-width: 1024px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
 	.container {
@@ -129,11 +135,13 @@ $base-color: #193a5c;
 	}
 }
 
-@for $i from 1 through 5 {
-	tr:nth-child(#{$i}) td a {
-		background: lighten($base-color, 20%);
-	}
+$base-color: #1d3557;
+
+.colorBestPrice a,
+.colorBestPrice:hover {
+	@apply bg-blue-800 text-white;
 }
+
 .pMarge {
 	@apply my-3;
 }

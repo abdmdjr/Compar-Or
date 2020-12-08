@@ -14,7 +14,7 @@
 
 		<td class="px-2 md:px-3 border-b border-r">{{ price }}€</td>
 		<td v-if="livraison === 0" class="px-2 md:px-3 border-b border-r">
-			Offert
+			offerte
 		</td>
 		<td v-else class="px-2 md:px-3 border-b border-r">{{ livraison }}€</td>
 		<td class="paddmobile pr-3 md:px-3 border-b font-bold">
