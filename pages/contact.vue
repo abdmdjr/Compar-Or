@@ -1,83 +1,90 @@
 <template>
-	<section
-		class="container mx-auto flex flex-col lg:flex-row justify-center lg:justify-evenly lg:items-center px-5 sm:px-16 lg:px-8 py-24 sm:py-32 lg:py-0 "
+	<main
+		class="container mx-auto mt-16 sm:mt-24 lg:mt-0 px-5 sm:px-16 lg:px-8 pt-8 mb-15 md:mb-20 "
 	>
-		<img
-			class="hidden lg:block self-center w-172 lg:w-400 mb-6"
-			src="~/assets/img/contact.png"
-			alt="image contact form"
-		/>
-		<div class="flex flex-col lg:py-12 lg:px-15 lg:rounded lg:shadow-md">
-			<h1 class="title font-semibold text-lg md:text-3xl mb-1">
-				Contactez-nous
-			</h1>
-			<p class="font-light mb-8">Des questions ? Ecrivez-nous un message !</p>
-			<ValidationObserver v-slot="{ handleSubmit }" name="form">
-				<form
-					class="flex flex-col w-full space-y-6"
-					@submit.prevent="handleSubmit(onSubmit)"
-				>
-					<ValidationProvider
-						v-slot="{ errors }"
-						name="email"
-						rules="required|email"
-						mode="passive"
-					>
-						<label class="title block mb-1">Adresse mail</label>
-						<input
-							v-model="form.email"
-							class="border-b border-gray-400 border-opacity-100 focus:border-blue-700 py-1 w-full"
-							type="text"
-							placeholder="Entrez votre e-mail"
-						/>
-						<span class="error">{{ errors[0] }}</span>
-					</ValidationProvider>
-
-					<ValidationProvider
-						v-slot="{ errors }"
-						name="name"
-						rules="required|alpha"
-						mode="passive"
-					>
-						<label class="title block mb-1">Prénom</label>
-						<input
-							v-model="form.firstName"
-							class="border-b border-gray-400 border-opacity-100 focus:border-blue-700 py-1 w-full"
-							type="text"
-							placeholder="Entrez votre prénom"
-						/>
-						<span class="error">{{ errors[0] }}</span>
-					</ValidationProvider>
-
-					<ValidationProvider
-						v-slot="{ errors }"
-						name="message"
-						rules="required|min:8"
-						mode="passive"
-					>
-						<label class="title block mb-1">Message</label>
-						<textarea
-							v-model="form.message"
-							wrap="off"
-							class="border-b border-gray-400 border-opacity-100 focus:border-blue-700 py-1 w-full h-32"
-							type="text"
-							placeholder="Tapez votre message"
-						/>
-						<span class="error">{{ errors[0] }}</span>
-					</ValidationProvider>
-
-					<button
-						class="btn self-start py-2 px-4 rounded"
-						type="submit"
+		<span class="md:mb-4 text-xs text-black opacity-75"
+			><nuxt-link to="/">Accueil > </nuxt-link>Contact</span
+		>
+		<section
+			class="flex flex-col justify-start lg:flex-row lg:justify-evenly mt-6"
+		>
+			<img
+				class="hidden lg:block self-center w-479 mb-6"
+				src="~/assets/img/contact.png"
+				alt="image contact form"
+			/>
+			<div class="flex flex-col lg:py-12 lg:px-15 lg:rounded lg:shadow-md">
+				<h1 class="title font-medium text-lg md:text-3xl mb-1">
+					Contactez-nous
+				</h1>
+				<p class="font-light mb-8">Des questions ? Ecrivez-nous un message !</p>
+				<ValidationObserver v-slot="{ handleSubmit }" name="form">
+					<form
+						class="flex flex-col w-full space-y-6"
 						@submit.prevent="handleSubmit(onSubmit)"
 					>
-						Envoyer
-					</button>
-					<notifications class="notif" position="top right" group="mail" />
-				</form>
-			</ValidationObserver>
-		</div>
-	</section>
+						<ValidationProvider
+							v-slot="{ errors }"
+							name="email"
+							rules="required|email"
+							mode="passive"
+						>
+							<label class="title block mb-1">Adresse mail</label>
+							<input
+								v-model="form.email"
+								class="border-b border-gray-400 border-opacity-100 focus:border-blue-700 py-1 w-full"
+								type="text"
+								placeholder="Entrez votre e-mail"
+							/>
+							<span class="error">{{ errors[0] }}</span>
+						</ValidationProvider>
+
+						<ValidationProvider
+							v-slot="{ errors }"
+							name="name"
+							rules="required|alpha"
+							mode="passive"
+						>
+							<label class="title block mb-1">Prénom</label>
+							<input
+								v-model="form.firstName"
+								class="border-b border-gray-400 border-opacity-100 focus:border-blue-700 py-1 w-full"
+								type="text"
+								placeholder="Entrez votre prénom"
+							/>
+							<span class="error">{{ errors[0] }}</span>
+						</ValidationProvider>
+
+						<ValidationProvider
+							v-slot="{ errors }"
+							name="message"
+							rules="required|min:8"
+							mode="passive"
+						>
+							<label class="title block mb-1">Message</label>
+							<textarea
+								v-model="form.message"
+								wrap="off"
+								class="border-b border-gray-400 border-opacity-100 focus:border-blue-700 py-1 w-full h-32"
+								type="text"
+								placeholder="Tapez votre message"
+							/>
+							<span class="error">{{ errors[0] }}</span>
+						</ValidationProvider>
+
+						<button
+							class="btn self-start py-2 px-4 rounded"
+							type="submit"
+							@submit.prevent="handleSubmit(onSubmit)"
+						>
+							Envoyer
+						</button>
+						<notifications class="notif" position="top right" group="mail" />
+					</form>
+				</ValidationObserver>
+			</div>
+		</section>
+	</main>
 </template>
 
 <script>

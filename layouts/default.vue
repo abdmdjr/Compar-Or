@@ -28,9 +28,13 @@ export default {
 html {
 	-ms-overflow-style: none; /* Internet Explorer 10+ */
 	scrollbar-width: none; /* Firefox */
+	overflow: scroll;
+	overflow-x: hidden;
 }
 html::-webkit-scrollbar {
 	display: none; /* Safari and Chrome */
+	width: 0px; /* Remove scrollbar space */
+	background: transparent; /* Optional: just make scrollbar invisible */
 	@apply antialiased;
 }
 
@@ -74,7 +78,7 @@ p {
 .btn {
 	background: white;
 	font-weight: 600;
-	color: #2f5f8f;
+	color: #193a5c;
 	border: 0.6px solid;
 	border-color: #2f5f8f;
 	transition: all 0.1s ease-in-out 0s;

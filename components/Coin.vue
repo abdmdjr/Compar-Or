@@ -4,7 +4,7 @@
 			<ul class="flex flex-col items-center">
 				<li class="">
 					<nuxt-link :to="`/coins/${slug}`">
-						<img class="" :src="img" :alt="title" />
+						<img class="px-3" :src="img" :alt="title" />
 					</nuxt-link>
 				</li>
 				<li class="mt-5 text-center">
@@ -69,6 +69,6 @@ export default {
 img {
 	-webkit-filter: drop-shadow(1px 1px 1px rgb(138, 138, 138));
 	filter: drop-shadow(1px 1px 1px rgb(138, 138, 138));
-	max-width: 140px;
+	width: 140px;
 }
 </style>

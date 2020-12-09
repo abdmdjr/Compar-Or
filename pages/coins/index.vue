@@ -155,9 +155,23 @@ export default {
 	transform: translateX(-50%);
 	display: hidden;
 }
-
-.card {
-	flex-basis: 100%;
+/* iPhone 5 */
+@media only screen and (min-device-width: 320px) and (max-device-width: 639px) {
+	.card {
+		flex-basis: 100%;
+	}
+}
+/* iPhone 6, 6S, 7 and 8 */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+	.card {
+		flex-basis: 100%;
+	}
+}
+/* iPhone 6/7/8 + */
+@media only screen and (min-device-width: 410px) and (max-device-width: 736px) {
+	.card {
+		flex-basis: 47%;
+	}
 }
 
 @screen md {
@@ -183,6 +197,7 @@ export default {
 	}
 	.card {
 		flex-basis: 24%;
+		max-height: 333px;
 	}
 }
 /* Ipad Pro */

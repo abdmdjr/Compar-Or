@@ -1,23 +1,30 @@
 <template>
 	<tr>
-		<td class="text-left border-b border-r py-0">
+		<td class="text-left border-b border-r rounded-tl-md py-0">
 			<a
 				:href="url"
 				target="_blank"
 				rel="noopener noreferrer"
 				:aria-label="`${site} - ${title}`"
-				class="block py-5 px-1 md:px-5"
+				class="padding-site-td block py-4 px-2 md:px-5"
 			>
-				{{ site }}
+				{{ index }}. {{ site }}
 			</a>
 		</td>
 
-		<td class="px-2 md:px-3 border-b border-r">{{ price }}€</td>
-		<td v-if="livraison === 0" class="px-2 md:px-3 border-b border-r">
+		<td class="padding-mobile-td px-1 md:px-3 border-b border-r">
+			{{ price }}€
+		</td>
+		<td
+			v-if="livraison === 0"
+			class="padding-mobile-td px-2 md:px-3 border-b border-r"
+		>
 			offerte
 		</td>
-		<td v-else class="px-2 md:px-3 border-b border-r">{{ livraison }}€</td>
-		<td class="paddmobile pr-3 md:px-3 border-b font-bold">
+		<td v-else class="padding-mobile-td px-1 md:px-3 border-b border-r">
+			{{ livraison }}€
+		</td>
+		<td class="padding-mobile-td px-2 md:px-3 border-b font-bold">
 			{{ pricetotal }}€
 		</td>
 	</tr>
@@ -49,6 +56,10 @@ export default {
 		title: {
 			type: String,
 			required: true
+		},
+		index: {
+			type: Number,
+			required: true
 		}
 	}
 }
@@ -62,11 +73,15 @@ export default {
 .VueCarousel-dot {
 	border-radius: 100%;
 }
-@media only screen and (max-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
-	.paddmobile {
-		@apply pr-0;
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) {
+	.padding-site-td {
+		@apply px-1;
+	}
+	.padding-mobile-td {
+		@apply px-1;
 	}
 }
+
 /* .btntable,
 .btntable ~ td {
 	@apply bg-gray-100;

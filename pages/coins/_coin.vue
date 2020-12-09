@@ -1,12 +1,14 @@
 <template>
 	<main
-		class="container mx-auto mt-16 sm:mt-24 lg:mt-0 px-5 sm:px-16 lg:px-8 pt-8 mb-20"
+		class="container mx-auto mt-16 sm:mt-24 lg:mt-0 px-5 sm:px-16 lg:px-8 pt-8 mb-15 md:mb-20"
 	>
-		<span v-if="coinDetail" class="block md:mb-4 text-xs text-black opacity-75"
+		<span class="block md:mb-4 text-xs text-black opacity-75"
 			><nuxt-link to="/">Accueil > </nuxt-link>
 			<nuxt-link to="/coins">Pièces > </nuxt-link>{{ coinDetail.title }}</span
 		>
-		<div class="flex flex-col h-full md:flex-col lg:flex-row lg:space-x-15">
+		<div
+			class="flex flex-col h-full md:mt-10 md:flex-col lg:flex-row lg:space-x-15"
+		>
 			<CoinDetail
 				v-if="coinDetail"
 				:title="coinDetail.title"
@@ -19,11 +21,11 @@
 			/>
 			<div class="flex flex-col">
 				<h2
-					class="mt-8 mb-3 md:mt-10 lg:mb-3 lg:mt-0 text-base md:text-1xl md:leading-tight font-normal"
+					class="mt-15 mb-3 md:mb-8 text-lg font-normal md:text-1xl lg:text-2xl md:leading-tight lg:mb-5 lg:mt-0"
 				>
-					Comparaison des prix
+					Tableau comparatif
 				</h2>
-				<p class="mb-4 text-sm md:text-lg font-light">
+				<p class="mb-8 lg:mb-5 text-base md:text-lg font-light text-justify">
 					Ce tableau indique les prix affichés sur les sites de vente, les frais
 					de port, et le prix total pour la pièce "<strong>{{
 						coinDetail.title
@@ -32,17 +34,19 @@
 				</p>
 				<section class="w-full self-start items-start text-justify">
 					<table
-						class="table-auto md:table-fixed w-full text-right text-xs md:text-lg rounded-lg"
+						class="table-auto md:table-fixed w-full text-right text-sm md:text-lg"
 					>
 						<thead class="text-gray-800">
 							<th class="md:w-2/6 lg:w-1/3 bg-white"></th>
-							<th class="py-2 px-1 md:px-3 text-xs md:text-lg font-normal">
+							<th class="py-5 px-1 md:px-3 text-xs md:text-lg font-normal">
 								Prix
 							</th>
-							<th class="py-2 px-1 md:px-3 text-xs md:text-lg font-normal">
+							<th
+								class="padding-mobile py-5 px-1 md:px-3 text-xs md:text-lg font-normal"
+							>
 								Livraison
 							</th>
-							<th class="py-2 px-1 md:px-3 text-xs md:text-lg font-bold">
+							<th class="py-5 px-1 md:px-3 text-xs md:text-lg font-bold">
 								Total
 							</th>
 						</thead>
@@ -57,6 +61,7 @@
 									colorFourthPrice: index === 3,
 									colorFivePrice: index === 4
 								}"
+								:index="index + 1"
 								:title="coinDetail.title"
 								:url="coin[1][3]"
 								:site="coin[0].split(' ').join('.')"
@@ -69,7 +74,7 @@
 				</section>
 				<div>
 					<h2
-						class="mt-8 mb-3 md:mt-10 lg:mb-3 text-base md:text-1xl md:leading-tight font-normal"
+						class="mt-10 mb-3 md:mb-8 text-lg font-normal md:text-1xl lg:text-2xl md:leading-tight lg:mb-5 lg:mt-15"
 					>
 						Description
 					</h2>
@@ -77,7 +82,7 @@
 						v-for="(descr, index) in coinDetail.description"
 						:key="index"
 						:class="{ pMarge: index === 1 }"
-						class="text-sm md:text-lg font-light text-justify"
+						class="text-base md:text-lg font-light text-justify"
 					>
 						{{ descr }}
 					</p>
@@ -115,10 +120,6 @@ export default {
 			coinPrice: []
 		}
 	},
-	computed: {},
-	created() {
-		console.log(this.coinPrice)
-	},
 	head() {
 		return {
 			title: "Compar'Or - " + this.coinDetail.title
@@ -128,6 +129,14 @@ export default {
 </script>
 
 <style lang="scss">
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) {
+	.padding-mobile {
+		@apply px-0;
+	}
+	tbody {
+		@apply text-xs;
+	}
+}
 /* Ipad Pro */
 @media only screen and (min-width: 1024px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
 	.container {
@@ -135,14 +144,55 @@ export default {
 	}
 }
 
-$base-color: #1d3557;
+$base-color: #215385;
 
-.colorBestPrice a,
-.colorBestPrice:hover {
-	@apply bg-blue-800 text-white;
+.colorBestPrice {
+	@apply bg-gray-100 rounded-tl-md;
+	& a {
+		background: rgba($base-color, 0.92);
+		@apply rounded-tl-md text-white;
+	}
+}
+.colorThirdPrice {
+	@apply bg-gray-100;
+}
+.colorFivePrice {
+	@apply bg-gray-100;
+}
+.pMarge {
+	@apply my-5;
 }
 
-.pMarge {
-	@apply my-3;
+@screen lg {
+	.colorBestPrice a:hover {
+		color: white;
+		font-weight: 600;
+		background-color: $base-color;
+		transition: all 0.1s ease-in-out 0s;
+	}
+	.colorSecondPrice a:hover {
+		color: white;
+		font-weight: 600;
+		background-color: rgba($base-color, 0.95);
+		transition: all 0.1s ease-in-out 0s;
+	}
+	.colorThirdPrice a:hover {
+		color: white;
+		font-weight: 600;
+		background-color: rgba($base-color, 0.88);
+		transition: all 0.1s ease-in-out 0s;
+	}
+	.colorFourthPrice a:hover {
+		color: white;
+		font-weight: 600;
+		background-color: rgba($base-color, 0.83);
+		transition: all 0.1s ease-in-out 0s;
+	}
+	.colorFivePrice a:hover {
+		color: white;
+		font-weight: 600;
+		background-color: rgba($base-color, 0.8);
+		transition: all 0.1s ease-in-out 0s;
+	}
 }
 </style>

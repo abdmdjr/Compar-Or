@@ -1,10 +1,10 @@
 <template>
 	<section
-		class="flex flex-col w-full items-center md:flex-row md:justify-around lg:justify-start lg:items-start lg:flex-col lg:space-x-0"
+		class="flex flex-col w-full mt-6 md:mt-0 items-center md:flex-row md:justify-around lg:justify-start lg:flex-col lg:space-x-0"
 	>
 		<client-only placeholder="Chargement des prix...">
 			<Carousel
-				class="w-268 pt-5"
+				class="w-268"
 				:mouse-drag="true"
 				:per-page="1"
 				:center-mode="true"
@@ -17,17 +17,19 @@
 				<Slide><img :src="imgar3x" :alt="title"/></Slide>
 			</Carousel>
 		</client-only>
-		<div class="flex flex-col items-center">
+		<div class="flex flex-col items-center self-center">
 			<h1
-				class="font-medium mt-4 lg:mt-6 text-xl md:text-2xl text-center leading-none"
+				class="font-medium mt-6 md:mt-0 lg:mt-6 text-1xl md:text-2xl text-center leading-none"
 			>
 				{{ title }}
-				<span class="mt-2 block text-base lg:text-xl font-light">{{ gr }}</span>
+				<span class="mt-2 block text-lg lg:text-xl font-light">{{ gr }}</span>
 			</h1>
 			<h2
-				class="font-light my-3 lg:my-5 text-base md:text-xl lg:text-2xl text-center"
+				class="font-light my-5 lg:my-5 text-1xl md:text-xl lg:text-2xl text-center"
 			>
-				Meilleur prix :<span class="title font-medium"> {{ price }}€</span>
+				Meilleur prix<span class="block title text-2xl font-medium"
+					>{{ price }}€</span
+				>
 			</h2>
 			<a
 				:href="url"
@@ -36,9 +38,7 @@
 				:aria-label="`link to ${site} - ${title}`"
 				class=""
 			>
-				<button
-					class="btn py-3 pl-4 pr-5 flex items-center align-center text-sm md:text-lg rounded"
-				>
+				<button class="btn flex px-4 py-3 text-base sm:text-lg rounded">
 					{{ site }}
 				</button>
 			</a>
@@ -100,11 +100,6 @@ export default {
 }
 .VueCarousel-dot {
 	border-radius: 100%;
-}
-@media only screen and (max-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
-	.paddmobile {
-		@apply pr-0;
-	}
 }
 img {
 	-webkit-filter: drop-shadow(3px 3px 3px rgb(129, 129, 129));
