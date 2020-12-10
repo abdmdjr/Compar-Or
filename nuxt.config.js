@@ -21,11 +21,45 @@ module.exports = {
 			{
 				async: 'true',
 				defer: 'true',
-				'data-domain': 'comparor.herokuapp.com',
+				'data-domain': 'compar-or.fr',
 				src: 'https://plausible.io/js/plausible.js'
 			}
 		],
-		link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+		link: [
+			{
+				rel: 'stylesheet',
+				href:
+					'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap'
+			},
+			{
+				rel: 'stylesheet',
+				href:
+					'https://fonts.googleapis.com/css2?family=Overlock+SC&display=swap'
+			},
+			{
+				rel: 'stylesheet',
+				href:
+					'https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap'
+			},
+			{
+				rel: 'apple-touch-icon',
+				sizes: '180x180',
+				href: '/apple-touch-icon.png'
+			},
+			{
+				rel: 'icon',
+				type: 'image/png',
+				sizes: '32x32',
+				href: '/favicon-32x32.png'
+			},
+			{
+				rel: 'icon',
+				type: 'image/png',
+				sizes: '16x16',
+				href: '/favicon-16x16.png'
+			},
+			{ rel: 'manifest', href: '/site.webmanifest' }
+		]
 	},
 	/*
 	 ** Customize the progress-bar color

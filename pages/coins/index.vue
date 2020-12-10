@@ -54,7 +54,7 @@
 					>1000€ et +</label
 				>
 			</div>
-			<section class="cards flex flex-wrap justify-between w-full mb-20">
+			<section class="cards flex flex-wrap justify-evenly w-full mb-20">
 				<Coin
 					v-for="coin in filteredCoins"
 					:key="coin.id"
@@ -64,7 +64,6 @@
 					:title="coin.title"
 					:gr="coin.gr"
 					:price="coin.price"
-					:site="coin.site"
 				/>
 				<button
 					class="filters-btn hidden px-8 py-2 rounded text-white font-medium"
@@ -77,7 +76,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 import min from 'lodash.min'
 import Coin from '~/components/Coin'
 
@@ -85,9 +84,20 @@ export default {
 	components: {
 		Coin
 	},
+	async asyncData({ $axios, params, error }) {
+		try {
+			const result = await $axios.get(`/api/coins`)
+			return {
+				coinDetail: result.data
+			}
+		} catch (e) {
+			console.log(e)
+			error({ statusCode: 404 })
+		}
+	},
 	data() {
 		return {
-			coins: [],
+			coinDetail: [],
 			checked500: false,
 			checked999: false,
 			checked1001: false
@@ -96,14 +106,14 @@ export default {
 	computed: {
 		filteredCoins() {
 			// eslint-disable-next-line prettier/prettier
-			const filtersLess = (priceCoin) => { return this.coins.filter((coin) => coin.price < priceCoin) }
+			const filtersLess = (priceCoin) => { return this.coinDetail.filter((coin) => coin.price < priceCoin) }
 			// eslint-disable-next-line prettier/prettier
-			const filtersEven = (priceLess, priceMore) => { return this.coins.filter((coin) => coin.price >= priceLess && coin.price <= priceMore) }
+			const filtersEven = (priceLess, priceMore) => { return this.coinDetail.filter((coin) => coin.price >= priceLess && coin.price <= priceMore) }
 			// eslint-disable-next-line prettier/prettier
-			const filtersMore = (priceCoin) => { return this.coins.filter((coin) => coin.price > priceCoin) }
+			const filtersMore = (priceCoin) => { return this.coinDetail.filter((coin) => coin.price > priceCoin) }
 
 			if (this.checked500 && this.checked999 && this.checked1001) {
-				return this.coins
+				return this.coinDetail
 			} else if (this.checked500 && this.checked999) {
 				return filtersLess(1000)
 			} else if (this.checked999 && this.checked1001) {
@@ -115,24 +125,14 @@ export default {
 			} else if (this.checked1001) {
 				return filtersMore(1000)
 			} else {
-				return this.coins
+				return this.coinDetail
 			}
 		}
 	},
-	mounted() {
-		axios.get('/api/coins').then((result) => {
-			this.coins = result.data
-			this.coins.map((coin) => {
-				coin.site = Object.keys(coin.prices)
-					.reduce((prev, curr) =>
-						coin.prices[prev] < coin.prices[curr] ? prev : curr
-					)
-					.split(' ')
-					.join('.')
-				const minValue = min(Object.values(coin.prices), (o) => coin.prices[o])
-				coin.price = parseFloat(minValue[0]).toFixed(2)
-				coin.url = minValue[3]
-			})
+	created() {
+		this.coinDetail.forEach((coin) => {
+			const minValue = min(Object.values(coin.prices), (o) => coin.prices[o])
+			coin.price = parseFloat(minValue[0]).toFixed(2)
 		})
 	},
 	head() {

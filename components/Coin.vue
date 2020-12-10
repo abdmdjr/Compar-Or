@@ -1,5 +1,5 @@
 <template>
-	<div class="mt-10 rounded shadow-md">
+	<div class="mt-10 rounded shadow-md w-full">
 		<div class="flex flex-col px-3 py-8 items-center">
 			<ul class="flex flex-col items-center">
 				<li class="">
@@ -20,7 +20,7 @@
 			<div class="mt-4">
 				<nuxt-link :to="`/coins/${slug}`"
 					><button
-						class="btn flex items-center align-center py-2 px-3 text-sm rounded"
+						class="btn-detail flex items-center align-center py-2 px-3 text-sm rounded"
 					>
 						Voir les prix
 					</button></nuxt-link
@@ -46,10 +46,6 @@ export default {
 			required: true
 		},
 		gr: {
-			type: String,
-			required: true
-		},
-		site: {
 			type: String,
 			required: true
 		},

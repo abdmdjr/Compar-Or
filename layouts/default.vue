@@ -68,20 +68,19 @@ p {
 	font-family: 'Ubuntu', sans-serif;
 	color: #193a5c;
 }
-@screen lg {
-	.btn:hover {
-		background: #215385;
-		color: white;
-	}
+.btn-detail {
+	background: white;
+	box-shadow: 0 0 2px #193a5c inset;
+	transition: all 0.1s ease-in-out 0s;
 }
 
-.btn {
-	background: white;
-	font-weight: 600;
-	color: #193a5c;
-	border: 0.6px solid;
-	border-color: #2f5f8f;
-	transition: all 0.1s ease-in-out 0s;
+@screen lg {
+	.btn-detail:hover {
+		background-image: linear-gradient(160deg, #f6d365 0%, #fda085 160%);
+		color: white;
+		box-shadow: none;
+		@apply shadow-md;
+	}
 }
 
 .material-icons.md-18 {

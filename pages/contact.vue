@@ -73,7 +73,7 @@
 						</ValidationProvider>
 
 						<button
-							class="btn self-start py-2 px-4 rounded"
+							class="btn-detail self-start py-2 px-4 rounded"
 							type="submit"
 							@submit.prevent="handleSubmit(onSubmit)"
 						>

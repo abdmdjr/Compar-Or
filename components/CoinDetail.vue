@@ -38,7 +38,7 @@
 				:aria-label="`link to ${site} - ${title}`"
 				class=""
 			>
-				<button class="btn flex px-4 py-3 text-base sm:text-lg rounded">
+				<button class="btn-detail flex px-4 py-3 text-base sm:text-lg rounded">
 					{{ site }}
 				</button>
 			</a>
@@ -107,5 +107,20 @@ img {
 }
 .pMarge {
 	@apply my-2;
+}
+
+.btn-detail {
+	background: white;
+	box-shadow: 0 0 2px #193a5c inset;
+	transition: all 0.1s ease-in-out 0s;
+}
+
+@screen lg {
+	.btn-detail:hover {
+		background-image: linear-gradient(160deg, #f6d365 0%, #fda085 160%);
+		color: white;
+		box-shadow: none;
+		@apply shadow-md;
+	}
 }
 </style>

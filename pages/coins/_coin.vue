@@ -42,7 +42,7 @@
 								Prix
 							</th>
 							<th
-								class="padding-mobile py-5 px-1 md:px-3 text-xs md:text-lg font-normal"
+								class="padding-mobile py-5 px-0 md:px-3 text-xs md:text-lg font-normal"
 							>
 								Livraison
 							</th>
@@ -143,56 +143,95 @@ export default {
 		@apply px-8;
 	}
 }
-
-$base-color: #215385;
-
+.colorBestPrice td:nth-child(1) {
+	@apply rounded-tl-md;
+}
 .colorBestPrice {
-	@apply bg-gray-100 rounded-tl-md;
-	& a {
-		background: rgba($base-color, 0.92);
-		@apply rounded-tl-md text-white;
-	}
+	background-image: linear-gradient(160deg, #f6d365 0%, #fda085 100%);
+	font-weight: 600;
+	transition: all 0.3s ease-in-out 0s;
+	@apply rounded-tl-md text-white shadow-md;
 }
-.colorThirdPrice {
-	@apply bg-gray-100;
+
+.colorBestPrice:hover {
+	transition: all 0.3s ease-in-out 0s;
+	@apply shadow-lg;
 }
-.colorFivePrice {
-	@apply bg-gray-100;
+
+.colorSecondPrice a {
+	background: rgba(#2f5f8f, 0.7);
+	font-weight: 600;
+	transition: all 0.3s ease-in-out 0s;
+	@apply rounded-tl-none text-white shadow-md;
+}
+.colorSecondPrice:hover {
+	transition: all 0.3s ease-in-out 0s;
+	@apply shadow-lg;
+}
+
+.colorThirdPrice a {
+	background: rgba(#2f5f8f, 0.8);
+	font-weight: 600;
+	transition: all 0.3s ease-in-out 0s;
+	@apply rounded-tl-none text-white shadow-md;
+}
+.colorThirdPrice:hover {
+	transition: all 0.3s ease-in-out 0s;
+	@apply shadow-lg;
+}
+
+.colorFourthPrice a {
+	background: rgba(#2f5f8f, 0.9);
+	font-weight: 600;
+	transition: all 0.3s ease-in-out 0s;
+	@apply rounded-tl-none text-white shadow-md;
+}
+.colorFourthPrice:hover {
+	transition: all 0.3s ease-in-out 0s;
+	@apply shadow-lg;
+}
+
+.colorFivePrice a {
+	background-image: linear-gradient(
+		112.1deg,
+		rgba(32, 38, 57, 1) 11.4%,
+		rgba(63, 76, 119, 1) 70.2%
+	);
+	font-weight: 600;
+	transition: all 0.3s ease-in-out 0s;
+	@apply rounded-tl-none text-white shadow-md;
+}
+.colorFivePrice:hover {
+	transition: all 0.3s ease-in-out 0s;
+	@apply shadow-lg;
 }
 .pMarge {
 	@apply my-5;
 }
 
-@screen lg {
+/* @screen lg {
 	.colorBestPrice a:hover {
-		color: white;
-		font-weight: 600;
-		background-color: $base-color;
-		transition: all 0.1s ease-in-out 0s;
+		transition: all 0.3s ease-in-out 0s;
+		@apply shadow-md;
 	}
 	.colorSecondPrice a:hover {
-		color: white;
-		font-weight: 600;
-		background-color: rgba($base-color, 0.95);
-		transition: all 0.1s ease-in-out 0s;
+		transition: all 0.3s ease-in-out 0s;
+		@apply shadow-md;
 	}
 	.colorThirdPrice a:hover {
 		color: white;
-		font-weight: 600;
 		background-color: rgba($base-color, 0.88);
 		transition: all 0.1s ease-in-out 0s;
 	}
 	.colorFourthPrice a:hover {
 		color: white;
-		font-weight: 600;
 		background-color: rgba($base-color, 0.83);
 		transition: all 0.1s ease-in-out 0s;
 	}
 	.colorFivePrice a:hover {
 		color: white;
-		font-weight: 600;
 		background-color: rgba($base-color, 0.8);
 		transition: all 0.1s ease-in-out 0s;
 	}
-}
+} */
 </style>

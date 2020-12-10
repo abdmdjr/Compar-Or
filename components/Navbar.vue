@@ -11,7 +11,7 @@
 				</li>
 				<li>
 					<nuxt-link
-						class="text-xl text-white no-underline block"
+						class="text-lg text-white no-underline block"
 						to="/contact"
 					>
 						Contact

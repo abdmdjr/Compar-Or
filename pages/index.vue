@@ -16,7 +16,7 @@
 				</div>
 				<nuxt-link class="mt-5 lg:mt-3 self-start" to="/coins">
 					<button
-						class="btn flex items-center align-center px-4 py-3 text-sm rounded"
+						class="btn-detail flex items-center align-center px-4 py-3 text-sm rounded"
 					>
 						Trouvez votre pièce
 					</button>
@@ -82,7 +82,7 @@
 			</div>
 		</section>
 		<nuxt-link class="flex mt-10 mb-12 md:mt-15 md:mb-20" to="/coins">
-			<button class="btn mx-auto px-4 py-3 text-sm rounded">
+			<button class="btn-detail mx-auto px-4 py-3 text-sm rounded">
 				Trouvez votre pièce
 			</button>
 		</nuxt-link>
@@ -186,7 +186,7 @@ export default {
 	.content {
 		font-size: 1.6rem;
 	}
-	.btn {
+	.btn-detail {
 		font-size: 1.3rem;
 		@apply px-6 py-4;
 	}
@@ -208,7 +208,7 @@ export default {
 	.content {
 		font-size: 2rem;
 	}
-	.btn {
+	.btn-detail {
 		font-size: 1.55rem;
 		@apply px-10 py-6;
 	}
@@ -231,7 +231,7 @@ export default {
 		width: 390px;
 		font-size: 1.125rem;
 	}
-	.btn {
+	.btn-detail {
 		font-size: 1rem;
 		@apply px-5 py-3;
 	}

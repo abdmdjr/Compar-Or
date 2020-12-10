@@ -1,8 +1,8 @@
 {
   "name": "compar-or",
   "version": "1.0.0",
-  "description": "Gold Coin Compare",
-  "author": "abdmdjr",
+  "description": "Comparez et achetez les pièces d'or au meilleur prix - Comparatif des pièces d'or les plus populaires pour vous aider à choisir votre investissement sur le marché de l'or",
+  "author": "Compar'Or",
   "private": true,
   "engines": {
     "yarn": "1.22.4"
