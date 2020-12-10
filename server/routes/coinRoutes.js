@@ -10,7 +10,6 @@ app.get('/coins', async (req, res) => {
 		.sort({ index: '1' })
 		.exec()
 	try {
-		console.log(coins)
 		res.json(coins)
 	} catch (err) {
 		res.status(500).send(err)

@@ -5,18 +5,18 @@
 		<span class="block md:mb-4 text-xs text-black opacity-75"
 			><nuxt-link to="/"> > Retour à l'accueil</nuxt-link></span
 		>
-		<h1 class="title-first text-xl md:text-3xl lg:text-4xl mt-5 mb-2">
+		<p class="title-first text-xl md:text-3xl lg:text-4xl mt-5 mb-2">
 			Mentions légales
-		</h1>
+		</p>
 		<p class="font-light">
 			Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour
 			la confiance en l'économie numérique, il est précisé aux utilisateurs du
 			Site l'identité des différents intervenants dans le cadre de sa
 			réalisation et de son suivi.
 		</p>
-		<h2 class="title-first text-lg md:text-3xl lg:text-4xl mt-5 mb-2">
+		<p class="title-first text-lg md:text-3xl lg:text-4xl mt-5 mb-2">
 			Hébergeur
-		</h2>
+		</p>
 		<p class="font-light">
 			Le site compar-or.fr est hébergé par la société Heroku Inc., 650 7th
 			Street, San Francisco, CA (tel : +33 1 (877) 563-4311).

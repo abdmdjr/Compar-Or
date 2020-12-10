@@ -32,20 +32,20 @@
 			<img
 				class="absolute w-screen h-104 md:h-900 lg:h-96 z-0"
 				src="~/assets/img/union.png"
-				alt=""
+				alt="background waves"
 			/>
 			<div
 				class="container mx-auto px-5 sm:px-16 lg:pt-0 lg:px-32 relative flex flex-wrap"
 			>
 				<div
-					class="flex flex-col justify-center lg:flex-row mt-20 mb-32 md:mt-15 lg:mt-16 lg:mb-32"
+					class="flex flex-col justify-evenly lg:flex-row mt-20 mb-40 md:mt-15 lg:mt-16 lg:mb-48"
 				>
 					<img
 						class="mb-5 lg:mb-0 w-auto lg:w-1/3 lg:h-full"
 						src="~/assets/img/first-guy-list.png"
-						alt="homme qui est en train d'attraper une pièce d'or avec un filet à papillons"
+						alt="homme en train de présenter les pièces du site compar'or"
 					/>
-					<div class="flex flex-col lg:w-96 lg:ml-20">
+					<div class="flex flex-col lg:w-369 lg:ml-20">
 						<h2
 							class="title-first text-xl md:text-3xl lg:text-4xl mb-4 md:mb-3"
 						>
@@ -60,13 +60,13 @@
 						</p>
 					</div>
 				</div>
-				<div class="flex flex-col lg:flex-row-reverse justify-center">
+				<div class="flex flex-col lg:flex-row-reverse justify-evenly">
 					<img
-						class="mb-5 lg:mb-0 w-auto lg:w-1/3 lg:h-full"
+						class="mb-5 lg:pl-4 lg:mb-0 w-auto lg:w-1/3 lg:h-full"
 						src="~/assets/img/second-guy-list.png"
-						alt="homme qui est en train d'attraper une pièce d'or avec un filet à papillons"
+						alt="homme en train de montrer le tableau comparatif du site compar'or"
 					/>
-					<div class="flex flex-col lg:w-96 lg:mr-20">
+					<div class="flex flex-col lg:w-369 lg:mr-20">
 						<h2
 							class="title-first text-xl md:text-3xl lg:text-4xl mb-4 md:mb-3"
 						>

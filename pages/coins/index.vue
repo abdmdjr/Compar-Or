@@ -18,9 +18,11 @@
 					des sites de pièces d'or que nous comparons, et pour plus de
 					transparence, la livraison est incluse dans ce prix.
 				</p>
-				<p class="font-medium mt-2">
-					Cliquez sur une pièce d'or pour comparer les prix en détail.
-				</p>
+				<h1 class="font-medium mt-2">
+					Cliquez sur une pièce
+					<h1 class="inline">d'or</h1>
+					pour comparer les prix en détail.
+				</h1>
 			</div>
 		</div>
 		<main class="flex flex-col min-h-screen md:flex-row">
@@ -91,7 +93,6 @@ export default {
 				coinDetail: result.data
 			}
 		} catch (e) {
-			console.log(e)
 			error({ statusCode: 404 })
 		}
 	},
@@ -174,7 +175,7 @@ export default {
 	}
 }
 
-@screen md {
+@screen sm {
 	.intro {
 		min-width: 190px;
 	}

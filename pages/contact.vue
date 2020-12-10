@@ -11,7 +11,7 @@
 			<img
 				class="hidden lg:block self-center w-479 mb-6"
 				src="~/assets/img/contact.png"
-				alt="image contact form"
+				alt="homme portant de l'or sur son dos"
 			/>
 			<div class="flex flex-col lg:py-12 lg:px-15 lg:rounded lg:shadow-md">
 				<h1 class="title font-medium text-lg md:text-3xl mb-1">

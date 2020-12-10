@@ -25,7 +25,7 @@
 				>
 					Tableau comparatif
 				</h2>
-				<p class="mb-8 lg:mb-5 text-base md:text-lg font-light text-justify">
+				<p class="mb-3 lg:mb-5 text-sm md:text-lg font-light text-justify">
 					Ce tableau indique les prix affichés sur les sites de vente, les frais
 					de port, et le prix total pour la pièce "<strong>{{
 						coinDetail.title
@@ -37,16 +37,16 @@
 						class="table-auto md:table-fixed w-full text-right text-sm md:text-lg"
 					>
 						<thead class="text-gray-800">
-							<th class="md:w-2/6 lg:w-1/3 bg-white"></th>
-							<th class="py-5 px-1 md:px-3 text-xs md:text-lg font-normal">
+							<th class="md:w-2/6 lg:w-1/3"></th>
+							<th class="py-3 px-1 md:px-3 text-xs md:text-lg font-normal">
 								Prix
 							</th>
 							<th
-								class="padding-mobile py-5 px-0 md:px-3 text-xs md:text-lg font-normal"
+								class="padding-mobile py-3 px-0 md:px-3 text-xs md:text-lg font-normal"
 							>
 								Livraison
 							</th>
-							<th class="py-5 px-1 md:px-3 text-xs md:text-lg font-bold">
+							<th class="py-3 px-1 md:px-3 text-xs md:text-lg font-bold">
 								Total
 							</th>
 						</thead>
@@ -82,7 +82,7 @@
 						v-for="(descr, index) in coinDetail.description"
 						:key="index"
 						:class="{ pMarge: index === 1 }"
-						class="text-base md:text-lg font-light text-justify"
+						class="text-sm md:text-lg font-light text-justify"
 					>
 						{{ descr }}
 					</p>
@@ -129,10 +129,7 @@ export default {
 </script>
 
 <style lang="scss">
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) {
-	.padding-mobile {
-		@apply px-0;
-	}
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
 	tbody {
 		@apply text-xs;
 	}
@@ -143,52 +140,54 @@ export default {
 		@apply px-8;
 	}
 }
+
 .colorBestPrice td:nth-child(1) {
 	@apply rounded-tl-md;
 }
 .colorBestPrice {
-	background-image: linear-gradient(160deg, #f6d365 0%, #fda085 100%);
+	background-image: linear-gradient(160deg, #f6d365 -30%, #fda085 160%);
+	background-attachment: fixed;
 	font-weight: 600;
-	transition: all 0.3s ease-in-out 0s;
-	@apply rounded-tl-md text-white shadow-md;
+	transition: all 0.2s ease-in-out 0s;
+	@apply text-white rounded-tl-md border-b-0;
 }
 
 .colorBestPrice:hover {
-	transition: all 0.3s ease-in-out 0s;
-	@apply shadow-lg;
+	transition: all 0.2s ease-in-out 0s;
+	@apply shadow-xl;
 }
 
 .colorSecondPrice a {
 	background: rgba(#2f5f8f, 0.7);
 	font-weight: 600;
-	transition: all 0.3s ease-in-out 0s;
-	@apply rounded-tl-none text-white shadow-md;
+	transition: all 0.2s ease-in-out 0s;
+	@apply rounded-tl-none text-white;
 }
 .colorSecondPrice:hover {
-	transition: all 0.3s ease-in-out 0s;
-	@apply shadow-lg;
+	transition: all 0.2s ease-in-out 0s;
+	@apply shadow-xl;
 }
 
 .colorThirdPrice a {
 	background: rgba(#2f5f8f, 0.8);
 	font-weight: 600;
-	transition: all 0.3s ease-in-out 0s;
-	@apply rounded-tl-none text-white shadow-md;
+	transition: all 0.2s ease-in-out 0s;
+	@apply rounded-tl-none text-white;
 }
 .colorThirdPrice:hover {
-	transition: all 0.3s ease-in-out 0s;
+	transition: all 0.2s ease-in-out 0s;
 	@apply shadow-lg;
 }
 
 .colorFourthPrice a {
 	background: rgba(#2f5f8f, 0.9);
 	font-weight: 600;
-	transition: all 0.3s ease-in-out 0s;
-	@apply rounded-tl-none text-white shadow-md;
+	transition: all 0.2s ease-in-out 0s;
+	@apply rounded-tl-none text-white;
 }
 .colorFourthPrice:hover {
-	transition: all 0.3s ease-in-out 0s;
-	@apply shadow-lg;
+	transition: all 0.2s ease-in-out 0s;
+	@apply shadow-md;
 }
 
 .colorFivePrice a {
@@ -198,12 +197,12 @@ export default {
 		rgba(63, 76, 119, 1) 70.2%
 	);
 	font-weight: 600;
-	transition: all 0.3s ease-in-out 0s;
-	@apply rounded-tl-none text-white shadow-md;
+	transition: all 0.2s ease-in-out 0s;
+	@apply rounded-tl-none text-white;
 }
 .colorFivePrice:hover {
-	transition: all 0.3s ease-in-out 0s;
-	@apply shadow-lg;
+	transition: all 0.2s ease-in-out 0s;
+	@apply shadow-sm;
 }
 .pMarge {
 	@apply my-5;

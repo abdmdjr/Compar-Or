@@ -1,14 +1,14 @@
 <template>
 	<main
-		class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center px-8 pt-5 sm:px-16 lg:px-8"
+		class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center px-8 pt-24 pb-15 sm:px-16 lg:px-8"
 	>
 		<div class="flex flex-col mt-8">
-			<h1
+			<p
 				v-if="error.statusCode === 404"
 				class="text-2xl md:text-5xl lg:text-5xl"
 			>
 				Erreur 404.
-			</h1>
+			</p>
 			<p class="text-sm md:text-1xl lg:text-base font-light text-justify">
 				La page "{{ this.$route.path }}" n'existe pas.
 			</p>

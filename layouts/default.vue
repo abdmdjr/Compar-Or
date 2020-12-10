@@ -48,6 +48,10 @@ p {
 	color: #1d3c5a;
 }
 
+.btn-detail:focus {
+	outline: none;
+}
+
 .navbar {
 	background: linear-gradient(220.01deg, #94d5ff -300%, #1a4269 70%);
 }
@@ -69,16 +73,18 @@ p {
 	color: #193a5c;
 }
 .btn-detail {
-	background: white;
+	background: #ffff;
 	box-shadow: 0 0 2px #193a5c inset;
-	transition: all 0.1s ease-in-out 0s;
+	transition: all 0.1s ease-out 0s;
+	outline: none;
 }
 
 @screen lg {
 	.btn-detail:hover {
 		background-image: linear-gradient(160deg, #f6d365 0%, #fda085 160%);
-		color: white;
+		color: #ffff;
 		box-shadow: none;
+		outline: none;
 		@apply shadow-md;
 	}
 }
@@ -90,7 +96,7 @@ p {
 	font-size: 24px;
 }
 .material-icons.md-36 {
-	font-size: 36px;
+	font-size: 28px;
 }
 .material-icons.md-48 {
 	font-size: 48px;
