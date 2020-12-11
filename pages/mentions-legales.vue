@@ -25,7 +25,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+	head() {
+		return {
+			title: "Compar'Or - Mentions légales"
+		}
+	}
+}
 </script>
 
 <style></style>

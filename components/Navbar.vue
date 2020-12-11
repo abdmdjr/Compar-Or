@@ -4,7 +4,11 @@
 			<ul class="flex flex-row justify-between items-center">
 				<li>
 					<nuxt-link to="/" class="flex flex-row items-center">
-						<img src="~assets/img/compar.png" class="h-5 sm:h-8 mr-1 sm:mr-3" />
+						<img
+							src="~assets/img/compar.png"
+							class="h-5 sm:h-8 mr-1 sm:mr-3"
+							alt="pièces d'or logo-png"
+						/>
 						<h1 class="title-first text-1xl sm:text-3xl font-normal">
 							Compar'<span class="title-second">Or</span>
 						</h1>

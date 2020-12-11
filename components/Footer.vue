@@ -7,21 +7,21 @@
 				</h2>
 			</nuxt-link>
 			<ul class="flex flex-row text-xs md:text-sm font-light text-justify mt-2">
-				<nuxt-link to="/coins">
-					<li>
+				<li>
+					<nuxt-link to="/coins">
 						Trouver votre pièce
-					</li>
-				</nuxt-link>
-				<nuxt-link to="/contact">
-					<li class="mx-1">
+					</nuxt-link>
+				</li>
+				<li class="mx-1">
+					<nuxt-link to="/contact">
 						- Contact -
-					</li>
-				</nuxt-link>
-				<nuxt-link to="/mention-legales">
-					<li>
+					</nuxt-link>
+				</li>
+				<li>
+					<nuxt-link to="/mentions-legales">
 						Mentions légales
-					</li>
-				</nuxt-link>
+					</nuxt-link>
+				</li>
 			</ul>
 			<p class="copy mt-3 font-light text-white">
 				Copyright &copy; 2020. Compar'Or. Tous droits réservés.

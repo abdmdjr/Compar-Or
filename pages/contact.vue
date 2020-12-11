@@ -159,6 +159,11 @@ export default {
 				}
 			}
 		}
+	},
+	head() {
+		return {
+			title: "Compar'Or - Contactez-nous"
+		}
 	}
 }
 </script>
