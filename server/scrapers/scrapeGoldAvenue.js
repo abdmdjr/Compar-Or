@@ -27,7 +27,7 @@ async function scrapeGoldAvenue() {
 				return price
 			})
 			piece.price = data
-			piece.livraison = 52
+			piece.livraison = 50
 			piece.totalPrice = piece.price + piece.livraison
 			console.log('GA : ' + `${data}`)
 		} catch (err) {

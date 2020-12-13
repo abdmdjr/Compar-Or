@@ -149,7 +149,7 @@ export default {
 	background-attachment: fixed;
 	font-weight: 600;
 	transition: all 0.2s ease-in-out 0s;
-	@apply text-white rounded-tl-md border-b-0;
+	@apply text-white border-b-0;
 }
 
 .colorBestPrice:hover {
