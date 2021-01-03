@@ -12,7 +12,7 @@
 🤖 Puppeteer : récupérer les prix sur les sites de vente de pièces d’or  
 📅 Cron : automatiser la récupération des prix et l’update en base de données  
 
-#### Objectifs : 
+#### Objectifs
 
 - [x] Créer le comparateur de pièces d'or le plus stylé de France 🚀
 - [x] Déployer Compar'Or sur Heroku, avec un CronJob Puppeteer qui récupère le prix des pièces sur différentes boutiques toutes les x minutes
