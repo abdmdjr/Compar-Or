@@ -1,14 +1,14 @@
 # Compar'or
 > Comparez et achetez les pièces d'or au meilleur prix !
 
-	Les technos
+#### Les technos
 ✅ NuxtJS : framework VueJS modulaire et performant  
 ✅ TailwindCSS : framework CSS pour construire des designs personnalisés  
 ✅ NodeJS : coder en Javascript coté serveur et de manière asynchrone  
 ✅ ExpressJS : faciliter la création de mon API  
 ✅ MongoDB : base de données NoSQL  
 
-	Les modules indispensables
+#### Les modules indispensables
 🤖 Puppeteer : récupérer les prix sur les sites de vente de pièces d’or  
 📅 Cron : automatiser la récupération des prix et l’update en base de données  
 
