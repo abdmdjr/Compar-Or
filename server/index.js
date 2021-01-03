@@ -1,4 +1,3 @@
-// const CronJob = require('cron').CronJob
 const { Nuxt, Builder } = require('nuxt')
 const express = require('express')
 const mongoose = require('mongoose')
@@ -11,6 +10,7 @@ const { lingor } = require('./controllers/updateLingor.js')
 const { auCoffre } = require('./controllers/updateAuCoffre.js')
 const { bullionByPost } = require('./controllers/updateBullionByPost.js')
 const { bdOr } = require('./controllers/updateBdOr.js')
+const userRouter = require('./routes/userRoutes')
 const coinRouter = require('./routes/coinRoutes')
 const app = express()
 
@@ -45,26 +45,26 @@ async function start() {
 		})
 
 	app.use(express.json())
-	app.use('/api', coinRouter)
+	app.use('/api', coinRouter, userRouter)
 	app.use(nuxt.render)
 }
 
 start()
 
-const job = new CronJob('*/2 * * * *', async () => {
-	try {
-		await Promise.all([
-			await goldAvenue(),
-			await lingor(),
-			await auCoffre(),
-			await bullionByPost(),
-			await bdOr()
-		])
-	} catch (error) {
-		console.log(error.message)
-	}
-})
+// const job = new CronJob('*/3 * * * *', async () => {
+// 	try {
+// 		await Promise.all([
+// 			await goldAvenue(),
+// 			await lingor(),
+// 			await auCoffre(),
+// 			await bullionByPost(),
+// 			await bdOr()
+// 		])
+// 	} catch (error) {
+// 		console.log(error.message)
+// 	}
+// })
 
-setTimeout(() => {
-	job.start()
-}, 15000)
+// setTimeout(() => {
+// 	job.start()
+// }, 15000)

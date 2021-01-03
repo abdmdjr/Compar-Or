@@ -15,8 +15,10 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/proxy": "^2.0.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cron": "^1.8.2",
     "cross-env": "^7.0.2",
