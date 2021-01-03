@@ -21,4 +21,4 @@
 - [ ] Auth users => après inscription, l'utilisateur pourra mettre des pièces en favoris, avoir des graphs personnalisés et y accéder depuis son espace
 
 Ce projet a pour but de me faire gagner en compétences et de trouver un job en tant que développeur front-end.
-(puis pourquoi pas acheter un peu d'or hehe)
+(puis pourquoi pas acheter un peu d'or 😎)
