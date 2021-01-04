@@ -51,7 +51,7 @@ async function start() {
 
 start()
 
-const job = new CronJob('*/2 * * * *', async () => {
+const job = new CronJob('*/4 * * * *', async () => {
 	try {
 		await Promise.all([
 			await bullionByPost(),
