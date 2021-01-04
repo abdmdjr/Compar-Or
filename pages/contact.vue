@@ -1,6 +1,6 @@
 <template>
 	<main
-		class="container mx-auto mt-16 sm:mt-24 lg:mt-0 px-5 sm:px-16 lg:px-8 pt-8 mb-15 md:mb-20 "
+		class="container mx-auto mt-16 sm:mt-24 lg:mt-0 px-5 sm:px-16 lg:px-8 pt-8 mb-15 md:mb-20"
 	>
 		<span class="md:mb-4 text-xs text-black opacity-75"
 			><nuxt-link to="/">Accueil > </nuxt-link>Contact</span
@@ -32,7 +32,7 @@
 							<label class="title block mb-1">Adresse mail</label>
 							<input
 								v-model="form.email"
-								class="border-b border-gray-400 border-opacity-100 focus:border-blue-700 py-1 w-full"
+								class="w-full px-4 py-2 mt-2 text-base bg-gray-100 border-transparent rounded-lg ext-blue-700 focus:border-gray-500"
 								type="text"
 								placeholder="Entrez votre e-mail"
 							/>
@@ -48,7 +48,7 @@
 							<label class="title block mb-1">Prénom</label>
 							<input
 								v-model="form.firstName"
-								class="border-b border-gray-400 border-opacity-100 focus:border-blue-700 py-1 w-full"
+								class="w-full px-4 py-2 mt-2 text-base bg-gray-100 border-transparent rounded-lg ext-blue-700 focus:border-gray-500"
 								type="text"
 								placeholder="Entrez votre prénom"
 							/>
@@ -65,7 +65,7 @@
 							<textarea
 								v-model="form.message"
 								wrap="off"
-								class="border-b border-gray-400 border-opacity-100 focus:border-blue-700 py-1 w-full h-32"
+								class="w-full px-4 py-2 mt-2 text-base bg-gray-100 border-transparent rounded-lg ext-blue-700 focus:border-gray-500"
 								type="text"
 								placeholder="Tapez votre message"
 							/>
