@@ -75,22 +75,6 @@
 							</div>
 							<ValidationObserver v-slot="{ handleSubmit }" name="form">
 								<form @submit.prevent="handleSubmit(onSubmit)">
-									<div>
-										<label
-											class="block text-base font-medium leading-relaxed text-gray-700"
-											>Prénom</label
-										>
-										<input
-											v-model="form.username"
-											type="text"
-											name="username"
-											placeholder="Votre prénom"
-											class="w-full px-4 py-2 mt-2 text-base bg-gray-100 border-transparent rounded-lg ext-blue-700 focus:border-gray-500"
-											autofocus
-											autocomplete
-											required
-										/>
-									</div>
 									<div class="mt-4">
 										<label
 											class="block text-base font-medium leading-relaxed text-gray-700"
@@ -132,17 +116,17 @@
 										class="block w-full px-4 py-3 mt-6 font-semibold text-white transition duration-500 ease-in-out transform rounded-lg bg-gradient-to-r from-blue-700 hover:from-blue-500 to-blue-500 hover:to-blue-700 focus:shadow-outline focus:outline-none"
 										@submit.prevent="handleSubmit(onSubmit)"
 									>
-										Créer un compte
+										Se connecter
 									</button>
 								</form>
 							</ValidationObserver>
 
 							<p class="mt-8 text-center">
-								Vous avez déjà un compte?
+								Vous n'avez pas encore de compte?
 								<a
 									href="#"
 									class="font-semibold text-blue-500 hover:text-blue-700"
-									>Se connecter</a
+									>S'inscrire</a
 								>
 							</p>
 						</div>
@@ -169,7 +153,6 @@ export default {
 	data() {
 		return {
 			form: {
-				username: '',
 				email: '',
 				password: ''
 			}
@@ -178,7 +161,7 @@ export default {
 	methods: {
 		async onSubmit() {
 			try {
-				await axios.post('/api/register/', this.form)
+				await axios.post('/api/login/', this.form)
 			} catch (e) {
 				console.error(e)
 			}

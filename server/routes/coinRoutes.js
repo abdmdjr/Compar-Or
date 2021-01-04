@@ -2,6 +2,7 @@ const express = require('express')
 const nodemailer = require('nodemailer')
 require('dotenv').config()
 const coinModel = require('../models/coinModel')
+const verify = require('../middleware/verifyToken')
 const app = express()
 
 app.get('/coins', async (req, res) => {
@@ -16,7 +17,7 @@ app.get('/coins', async (req, res) => {
 	}
 })
 
-app.get('/coins/:coin', async (req, res) => {
+app.get('/coins/:coin', verify, async (req, res) => {
 	await coinModel.findOne({ slug: req.params.coin }, (err, coin) => {
 		if (err) {
 			console.log(err)
