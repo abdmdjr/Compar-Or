@@ -51,14 +51,14 @@ async function start() {
 
 start()
 
-const job = new CronJob('*/4 * * * *', async () => {
+const job = new CronJob('*/2 * * * *', async () => {
 	try {
 		await Promise.all([
+			await bullionByPost(),
 			await goldAvenue(),
 			await lingor(),
-			await auCoffre(),
-			await bullionByPost(),
-			await bdOr()
+			await bdOr(),
+			await auCoffre()
 		])
 	} catch (error) {
 		console.log(error.message)
@@ -67,4 +67,4 @@ const job = new CronJob('*/4 * * * *', async () => {
 
 setTimeout(() => {
 	job.start()
-}, 15000)
+}, 0)
