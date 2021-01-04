@@ -15,7 +15,7 @@ async function scrapeAuCoffre() {
 	})
 	for (const piece of pieces) {
 		const page = await browser.newPage()
-		await page.goto(piece.url, { waitUntil: 'networkidle2', timeout: 10000 })
+		await page.goto(piece.url, { waitUntil: 'networkidle2', timeout: 0 })
 		try {
 			const data = await page.evaluate(() => {
 				const priceString = document.querySelector(
