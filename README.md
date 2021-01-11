@@ -4,9 +4,9 @@
 
 // TODOS
 
-[x] Vee-Validate on '/register' route and display error for user if email already exist in db
-[ ] Vee-Validate on '/login' route and display error for user if email doesn't exist in db
-[ ] 
-[ ]
-[ ]
-[ ]
+[x] Vee-Validate on '/register' route and display error for user if email already exist in db  
+[ ] Vee-Validate on '/login' route and display error for user if email doesn't exist in db  
+[ ]   
+[ ]  
+[ ]  
+[ ]  
