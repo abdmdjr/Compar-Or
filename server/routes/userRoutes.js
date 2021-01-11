@@ -10,7 +10,7 @@ app.post('/register', async (req, res) => {
 	if (error) return res.status(400).send(error.details[0].message)
 
 	const emailExist = await User.findOne({ email: req.body.email })
-	if (emailExist) return res.status(400).send('Email already exists')
+	if (emailExist) return res.status(400).send('Cet e-mail existe déjà')
 
 	const salt = await bcrypt.genSalt(10)
 	const hashedPassword = await bcrypt.hash(req.body.password, salt)
@@ -22,6 +22,7 @@ app.post('/register', async (req, res) => {
 	})
 	try {
 		await user.save()
+		res.status(200).send('Utilisateur crée')
 	} catch (err) {
 		res.status(400).send(err)
 	}

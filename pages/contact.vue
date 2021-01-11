@@ -29,7 +29,7 @@
 							rules="required|email"
 							mode="passive"
 						>
-							<label class="title block mb-1">Adresse mail</label>
+							<label class="title block mb-1">Adresse e-mail</label>
 							<input
 								v-model="form.email"
 								class="w-full px-4 py-2 mt-2 text-base bg-gray-100 border-transparent rounded-lg ext-blue-700 focus:border-gray-500"
@@ -93,10 +93,6 @@ import {
 	ValidationProvider,
 	ValidationObserver,
 	extend,
-	required,
-	alpha,
-	email,
-	min,
 	localize
 } from 'vee-validate/dist/vee-validate.full'
 import fr from 'vee-validate/dist/locale/fr.json'
@@ -119,22 +115,18 @@ export default {
 		localize({ fr })
 		localize('fr')
 		extend('email', {
-			...email,
-			message: 'Réessayez avec une adresse mail valide 👆'
+			message: 'Réessayez avec une adresse e-mail valide'
 		})
 		extend('required', {
-			...required,
-			message: 'Ce champ est obligatoire 👆'
+			message: 'Ce champ est obligatoire'
 		})
 
 		extend('alpha', {
-			...alpha,
-			message: 'Ce champ doit contenir seulement des lettres 👆'
+			message: 'Ce champ ne doit contenir que des lettres'
 		})
 
 		extend('min', {
-			...min,
-			message: 'Ce champ doit contenir 8 caractères minimum 👆'
+			message: 'Ce champ doit contenir 8 caractères minimum'
 		})
 	},
 	methods: {
@@ -150,7 +142,7 @@ export default {
 				await this.$notify({
 					group: 'mail',
 					title: 'Merci pour votre message !',
-					text: 'Vous recevrez une réponse au plus vite :)'
+					text: 'Vous recevrez une réponse au plus vite !'
 				})
 			} catch (err) {
 				if (err) {
@@ -168,10 +160,6 @@ export default {
 }
 </script>
 <style scoped>
-input,
-textarea {
-	outline: none;
-}
 span .error {
 	display: block;
 }

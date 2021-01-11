@@ -8,7 +8,7 @@
 					>
 						<div class="relative z-10 m-12 text-left">
 							<h2
-								class="mt-12 mb-2 text-2xl font-semibold tracking-tighter text-blue-700 sm:text-3xl title-font"
+								class="mt-12 mb-2 text-2xl font-semibold tracking-tighter sm:text-3xl"
 							>
 								Créer un compte
 							</h2>

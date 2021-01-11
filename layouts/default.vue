@@ -74,8 +74,14 @@ p {
 }
 .btn-detail {
 	background: #ffff;
+	font-family: 'Open Sans', sans-serif;
 	box-shadow: 0 0 2px #193a5c inset;
 	transition: all 0.1s ease-out 0s;
+	outline: none;
+}
+
+input,
+textarea {
 	outline: none;
 }
 

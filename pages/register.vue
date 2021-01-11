@@ -8,12 +8,12 @@
 					>
 						<div class="relative z-10 m-12 text-left">
 							<h2
-								class="mt-12 mb-2 text-2xl font-semibold tracking-tighter text-blue-700 sm:text-3xl title-font"
+								class="title mt-12 mb-2 text-2xl tracking-tighter sm:text-3xl "
 							>
 								Créer un compte
 							</h2>
 							<div
-								class="w-full mt-16 mb-8 text-base leading-relaxed text-gray-900 sm:md:w-3/3 lg:text-lg"
+								class="w-full mt-16 mb-8 text-sm md:text-lg font-light leading-relaxed text-gray-900 sm:md:w-3/3"
 							>
 								Et bénéficiez gratuitement d'analyse des prix de vos pièces
 								préférées : likez vos pièces favorites et retrouvez des
@@ -75,7 +75,11 @@
 							</div>
 							<ValidationObserver v-slot="{ handleSubmit }" name="form">
 								<form @submit.prevent="handleSubmit(onSubmit)">
-									<div>
+									<ValidationProvider
+										v-slot="{ errors }"
+										name="username"
+										rules="required|alpha|min:3|max:25"
+									>
 										<label
 											class="block text-base font-medium leading-relaxed text-gray-700"
 											>Prénom</label
@@ -86,50 +90,71 @@
 											name="username"
 											placeholder="Votre prénom"
 											class="w-full px-4 py-2 mt-2 text-base bg-gray-100 border-transparent rounded-lg ext-blue-700 focus:border-gray-500"
-											autofocus
-											autocomplete
-											required
 										/>
-									</div>
+										<span class="error">{{ errors[0] }}</span>
+									</ValidationProvider>
 									<div class="mt-4">
-										<label
-											class="block text-base font-medium leading-relaxed text-gray-700"
-											>Adresse mail</label
-										>
-										<input
-											v-model="form.email"
-											type="email"
+										<ValidationProvider
+											v-slot="{ errors }"
 											name="email"
-											placeholder="Votre e-mail"
-											class="w-full px-4 py-2 mt-2 text-base bg-gray-100 border-transparent rounded-lg ext-blue-700 focus:border-gray-500"
-											autofocus
-											autocomplete
-											required
-										/>
+											rules="required|email"
+										>
+											<label
+												class="block text-base font-medium leading-relaxed text-gray-700"
+												>Adresse e-mail</label
+											>
+											<input
+												v-model="form.email"
+												type="text"
+												name="email"
+												placeholder="Votre adresse e-mail"
+												class="w-full px-4 py-2 mt-2 text-base bg-gray-100 border-transparent rounded-lg ext-blue-700 focus:border-gray-500"
+											/>
+											<span class="error">{{ errors[0] }}</span>
+											<span class="error">{{ userExist }}</span>
+										</ValidationProvider>
 									</div>
 									<div>
 										<div class="mt-4">
+											<ValidationProvider
+												v-slot="{ errors }"
+												name="password"
+												rules="required|min:8|password:@confirmPassword"
+												mode="passive"
+											>
+												<label
+													class="text-base font-medium leading-relaxed text-gray-700"
+												>
+													Mot de passe
+												</label>
+												<input
+													v-model="form.password"
+													class="block w-full px-4 py-2 mt-2 text-base text-blue-700 bg-gray-100 border-transparent rounded-lg ext-blue-700 focus:border-gray-500"
+													type="password"
+													placeholder="Mot de passe : 8 caractères min"
+												/>
+												<span class="error">{{ errors[0] }}</span>
+											</ValidationProvider>
+										</div>
+									</div>
+									<div class="mt-4">
+										<ValidationProvider name="confirmPassword" rules="required">
 											<label
 												class="text-base font-medium leading-relaxed text-gray-700"
-												for="password"
-												minlength="6"
 											>
-												Mot de passe
+												Confirmation du mot de passe
 											</label>
 											<input
-												v-model="form.password"
+												v-model="confirmPassword"
 												class="block w-full px-4 py-2 mt-2 text-base text-blue-700 bg-gray-100 border-transparent rounded-lg ext-blue-700 focus:border-gray-500"
 												type="password"
-												placeholder="Mot de passe"
+												placeholder="Confirmez votre mot de passe"
 											/>
-											<p class="mt-1 text-xs italic text-blue-500">
-												(6 caractères minimum)
-											</p>
-										</div>
+										</ValidationProvider>
 									</div>
 									<button
 										type="submit"
-										class="block w-full px-4 py-3 mt-6 font-semibold text-white transition duration-500 ease-in-out transform rounded-lg bg-gradient-to-r from-blue-700 hover:from-blue-500 to-blue-500 hover:to-blue-700 focus:shadow-outline focus:outline-none"
+										class="block w-full btn-detail px-4 py-3 mt-6 rounded"
 										@submit.prevent="handleSubmit(onSubmit)"
 									>
 										Créer un compte
@@ -156,14 +181,16 @@
 <script>
 import axios from 'axios'
 import {
-	// ValidationProvider,
-	ValidationObserver
+	ValidationProvider,
+	ValidationObserver,
+	extend,
+	localize
 } from 'vee-validate/dist/vee-validate.full'
-// import fr from 'vee-validate/dist/locale/fr.json'
+import fr from 'vee-validate/dist/locale/fr.json'
 
 export default {
 	components: {
-		// ValidationProvider,
+		ValidationProvider,
 		ValidationObserver
 	},
 	data() {
@@ -172,17 +199,65 @@ export default {
 				username: '',
 				email: '',
 				password: ''
-			}
+			},
+			confirmPassword: '',
+			userExist: ''
 		}
+	},
+	created() {
+		localize({ fr })
+		localize('fr')
+		extend('email', {
+			message: 'Réessayez avec une adresse e-mail valide'
+		})
+		extend('required', {
+			message: 'Ce champ est obligatoire'
+		})
+
+		extend('alpha', {
+			message: 'Ce champ ne doit contenir que des lettres'
+		})
+
+		extend('min', {
+			validate(value, args) {
+				return value.length >= args.length
+			},
+			params: ['length'],
+			message: 'Ce champ doit contenir {length} caractères minimum'
+		})
+
+		extend('max', {
+			validate(value, args) {
+				return value.length <= args.length
+			},
+			params: ['length'],
+			message: 'Ce champ ne doit pas contenir plus de {length} caractères'
+		})
+
+		extend('password', {
+			params: ['target'],
+			validate(value, { target }) {
+				return value === target
+			},
+			message: 'Les deux mots de passe ne sont pas identiques'
+		})
 	},
 	methods: {
 		async onSubmit() {
 			try {
 				await axios.post('/api/register/', this.form)
-			} catch (e) {
-				console.error(e)
+			} catch (err) {
+				this.userExist = err.response.data
+				console.log(this.userExist)
 			}
 		}
 	}
 }
 </script>
+<style scoped>
+.error {
+	font-size: 0.8rem;
+	opacity: 1;
+	@apply mt-1 text-red-400 transition-all duration-150 ease-in-out;
+}
+</style>
