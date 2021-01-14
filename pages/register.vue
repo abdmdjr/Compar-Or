@@ -1,10 +1,10 @@
 <template>
-	<section class="flex flex-col items-center h-screen md:flex-row">
+	<section class="flex flex-col items-center md:h-screen md:flex-row">
 		<div class="container mx-auto">
 			<div class="flex justify-center px-2 py-6">
-				<div class="flex w-full rounded-lg xl:w-3/4 lg:w-11/12 lg:shadow-xl">
+				<div class="flex w-full rounded-lg xl:w-3/4 lg:w-11/12 lg:shadow-lg">
 					<div
-						class="relative hidden w-full h-auto bg-cover border-r rounded-l-lg bg-blue-1300 lg:block lg:w-6/12"
+						class="relative hidden w-full h-auto bg-cover border-r rounded-l-lg bg-blue-1300 md:block lg:w-6/12"
 					>
 						<div class="relative z-10 m-12 text-left">
 							<h2
@@ -22,7 +22,7 @@
 						</div>
 					</div>
 					<div
-						class="w-full px-8 py-24 border-gray-100 rounded-lg bg-blue-1300 lg:w-8/12 lg:px-24 lg:py-4 lg:rounded-l-none s"
+						class="w-full px-8 pt-32 pb-15 md:py-24 border-gray-100 rounded-lg lg:w-8/12 lg:px-24 lg:py-4 lg:rounded-l-none"
 					>
 						<div class="relative z-10 text-left">
 							<div class="flex justify-enter lg:py-6">
@@ -162,8 +162,9 @@
 								</form>
 							</ValidationObserver>
 
-							<p class="mt-8 text-center">
-								Vous avez déjà un compte?
+							<p class="mt-4 text-center">
+								Vous avez déjà un compte ?
+								<br />
 								<a
 									href="#"
 									class="font-semibold text-blue-500 hover:text-blue-700"

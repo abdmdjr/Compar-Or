@@ -1,18 +1,20 @@
 <template>
 	<main>
 		<section
-			class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center pt-12 px-5 sm:px-16 lg:pt-0 lg:px-8 lg:pb-20"
+			class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center px-5 sm:px-16 lg:px-8 pb-10"
 		>
 			<div class="text-content flex flex-col self-start lg:self-auto">
-				<h1 class="title title-first text-2xl md:text-5xl lg:text-4xl mt-5">
+				<h1
+					class="title font-bold tracking-tighter text-3xl sm:text-5xl lg:text-4xl mt-5"
+				>
 					Les plus belles <span class="title-third">pièces</span>, <br />
 					au meilleur prix
 				</h1>
 				<div
 					class="content text-sm md:text-lg font-light text-justify mt-2 md:my-4"
 				>
-					Nous comparons les offres pour vous aider dans votre quête
-					<h2 class="inline">d’achat d’or.</h2>
+					Notre comparateur d'or vous aidera à trouver les prix les plus bas du
+					marché.
 				</div>
 				<nuxt-link class="mt-5 lg:mt-3 self-start" to="/coins">
 					<button

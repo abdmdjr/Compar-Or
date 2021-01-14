@@ -48,12 +48,17 @@ p {
 	color: #1d3c5a;
 }
 
-.btn-detail:focus {
+.btn-detail:focus,
+.btn-detail-secondary:focus {
 	outline: none;
 }
 
 .navbar {
 	background: linear-gradient(220.01deg, #94d5ff -300%, #1a4269 70%);
+}
+
+.navbar-dropdown {
+	background: linear-gradient(265.01deg, #94d5ff -317%, #1a4269 61%);
 }
 
 .title-first {
@@ -79,6 +84,11 @@ p {
 	transition: all 0.1s ease-out 0s;
 	outline: none;
 }
+.btn-detail-secondary {
+	background: #ffff;
+	font-family: 'Open Sans', sans-serif;
+	transition: all 0.1s ease-out 0s;
+}
 
 input,
 textarea {
@@ -92,6 +102,11 @@ textarea {
 		box-shadow: none;
 		outline: none;
 		@apply shadow-md;
+	}
+	.btn-detail-secondary:hover {
+		background-image: linear-gradient(160deg, #f6d365 0%, #fda085 160%);
+		color: #ffff;
+		@apply shadow-sm border-none;
 	}
 }
 
