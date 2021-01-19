@@ -66,7 +66,6 @@ p {
 	font-weight: 400;
 }
 .title-second {
-	font-family: 'Overlock SC', cursive;
 	background: -webkit-linear-gradient(220.01deg, #ffcc2f 0%, #ef9834 100%);
 	background-clip: text;
 	-webkit-background-clip: text;
@@ -78,16 +77,26 @@ p {
 	color: #193a5c;
 }
 .btn-detail {
-	background: #ffff;
-	font-family: 'Open Sans', sans-serif;
-	box-shadow: 0 0 2px #193a5c inset;
-	transition: all 0.1s ease-out 0s;
+	background-image: linear-gradient(160deg, #f6d365 0%, #fda085 160%);
+	color: #ffff;
+	box-shadow: none;
 	outline: none;
+	transition: all 0.1s ease-in-out 0s;
+	@apply shadow-md;
 }
-.btn-detail-secondary {
-	background: #ffff;
+
+.btn-auth-login {
+	background-image: linear-gradient(160deg, #f3c222 0%, #f37654cc 160%);
+	color: #ffff;
 	font-family: 'Open Sans', sans-serif;
-	transition: all 0.1s ease-out 0s;
+	transition: all 0.1s ease-in-out 0s;
+}
+
+.btn-auth-register {
+	background-image: linear-gradient(160deg, #f6d365 0%, #fda085 160%);
+	color: #ffff;
+	font-family: 'Open Sans', sans-serif;
+	transition: all 0.1s ease-in-out 0s;
 }
 
 input,
@@ -97,16 +106,10 @@ textarea {
 
 @screen lg {
 	.btn-detail:hover {
-		background-image: linear-gradient(160deg, #f6d365 0%, #fda085 160%);
-		color: #ffff;
-		box-shadow: none;
-		outline: none;
-		@apply shadow-md;
+		@apply shadow-lg;
 	}
 	.btn-detail-secondary:hover {
-		background-image: linear-gradient(160deg, #f6d365 0%, #fda085 160%);
-		color: #ffff;
-		@apply shadow-sm border-none;
+		@apply bg-white text-blue-900 shadow-md border-none;
 	}
 }
 

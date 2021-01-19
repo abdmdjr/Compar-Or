@@ -1,11 +1,12 @@
 <template>
-	<nav class="">
-		<div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-			<div class="relative flex items-center justify-between h-16">
-				<div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+	<nav class="container mx-auto px-5 sm:px-16 lg:px-8 sm:mt-5">
+		<div class="">
+			<div class="relative flex items-center justify-between h-16 lg:h-24">
+				<div class="absolute inset-y-0 left-0 flex items-center lg:hidden">
 					<!-- Mobile menu button-->
 					<button
-						class="inline-flex items-center justify-center p-2 rounded-md text-blue-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+						v-click-outside="hideMenu"
+						class="inline-flex items-center justify-center py-2 rounded-md text-blue-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
 						aria-expanded="false"
 						@click="showMenu = !showMenu"
 					>
@@ -45,107 +46,165 @@
 					</button>
 				</div>
 				<div
-					class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start"
+					class="flex-1 flex items-center justify-center lg:items-stretch lg:justify-between"
 				>
-					<div class="flex-shrink-0 flex items-center">
-						<img
-							class="block lg:hidden h-8 w-auto"
-							src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-							alt="Workflow"
-						/>
-						<img
-							class="hidden lg:block h-8 w-auto"
-							src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-							alt="Workflow"
-						/>
-					</div>
-					<div class="hidden sm:block sm:ml-6">
+					<nuxt-link to="/">
+						<div class="flex-shrink-0 flex items-center space-x-2 sm:space-x-3">
+							<img
+								class="h-5 sm:h-6 w-auto"
+								src="~/assets/img/compar.png"
+								alt="Workflow"
+							/>
+							<h1 class="font-bold tracking-tight text-lg sm:text-2xl">
+								Compar'<span class="title-second">Or</span>
+							</h1>
+						</div>
+					</nuxt-link>
+					<div class="hidden lg:block sm:ml-6">
 						<div class="flex space-x-4">
-							<a
-								href="#"
-								class="btn-detail text-blue-900 px-3 py-2 rounded-md text-sm font-medium"
-								>Dashboard</a
+							<nuxt-link
+								to="/coins"
+								class="btn-detail px-4 py-3 rounded-md text-sm font-medium"
+								>Trouvez votre pièce</nuxt-link
 							>
-							<a
-								href="#"
-								class="btn-detail-secondary px-3 py-2 rounded-md text-sm font-medium"
-								>Team</a
+							<nuxt-link to="" class="px-4 py-3 rounded-md text-sm font-medium"
+								>Cours de l'or</nuxt-link
 							>
-							<a
-								href="#"
-								class="btn-detail-secondary px-3 py-2 rounded-md text-sm font-medium"
-								>Projects</a
+							<nuxt-link
+								to="register"
+								class="px-4 py-3 rounded-md text-sm font-medium"
+								>S'inscrire</nuxt-link
 							>
-							<a
-								href="#"
-								class="btn-detail-secondary px-3 py-2 rounded-md text-sm font-medium"
-								>Calendar</a
+							<nuxt-link
+								to="login"
+								class="px-4 py-3 rounded-md text-sm font-medium"
+								>Se connecter</nuxt-link
 							>
 						</div>
 					</div>
 				</div>
 				<div
-					class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+					class="absolute inset-y-0 right-0 flex items-center lg:inset-auto lg:ml-6 lg:pr-0"
 				>
-					<button
-						class="bg-gray-800 p-1 rounded-full text-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-					>
-						<span class="sr-only">View notifications</span>
-						<svg
-							class="h-6 w-6"
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-							aria-hidden="true"
+					<!-- Profile dropdown -->
+					<div class="lg:hidden ml-3 relative">
+						<div>
+							<button
+								id="user-menu"
+								v-click-outside="hideDropDown"
+								class="flex"
+								aria-haspopup="true"
+								@click="showDropDown = !showDropDown"
+							>
+								<span class="sr-only">Open user menu</span>
+								<span class="material-icons">
+									account_circle
+								</span>
+							</button>
+						</div>
+						<transition
+							enter-active-class="transition ease-out duration-100"
+							enter-class="transform opacity-0 scale-95"
+							enter-to-class="transform opacity-100 scale-100"
+							leave-active-class="transition ease-in duration-75"
+							leave-class="transform opacity-100 scale-100"
+							leave-to-class="transform opacity-0 scale-95"
 						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-							/>
-						</svg>
-					</button>
+							<div
+								v-show="showDropDown"
+								class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
+								role="menu"
+								aria-orientation="vertical"
+								aria-labelledby="user-menu"
+							>
+								<a
+									href="#"
+									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+									role="menuitem"
+									>Your Profile</a
+								>
+								<a
+									href="#"
+									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+									role="menuitem"
+									>Settings</a
+								>
+								<a
+									href="#"
+									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+									role="menuitem"
+									>Sign out</a
+								>
+							</div>
+						</transition>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div
-			class="sm:hidden absolute w-full navbar-dropdown shadow-xl"
-			:class="[showMenu ? 'block' : 'hidden']"
+			class="lg:hidden absolute w-48 bg-white shadow-lg rounded-md ring-1 ring-black ring-opacity-5"
 		>
-			<div class="px-2 pt-2 pb-3 space-y-1">
-				<a
-					href="#"
-					class="text-gray-300 hover:text-blue-900 block px-3 py-2 rounded-md text-base font-medium"
-					>Dashboard</a
-				>
-				<a
-					href="#"
-					class="text-gray-300 hover:text-blue-900 block px-3 py-2 rounded-md text-base font-medium"
-					>Team</a
-				>
-				<a
-					href="#"
-					class="text-gray-300 hover:text-blue-900 block px-3 py-2 rounded-md text-base font-medium"
-					>Projects</a
-				>
-				<a
-					href="#"
-					class="text-gray-300 hover:text-blue-900 block px-3 py-2 rounded-md text-base font-medium"
-					>Calendar</a
-				>
-			</div>
+			<transition
+				enter-active-class="transition ease-out duration-100"
+				enter-class="transform opacity-0 scale-95"
+				enter-to-class="transform opacity-100 scale-100"
+				leave-active-class="transition ease-in duration-75"
+				leave-class="transform opacity-100 scale-100"
+				leave-to-class="transform opacity-0 scale-95"
+			>
+				<div v-show="showMenu" class="py-2 space-y-1">
+					<a
+						href="#"
+						class="px-4 py-2 text-sm text-gray-700 block rounded-md font-medium"
+						>Trouver votre pièce</a
+					>
+					<a
+						href="#"
+						class="px-4 py-2 text-sm text-gray-700 block rounded-md font-medium"
+						>Team</a
+					>
+					<a
+						href="#"
+						class="px-4 py-2 text-sm text-gray-700 block rounded-md font-medium"
+						>Projects</a
+					>
+					<a
+						href="#"
+						class="px-4 py-2 text-sm text-gray-700 block rounded-md font-medium"
+						>Calendar</a
+					>
+				</div>
+			</transition>
 		</div>
 	</nav>
 </template>
 
 <script>
+import vClickOutside from 'v-click-outside'
 export default {
+	directives: {
+		clickOutside: vClickOutside.directive
+	},
 	data() {
 		return {
-			showMenu: false
+			showMenu: false,
+			showDropDown: false
+		}
+	},
+	methods: {
+		hideDropDown() {
+			this.showDropDown = false
+		},
+		hideMenu() {
+			this.showMenu = false
 		}
 	}
 }
 </script>
+<style>
+@media only screen and (min-width: 1024px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
+	.container {
+		@apply px-8;
+	}
+}
+</style>

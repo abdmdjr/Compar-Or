@@ -58,14 +58,14 @@
 			</div>
 			<section class="cards flex flex-wrap justify-evenly w-full mb-20">
 				<Coin
-					v-for="coin in filteredCoins"
-					:key="coin.id"
+					v-for="(coin, i) in coins"
+					:key="coin._id"
 					class="card"
 					:slug="coin.slug"
 					:img="coin.img"
 					:title="coin.title"
 					:gr="coin.gr"
-					:price="coin.price"
+					:price="coinsSortingPrices[i]"
 				/>
 				<button
 					class="filters-btn hidden px-8 py-2 rounded text-white font-medium"
@@ -79,22 +79,12 @@
 
 <script>
 // import axios from 'axios'
-import min from 'lodash.min'
+// import min from 'lodash.min'
 import Coin from '~/components/Coin'
 
 export default {
 	components: {
 		Coin
-	},
-	async asyncData({ $axios, params, error }) {
-		try {
-			const result = await $axios.get(`/api/coins`)
-			return {
-				coinDetail: result.data
-			}
-		} catch (e) {
-			error({ statusCode: 404 })
-		}
 	},
 	data() {
 		return {
@@ -105,36 +95,47 @@ export default {
 		}
 	},
 	computed: {
-		filteredCoins() {
-			// eslint-disable-next-line prettier/prettier
-			const filtersLess = (priceCoin) => { return this.coinDetail.filter((coin) => coin.price < priceCoin) }
-			// eslint-disable-next-line prettier/prettier
-			const filtersEven = (priceLess, priceMore) => { return this.coinDetail.filter((coin) => coin.price >= priceLess && coin.price <= priceMore) }
-			// eslint-disable-next-line prettier/prettier
-			const filtersMore = (priceCoin) => { return this.coinDetail.filter((coin) => coin.price > priceCoin) }
-
-			if (this.checked500 && this.checked999 && this.checked1001) {
-				return this.coinDetail
-			} else if (this.checked500 && this.checked999) {
-				return filtersLess(1000)
-			} else if (this.checked999 && this.checked1001) {
-				return filtersMore(500)
-			} else if (this.checked500) {
-				return filtersLess(500)
-			} else if (this.checked999) {
-				return filtersEven(500, 1000)
-			} else if (this.checked1001) {
-				return filtersMore(1000)
-			} else {
-				return this.coinDetail
-			}
+		coins() {
+			return this.$store.state.coin.coins
+		},
+		coinsSortingPrices() {
+			return this.$store.getters['coin/coinsSortingPrices']
 		}
+		// filteredCoins() {
+		// 	// eslint-disable-next-line prettier/prettier
+		// 	const filtersLess = (priceCoin) => { return this.coinDetail.filter((coin) => coin.price < priceCoin) }
+		// 	// eslint-disable-next-line prettier/prettier
+		// 	const filtersEven = (priceLess, priceMore) => { return this.coinDetail.filter((coin) => coin.price >= priceLess && coin.price <= priceMore) }
+		// 	// eslint-disable-next-line prettier/prettier
+		// 	const filtersMore = (priceCoin) => { return this.coinDetail.filter((coin) => coin.price > priceCoin) }
+		// 	if (this.checked500 && this.checked999 && this.checked1001) {
+		// 		return this.coinDetail
+		// 	} else if (this.checked500 && this.checked999) {
+		// 		return filtersLess(1000)
+		// 	} else if (this.checked999 && this.checked1001) {
+		// 		return filtersMore(500)
+		// 	} else if (this.checked500) {
+		// 		return filtersLess(500)
+		// 	} else if (this.checked999) {
+		// 		return filtersEven(500, 1000)
+		// 	} else if (this.checked1001) {
+		// 		return filtersMore(1000)
+		// 	} else {
+		// 		return this.coinDetail
+		// 	}
+		// }
 	},
 	created() {
-		this.coinDetail.forEach((coin) => {
-			const minValue = min(Object.values(coin.prices), (o) => coin.prices[o])
-			coin.price = parseFloat(minValue[0]).toFixed(2)
-		})
+		this.getAllCoins()
+		// this.coinDetail.forEach((coin) => {
+		// 	const minValue = min(Object.values(coin.prices), (o) => coin.prices[o])
+		// 	coin.price = parseFloat(minValue[0]).toFixed(2)
+		// })
+	},
+	methods: {
+		getAllCoins() {
+			this.$store.dispatch('coin/getCoins')
+		}
 	},
 	head() {
 		return {

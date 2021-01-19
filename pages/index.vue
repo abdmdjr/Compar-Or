@@ -1,9 +1,9 @@
 <template>
 	<main>
 		<section
-			class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center px-5 sm:px-16 lg:px-8 pb-10"
+			class="container mx-auto h-screen flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center px-5 sm:px-16 lg:px-8 pb-12 lg:pb-24"
 		>
-			<div class="text-content flex flex-col self-start lg:self-auto">
+			<div class="text-content flex flex-col self-center lg:self-auto">
 				<h1
 					class="title font-bold tracking-tighter text-3xl sm:text-5xl lg:text-4xl mt-5"
 				>
@@ -16,7 +16,7 @@
 					Notre comparateur d'or vous aidera à trouver les prix les plus bas du
 					marché.
 				</div>
-				<nuxt-link class="mt-5 lg:mt-3 self-start" to="/coins">
+				<nuxt-link class="mb-12 lg:mb-0 mt-5 lg:mt-3 self-start" to="/coins">
 					<button
 						class="btn-detail flex items-center align-center px-4 py-3 text-sm rounded"
 					>
@@ -177,9 +177,6 @@ export default {
 }
 /* Ipad */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
-	.container {
-		@apply pt-18;
-	}
 	.title {
 		font-size: 3.1rem;
 		line-height: 1.3;
