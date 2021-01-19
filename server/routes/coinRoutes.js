@@ -5,10 +5,7 @@ const coinModel = require('../models/coinModel')
 const app = express()
 
 app.get('/coins', async (req, res) => {
-	const coins = await coinModel
-		.find({})
-		.sort({ index: '1' })
-		.exec()
+	const coins = await coinModel.find({}).exec()
 	try {
 		res.json(coins)
 	} catch (err) {
