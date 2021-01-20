@@ -14,6 +14,25 @@ async function bullionByPost() {
 					piece.url
 				]
 			})
+			await Coin.findById(piece.id).then((coin) => {
+				if (
+					!coin.chart.bullionbypost.data &&
+					!coin.chart.bullionbypost.createdAt
+				) {
+					coin.chart.bullionbypost.data.push(piece.totalPrice)
+					coin.chart.bullionbypost.createdAt.push(new Date())
+					coin.save()
+				} else if (
+					piece.totalPrice !==
+					coin.chart.bullionbypost.data[
+						coin.chart.bullionbypost.data.length - 1
+					]
+				) {
+					coin.chart.bullionbypost.data.push(piece.totalPrice)
+					coin.chart.bullionbypost.createdAt.push(new Date())
+					coin.save()
+				}
+			})
 		})
 	} catch (error) {
 		console.log(error.message)

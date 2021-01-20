@@ -14,6 +14,20 @@ async function auCoffre() {
 					piece.url
 				]
 			})
+			await Coin.findById(piece.id).then((coin) => {
+				if (!coin.chart.aucoffre.data && !coin.chart.aucoffre.createdAt) {
+					coin.chart.aucoffre.data.push(piece.totalPrice)
+					coin.chart.aucoffre.createdAt.push(new Date())
+					coin.save()
+				} else if (
+					piece.totalPrice !==
+					coin.chart.aucoffre.data[coin.chart.aucoffre.data.length - 1]
+				) {
+					coin.chart.aucoffre.data.push(piece.totalPrice)
+					coin.chart.aucoffre.createdAt.push(new Date())
+					coin.save()
+				}
+			})
 		})
 	} catch (error) {
 		console.log(error.message)
