@@ -27,6 +27,28 @@ const CoinSchema = new mongoose.Schema({
 	slug: {
 		type: String,
 		required: true
+	},
+	chart: {
+		goldavenue: {
+			data: Array,
+			createdAt: Array
+		},
+		lingor: {
+			data: Array,
+			createdAt: Array
+		},
+		aucoffre: {
+			data: Array,
+			createdAt: Array
+		},
+		bullionbypost: {
+			data: Array,
+			createdAt: Array
+		},
+		bdor: {
+			data: Array,
+			createdAt: Array
+		}
 	}
 })
 

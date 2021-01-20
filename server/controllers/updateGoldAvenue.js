@@ -14,6 +14,20 @@ async function goldAvenue() {
 					piece.url
 				]
 			})
+			await Coin.findById(piece.id).then((coin) => {
+				if (!coin.chart.goldavenue.data && !coin.chart.goldavenue.createdAt) {
+					coin.chart.goldavenue.data.push(piece.totalPrice)
+					coin.chart.goldavenue.createdAt.push(new Date())
+					coin.save()
+				} else if (
+					piece.totalPrice !==
+					coin.chart.goldavenue.data[coin.chart.goldavenue.data.length - 1]
+				) {
+					coin.chart.goldavenue.data.push(piece.totalPrice)
+					coin.chart.goldavenue.createdAt.push(new Date())
+					coin.save()
+				}
+			})
 		})
 	} catch (error) {
 		console.log(error.message)

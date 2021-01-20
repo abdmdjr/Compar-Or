@@ -127,10 +127,6 @@ export default {
 	},
 	created() {
 		this.getAllCoins()
-		// this.coinDetail.forEach((coin) => {
-		// 	const minValue = min(Object.values(coin.prices), (o) => coin.prices[o])
-		// 	coin.price = parseFloat(minValue[0]).toFixed(2)
-		// })
 	},
 	methods: {
 		getAllCoins() {
