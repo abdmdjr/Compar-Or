@@ -4,7 +4,7 @@
 	>
 		<span class="block md:mb-4 text-xs text-black opacity-75"
 			><nuxt-link to="/">Accueil > </nuxt-link>
-			<nuxt-link to="/coins">Pièces > </nuxt-link>{{ coinDetail.title }}</span
+			<nuxt-link to="/pieces">Pièces > </nuxt-link>{{ coinDetail.title }}</span
 		>
 		<div
 			class="flex flex-col h-full md:mt-10 md:flex-col lg:flex-row lg:space-x-15"
@@ -101,23 +101,22 @@ export default {
 		CoinDetail,
 		CoinTable
 	},
-	async asyncData({ $axios, params, error }) {
-		try {
-			const result = await $axios.get(`/api/coins/${params.coin}`)
-			return {
-				coinDetail: result.data,
-				coinPrice: Object.entries(result.data.prices).sort((a, b) => {
-					return a[1][0] - b[1][0]
-				})
-			}
-		} catch (e) {
-			error({ statusCode: 404 })
+	computed: {
+		coinDetail() {
+			return this.$store.state.coin.coin
+		},
+		coinPrice() {
+			return this.$store.getters['coin/coinsSortingPricesTable']
 		}
 	},
-	data() {
-		return {
-			coinDetail: [],
-			coinPrice: []
+	created() {
+		this.fetchCoin()
+	},
+	methods: {
+		fetchCoin() {
+			this.$store.dispatch('coin/fetchCoin', {
+				params: this.$route.params.piece
+			})
 		}
 	},
 	head() {

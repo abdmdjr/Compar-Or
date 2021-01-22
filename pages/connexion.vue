@@ -161,7 +161,7 @@ export default {
 	methods: {
 		async onSubmit() {
 			try {
-				await axios.post('/api/login/', this.form)
+				await axios.post('/api/connexion/', this.form)
 			} catch (e) {
 				console.error(e)
 			}

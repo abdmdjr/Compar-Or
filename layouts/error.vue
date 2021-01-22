@@ -12,7 +12,7 @@
 			<p class="text-sm md:text-1xl lg:text-base font-light text-justify">
 				La page "{{ this.$route.path }}" n'existe pas.
 			</p>
-			<nuxt-link to="/coins" class="flex self-start mt-5 lg:mt-5"
+			<nuxt-link to="/pieces" class="flex self-start mt-5 lg:mt-5"
 				><button class="btn-detail px-4 py-3 text-sm rounded">
 					Retour aux pièces
 				</button>

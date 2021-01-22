@@ -63,7 +63,7 @@
 					<div class="hidden lg:block sm:ml-6">
 						<div class="flex space-x-4">
 							<nuxt-link
-								to="/coins"
+								to="/pieces"
 								class="btn-detail px-4 py-3 rounded-md text-sm font-medium"
 								>Trouvez votre pièce</nuxt-link
 							>
@@ -71,12 +71,12 @@
 								>Cours de l'or</nuxt-link
 							>
 							<nuxt-link
-								to="register"
+								to="inscription"
 								class="px-4 py-3 rounded-md text-sm font-medium"
 								>S'inscrire</nuxt-link
 							>
 							<nuxt-link
-								to="login"
+								to="connexion"
 								class="px-4 py-3 rounded-md text-sm font-medium"
 								>Se connecter</nuxt-link
 							>

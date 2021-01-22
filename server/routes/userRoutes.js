@@ -5,7 +5,7 @@ const { registerValidation, loginValidation } = require('../validation')
 const User = require('../models/userModel')
 const app = express()
 
-app.post('/register', async (req, res) => {
+app.post('/inscription', async (req, res) => {
 	const { error } = registerValidation(req.body)
 	if (error) return res.status(400).send(error.details[0].message)
 
@@ -28,7 +28,7 @@ app.post('/register', async (req, res) => {
 	}
 })
 
-app.post('/login', async (req, res) => {
+app.post('/connexion', async (req, res) => {
 	const { error } = loginValidation(req.body)
 	if (error) return res.status(400).send(error.details[0].message)
 

@@ -16,7 +16,7 @@
 					Notre comparateur d'or vous aidera à trouver les prix les plus bas du
 					marché.
 				</div>
-				<nuxt-link class="mb-12 lg:mb-0 mt-5 lg:mt-3 self-start" to="/coins">
+				<nuxt-link class="mb-12 lg:mb-0 mt-5 lg:mt-3 self-start" to="/pieces">
 					<button
 						class="btn-detail flex items-center align-center px-4 py-3 text-sm rounded"
 					>
@@ -83,7 +83,7 @@
 				</div>
 			</div>
 		</section>
-		<nuxt-link class="flex mt-10 mb-12 md:mt-15 md:mb-20" to="/coins">
+		<nuxt-link class="flex mt-10 mb-12 md:mt-15 md:mb-20" to="/pieces">
 			<button class="btn-detail mx-auto px-4 py-3 text-sm rounded">
 				Trouvez votre pièce
 			</button>

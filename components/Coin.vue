@@ -3,7 +3,7 @@
 		<div class="flex flex-col px-3 py-8 items-center">
 			<ul class="flex flex-col items-center">
 				<li class="">
-					<nuxt-link :to="`/coins/${slug}`">
+					<nuxt-link :to="`/pieces/${slug}`">
 						<img class="px-3" :src="img" :alt="title" />
 					</nuxt-link>
 				</li>
@@ -18,7 +18,7 @@
 				{{ price }} €
 			</h3>
 			<div class="mt-4">
-				<nuxt-link :to="`/coins/${slug}`"
+				<nuxt-link :to="`/pieces/${slug}`"
 					><button
 						class="btn-detail flex items-center align-center py-2 px-3 text-sm rounded"
 					>

@@ -19,9 +19,7 @@
 					transparence, la livraison est incluse dans ce prix.
 				</p>
 				<h1 class="font-medium mt-2">
-					Cliquez sur une pièce
-					<h1 class="inline">d'or</h1>
-					pour comparer les prix en détail.
+					Cliquez sur une pièce d'or pour comparer les prix en détail.
 				</h1>
 			</div>
 		</div>
@@ -126,11 +124,11 @@ export default {
 		// }
 	},
 	created() {
-		this.getAllCoins()
+		this.fetchCoins()
 	},
 	methods: {
-		getAllCoins() {
-			this.$store.dispatch('coin/getCoins')
+		fetchCoins() {
+			this.$store.dispatch('coin/fetchCoins')
 		}
 	},
 	head() {

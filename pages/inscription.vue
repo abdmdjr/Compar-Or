@@ -222,7 +222,7 @@ export default {
 	methods: {
 		async onSubmit() {
 			try {
-				await axios.post('/api/register/', this.form)
+				await axios.post('/api/inscription/', this.form)
 			} catch (err) {
 				this.userExist = err.response.data
 			}

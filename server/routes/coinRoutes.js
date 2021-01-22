@@ -4,26 +4,22 @@ require('dotenv').config()
 const coinModel = require('../models/coinModel')
 const app = express()
 
-app.get('/coins', async (req, res) => {
+app.get('/pieces', async (req, res) => {
 	const coins = await coinModel.find({}).sort({ index: 1 })
 	try {
 		res.json(coins)
 	} catch (err) {
-		res.status(500).send(err)
+		res.status(404).send(err)
 	}
 })
 
-app.get('/coins/:coin', async (req, res) => {
-	await coinModel.findOne({ slug: req.params.coin }, (err, coin) => {
-		if (err) {
-			console.log(err)
-		}
-		if (coin === null) {
-			res.status(404).send(err)
-		} else {
-			return res.json(coin)
-		}
-	})
+app.get('/pieces/:piece', async (req, res) => {
+	const coin = await coinModel.findOne({ slug: req.params.piece })
+	try {
+		res.json(coin)
+	} catch (err) {
+		res.status(404).send(err)
+	}
 })
 app.post('/contact', (req, res) => {
 	if (!req.body.email) {
