@@ -1,7 +1,7 @@
 <script>
-import { HorizontalBar } from 'vue-chartjs'
+import { Line } from 'vue-chartjs'
 export default {
-	extends: HorizontalBar,
+	extends: Line,
 	// eslint-disable-next-line vue/require-prop-types
 	props: ['data', 'options'],
 	mounted() {

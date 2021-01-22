@@ -15,9 +15,6 @@
 				:img3x="coinDetail.img3x"
 				:imgar3x="coinDetail.imgar3x"
 				:gr="coinDetail.gr"
-				:price="coinPrice[0][1][0].toFixed(2)"
-				:site="coinPrice[0][0].split(' ').join('.')"
-				:url="coinPrice[0][1][3]"
 			/>
 			<div class="flex flex-col space-x-20">
 				<h2
@@ -70,9 +67,7 @@ export default {
 			const result = await $axios.get(`/api/coins/${params.coin}`)
 			return {
 				coinDetail: result.data,
-				coinPrice: Object.entries(result.data.prices).sort((a, b) => {
-					return a[1][0] - b[1][0]
-				})
+				coinPrice: Object.entries(result.data.chart)
 			}
 		} catch (e) {
 			error({ statusCode: 404 })
@@ -83,63 +78,54 @@ export default {
 			coinDetail: [],
 			coinPrice: [],
 			coinChart: {
-				labels: [],
-				datasets: [
-					{
-						// barPercentage: 1,
-						// barThickness: 30,
-						// minBarLength: 10,
-						label: 'Prix en euros',
-						data: [],
-						backgroundColor: [
-							'#215385',
-							'#215385',
-							'#215385',
-							'#215385',
-							'#215385'
-						],
-						borderColor: [],
-						borderWidth: 1
-					}
-				]
-			},
-			coinChartOptions: {
-				responsive: true,
-				legend: {
-					display: false
-				},
-				title: {
-					display: true,
-					text: 'Graphique des prix en euros',
-					fontSize: 14,
-					fontColor: '#6b7280'
-				},
-				tooltips: {
-					backgroundColor: 'orange'
-				},
-				scales: {
-					yAxes: [{}],
-					xAxes: [
-						{
-							ticks: {
-								callback(value, index, values) {
-									return value + '€'
-								},
-								stepSize: 20
+				labels: [
+					'Janvier',
+					'Fevrier',
+					'Mars',
+					'Avril',
+					'Mai',
+					'Juin',
+					'Juillet'
+				],
+				datasets: [{}],
+				coinChartOptions: {
+					responsive: true,
+					legend: {
+						display: false
+					},
+					title: {
+						display: true,
+						text: 'Graphique des prix en euros',
+						fontSize: 14,
+						fontColor: '#6b7280'
+					},
+					tooltips: {
+						backgroundColor: 'orange'
+					},
+					scales: {
+						yAxes: [
+							{
+								ticks: {
+									callback(value, index, values) {
+										return value + '€'
+									},
+									stepSize: 20
+								}
 							}
-						}
-					]
+						],
+						xAxes: []
+					}
 				}
 			}
 		}
 	},
-	computed: {},
-	created() {
-		const labels = this.coinChart.labels
-		const prices = this.coinChart.datasets[0].data
-		this.coinPrice.map((site) => {
-			labels.push(site[0])
-			prices.push(site[1][0])
+	mounted() {
+		return this.coinPrice.map((site) => {
+			const obj = {
+				label: [site[0]],
+				data: site[1].data
+			}
+			return this.coinChart.datasets.push(obj)
 		})
 	}
 }
