@@ -76,8 +76,6 @@
 </template>
 
 <script>
-// import axios from 'axios'
-// import min from 'lodash.min'
 import Coin from '~/components/Coin'
 
 export default {
@@ -86,7 +84,6 @@ export default {
 	},
 	data() {
 		return {
-			coinDetail: [],
 			checked500: false,
 			checked999: false,
 			checked1001: false
@@ -94,10 +91,10 @@ export default {
 	},
 	computed: {
 		coins() {
-			return this.$store.state.coin.coins
+			return this.$store.state.coins.allCoins
 		},
 		coinsSortingPrices() {
-			return this.$store.getters['coin/coinsSortingPrices']
+			return this.$store.getters['coins/coinsSortingPrices']
 		}
 		// filteredCoins() {
 		// 	// eslint-disable-next-line prettier/prettier
@@ -123,13 +120,8 @@ export default {
 		// 	}
 		// }
 	},
-	created() {
-		this.fetchCoins()
-	},
-	methods: {
-		fetchCoins() {
-			this.$store.dispatch('coin/fetchCoins')
-		}
+	mounted() {
+		this.$store.dispatch('coins/fetchCoins')
 	},
 	head() {
 		return {

@@ -108,19 +108,17 @@ export default {
 	},
 	computed: {
 		coinDetail() {
-			return this.$store.state.coin.coin
+			return this.$store.state.coins.allCoins
 		}
 	},
-	mounted() {
-		return this.coinPrice.map((site) => {
-			const obj = {
-				label: [site[0]],
-				data: site[1].data
-			}
-			return this.coinChart.datasets.push(obj)
-		})
+	created() {
+		this.fetchCoins()
 	},
-	methods: {}
+	methods: {
+		fetchCoins() {
+			this.$store.dispatch('coins/fetchCoins')
+		}
+	}
 }
 </script>
 

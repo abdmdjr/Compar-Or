@@ -36,9 +36,9 @@ app.post('/connexion', async (req, res) => {
 	if (!user) return res.status(400).send('Email or password is wrong')
 
 	const validPassword = await bcrypt.compare(req.body.password, user.password)
-	if (!validPassword) return res.status(400).send('Invalid password')
+	if (!validPassword) return res.status(400).send('Email or password is wrong')
 
-	const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET)
+	const token = jwt.sign({ user: user.username }, process.env.TOKEN_SECRET)
 	res.header('auth-token', token)
 
 	res.send('Success')

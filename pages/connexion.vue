@@ -166,6 +166,11 @@ export default {
 				console.error(e)
 			}
 		}
+	},
+	head() {
+		return {
+			title: "Compar'Or - Se connecter"
+		}
 	}
 }
 </script>

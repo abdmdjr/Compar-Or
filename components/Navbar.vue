@@ -65,18 +65,18 @@
 							<nuxt-link
 								to="/pieces"
 								class="btn-detail px-4 py-3 rounded-md text-sm font-medium"
-								>Trouvez votre pièce</nuxt-link
+								>Trouver votre pièce</nuxt-link
 							>
 							<nuxt-link to="" class="px-4 py-3 rounded-md text-sm font-medium"
 								>Cours de l'or</nuxt-link
 							>
 							<nuxt-link
-								to="inscription"
+								to="/inscription"
 								class="px-4 py-3 rounded-md text-sm font-medium"
 								>S'inscrire</nuxt-link
 							>
 							<nuxt-link
-								to="connexion"
+								to="/connexion"
 								class="px-4 py-3 rounded-md text-sm font-medium"
 								>Se connecter</nuxt-link
 							>

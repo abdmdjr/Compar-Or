@@ -108,6 +108,7 @@
 													class="block w-full px-4 py-2 mt-2 text-base text-blue-700 bg-gray-100 border-transparent rounded-lg ext-blue-700 focus:border-gray-500"
 													type="password"
 													placeholder="Mot de passe : 8 caractères min"
+													autocomplete="off"
 												/>
 												<span class="error">{{ errors[0] }}</span>
 											</ValidationProvider>
@@ -125,6 +126,7 @@
 												class="block w-full px-4 py-2 mt-2 text-base text-blue-700 bg-gray-100 border-transparent rounded-lg ext-blue-700 focus:border-gray-500"
 												type="password"
 												placeholder="Confirmez votre mot de passe"
+												autocomplete="off"
 											/>
 										</ValidationProvider>
 									</div>
@@ -156,7 +158,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import {
 	ValidationProvider,
 	ValidationObserver,
@@ -220,12 +221,15 @@ export default {
 		})
 	},
 	methods: {
-		async onSubmit() {
-			try {
-				await axios.post('/api/inscription/', this.form)
-			} catch (err) {
-				this.userExist = err.response.data
-			}
+		onSubmit() {
+			this.$store.dispatch('auth/signIn', this.form).then(() => {
+				this.userExist = this.$store.state.auth.error
+			})
+		}
+	},
+	head() {
+		return {
+			title: "Compar'Or - S'inscrire"
 		}
 	}
 }

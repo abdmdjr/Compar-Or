@@ -103,27 +103,18 @@ export default {
 	},
 	computed: {
 		coinDetail() {
-			return this.$store.state.coin.coin
+			return this.$store.state.coins.coin
 		},
 		coinPrice() {
-			return this.$store.getters['coin/coinsSortingPricesTable']
+			return this.$store.getters['coins/coinsSortingPricesTable']
 		}
 	},
 	created() {
-		this.fetchCoin()
+		this.$store.dispatch('coins/fetchCoin', {
+			params: this.$route.params.piece
+		})
 	},
-	methods: {
-		fetchCoin() {
-			this.$store.dispatch('coin/fetchCoin', {
-				params: this.$route.params.piece
-			})
-		}
-	},
-	head() {
-		return {
-			title: "Compar'Or - " + this.coinDetail.title
-		}
-	}
+	methods: {}
 }
 </script>
 
