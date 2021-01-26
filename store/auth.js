@@ -1,7 +1,6 @@
 const state = () => ({
 	user: null,
-	token: null,
-	error: null
+	token: null
 })
 
 const mutations = {
@@ -10,19 +9,19 @@ const mutations = {
 	},
 	SET_TOKEN(state, token) {
 		state.token = token
-	},
-	HANDLE_ERROR(state, error) {
-		state.error = error
 	}
 }
 
 const actions = {
+	async signUp(_, form) {
+		await this.$axios.$post('/api/inscription/', form)
+	},
 	async signIn({ commit }, form) {
-		try {
-			await this.$axios.$post('/api/inscription/', form)
-			await this.$router.push('/connexion')
-		} catch (err) {
-			commit('HANDLE_ERROR', err.response.data)
+		const response = await this.$axios.post('/api/connexion/', form)
+		console.log(response)
+		if (response.status === 200) {
+			this.$axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`
+			localStorage.setItem('token', response.data.token)
 		}
 	}
 }

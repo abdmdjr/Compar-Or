@@ -78,7 +78,8 @@ module.exports = {
 	 */
 	plugins: [
 		{ src: '~plugins/vue-carousel', ssr: false },
-		{ src: '~plugins/vue-notification', ssr: false }
+		{ src: '~plugins/vue-notification', ssr: false },
+		'~/plugins/vee-validate.js'
 	],
 	/*
 	 ** Nuxt.js dev-modules

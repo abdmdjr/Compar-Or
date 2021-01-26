@@ -10,7 +10,8 @@ app.post('/inscription', async (req, res) => {
 	if (error) return res.status(400).send(error.details[0].message)
 
 	const emailExist = await User.findOne({ email: req.body.email })
-	if (emailExist) return res.status(400).send('Cet e-mail existe déjà')
+	if (emailExist)
+		return res.status(400).send('Cette adresse e-mail existe déjà')
 
 	const salt = await bcrypt.genSalt(10)
 	const hashedPassword = await bcrypt.hash(req.body.password, salt)
@@ -29,19 +30,22 @@ app.post('/inscription', async (req, res) => {
 })
 
 app.post('/connexion', async (req, res) => {
+	console.log(res)
 	const { error } = loginValidation(req.body)
 	if (error) return res.status(400).send(error.details[0].message)
 
 	const user = await User.findOne({ email: req.body.email })
-	if (!user) return res.status(400).send('Email or password is wrong')
+	if (!user) {
+		return res.status(401).send('Email or password is wrong')
+	}
 
 	const validPassword = await bcrypt.compare(req.body.password, user.password)
-	if (!validPassword) return res.status(400).send('Email or password is wrong')
+	if (!validPassword) {
+		return res.status(401).send('Email or password is wrong')
+	}
 
-	const token = jwt.sign({ user: user.username }, process.env.TOKEN_SECRET)
-	res.header('auth-token', token)
-
-	res.send('Success')
+	const token = jwt.sign({ userId: user._id }, process.env.TOKEN_SECRET)
+	return res.status(200).send({ token })
 })
 
 module.exports = app
