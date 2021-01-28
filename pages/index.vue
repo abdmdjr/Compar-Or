@@ -18,7 +18,7 @@
 					<button
 						class="btn-detail flex items-center align-center px-4 py-3 text-sm rounded"
 					>
-						Trouvez votre pièce
+						Trouver votre pièce
 					</button>
 				</nuxt-link>
 			</div>
@@ -83,7 +83,7 @@
 		</section>
 		<nuxt-link class="flex mt-10 mb-12 md:mt-15 md:mb-20" to="/coins">
 			<button class="btn-detail mx-auto px-4 py-3 text-sm rounded">
-				Trouvez votre pièce
+				Trouver votre pièce
 			</button>
 		</nuxt-link>
 	</main>

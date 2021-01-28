@@ -1,5 +1,5 @@
 # Compar'or
-> Comparez et achetez les pièces d'or au meilleur prix !
+> Comparer et acheter les pièces d'or au meilleur prix !
 
 #### Les technos
 ✅ NuxtJS : framework VueJS modulaire et performant  

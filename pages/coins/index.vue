@@ -9,7 +9,7 @@
 			<div class="intro mb-2 md:mb-3"></div>
 			<div class="flex flex-col text-sm md:text-lg font-light">
 				<h1 class="title font-normal mb-2 md:mb-3 text-1xl md:leading-tight">
-					Achetez vos pièces d'or au meilleur prix !
+					Acheter vos pièces d'or au meilleur prix !
 				</h1>
 				<p class="mt-2">
 					Le prix affiché pour une pièce est<span class="font-medium">
@@ -19,7 +19,7 @@
 					transparence, la livraison est incluse dans ce prix.
 				</p>
 				<h1 class="font-medium mt-2">
-					Cliquez sur une pièce
+					Cliquer sur une pièce
 					<h1 class="inline">d'or</h1>
 					pour comparer les prix en détail.
 				</h1>
@@ -138,7 +138,7 @@ export default {
 	},
 	head() {
 		return {
-			title: "Compar'Or - Achetez vos pièces au meilleur prix"
+			title: "Compar'Or - Acheter vos pièces au meilleur prix"
 		}
 	}
 }
