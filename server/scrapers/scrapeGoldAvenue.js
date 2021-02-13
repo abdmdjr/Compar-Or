@@ -21,7 +21,7 @@ async function scrapeGoldAvenue() {
 					return parseFloat(value.replace(/\s/g, '').replace(',', '.'))
 				}
 				const priceString = document.querySelector(
-					'#gtm-product-pricing-details > a'
+					'#gtm-product-pricing-more-info > a'
 				).textContent
 				const price = parse(priceString)
 				return price
@@ -39,6 +39,8 @@ async function scrapeGoldAvenue() {
 	browser.close()
 	return pieces
 }
+
+scrapeGoldAvenue()
 
 module.exports = {
 	scrapeGoldAvenue

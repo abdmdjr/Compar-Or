@@ -14,20 +14,20 @@ async function bdOr() {
 					piece.url
 				]
 			})
-			await Coin.findById(piece.id).then((coin) => {
-				if (!coin.chart.bdor.data && !coin.chart.bdor.createdAt) {
-					coin.chart.bdor.data.push(piece.totalPrice)
-					coin.chart.bdor.createdAt.push(new Date())
-					coin.save()
-				} else if (
-					piece.totalPrice !==
-					coin.chart.bdor.data[coin.chart.bdor.data.length - 1]
-				) {
-					coin.chart.bdor.data.push(piece.totalPrice)
-					coin.chart.bdor.createdAt.push(new Date())
-					coin.save()
-				}
-			})
+			// await Coin.findById(piece.id).then((coin) => {
+			// 	if (!coin.chart.bdor.data && !coin.chart.bdor.createdAt) {
+			// 		coin.chart.bdor.data.push(piece.totalPrice)
+			// 		coin.chart.bdor.createdAt.push(new Date())
+			// 		coin.save()
+			// 	} else if (
+			// 		piece.totalPrice !==
+			// 		coin.chart.bdor.data[coin.chart.bdor.data.length - 1]
+			// 	) {
+			// 		coin.chart.bdor.data.push(piece.totalPrice)
+			// 		coin.chart.bdor.createdAt.push(new Date())
+			// 		coin.save()
+			// 	}
+			// })
 		})
 	} catch (error) {
 		console.log(error.message)

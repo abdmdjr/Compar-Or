@@ -10,7 +10,7 @@
 			class="flex flex-col h-full md:mt-10 md:flex-col lg:flex-row lg:space-x-15"
 		>
 			<CoinDetail
-				v-if="coinDetail"
+				v-if="coinDetail && coinPrice"
 				:title="coinDetail.title"
 				:img3x="coinDetail.img3x"
 				:imgar3x="coinDetail.imgar3x"
